@@ -1,8 +1,12 @@
-#summary One-sentence summary of this page.
+#summary Web Repository Overview
 
 = Introduction =
 
-Add your content here.
+Members:
+Peter Fašianok, 
+Filip Halas, 
+Andrej Makovický, 
+Bc. Martin Váňa
 
 
 = Details =
