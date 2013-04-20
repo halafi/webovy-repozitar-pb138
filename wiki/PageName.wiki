@@ -1,0 +1,13 @@
+#summary First post
+
+= Introduction =
+
+Members:
+Peter Fašianok, 
+Filip Halas, 
+Andrej Makovický, 
+Bc. Martin Váňa
+
+= Details =
+
+Created wiki page through web user interface.
