@@ -1,5 +1,5 @@
 #summary Web Repository Overview
-
+<wiki:toc />
 = Introduction =
 
 Something.
