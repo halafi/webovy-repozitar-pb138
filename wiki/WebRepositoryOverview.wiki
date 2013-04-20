@@ -2,14 +2,14 @@
 
 = Introduction =
 
-Members:
-Peter Fašianok, 
-Filip Halas, 
-Andrej Makovický, 
+Something.
+
+= Developers =
+
+Peter Fašianok
+Filip Halas
+Andrej Makovický
 Bc. Martin Váňa
-
-
-= Details =
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
