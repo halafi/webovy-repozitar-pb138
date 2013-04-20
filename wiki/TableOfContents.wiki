@@ -1,3 +1,4 @@
 #summary One-sentence summary of this page.
 
-#sidebar NameOfPage
+#sidebar WebRepositoryOverview
+#sidebar ReleaseNotes
