@@ -1,5 +1,4 @@
 #summary Table of contents
 
-* WebRepositoryOverview <br />
-
-* ReleaseNotes <br />
+  * [WebRepositoryOverview Overview]
+  * [ReleaseNotes Release notes]
