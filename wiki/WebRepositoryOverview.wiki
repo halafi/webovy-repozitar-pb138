@@ -1,4 +1,5 @@
 #summary Web Repository Overview
+#sidebar TableOfContents
 <wiki:toc />
 = Introduction =
 
