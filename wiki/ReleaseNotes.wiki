@@ -1,5 +1,4 @@
 #summary Release notes
-#sidebar TableOfContents
 <wiki:toc />
 
 = Introduction =
