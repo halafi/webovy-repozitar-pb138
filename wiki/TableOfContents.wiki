@@ -1,4 +1,3 @@
 #summary Table of contents
 
   * [WebRepositoryOverview Úvod]
-  * [ReleaseNotes Poznámky k vydání]
