@@ -4,15 +4,15 @@
 
 *Mgr. Filip Nguyen*, učo 208428
 
-= Vývojáři =
+= Vývojáři a jejich role =
 
-*Peter Fašianok*, učo 359471
+*Peter Fašianok*, učo 359471 -
 
-*Filip Halas*, učo 374137
+*Filip Halas*, učo 374137 -
 
-*Andrej Makovický*, učo 374351
+*Andrej Makovický*, učo 374351 -
 
-*Bc. Martin Váňa*, učo 359685
+*Bc. Martin Váňa*, učo 359685 -
 
 = Oficiální zadání =
 
