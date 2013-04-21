@@ -6,13 +6,13 @@
 
 = Vývojáři a jejich role =
 
-*Peter Fašianok*, učo 359471 - junior java developer
+*Peter Fašianok*, učo 359471 - programátor, wiki
 
-*Filip Halas*, učo 374137 - programátor, junior wiki editor
+*Filip Halas*, učo 374137 - programátor, wiki
 
-*Andrej Makovický*, učo 374351 - senior advanced bussines logic developer / first level manager / teamleader
+*Andrej Makovický*, učo 374351 - programátor, teamleader
 
-*Bc. Martin Váňa*, učo 359685 - zajebává se
+*Bc. Martin Váňa*, učo 359685 - programátor, web specialist
 
 = Oficiální zadání =
 
