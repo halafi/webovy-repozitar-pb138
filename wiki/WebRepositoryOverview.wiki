@@ -32,6 +32,6 @@ Po nahrání daného artefaktu z něj budou vyextrahovány metadata a opět ulo�
   * Pro WSDL dokumenty se vyextrahuje seznam operací spolu s informací o requestu a response zprávách.
 
 Webové rozhraní nadále umožní:
-Nahlížet jednotlivé artefakty s jejich metadaty.
-Bude zde vidět seznam verzí artefaktu.
-Bude možné vyhledávat jednotlivé artefakty podle metadat.
+  * Nahlížet jednotlivé artefakty s jejich metadaty.
+  * Bude zde vidět seznam verzí artefaktu.
+  * Bude možné vyhledávat jednotlivé artefakty podle metadat.
