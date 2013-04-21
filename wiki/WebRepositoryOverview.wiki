@@ -1,4 +1,4 @@
-#summary Web Repository Overview
+#summary Webový repositotář pro vývojové artefakty
 <wiki:toc />
 = Vedení =
 
