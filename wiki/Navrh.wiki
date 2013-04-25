@@ -205,7 +205,7 @@ Pro XSD schémata se vyextrahuje seznam typů (simple a complex) a seznam elemen
     <attributes>
         ...
     </attributes>
-    </output>
+</output>
 }}}
 Zdroj: http://www.w3schools.com/schema/schema_example.asp
 == WAR ukázky ==
