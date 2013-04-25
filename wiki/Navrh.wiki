@@ -1,7 +1,7 @@
 <wiki:toc />
 = Návrh =
 == WSDL ukázky ==
-=== Example 1 HelloService===
+=== Example 1 HelloService ===
 {{{
 <definitions name="HelloService"
    targetNamespace="http://www.examples.com/wsdl/HelloService.wsdl"
