@@ -1,3 +1,162 @@
-= Use Case Diagram =
+<wiki:toc />
+= Návrh =
+== WSDL ukázky ==
+=== Example 1 HelloService===
+{{{
+<definitions name="HelloService"
+   targetNamespace="http://www.examples.com/wsdl/HelloService.wsdl"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:tns="http://www.examples.com/wsdl/HelloService.wsdl"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ 
+   <message name="SayHelloRequest">
+      <part name="firstName" type="xsd:string"/>
+   </message>
+   <message name="SayHelloResponse">
+      <part name="greeting" type="xsd:string"/>
+   </message>
+
+   <portType name="Hello_PortType">
+      <operation name="sayHello">
+         <input message="tns:SayHelloRequest"/>
+         <output message="tns:SayHelloResponse"/>
+      </operation>
+   </portType>
+
+   <binding name="Hello_Binding" type="tns:Hello_PortType">
+   <soap:binding style="rpc"
+      transport="http://schemas.xmlsoap.org/soap/http"/>
+   <operation name="sayHello">
+      <soap:operation soapAction="sayHello"/>
+      <input>
+         <soap:body
+            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+            namespace="urn:examples:helloservice"
+            use="encoded"/>
+      </input>
+      <output>
+         <soap:body
+            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+            namespace="urn:examples:helloservice"
+            use="encoded"/>
+      </output>
+   </operation>
+   </binding>
+
+   <service name="Hello_Service">
+      <documentation>WSDL File for HelloService</documentation>
+      <port binding="tns:Hello_Binding" name="Hello_Port">
+         <soap:address
+            location="http://www.examples.com/SayHello/">
+      </port>
+   </service>
+</definitions>
+}}}
+Pro WSDL dokumenty se vyextrahuje seznam operací spolu s informací o requestu a response zprávách.
+{{{
+<operations>
+    <operation name="sayHello">
+        ...
+    <messages>
+    <!-- sayHello% messages -->
+        <message name="sayHelloRequest">
+            ...
+        </message>
+        <message name="sayHelloResponse">
+            ...
+        </message>
+        ...
+    </messages>
+    </operation>
+</operations>
+}}}
+Zdroj: http://www.tutorialspoint.com/wsdl/wsdl_example.htm
+=== Example 2 SOAP 1.1 Request/Response via HTTP ===
+{{{
+<?xml version="1.0"?>
+<definitions name="StockQuote"
+targetNamespace="http://example.com/stockquote.wsdl"
+          xmlns:tns="http://example.com/stockquote.wsdl"
+          xmlns:xsd1="http://example.com/stockquote.xsd"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <types>
+       <schema targetNamespace="http://example.com/stockquote.xsd"
+              xmlns="http://www.w3.org/2000/10/XMLSchema">
+           <element name="TradePriceRequest">
+              <complexType>
+                  <all>
+                      <element name="tickerSymbol" type="string"/>
+                  </all>
+              </complexType>
+           </element>
+           <element name="TradePrice">
+              <complexType>
+                  <all>
+                      <element name="price" type="float"/>
+                  </all>
+              </complexType>
+           </element>
+       </schema>
+    </types>
+
+    <message name="GetLastTradePriceInput">
+        <part name="body" element="xsd1:TradePriceRequest"/>
+    </message>
+    <message name="GetLastTradePriceOutput">
+        <part name="body" element="xsd1:TradePrice"/>
+    </message>
+
+    <portType name="StockQuotePortType">
+        <operation name="GetLastTradePrice">
+           <input message="tns:GetLastTradePriceInput"/>
+           <output message="tns:GetLastTradePriceOutput"/>
+        </operation>
+    </portType>
+
+    <binding name="StockQuoteSoapBinding" type="tns:StockQuotePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetLastTradePrice">
+           <soap:operation soapAction="http://example.com/GetLastTradePrice"/>
+           <input>
+               <soap:body use="literal"/>
+           </input>
+           <output>
+               <soap:body use="literal"/>
+           </output>
+        </operation>
+    </binding>
+
+    <service name="StockQuoteService">
+        <documentation>My first service</documentation>
+        <port name="StockQuotePort" binding="tns:StockQuoteBinding">
+           <soap:address location="http://example.com/stockquote"/>
+        </port>
+    </service>
+
+</definitions>
+}}}
+
+Pro WSDL dokumenty se vyextrahuje seznam operací spolu s informací o requestu a response zprávách.
+{{{
+<operations>
+    <operation name="GetLastTradePrice">
+        ...
+    <messages>
+    <!-- GetLastTradePrice% messages -->
+        <message name="GetLastTradePriceInput">
+            ...
+        </message>
+        <message name="GetLastTradePriceOutput">
+            ...
+        </message>
+        ...
+    </messages>
+    </operation>
+</operations>
+}}}
+Zdroj: http://www.w3.org/TR/wsdl#_wsdl
+== Use Case Diagram ==
 
 http://webovy-repozitar-pb138.googlecode.com/svn/wiki/UseCase.png
