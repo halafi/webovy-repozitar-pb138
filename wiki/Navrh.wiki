@@ -195,17 +195,25 @@ Zdroj: http://www.w3.org/TR/wsdl#_wsdl
 }}}
 Pro XSD schémata se vyextrahuje seznam typů (simple a complex) a seznam elementů a atributů.
 {{{
-<output>
-    <types>
-        ...
-    </types>
-    <elements>
-        ...
-    </elements>
-    <attributes>
-        ...
-    </attributes>
-</output>
+<types>
+    <xs:complexType>
+        <xs:element name="orderperson" type="xs:string"/>
+        <xs:element name="shipto">
+        <xs:element name="item" maxOccurs="unbounded">
+    </xs:complexType>
+    <xs:complexType>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="address" type="xs:string"/>
+        <xs:element name="city" type="xs:string"/>
+        <xs:element name="country" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType>
+        <xs:element name="title" type="xs:string"/>
+        <xs:element name="note" type="xs:string" minOccurs="0"/>
+        <xs:element name="quantity" type="xs:positiveInteger"/>
+        <xs:element name="price" type="xs:decimal"/>
+    </xs:complexType>
+</types>
 }}}
 Zdroj: http://www.w3schools.com/schema/schema_example.asp
 == WAR ukázky ==
