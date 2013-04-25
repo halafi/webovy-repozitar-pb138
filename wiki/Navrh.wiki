@@ -157,6 +157,58 @@ Pro WSDL dokumenty se vyextrahuje seznam operací spolu s informací o requestu 
 </operations>
 }}}
 Zdroj: http://www.w3.org/TR/wsdl#_wsdl
+== XSD ukázky ==
+=== Example 1 Ship Order ===
+{{{
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="shiporder">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="orderperson" type="xs:string"/>
+      <xs:element name="shipto">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="address" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="item" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="note" type="xs:string" minOccurs="0"/>
+            <xs:element name="quantity" type="xs:positiveInteger"/>
+            <xs:element name="price" type="xs:decimal"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="orderid" type="xs:string" use="required"/>
+  </xs:complexType>
+</xs:element>
+</xs:schema>
+}}}
+Pro XSD schémata se vyextrahuje seznam typů (simple a complex) a seznam elementů a atributů.
+{{{
+<output>
+    <types>
+        ...
+    </types>
+    <elements>
+        ...
+    </elements>
+    <attributes>
+        ...
+    </attributes>
+    </output>
+}}}
+Zdroj: http://www.w3schools.com/schema/schema_example.asp
+== WAR ukázky ==
 == Use Case Diagram ==
 
 http://webovy-repozitar-pb138.googlecode.com/svn/wiki/UseCase.png
