@@ -1,7 +1,6 @@
 <wiki:toc />
-= Návrh =
-== WSDL ukázky ==
-=== Example 1 Hello Service ===
+= WSDL ukázky =
+== Example 1 Hello Service ==
 {{{
 <definitions name="HelloService"
    targetNamespace="http://www.examples.com/wsdl/HelloService.wsdl"
@@ -72,7 +71,7 @@ Pro WSDL dokumenty se vyextrahuje seznam operací spolu s informací o requestu 
 </operations>
 }}}
 Zdroj: http://www.tutorialspoint.com/wsdl/wsdl_example.htm
-=== Example 2 SOAP 1.1 Request/Response via HTTP ===
+== Example 2 SOAP 1.1 Request/Response via HTTP ==
 {{{
 <?xml version="1.0"?>
 <definitions name="StockQuote"
@@ -157,8 +156,8 @@ Pro WSDL dokumenty se vyextrahuje seznam operací spolu s informací o requestu 
 </operations>
 }}}
 Zdroj: http://www.w3.org/TR/wsdl#_wsdl
-== XSD ukázky ==
-=== Example 1 Ship Order ===
+= XSD ukázky =
+== Example 1 Ship Order ==
 {{{
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -216,7 +215,7 @@ Pro XSD schémata se vyextrahuje seznam typů (simple a complex) a seznam elemen
 </types>
 }}}
 Zdroj: http://www.w3schools.com/schema/schema_example.asp
-== WAR ukázky ==
-== Use Case Diagram ==
+= WAR ukázky =
+= Use Case Diagram =
 
 http://webovy-repozitar-pb138.googlecode.com/svn/wiki/UseCase.png
