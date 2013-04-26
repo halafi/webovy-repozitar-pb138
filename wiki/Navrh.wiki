@@ -315,7 +315,7 @@ Dále se vyextrahuje *seznam listenerů a filtrů*.
    </listener>
 </listeners>
 }}}
-Zdroj: http://javahowto.blogspot.cz/2009/10/sample-webxml-servlet-25.html, http://docstore.mik.ua/orelly/xml/jxslt/figs/jxt_0602.gif
-= Use Case Diagram =
+Zdroj: http://javahowto.blogspot.cz/2009/10/sample-webxml-servlet-25.html
 
+= Use Case Diagram =
 http://webovy-repozitar-pb138.googlecode.com/svn/wiki/UseCase.png
