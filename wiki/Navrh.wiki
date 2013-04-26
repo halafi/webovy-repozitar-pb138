@@ -71,7 +71,7 @@ Pro WSDL dokumenty se vyextrahuje *seznam operací spolu s informací o requestu
 </operations>
 }}}
 Zdroj: http://www.tutorialspoint.com/wsdl/wsdl_example.htm
-== Ukázka 2 SOAP 1.1 Request/Response via HTTP ==
+== Ukázka 2 - SOAP 1.1 Request/Response via HTTP ==
 {{{
 <?xml version="1.0"?>
 <definitions name="StockQuote"
@@ -156,8 +156,8 @@ Pro WSDL dokumenty se vyextrahuje *seznam operací spolu s informací o requestu
 </operations>
 }}}
 Zdroj: http://www.w3.org/TR/wsdl#_wsdl
-= XSD ukázky =
-== Example 1 Ship Order ==
+= XSD=
+== Ukázka 1 - Ship Order ==
 {{{
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -221,7 +221,7 @@ http://docstore.mik.ua/orelly/xml/jxslt/figs/jxt_0602.gif
 
 Pro WAR archivy se vytáhne *web.xml* a bude k náhledu.
 
-== web.xml ukázka ==
+== Ukázka souboru web.xml ==
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
