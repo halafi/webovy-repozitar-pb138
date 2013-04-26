@@ -215,7 +215,9 @@ Pro XSD schémata se vyextrahuje seznam typů (simple a complex) a seznam elemen
 </types>
 }}}
 Zdroj: http://www.w3schools.com/schema/schema_example.asp
-= WAR ukázky =
+= WAR =
+http://docstore.mik.ua/orelly/xml/jxslt/figs/jxt_0602.gif
+Pro WAR archivy se vytáhne web.xml a bude k náhledu. Dále se vyextrahuje seznam listenerů a filtrů.
 = Use Case Diagram =
 
 http://webovy-repozitar-pb138.googlecode.com/svn/wiki/UseCase.png
