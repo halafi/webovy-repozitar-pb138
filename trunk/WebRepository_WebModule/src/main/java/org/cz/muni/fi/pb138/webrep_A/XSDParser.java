@@ -14,15 +14,19 @@ import org.w3c.dom.Document;
  */
 public class XSDParser {
     
-    public Map<String,List<String>> getElements(Document doc){
+    public Document XSDExtract(Document doc){
         return null;
     }
     
-    public List<String> getSimpleTypes(Document doc){
+    private Map<String,List<String>> getElements(Document doc){
         return null;
     }
     
-    public List<String> getComplexTypes(Document doc){
+    private List<String> getSimpleTypes(Document doc){
+        return null;
+    }
+    
+    private List<String> getComplexTypes(Document doc){
         return null;
     }
 
