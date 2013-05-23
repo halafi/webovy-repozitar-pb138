@@ -21,6 +21,20 @@
             <version>6.0</version>
             <scope>provided</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>org.basex</groupId>
+            <artifactId>basex</artifactId>
+            <version>7.3.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>net.sourceforge.stripes</groupId>
+            <artifactId>stripes</artifactId>
+            <version>1.5.7</version>
+        </dependency>
+            
+
     </dependencies>
 
     <build>
