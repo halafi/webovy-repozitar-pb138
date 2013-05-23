@@ -13,11 +13,17 @@ import org.w3c.dom.Document;
  * @author xfasian
  */
 public class XSDParser {
-    private String name;
-    private Long id;
-    private Document document;
-    private Map<String,List<String>> elements;
-    private List<String> simpleTypes;
-    private List<String> complexTypes;
+    
+    public Map<String,List<String>> getElements(Document doc){
+        return null;
+    }
+    
+    public List<String> getSimpleTypes(Document doc){
+        return null;
+    }
+    
+    public List<String> getComplexTypes(Document doc){
+        return null;
+    }
 
 }

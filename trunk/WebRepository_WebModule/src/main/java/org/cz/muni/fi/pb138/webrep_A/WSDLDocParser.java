@@ -12,11 +12,13 @@ import org.w3c.dom.Document;
  *
  * @author xfasian
  */
-public class WSDLDocParser {
-    private String name;
-    private Long id;
-    private Document document;
-    private List<String> operation;
-    private Map<String,List<String>> message;
+public class WSDLDocParser {    
+    public List<String> getOperation(Document doc){
+        return null;
+    }
+    
+    public Map<String,List<String>> getMessages(Document doc){
+        return null;
+    }
     
 }
