@@ -94,6 +94,6 @@ public class WSDLDoc {
 
     @Override
     public String toString() {
-        return "WSDLDoc{" + "id=" + id + ", date=" + date + ", document=" + document + ", fileName=" + fileName + '}';
+        return "WSDLDoc{" + "id=" + id + ", date=" + date + ", document=" + document + ", extract=" + extract + ", operations=" + operations + ", messages=" + messages + '}';
     }
 }
