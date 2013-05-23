@@ -4,10 +4,17 @@
  */
 package org.cz.muni.fi.pb138.webrep_A;
 
+import java.util.List;
+
 /**
  *
  * @author xmakovic
  */
 public interface XSDManager {
     
+    public void createXSD(XSD xsd);
+    
+    public WarArchive getXSD(Integer id);  
+    
+    public List<WarArchive> getAllXSDs(); 
 }
