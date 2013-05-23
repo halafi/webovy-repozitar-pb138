@@ -2,3 +2,4 @@
 
   * [WebRepositoryOverview Úvod]
   * [Navrh Návrh]
+  * [Changelog Changelog]
