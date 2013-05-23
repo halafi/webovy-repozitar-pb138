@@ -11,11 +11,16 @@ import org.w3c.dom.Document;
  *
  * @author xfasian
  */
-public class WarArchiveParser {    
-    public List<String> getFilters(Document doc){
+public class WarArchiveParser { 
+    
+    public Document WARExtract(Document doc){
         return null;
     }
-    public List<String> getListeners(Document doc){
+    
+    private List<String> getFilters(Document doc){
+        return null;
+    }
+    private List<String> getListeners(Document doc){
         return null;
     }
     

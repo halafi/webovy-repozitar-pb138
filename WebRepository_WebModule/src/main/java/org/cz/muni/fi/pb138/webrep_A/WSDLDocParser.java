@@ -12,12 +12,16 @@ import org.w3c.dom.Document;
  *
  * @author xfasian
  */
-public class WSDLDocParser {    
-    public List<String> getOperation(Document doc){
+public class WSDLDocParser {   
+    public Document WSDLExtract(Document doc){
         return null;
     }
     
-    public Map<String,List<String>> getMessages(Document doc){
+    private List<String> getOperation(Document doc){
+        return null;
+    }
+    
+    private Map<String,List<String>> getMessages(Document doc){
         return null;
     }
     
