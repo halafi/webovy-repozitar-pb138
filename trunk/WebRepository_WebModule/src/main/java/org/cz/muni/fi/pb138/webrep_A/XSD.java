@@ -1,6 +1,7 @@
 package org.cz.muni.fi.pb138.webrep_A;
 
 import java.util.Date;
+import org.w3c.dom.Document;
 
 /*
  * To change this template, choose Tools | Templates
@@ -12,15 +13,16 @@ import java.util.Date;
  */
 public class XSD {
 
-    Integer id;
-    Date date;
-    String file;
+    private Long id;
+    private Date date;
+    private Document document;
+    private String fileName;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -32,12 +34,20 @@ public class XSD {
         this.date = date;
     }
 
-    public String getFile() {
-        return file;
+    public Document getDocument() {
+        return document;
     }
 
-    public void setFile(String file) {
-        this.file = file;
+    public void setDocument(Document document) {
+        this.document = document;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     @Override
@@ -64,6 +74,6 @@ public class XSD {
 
     @Override
     public String toString() {
-        return "XSD{" + "id=" + id + ", date=" + date + ", file=" + file + '}';
+        return "XSD{" + "id=" + id + ", date=" + date + ", document=" + document + ", fileName=" + fileName + '}';
     }
 }
