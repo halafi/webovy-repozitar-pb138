@@ -1,7 +1,8 @@
 package org.cz.muni.fi.pb138.webrep_A;
 
 import java.util.Date;
-import javax.swing.text.Document;
+import org.w3c.dom.Document;
+
 
 /*
  * To change this template, choose Tools | Templates
