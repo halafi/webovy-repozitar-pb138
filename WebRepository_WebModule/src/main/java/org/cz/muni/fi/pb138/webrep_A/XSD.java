@@ -1,6 +1,8 @@
 package org.cz.muni.fi.pb138.webrep_A;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import org.w3c.dom.Document;
 
 /*
@@ -17,6 +19,10 @@ public class XSD {
     private Date date;
     private Document document;
     private String fileName;
+    private Document extract;
+    private Map<String, List<String>> elements;
+    private List<String> simpleTypes;
+    private List<String> complexTypes;
 
     public Long getId() {
         return id;
@@ -57,6 +63,38 @@ public class XSD {
         return hash;
     }
 
+    public Document getExtract() {
+        return extract;
+    }
+
+    public void setExtract(Document extract) {
+        this.extract = extract;
+    }
+
+    public Map<String, List<String>> getElements() {
+        return elements;
+    }
+
+    public void setElements(Map<String, List<String>> elements) {
+        this.elements = elements;
+    }
+
+    public List<String> getSimpleTypes() {
+        return simpleTypes;
+    }
+
+    public void setSimpleTypes(List<String> simpleTypes) {
+        this.simpleTypes = simpleTypes;
+    }
+
+    public List<String> getComplexTypes() {
+        return complexTypes;
+    }
+
+    public void setComplexTypes(List<String> complexTypes) {
+        this.complexTypes = complexTypes;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -74,6 +112,6 @@ public class XSD {
 
     @Override
     public String toString() {
-        return "XSD{" + "id=" + id + ", date=" + date + ", document=" + document + ", fileName=" + fileName + '}';
+        return "XSD{" + "id=" + id + ", date=" + date + ", document=" + document + ", fileName=" + fileName + ", extract=" + extract + ", elements=" + elements + ", simpleTypes=" + simpleTypes + ", complexTypes=" + complexTypes + '}';
     }
 }
