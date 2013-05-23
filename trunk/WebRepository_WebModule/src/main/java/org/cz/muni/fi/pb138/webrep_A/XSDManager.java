@@ -14,7 +14,7 @@ public interface XSDManager {
     
     public void createXSD(XSD xsd);
     
-    public WarArchive getXSD(Integer id);  
+    public XSD getXSD(Integer id);  
     
-    public List<WarArchive> getAllXSDs(); 
+    public List<XSD> getAllXSDs(); 
 }
