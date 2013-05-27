@@ -12,6 +12,8 @@ import org.w3c.dom.Document;
  * @author xfasian
  */
 public class WarArchiveParser { 
+    private List<String> filtres;
+    private List<String> listeners;
     
     public Document WARExtract(Document doc){
         return null;

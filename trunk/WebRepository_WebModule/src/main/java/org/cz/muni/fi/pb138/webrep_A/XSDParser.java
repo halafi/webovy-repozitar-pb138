@@ -13,6 +13,9 @@ import org.w3c.dom.Document;
  * @author xfasian
  */
 public class XSDParser {
+    private Map<String,List<String>> elements;
+    private List<String> simpleTypes;
+    private List<String> complexTypes;
     
     public Document XSDExtract(Document doc){
         return null;
