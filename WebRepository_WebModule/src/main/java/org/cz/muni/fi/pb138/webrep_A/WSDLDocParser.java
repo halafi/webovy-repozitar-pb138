@@ -13,6 +13,9 @@ import org.w3c.dom.Document;
  * @author xfasian
  */
 public class WSDLDocParser {   
+    private List<String> operations;
+    private Map<String,List<String>> messages;
+    
     public Document WSDLExtract(Document doc){
         return null;
     }
