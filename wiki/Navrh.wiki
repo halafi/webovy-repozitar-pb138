@@ -55,21 +55,18 @@
 }}}
 Pro WSDL dokumenty se vyextrahuje *seznam operací spolu s informací o requestu a response zprávách*.
 {{{
-<operations>
+<operations_and_messages>
     <operation name="sayHello">
         ...
-    <messages>
-    <!-- sayHello% messages -->
-        <message name="sayHelloRequest">
-            ...
-        </message>
-        <message name="sayHelloResponse">
-            ...
-        </message>
-        ...
-    </messages>
     </operation>
-</operations>
+    <!-- sayHello% messages -->
+    <message name="sayHelloRequest">
+        ...
+    </message>
+    <message name="sayHelloResponse">
+        ...
+    </message>
+</operations_and_messages>
 }}}
 Zdroj: http://www.tutorialspoint.com/wsdl/wsdl_example.htm
 == Ukázka 2 - SOAP 1.1 Request/Response via HTTP ==
