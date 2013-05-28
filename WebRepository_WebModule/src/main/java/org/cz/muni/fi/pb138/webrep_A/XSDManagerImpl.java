@@ -57,4 +57,13 @@ public class XSDManagerImpl implements XSDManager {
         }*/
         return null;
     }
+    
+    
+     /*
+     * Finds XSD by data input.
+     */
+    @Override
+    public List<XSD> findXSDByData(String s){
+        return null;
+    }
 }

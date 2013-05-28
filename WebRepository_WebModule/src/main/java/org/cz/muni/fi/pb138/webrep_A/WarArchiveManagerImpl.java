@@ -58,4 +58,11 @@ public class WarArchiveManagerImpl implements WarArchiveManager {
         }*/
         return null;
     }
+    
+    /*
+     * Finds desired web.xml by data
+     */
+    public List<WarArchive> findWebXMLbyArtefact(String string){
+        return null;
+    }
 }
