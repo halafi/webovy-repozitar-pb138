@@ -43,29 +43,33 @@ public class XSDParser {
         for (i = 0; i < complexTypeList.getLength(); i++) {
             if (complexTypeList.item(i) instanceof Element) {
                 Element complexElement = (Element) complexTypeList.item(i);
-                Node newcom = doc.createElement("complexType");
-                root.appendChild(newcom);
+                //Node newcom = doc.createElement("complexType");
+                //root.appendChild(newcom);
+                root.appendChild(complexElement);
             }
         }
         for (i = 0; i < simpleTypeList.getLength(); i++) {
             if (simpleTypeList.item(i) instanceof Element) {
                 Element simpleElement = (Element) simpleTypeList.item(i);
-                Node newsim = doc.createElement("simpleType");
-                root.appendChild(newsim);
+                //Node newsim = doc.createElement("simpleType");
+                //root.appendChild(newsim);
+                root.appendChild(simpleElement);
             }
         }
         for (i = 0; i < elementsList.getLength(); i++) {
             if (elementsList.item(i) instanceof Element) {
                 Element elementElement = (Element) elementsList.item(i);
-                Node newele = doc.createElement("element");
-                root.appendChild(newele);
+                //Node newele = doc.createElement("element");
+                //root.appendChild(newele);
+                root.appendChild(elementElement);
             }
         }
         for (i = 0; i < attributeList.getLength(); i++) {
             if (attributeList.item(i) instanceof Element) {
                 Element attElement = (Element) attributeList.item(i);
-                Node newatt = doc.createElement("attribute");
-                root.appendChild(newatt);
+                //Node newatt = doc.createElement("attribute");
+                //root.appendChild(newatt);
+                root.appendChild(attElement);
             }
         }
         return output;
