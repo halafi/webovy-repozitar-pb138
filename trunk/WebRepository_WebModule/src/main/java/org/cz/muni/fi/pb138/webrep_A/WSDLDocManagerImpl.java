@@ -5,12 +5,13 @@
 package org.cz.muni.fi.pb138.webrep_A;
 
 import java.util.List;
+import org.w3c.dom.Document;
 
 /**
  *
  * @author xmakovic
  */
-public class WSDLDocManagerImpl {
+public class WSDLDocManagerImpl implements WSDLDocManager {
     
     public void createWSDL(WSDLDoc wsdl) {
         if (wsdl.getId() != null) {
@@ -54,6 +55,14 @@ public class WSDLDocManagerImpl {
         finally {
           close db, etc.
         }*/
+        return null;
+    }
+    
+    /*
+     * Finds WSDL by metadata.
+     */
+    public List<WSDLDoc> findWSDLByData(Document extract){
+        
         return null;
     }
 }
