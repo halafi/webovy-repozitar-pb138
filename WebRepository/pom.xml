@@ -7,7 +7,6 @@
   <packaging>pom</packaging>
   <name>WebRepository</name>
     <modules>
-        <module>../WebRepository_BackEnd</module>
         <module>../WebRepository_WebModule</module>
     </modules>
 </project>
