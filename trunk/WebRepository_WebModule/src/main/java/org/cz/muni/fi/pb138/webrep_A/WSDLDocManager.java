@@ -16,7 +16,7 @@ public interface WSDLDocManager {
     /*
      * Saves WSDL into database
      */
-    public void createWSDL(WSDLDoc wsdl);
+    public void createWSDL(WSDLDoc wsdl) throws Exception;
     
     /*
      * Gets WSDL from database
