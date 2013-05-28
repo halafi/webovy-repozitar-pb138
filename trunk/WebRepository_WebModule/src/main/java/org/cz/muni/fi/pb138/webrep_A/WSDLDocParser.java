@@ -48,3 +48,5 @@ public class WSDLDocParser {
             }
         }
         return output;
+    }
+}
