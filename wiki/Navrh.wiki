@@ -140,21 +140,18 @@ targetNamespace="http://example.com/stockquote.wsdl"
 
 Pro WSDL dokumenty se vyextrahuje *seznam operací spolu s informací o requestu a response zprávách*.
 {{{
-<operations>
+<operations_and_messages>
     <operation name="GetLastTradePrice">
         ...
-    <messages>
-    <!-- GetLastTradePrice% messages -->
-        <message name="GetLastTradePriceInput">
-            ...
-        </message>
-        <message name="GetLastTradePriceOutput">
-            ...
-        </message>
-        ...
-    </messages>
     </operation>
-</operations>
+    <!-- GetLastTradePrice% messages -->
+    <message name="GetLastTradePriceInput">
+        ...
+    </message>
+    <message name="GetLastTradePriceOutput">
+        ...
+    </message>
+</operations_and_messages>
 }}}
 Zdroj: http://www.w3.org/TR/wsdl#_wsdl
 = XSD=
@@ -303,18 +300,16 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 }}}
 Dále se vyextrahuje *seznam listenerů a filtrů*.
 {{{
-<filters>
+<filters_and_listeners>
    <filter>
       <display-name>Filter1</display-name>
       <filter-name>Filter1</filter-name>
       <filter-class>Filter1</filter-class>
    </filter>
-</filters>
-<listeners>
    <listener>
       <listener-class>Listener1</listener-class>
    </listener>
-</listeners>
+</filters_and_listeners>
 }}}
 Zdroj: http://javahowto.blogspot.cz/2009/10/sample-webxml-servlet-25.html
 
