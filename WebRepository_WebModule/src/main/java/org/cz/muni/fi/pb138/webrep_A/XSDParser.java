@@ -15,15 +15,20 @@ import org.w3c.dom.NodeList;
  * @author xfasian
  */
 public class XSDParser {
-    private Map<String,List<String>> elements;
+    /*private Map<String,List<String>> elements;
     private List<String> simpleTypes;
-    private List<String> complexTypes;
+    private List<String> complexTypes;*/
     
     public Document XSDExtract(Document doc) throws ParserConfigurationException{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         int i;
-        String namespace = "xs:";
-        //doimplementovat get z root elementu cist dokud ":"
+        String namespace = null;
+        if(doc.getDocumentElement().getNodeName().contains("xs")) {
+            namespace = "xs:";
+        }
+        if(doc.getDocumentElement().getNodeName().contains("xsd")) {
+            namespace = "xsd:";
+        }
         Document output;
         DocumentBuilder builder = factory.newDocumentBuilder();
         output = builder.newDocument(); 
@@ -65,28 +70,17 @@ public class XSDParser {
         }
         return output;
     }
-    
+    /*
     private Map<String,List<String>> getElements(Document doc){
         return null;
     }
     
     private List<String> getSimpleTypes(Document doc){
-        int i;
-        List<String> simpleTypesOut = new ArrayList<String>();
-        NodeList simpleTypeList = doc.getElementsByTagName("simpleType");
-        for (i = 0; i < simpleTypeList.getLength(); i++) {
-            if (simpleTypeList.item(i) instanceof Element) {
-                Element simpleElement = (Element) simpleTypeList.item(i);
-                Node newsim = doc.createElement("simpleType");
-                //simpleTypesOut.add(newsim);
-                //to be continued? or deleted
-            }
-        }
-        return simpleTypesOut;
+        return null;
     }
     
     private List<String> getComplexTypes(Document doc){
         return null;
     }
-
+    */
 }
