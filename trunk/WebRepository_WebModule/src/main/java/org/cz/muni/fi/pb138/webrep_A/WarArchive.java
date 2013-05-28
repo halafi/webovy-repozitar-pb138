@@ -1,7 +1,6 @@
 package org.cz.muni.fi.pb138.webrep_A;
 
 import java.util.Date;
-import java.util.List;
 import org.w3c.dom.Document;
 
 
@@ -20,8 +19,6 @@ public class WarArchive {
     private Document document;
     private String fileName;
     private Document extract;
-    private List<String> filters;
-    private List<String> listeners;
 
     public Long getId() {
         return id;
@@ -63,22 +60,6 @@ public class WarArchive {
         this.extract = extract;
     }
 
-    public List<String> getFilters() {
-        return filters;
-    }
-
-    public void setFilters(List<String> filters) {
-        this.filters = filters;
-    }
-
-    public List<String> getListeners() {
-        return listeners;
-    }
-
-    public void setListeners(List<String> listeners) {
-        this.listeners = listeners;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -103,8 +84,6 @@ public class WarArchive {
 
     @Override
     public String toString() {
-        return "WarArchive{" + "id=" + id + ", date=" + date + ", document=" + document + ", fileName=" + fileName + ", extract=" + extract + ", filters=" + filters + ", listeners=" + listeners + '}';
+        return "WarArchive{" + "id=" + id + ", date=" + date + ", document=" + document + ", fileName=" + fileName + ", extract=" + extract + '}';
     }
-
-    
 }
