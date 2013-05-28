@@ -4,28 +4,61 @@
  */
 package org.cz.muni.fi.pb138.webrep_A;
 
+import java.text.MessageFormat;
 import java.util.List;
+import org.basex.core.BaseXException;
+import org.basex.core.Context;
+import org.basex.core.cmd.Open;
+import org.basex.core.cmd.XQuery;
 import org.w3c.dom.Document;
-
 /**
  *
  * @author xmakovic
  */
 public class WSDLDocManagerImpl implements WSDLDocManager {
     
-    public void createWSDL(WSDLDoc wsdl) {
+    private Context dbContext;
+    private static final String XML_HEAD = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+    private static final String OPENING_TAG = "<webxmls>";
+    private static final String CLOSING_TAG = "</webxmls>";
+    
+    public WSDLDocManagerImpl() throws Exception
+    {
+        dbContext = new Context();
+        try 
+        {
+            openDB();
+        } 
+        catch (BaseXException ex) 
+        {
+            throw new Exception("Database could not be opened", ex); 
+       }
+    }
+    
+     private void openDB() throws BaseXException
+    {
+        new Open("src/main/resources/wsdlDb.xml").execute(dbContext);
+    }
+     
+     XQConnection xqc = connect();
+    
+    
+    
+    
+    public void createWSDL(WSDLDoc wsdl) th{
         if (wsdl.getId() != null) {
             throw new IllegalArgumentException("wsdl id is already set");            
         }
-        /*try {
-            
+            String insertQuery = "insert node {0} into {1}";
+        try
+        {
+            new XQuery(MessageFormat.format(insertQuery, xsd, "/xsds")).execute(dbContext);
         }
-        catch {
-            
+        catch (BaseXException ex)
+        {
+           throw new Exception("error inserting into database", ex);
         }
-        finally {
-          close db, etc.
-        }*/
+        
     }
     
     public WSDLDoc getWSDL(Integer id) {
