@@ -1,7 +1,6 @@
 package org.cz.muni.fi.pb138.webrep_A;
 
 import java.util.Date;
-import java.util.List;
 import org.w3c.dom.Document;
 
 
@@ -19,8 +18,6 @@ public class WSDLDoc {
     private Date date;
     private Document document;
     private Document extract;
-    private List<String> operations;
-    private List<String> messages;
 
     public Long getId() {
         return id;
@@ -54,22 +51,6 @@ public class WSDLDoc {
         this.extract = extract;
     }
 
-    public List<String> getOperations() {
-        return operations;
-    }
-
-    public void setOperations(List<String> operations) {
-        this.operations = operations;
-    }
-
-    public List<String> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(List<String> messages) {
-        this.messages = messages;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -94,6 +75,6 @@ public class WSDLDoc {
 
     @Override
     public String toString() {
-        return "WSDLDoc{" + "id=" + id + ", date=" + date + ", document=" + document + ", extract=" + extract + ", operations=" + operations + ", messages=" + messages + '}';
+        return "WSDLDoc{" + "id=" + id + ", date=" + date + ", document=" + document + ", extract=" + extract + '}';
     }
 }
