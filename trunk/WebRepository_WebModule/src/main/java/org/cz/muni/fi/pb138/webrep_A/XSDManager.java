@@ -12,9 +12,24 @@ import java.util.List;
  */
 public interface XSDManager {
     
+    /*
+     * Stores XSD into database.
+     */
     public void createXSD(XSD xsd);
     
+    /*
+     * Gets XSD from database.
+     */
     public XSD getXSD(Integer id);  
     
+    /*
+     * Returns all xsds from database.
+     */
     public List<XSD> getAllXSDs(); 
+    
+    /*
+     * Finds XSD by data input.
+     */
+    public List<XSD> findXSDByData(String s);
+    
 }

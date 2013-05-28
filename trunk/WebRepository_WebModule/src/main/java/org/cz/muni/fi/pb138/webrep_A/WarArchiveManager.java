@@ -12,10 +12,24 @@ import java.util.List;
  */
 public interface WarArchiveManager {
     
+    /*
+     * Stores web.xml into database
+     */
     public void createWarArchive(WarArchive arch);
     
+    /*
+     * Gets web.xml file from database
+     */
     public WarArchive getWarArchive(Integer id);  
     
-    public List<WarArchive> getAllArchives(); 
+    /*
+     * gets all web.xml files from database
+     */
+    public List<WarArchive> getAllArchives();
+    
+    /*
+     * Finds desired web.xml by data
+     */
+    public List<WarArchive> findWebXMLbyArtefact(String string);
     
 }
