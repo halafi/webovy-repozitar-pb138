@@ -29,7 +29,7 @@ public class WSDLDocParser {
         NodeList operationList = doc.getElementsByTagName("operation");
         NodeList messageList = doc.getElementsByTagName("message");
         
-        Element root = (Element)output.createElement("operations"); 
+        Element root = (Element)output.createElement("operations_and_messages"); 
         output.appendChild(root);
         for (i = 0; i < operationList.getLength(); i++) {
             if (operationList.item(i) instanceof Element) {
