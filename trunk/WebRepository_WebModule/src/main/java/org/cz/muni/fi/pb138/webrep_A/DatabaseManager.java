@@ -26,7 +26,7 @@ public class DatabaseManager {
         if(!"wsdl".equals(fileType) || !"xsd".equals(fileType) || !"web".equals(fileType)) {
             throw new IllegalArgumentException(fileType + "is not used baseX database");
             
-        }
+        }   
         
         File yourFile = new File("src/main/resources/xml/"+fileType+"Datab.xml");
         if(yourFile.exists()) {
@@ -45,6 +45,7 @@ public class DatabaseManager {
     }
     
     /**
+    public DatabaseManager(String file
     * Adds a xml file to a collection
     * 
     * @param collection collection name

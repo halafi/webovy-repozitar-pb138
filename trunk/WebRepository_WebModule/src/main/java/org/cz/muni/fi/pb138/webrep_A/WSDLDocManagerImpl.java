@@ -15,6 +15,7 @@ import org.basex.core.cmd.Set;
 import org.basex.core.cmd.XQuery;
 import org.w3c.dom.Document;
 /**
+
  *
  * @author xmakovic
  */
@@ -31,8 +32,10 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         this.dm = dm;
     }
 
+
     @Override
-    public String getWSDL(String definitionsName) throws BaseXException{
+    public String getWSDL(String definitionsName) throws
+ BaseXException{
         if (definitionsName == null) {
             throw new IllegalArgumentException("definitions name is null");
         }
@@ -45,11 +48,20 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
      
     @Override
     public String getAllWSDLs() throws BaseXException{
-        String query = "for $league in distinct-values(collection('league-list')//name) "
-                + "let $seasons:= for $doc in collection('league-list') where data($doc//name)=$league return <season id=\"{data($doc//league/@id)}\">{data($doc//season)}</season> "
-                + "order by $league "
-                + "return <league><name>{$league}</name>{$seasons}</league>";
+        String query = "for $wsdl in distinct-values(collection('wsdl-list')/wsdl) "
+                + "let $id := /wsdl/id"
+                + "order by $wsdl"
+                + "return <wsdl><id>{$id}</id><name>{$name}</name><version>{$version}</version></wsdl>";   
         return "<WSDLs>"+this.dm.queryCollection(query)+"</WSDLs>";
+    }
+    
+    /**
+    * Gets list of teams in collection
+    * @return well-formed xml string, <b>structure:</b> <a href="http://pastebin.com/nECLFs82">http://pastebin.com/nECLFs82</a>
+    * @throws BaseXException on database error
+    */      
+    public String getTeamList() throws BaseXException {
+        return "<teams>"+this.dm.queryCollection("for $team in distinct-values(collection('"+this.collection+"')//match/home) return <team>{$team}</team>")+"</teams>";
     }
 
     /*
