@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.cz.muni.fi.pb138.webrep_A;
 
 import java.util.List;
@@ -17,12 +13,12 @@ public interface WSDLDocManager {
     /*
      * Saves WSDL into database
      */
-    public void createWSDL(WSDLDoc wsdl) throws Exception;
+    public void createWSDL(WSDLDoc wsdl) throws BaseXException;
     
     /*
      * Gets WSDL from database
      */
-    public String getWSDL(String definitionsName) throws BaseXException;
+    public String getWSDL(Long id) throws BaseXException;
     
     /*Gets all WSDLs from database.
      * 
@@ -33,7 +29,4 @@ public interface WSDLDocManager {
      * Finds WSDL by metadata.
      */
     public String findWSDLByData(Document extract) throws BaseXException;
-    
-       
-    
 }

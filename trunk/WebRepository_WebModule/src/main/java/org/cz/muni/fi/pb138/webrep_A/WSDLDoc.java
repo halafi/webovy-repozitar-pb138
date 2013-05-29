@@ -16,8 +16,17 @@ public class WSDLDoc {
 
     private Long id;
     private Date date;
-    private Document document;
-    private Document extract;
+    private String document;
+    private String extract;
+    private String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public Long getId() {
         return id;
@@ -35,19 +44,19 @@ public class WSDLDoc {
         this.date = date;
     }
 
-    public Document getDocument() {
+    public String getDocument() {
         return document;
     }
 
-    public void setDocument(Document document) {
+    public void setDocument(String document) {
         this.document = document;
     }
 
-    public Document getExtract() {
+    public String getExtract() {
         return extract;
     }
 
-    public void setExtract(Document extract) {
+    public void setExtract(String extract) {
         this.extract = extract;
     }
 

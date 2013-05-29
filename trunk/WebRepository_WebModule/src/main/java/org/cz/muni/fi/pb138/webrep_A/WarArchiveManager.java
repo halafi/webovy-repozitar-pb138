@@ -20,16 +20,16 @@ public interface WarArchiveManager {
     /*
      * Gets web.xml file from database
      */
-    public WarArchive getWarArchive(Integer id);  
+    public String getWarArchive(Long id);  
     
     /*
      * gets all web.xml files from database
      */
-    public List<WarArchive> getAllArchives();
+    public String getAllArchives();
     
     /*
      * Finds desired web.xml by data
      */
-    public List<WarArchive> findWebXMLbyArtefact(String string);
+    public String findWebXMLbyArtefact(String string);
     
 }

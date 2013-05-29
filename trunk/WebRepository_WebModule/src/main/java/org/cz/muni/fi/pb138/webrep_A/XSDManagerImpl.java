@@ -16,46 +16,21 @@ public class XSDManagerImpl implements XSDManager {
         if (xsd.getId() != null) {
             throw new IllegalArgumentException("xsd id is already set");            
         }
-        /*try {
-            
-        }
-        catch {
-            
-        }
-        finally {
-          close db, etc.
-        }*/
+        throw new UnsupportedOperationException();
     }
     
     @Override
-    public XSD getXSD(Integer id) {
+    public String getXSD(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        /*try {
-            
-        }
-        catch {
-            
-        }
-        finally {
-          close db, etc.
-        }*/
-        return null;
+        throw new UnsupportedOperationException();
+        
     }
     
     @Override
-    public List<XSD> getAllXSDs() {
-        /*try {
-            
-        }
-        catch {
-            
-        }
-        finally {
-          close db, etc.
-        }*/
-        return null;
+    public String getAllXSDs() {
+        throw new UnsupportedOperationException();
     }
     
     
@@ -63,7 +38,7 @@ public class XSDManagerImpl implements XSDManager {
      * Finds XSD by data input.
      */
     @Override
-    public List<XSD> findXSDByData(String s){
-        return null;
+    public String findXSDByData(String s){
+        throw new UnsupportedOperationException();
     }
 }

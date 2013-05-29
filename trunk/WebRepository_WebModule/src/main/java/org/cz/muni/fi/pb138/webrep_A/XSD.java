@@ -3,10 +3,6 @@ package org.cz.muni.fi.pb138.webrep_A;
 import java.util.Date;
 import org.w3c.dom.Document;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author xmakovic
@@ -15,9 +11,9 @@ public class XSD {
 
     private Long id;
     private Date date;
-    private Document document;
+    private String document;
     private String fileName;
-    private Document extract;
+    private String extract;
 
     public Long getId() {
         return id;
@@ -35,11 +31,11 @@ public class XSD {
         this.date = date;
     }
 
-    public Document getDocument() {
+    public String getDocument() {
         return document;
     }
 
-    public void setDocument(Document document) {
+    public void setDocument(String document) {
         this.document = document;
     }
 
@@ -58,11 +54,11 @@ public class XSD {
         return hash;
     }
 
-    public Document getExtract() {
+    public String getExtract() {
         return extract;
     }
 
-    public void setExtract(Document extract) {
+    public void setExtract(String extract) {
         this.extract = extract;
     }
 

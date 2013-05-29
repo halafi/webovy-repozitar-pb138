@@ -20,16 +20,16 @@ public interface XSDManager {
     /*
      * Gets XSD from database.
      */
-    public XSD getXSD(Integer id);  
+    public String getXSD(Long id);  
     
     /*
      * Returns all xsds from database.
      */
-    public List<XSD> getAllXSDs(); 
+    public String getAllXSDs(); 
     
     /*
      * Finds XSD by data input.
      */
-    public List<XSD> findXSDByData(String s);
+    public String findXSDByData(String s);
     
 }
