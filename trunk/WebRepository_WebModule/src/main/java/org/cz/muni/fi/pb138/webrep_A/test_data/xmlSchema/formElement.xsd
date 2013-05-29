@@ -1,0 +1,21 @@
+<xsd:schema
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://www.XMLSchemaReference.com/examples"
+ elementFormDefault="unqualified">
+
+<xsd:element name="formElementDemo">
+    <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element name="nsUnqualified"
+                         type="xsd:string"
+                         form="unqualified"/>
+            <xsd:element name="nsQualified"
+                         type="xsd:string"
+                         form="qualified"/>
+            <xsd:element name="nsDefault"
+                         type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

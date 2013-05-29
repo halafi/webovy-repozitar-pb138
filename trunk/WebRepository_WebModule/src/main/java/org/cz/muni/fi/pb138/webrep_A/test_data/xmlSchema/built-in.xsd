@@ -1,0 +1,640 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:notation name="perlCode"
+              system="/usr/bin/perl"
+              public="http://www.company.com/runPerl.pl"
+              id="notation.perl">
+    <xsd:annotation>
+        <xsd:documentation xml:lang="en">
+            value of corresponding element
+            should contain perl code to execute.
+        </xsd:documentation>
+    </xsd:annotation>
+</xsd:notation>
+
+<xsd:notation name="pythonCode"
+              system="/usr/bin/python"
+              public="http://www.company.com/runPython.py"
+              id="notation.companyMascot">
+    <xsd:annotation>
+        <xsd:documentation xml:lang="en">
+            value of corresponding element
+            should contain python code to execute.
+        </xsd:documentation>
+    </xsd:annotation>
+</xsd:notation>
+
+<xsd:element name="builtInDemo">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+
+
+
+<xsd:element name="demoNotation">
+    <xsd:complexType>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="source">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:notation">
+                            <xsd:enumeration value="perlCode"/>
+                            <xsd:enumeration value="pythonCode"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+</xsd:element>
+
+
+
+<xsd:element name="integerSection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoInteger" type="xsd:integer"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="integerSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoInteger">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:integer">
+                        <xsd:minInclusive value="3"/>
+                        <xsd:maxInclusive value="5"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="decimalSection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoDecimal" type="xsd:decimal"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="decimalSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoDecimal">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:decimal">
+                        <xsd:totalDigits value="8"/>
+                        <xsd:fractionDigits value="2"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+
+<xsd:element name="floatDoubleSection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoFloat" type="xsd:float"/>
+            <xsd:element name="demoDouble" type="xsd:double"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="floatDoubleSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+
+            <xsd:element name="demoFloat">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:float">
+                        <xsd:pattern value="[0-9].[0-9]{5}E[0-9]+"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="demoDouble">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:double">
+                        <xsd:pattern value="[0-9].[0-9]{2}E-[0-9]+"/>
+                        <xsd:minExclusive value="0.00E-0"/>
+                        <xsd:maxInclusive value="0.10E-0"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="infiniteNumericDataTypesSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoNegativeInteger">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:negativeInteger">
+                        <xsd:minInclusive value="-500"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="demoNonNegativeInteger"
+                         type="xsd:nonNegativeInteger"/>
+            <xsd:element name="demoNonPositiveInteger">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:nonPositiveInteger">
+                        <xsd:minInclusive value="-100"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="demoPositiveInteger"
+                         type="xsd:positiveInteger"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+
+<xsd:element name="finiteNumericDataTypesSection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoByte" type="xsd:byte"/>
+            <xsd:element name="demoShort" type="xsd:short"/>
+            <xsd:element name="demoInt" type="xsd:int"/>
+            <xsd:element name="demoLong" type="xsd:long"/>
+            <xsd:element name="demoUnsignedByte"
+                         type="xsd:byte"/>
+            <xsd:element name="demoUnsignedShort"
+                         type="xsd:short"/>
+            <xsd:element name="demoUnsignedInt"
+                         type="xsd:int"/>
+            <xsd:element name="demoUnsignedLong"
+                         type="xsd:long"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="finiteNumericDataTypesSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+
+            <xsd:element name="demoByte" type="xsd:byte"/>
+            <xsd:element name="demoShort" type="xsd:short"/>
+            <xsd:element name="demoInt">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        Redundant facets.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:int">
+                        <xsd:fractionDigits value="0"/>
+                        <xsd:whiteSpace value="collapse"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="demoLong" type="xsd:long"/>
+            <xsd:element name="demoUnsignedByte"
+                         type="xsd:unsignedByte"/>
+            <xsd:element name="demoUnsignedShort"
+                         type="xsd:unsignedShort"/>
+            <xsd:element name="demoUnsignedInt">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:unsignedInt">
+                        <xsd:enumeration value="3000000000"/>
+                        <xsd:enumeration value="4000000000"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="demoUnsignedLong">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        Only two options
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:unsignedLong">
+                        <xsd:pattern value="30*"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="dateAndTimeSection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoDateTime"
+                         type="xsd:dateTime"/>
+            <xsd:element name="demoDate"
+                         type="xsd:date"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="dateAndTimeSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+
+            <xsd:element name="demoDateTime">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        Require a time zone.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:dateTime">
+                        <xsd:minInclusive
+                           value="1970-01-01T00:00:00Z"/>
+                        <xsd:maxExclusive
+                           value="2051-01-01T00:00:00Z"/>
+                        <xsd:pattern value=".*Z"/>
+                        <xsd:pattern
+                           value=".*-[0-9][0-9]:[0-9][0-9].*"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="demoDate">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        Require a time zone.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:date">
+                        <xsd:minInclusive value="1970-01-01Z"/>
+                        <xsd:maxExclusive value="2051-01-01Z"/>
+                        <xsd:pattern value=".*Z"/>
+                        <xsd:pattern
+                           value=".*-[0-9][0-9]:[0-9][0-9].*"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="durationSection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoDuration"
+                         type="xsd:duration"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="durationSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoDuration">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:duration">
+                        <xsd:minInclusive value="PT1H"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="repeatingDateTimeSection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoGYearMonth" type="xsd:gYearMonth"/>
+            <xsd:element name="demoGYear" type="xsd:gYear"/>
+            <xsd:element name="demoGMonthDay" type="xsd:gMonthDay"/>
+            <xsd:element name="demoGMonth" type="xsd:gMonth"/>
+            <xsd:element name="demoGDay" type="xsd:gDay"/>
+            <xsd:element name="demoTime" type="xsd:time"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="repeatingDateTimeSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+
+            <xsd:element name="demoGYearMonth">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        Some month between 1970 and 2050
+                        inclusive.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:gYearMonth">
+                        <xsd:minInclusive value="1970-01"/>
+                        <xsd:maxExclusive value="2051-01"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+
+            <xsd:element name="demoGYear">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        Two ways to specify a year A.D.
+                        Do not permit time zones
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:gYear">
+                        <xsd:minInclusive value="0001"/>
+                        <xsd:pattern value="[0-9]*"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+
+            <xsd:element name="demoGMonthDay">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        Specify the first of some month.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:gMonthDay">
+                        <xsd:pattern value=".*-01"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="demoGMonth">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        Must be in the first quarter.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:gMonth">
+                        <xsd:maxInclusive value="--03--"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="demoGDay">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        Must be in the second week of
+                        the month.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:gDay">
+                        <xsd:minInclusive value="---08"/>
+                        <xsd:maxInclusive value="---14"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+<xsd:element name="demoTime" type="xsd:time"/>
+
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="stringSection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoString" type="xsd:string"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="stringSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoString">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="40"/>
+                        <xsd:whiteSpace value="preserve"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="ordinaryStringSection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoNormalizedString"
+                         type="xsd:normalizedString"/>
+            <xsd:element name="demoToken"
+                         type="xsd:token"/>
+            <xsd:element name="demoLanguage"
+                         type="xsd:language"/>
+            <xsd:element name="demoNMTOKEN"
+                         type="xsd:NMTOKEN"/>
+            <xsd:element name="demoNMTOKENS"
+                         type="xsd:NMTOKENS"/>
+            <xsd:element name="demoName"
+                         type="xsd:Name"/>
+            <xsd:element name="demoNCName"
+                         type="xsd:NCName"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="ordinaryStringSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+
+            <xsd:element name="demoNormalizedString"
+                         type="xsd:normalizedString"/>
+
+            <xsd:element name="demoToken">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:token">
+                        <xsd:maxLength value="40"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="demoLanguage">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:language">
+                        <xsd:pattern value="en.*"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="demoNMTOKEN" type="xsd:NMTOKEN"/>
+
+            <xsd:element name="demoNMTOKENS">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:NMTOKENS">
+                        <xsd:minLength value="2"/>
+                        <xsd:maxLength value="10"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="demoName">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:Name">
+                        <xsd:pattern value="[a-z]+:[a-zA-Z]+"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="demoNCName">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:NCName">
+                        <xsd:pattern value="[a-zA-Z]{4,}"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="magicStringSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoID">
+                <xsd:complexType>
+                    <xsd:attribute name="ID" type="xsd:ID"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="demoIDREF">
+                <xsd:complexType>
+                    <xsd:attribute name="attachToID" type="xsd:IDREF"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="demoIDREFS">
+                <xsd:complexType>
+                    <xsd:attribute name="attachToIDs">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:IDREFS">
+                                <xsd:pattern value="Fred[0-9]+"/>
+                                <xsd:maxLength value="20"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="demoENTITY" type="xsd:ENTITY"/>
+            <xsd:element name="demoENTITIES"
+                         type="xsd:ENTITIES"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="QNameSection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoQName1" type="xsd:QName"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="QNameSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoQName">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:QName">
+                        <xsd:pattern value="demo.*"/>
+                        <xsd:pattern value=".*:demo.*"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="BooleanSection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoBoolean1" type="xsd:boolean"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="BooleanSection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoBoolean">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:boolean">
+                        <xsd:pattern value="0|1"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="binarySection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoHexBinary" type="xsd:hexBinary"/>
+            <xsd:element name="demoBase64Binary" type="xsd:base64Binary"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="binarySection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+
+            <xsd:element name="demoHexBinary">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:hexBinary">
+                        <xsd:length value="4"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="demoBase64Binary">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:base64Binary">
+                        <xsd:maxLength value="200"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="anyURISection0">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="demoAnyURI" type="xsd:anyURI"/>
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="anyURISection">
+    <xsd:complexType>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+
+            <xsd:element name="demoAnyURI">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:anyURI">
+                        <xsd:pattern value="http://www\.aw\.com/.*"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+
+
+        </xsd:choice>
+    </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,100 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:include schemaLocation=
+ "http://www.XMLSchemaReference.com/examples/theme/address.xsd"/>
+
+<xsd:complexType name="POBoxAddressType">
+    <xsd:complexContent>
+        <xsd:restriction base="addressType">
+            <xsd:sequence>
+                <xsd:element ref="POBox"
+                             minOccurs="1"
+                             maxOccurs="1"/>
+                <xsd:element name="city" type="xsd:string"/>
+                <xsd:element name="state" type="xsd:string"/>
+                <xsd:element name="country"
+                             type="xsd:string"
+                             fixed="US"/>
+                <xsd:element name="zip" type="xsd:string"/>
+                <xsd:element ref="effectiveDate"/>
+            </xsd:sequence>
+            <xsd:attribute ref="zipPlus4" use="optional"/>
+        </xsd:restriction>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="A" type="T1" abstract="true"
+             block="restriction">
+    <xsd:annotation>
+        Head of substitution group 'A'.
+
+        An 'A' element cannot appear in an XML
+        instance, since this element type is
+        abstract.
+    </xsd:annotation>
+</xsd:element>
+
+<xsd:element name="B" type="T1" substitutionGroup="A">
+    <xsd:annotation>
+        Member of substitution group 'A'.
+    </xsd:annotation>
+</xsd:element>
+
+<xsd:element name="C" type="T3" substitutionGroup="A"
+             block="substitution">
+    <xsd:annotation>
+        Member of substitution group 'A'.
+        Head of substitution group 'C'.
+
+        Blocking 'substitution' or 'extension' on 'C',
+        or blocking '#all' or 'extension' on 'T3',
+        would prevent 'D' from being a valid substitution
+        for 'C'.  'D' would, however, retain
+        its transitive ability to be a valid
+        substitution for 'A'.
+    </xsd:annotation>
+</xsd:element>
+
+<xsd:element name="D" type="T4" substitutionGroup="C">
+    <xsd:annotation>
+        Member of substitution group 'C'.
+    </xsd:annotation>
+</xsd:element>
+
+<xsd:complexType name="T1">
+    <xsd:sequence>
+        <xsd:element name="_1" type="xsd:token"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="T2">
+    <xsd:complexContent>
+        <xsd:extension base="T1">
+            <xsd:sequence>
+                <xsd:element name="_2" type="xsd:token"/>
+            </xsd:sequence>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="T3">
+    <xsd:complexContent>
+        <xsd:extension base="T2">
+            <xsd:sequence>
+                <xsd:element name="_3" type="xsd:token"/>
+            </xsd:sequence>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="T4">
+    <xsd:complexContent>
+        <xsd:extension base="T3">
+            <xsd:sequence>
+                <xsd:element name="_4" type="xsd:token"/>
+            </xsd:sequence>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+</xsd:schema>

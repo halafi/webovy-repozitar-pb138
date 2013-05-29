@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions targetNamespace="http://www.cisco.hcs.com/HCSProvisionAsyncResponse/WSDL" xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdltns="http://www.cisco.hcs.com/HCSProvisionAsyncResponse/WSDL" xmlns:prov="http://www.cisco.hcs.com/HCSProvision.xsd" xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+<xs:schema targetNamespace="http://www.cisco.hcs.com/HCSProvision.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+<xs:import namespace="http://www.cisco.hcs.com/HCSProvision.xsd" schemaLocation="HCSProvision.xsd"/>
+
+</xs:schema>
+
+</types>
+
+<message name="receiveAsyncResponseRequest">
+
+<part name="response" element="prov:GetStatusResponse"/>
+
+</message>
+
+<portType name="ProvisionAsyncResponsePortType">
+
+<operation name="receiveAsyncResponse">
+
+<input message="wsdltns:receiveAsyncResponseRequest"/>
+
+</operation>
+
+</portType>
+
+<binding name="ProvisionAsyncResponseBinding" type="wsdltns:ProvisionAsyncResponsePortType">
+
+<SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+<operation name="receiveAsyncResponse">
+
+<SOAP:operation soapAction="http://www.ProvisionAsyncResponse.com/receiveAsyncResponse"/>
+
+<input>
+
+<SOAP:body use="literal"/>
+
+</input>
+
+<output>
+
+<SOAP:body use="literal"/>
+
+</output>
+
+</operation>
+
+</binding>
+
+<service name="ProvisionAsyncResponseService">
+
+<port name="ProvisionAsyncResponsePort" binding="wsdltns:ProvisionAsyncResponseBinding">
+
+<SOAP:address location="$$$update this with the actual address before using$$$"/>
+
+</port>
+
+</service>
+
+</definitions>
+
+HCSProvisionCustomer.wsdl File
+
+The following is a sample XML code from the HCSProvisionCustomer.wsdl file.
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions targetNamespace="http://www.cisco.hcs.com/HCSProvisionCustomer/WSDL" xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:prov="http://www.cisco.hcs.com/HCSProvision.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdltns="http://www.cisco.hcs.com/HCSProvisionCustomer/WSDL" xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+<xs:schema targetNamespace="http://www.cisco.hcs.com/HCSProvision.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+<xs:import namespace="http://www.cisco.hcs.com/HCSProvision.xsd" schemaLocation="HCSProvision.xsd"/>
+
+</xs:schema>
+
+</types>
+
+<message name="listCustomerRequest">
+
+<part name="request" element="prov:ListCustomerRequest"/>
+
+</message>
+
+<message name="deleteCustomerRequest">
+
+<part name="request" element="prov:DeleteCustomerRequest"/>
+
+</message>
+
+<message name="createCustomerResponse">
+
+<part name="createCustomerReturn" element="prov:CreateCustomerResponse"/>
+
+</message>
+
+<message name="deleteCustomerResponse">
+
+<part name="deleteCustomerReturn" element="prov:DeleteCustomerResponse"/>
+
+</message>
+
+<message name="updateCustomerRequest">
+
+<part name="request" element="prov:UpdateCustomerRequest"/>
+
+</message>
+
+<message name="syncCustomerRequest">
+
+<part name="request" element="prov:SyncCustomerRequest"/>
+
+</message>
+
+<message name="createCustomerRequest">
+
+<part name="request" element="prov:CreateCustomerRequest"/>
+
+</message>
+
+<message name="syncCustomerResponse">
+
+<part name="syncCustomerReturn" element="prov:SyncCustomerResponse"/>
+
+</message>
+
+<message name="listCustomerResponse">
+
+<part name="listCustomerReturn" element="prov:ListCustomerResponse"/>
+
+</message>
+
+<message name="updateCustomerResponse">
+
+<part name="updateCustomerReturn" element="prov:UpdateCustomerResponse"/>
+
+</message>
+
+<portType name="ProvisionCustomerPortType">
+
+<operation name="createCustomer">
+
+<input message="wsdltns:createCustomerRequest"/>
+
+<output message="wsdltns:createCustomerResponse"/>
+
+</operation>
+
+<operation name="syncCustomer">
+
+<input message="wsdltns:syncCustomerRequest"/>
+
+<output message="wsdltns:syncCustomerResponse"/>
+
+</operation>
+
+<operation name="updateCustomer">
+
+<input message="wsdltns:updateCustomerRequest"/>
+
+<output message="wsdltns:updateCustomerResponse"/>
+
+</operation>
+
+<operation name="deleteCustomer">
+
+<input message="wsdltns:deleteCustomerRequest"/>
+
+<output message="wsdltns:deleteCustomerResponse"/>
+
+</operation>
+
+<operation name="listCustomer">
+
+<input message="wsdltns:listCustomerRequest"/>
+
+<output message="wsdltns:listCustomerResponse"/>
+
+</operation>
+
+</portType>
+
+<binding name="ProvisionCustomerBinding" type="wsdltns:ProvisionCustomerPortType">
+
+<SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+<operation name="createCustomer">
+
+<SOAP:operation soapAction="http://www.ProvisionCustomer.com/createCustomer"/>
+
+<input>
+
+<SOAP:body use="literal"/>
+
+</input>
+
+<output>
+
+<SOAP:body use="literal"/>
+
+</output>
+
+</operation>
+
+<operation name="syncCustomer">
+
+<SOAP:operation soapAction="http://www.ProvisionCustomer.com/syncCustomer"/>
+
+<input>
+
+<SOAP:body use="literal"/>
+
+</input>
+
+<output>
+
+<SOAP:body use="literal"/>
+
+</output>
+
+</operation>
+
+<operation name="updateCustomer">
+
+<SOAP:operation soapAction="http://www.ProvisionCustomer.com/updateCustomer"/>
+
+<input>
+
+<SOAP:body use="literal"/>
+
+</input>
+
+<output>
+
+<SOAP:body use="literal"/>
+
+</output>
+
+</operation>
+
+<operation name="deleteCustomer">
+
+<SOAP:operation soapAction="http://www.ProvisionCustomer.com/deleteCustomer"/>
+
+<input>
+
+<SOAP:body use="literal"/>
+
+</input>
+
+<output>
+
+<SOAP:body use="literal"/>
+
+</output>
+
+</operation>
+
+<operation name="listCustomer">
+
+<SOAP:operation soapAction="http://www.ProvisionCustomer.com/listCustomer"/>
+
+<input>
+
+<SOAP:body use="literal"/>
+
+</input>
+
+<output>
+
+<SOAP:body use="literal"/>
+
+</output>
+
+</operation>
+
+</binding>
+
+<service name="ProvisionCustomerService">
+
+<port name="ProvisionCustomerPort" binding="wsdltns:ProvisionCustomerBinding">
+
+<SOAP:address location="$$$update this with the actual address before using$$$"/>
+
+</port>
+
+</service>
+
+</definitions>

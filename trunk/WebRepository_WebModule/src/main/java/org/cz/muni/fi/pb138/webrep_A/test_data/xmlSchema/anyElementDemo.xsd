@@ -1,0 +1,62 @@
+<xsd:schema
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+     targetNamespace="http://www.XMLSchemaReference.com/examples/Ch08/anyElementDemo"
+     elementFormDefault="qualified"
+     attributeFormDefault="qualified">
+
+<xsd:element name="e1" type="xsd:token"/>
+<xsd:element name="e2" type="xsd:token"/>
+<xsd:element name="e3" type="xsd:token"/>
+<xsd:element name="e4" type="xsd:token"/>
+<xsd:element name="e5" type="xsd:token"/>
+<xsd:element name="e6" type="xsd:token"/>
+
+<xsd:element name="anyElementDemo">
+    <xsd:complexType>
+        <xsd:all>
+            <xsd:element name="eStrictAnyNS">
+                <xsd:complexType>
+                    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                        <xsd:any id="aaStrictAny"
+                                 processContents="strict"
+                                 namespace="##any"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="eStrictURI">
+                <xsd:complexType>
+                    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                        <xsd:any processContents="strict"
+                                 namespace="http://www.XMLSchemaReference.com/examples/Ch08/anyElementDemo"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="eStrictTargetNamespace">
+                <xsd:complexType>
+                    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                        <xsd:any processContents="strict"
+                                 namespace="##targetNamespace"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="eStrictOtherNS">
+                <xsd:complexType>
+                    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                        <xsd:any processContents="strict"
+                                 namespace="##other"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="eLaxAnyNS">
+                <xsd:complexType>
+                    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                        <xsd:any processContents="lax"
+                                 namespace="##any"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:all>
+    </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>
