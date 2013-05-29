@@ -25,6 +25,7 @@ public class DatabaseManager {
     public DatabaseManager(String fileType) throws IOException {
         if(!"wsdl".equals(fileType) || !"xsd".equals(fileType) || !"web".equals(fileType)) {
             throw new IllegalArgumentException(fileType + "is not used baseX database");
+            
         }
         
         File yourFile = new File("src/main/resources/xml/"+fileType+"Datab.xml");
