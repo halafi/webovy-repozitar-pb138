@@ -32,7 +32,7 @@ public interface WSDLDocManager {
     /*
      * Finds WSDL by metadata.
      */
-    public List<WSDLDoc> findWSDLByData(Document extract);
+    public String findWSDLByData(Document extract) throws BaseXException;
     
        
     
