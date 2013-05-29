@@ -16,18 +16,20 @@ import org.basex.core.cmd.XQuery;
 import org.w3c.dom.Document;
 /**
  *
+ *
  * @author xmakovic
  */
 public class WSDLDocManagerImpl implements WSDLDocManager {
+
     private String wsdlCollection;
     private DatabaseManager dm;
-    
+
     public WSDLDocManagerImpl(String wsdlCollection, DatabaseManager dm) throws IOException {
         this.dm = dm;
         this.wsdlCollection = wsdlCollection;
     }
-    
-    public void setDatabaseManager (DatabaseManager dm) {
+
+    public void setDatabaseManager(DatabaseManager dm) {
         this.dm = dm;
     }
 
@@ -42,21 +44,23 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         }
         return wsdl;
     }
-     
-    @Override
-    public String getAllWSDLs() throws BaseXException{
+
+   @Override
+    public String getAllWSDLs() throws BaseXException {
         String query = "for $wsdl in distinct-values(collection('wsdl-list')/wsdl) "
                 + "let $id := /wsdl/id"
+                + "let $name := /wsdl/definions[@name]"
+                + "let $version := /wsdl[@version]"
                 + "order by $wsdl"
-                + "return <wsdl><id>{$id}</id><name>{$name}</name><version>{$version}</version></wsdl>";   
-        return "<WSDLs>"+this.dm.queryCollection(query)+"</WSDLs>";
+                + "return <wsdl><id>{$id}</id><name>{$name}</name><version>{$version}</version></wsdl>";
+        return "<WSDLs>" + this.dm.queryCollection(query) + "</WSDLs>";
     }
 
     /*
      * Finds WSDL by metadata.
      */
     @Override
-    public String findWSDLByData(Document extract) throws BaseXException{
+    public String findWSDLByData(Document extract) throws BaseXException {
         throw new UnsupportedOperationException();
     }
 
