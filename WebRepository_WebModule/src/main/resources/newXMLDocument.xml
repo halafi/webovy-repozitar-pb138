@@ -3,7 +3,7 @@
 To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
-
+<?
 
 <WSDLs>
     <wsdl>
@@ -23,11 +23,12 @@ and open the template in the editor.
     </wsdl>
     <wsdl>
         <id>1</id>
-        <name>Bla</name><wsdl>
-    <id>1</id>
-    <name>Bla</name>
-    <version>3.1968456874654</version>
-    </wsdl>
+        <name>Bla</name>
+        <wsdl>
+            <id>1</id>
+            <name>Bla</name>
+            <version>3.1968456874654</version>
+        </wsdl>
         <version>3.1968456874654</version>
     </wsdl>
     <wsdl>
