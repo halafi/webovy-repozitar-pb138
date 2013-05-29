@@ -15,7 +15,6 @@ import org.basex.core.cmd.Set;
 import org.basex.core.cmd.XQuery;
 import org.w3c.dom.Document;
 /**
-
  *
  * @author xmakovic
  */
@@ -32,14 +31,12 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         this.dm = dm;
     }
 
-
     @Override
-    public String getWSDL(String definitionsName) throws
- BaseXException{
-        if (definitionsName == null) {
-            throw new IllegalArgumentException("definitions name is null");
+    public String getWSDL(Long id) throws BaseXException{
+        if (id == null) {
+            throw new IllegalArgumentException("id is null");
         }
-        String wsdl = this.dm.queryCollection("collection('"+this.wsdlCollection+"')/definitions[@name='"+definitionsName+"']");
+        String wsdl = this.dm.queryCollection("collection('"+this.wsdlCollection+"')/wsdl[@id='"+id+"']");
         if (wsdl.equals("")) {
             throw new BaseXException("WSDL does not exist");
         }
@@ -54,26 +51,18 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
                 + "return <wsdl><id>{$id}</id><name>{$name}</name><version>{$version}</version></wsdl>";   
         return "<WSDLs>"+this.dm.queryCollection(query)+"</WSDLs>";
     }
-    
-    /**
-    * Gets list of teams in collection
-    * @return well-formed xml string, <b>structure:</b> <a href="http://pastebin.com/nECLFs82">http://pastebin.com/nECLFs82</a>
-    * @throws BaseXException on database error
-    */      
-    public String getTeamList() throws BaseXException {
-        return "<teams>"+this.dm.queryCollection("for $team in distinct-values(collection('"+this.collection+"')//match/home) return <team>{$team}</team>")+"</teams>";
-    }
 
     /*
      * Finds WSDL by metadata.
      */
     @Override
     public String findWSDLByData(Document extract) throws BaseXException{
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public void createWSDL(WSDLDoc wsdl) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void createWSDL(WSDLDoc wsdl) throws BaseXException {
+        this.dm.createCollection(this.wsdlCollection);
+        this.dm.addXML("wsdl-list", this.wsdlCollection, wsdl.getDocument());
     }
 }
