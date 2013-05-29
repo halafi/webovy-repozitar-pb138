@@ -1,0 +1,14 @@
+<xsd:schema
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+     targetNamespace="http://www.XMLSchemaReference.com/examples/Ch08/anyElementList"
+     elementFormDefault="qualified"
+     attributeFormDefault="qualified">
+
+<xsd:element name="oe1" type="xsd:token"/>
+<xsd:element name="oe2" type="xsd:token"/>
+<xsd:element name="oe3" type="xsd:token"/>
+<xsd:element name="oe4" type="xsd:token"/>
+<xsd:element name="oe5" type="xsd:token"/>
+<xsd:element name="oe6" type="xsd:token"/>
+
+</xsd:schema>

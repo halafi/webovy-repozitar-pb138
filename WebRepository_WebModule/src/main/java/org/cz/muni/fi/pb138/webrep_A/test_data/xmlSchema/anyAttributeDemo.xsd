@@ -1,0 +1,57 @@
+<xsd:schema
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+     targetNamespace="http://www.XMLSchemaReference.com/examples/
+                      Ch09/anyAttributeDemo"
+     elementFormDefault="qualified"
+     attributeFormDefault="qualified">
+
+<xsd:attribute name="a1" type="xsd:token"/>
+<xsd:attribute name="a2" type="xsd:token"/>
+<xsd:attribute name="a3" type="xsd:token"/>
+<xsd:attribute name="a4" type="xsd:token"/>
+<xsd:attribute name="a5" type="xsd:token"/>
+<xsd:attribute name="a6" type="xsd:token"/>
+
+<xsd:element name="anyAttributeDemo">
+    <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element name="eStrictAnyNS">
+                <xsd:complexType>
+                    <xsd:anyAttribute id="aaStrictAny"
+                                      processContents="strict"
+                                      namespace="##any"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="eStrictURI">
+                <xsd:complexType>
+                    <xsd:anyAttribute
+                        processContents="strict"
+                        namespace="http://www.XMLSchemaReference.com/examples/
+                                   Ch09/anyAttributeDemo"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="eStrictTargetNamespace">
+                <xsd:complexType>
+                    <xsd:anyAttribute
+                        processContents="strict"
+                        namespace="##targetNamespace"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="eStrictOtherNS">
+                <xsd:complexType>
+                    <xsd:anyAttribute processContents="strict"
+                                      namespace="##other"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="eLaxAnyNS">
+                <xsd:complexType>
+                    <xsd:anyAttribute id="aaLaxAny"
+                                      processContents="lax"
+                                      namespace="##any"/>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>
