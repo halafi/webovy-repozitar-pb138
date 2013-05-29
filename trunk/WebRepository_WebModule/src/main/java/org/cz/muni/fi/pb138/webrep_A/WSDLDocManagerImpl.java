@@ -19,12 +19,12 @@ import org.w3c.dom.Document;
  * @author xmakovic
  */
 public class WSDLDocManagerImpl implements WSDLDocManager {
-    private String basexCollection;
+    private String wsdlCollection;
     private DatabaseManager dm;
     
-    public WSDLDocManagerImpl(String basexCollection) throws IOException {
-        this.dm = new DatabaseManager("wsdl");
-        this.basexCollection = basexCollection;
+    public WSDLDocManagerImpl(String wsdlCollection, DatabaseManager dm) throws IOException {
+        this.dm = dm;
+        this.wsdlCollection = wsdlCollection;
     }
     
     public void setDatabaseManager (DatabaseManager dm) {
@@ -36,7 +36,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         if (definitionsName == null) {
             throw new IllegalArgumentException("definitions name is null");
         }
-        String wsdl = this.dm.queryCollection("collection('"+this.basexCollection+"')/definitions[@name='"+definitionsName+"']");
+        String wsdl = this.dm.queryCollection("collection('"+this.wsdlCollection+"')/definitions[@name='"+definitionsName+"']");
         if (wsdl.equals("")) {
             throw new BaseXException("WSDL does not exist");
         }
