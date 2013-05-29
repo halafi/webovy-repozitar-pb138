@@ -17,15 +17,10 @@ import org.basex.core.cmd.XQuery;
  */
 public class DatabaseManager {
     private String DBPath;
-    /*private static final String XML_HEAD = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-    private static final String OPENING_TAG = "<webxmls>";
-    private static final String CLOSING_TAG = "</webxmls>";*/
-    //private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(DatabaseManager.class);
-    
+
     public DatabaseManager(String fileType) throws IOException {
         if(!"wsdl".equals(fileType) || !"xsd".equals(fileType) || !"web".equals(fileType)) {
             throw new IllegalArgumentException(fileType + "is not used baseX database");
-            
         }   
         
         File yourFile = new File("src/main/resources/xml/"+fileType+"Datab.xml");
@@ -35,8 +30,6 @@ public class DatabaseManager {
         else {
             yourFile.createNewFile();
             this.DBPath = "src/main/resources/xml/"+fileType+"Datab.xml";
-            /*new CreateDB("WSDLDatab", "src/main/resources/xml/wsdlDatab.xml").execute(context);
-            new Close.execute(context);*/
         }
     }
     
@@ -45,7 +38,7 @@ public class DatabaseManager {
     }
     
     /**
-    public DatabaseManager(String file
+    public DatabaseManager(String file)
     * Adds a xml file to a collection
     * 
     * @param collection collection name
@@ -115,9 +108,4 @@ public class DatabaseManager {
         new DropDB(collection).execute(context);
         context.close();
     }
-    
-    /*private void openDB() throws BaseXException
-    {
-        new Open("src/main/resources/xml/wsdlDatab.xml").execute(context);
-    }*/
 }
