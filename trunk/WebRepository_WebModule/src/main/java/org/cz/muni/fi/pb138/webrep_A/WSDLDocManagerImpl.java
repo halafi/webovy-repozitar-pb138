@@ -56,7 +56,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
      * Finds WSDL by metadata.
      */
     @Override
-    public List<WSDLDoc> findWSDLByData(Document extract){
+    public String findWSDLByData(Document extract) throws BaseXException{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
