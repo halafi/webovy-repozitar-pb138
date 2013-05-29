@@ -5,6 +5,7 @@
 package org.cz.muni.fi.pb138.webrep_A;
 
 import java.util.List;
+import org.basex.core.BaseXException;
 import org.w3c.dom.Document;
 
 /**
@@ -21,12 +22,12 @@ public interface WSDLDocManager {
     /*
      * Gets WSDL from database
      */
-    public WSDLDoc getWSDL(Integer id);
+    public String getWSDL(String definitionsName) throws BaseXException;
     
     /*Gets all WSDLs from database.
      * 
      */
-    public List<WSDLDoc> getAllWSDLs(); 
+    public String getAllWSDLs() throws BaseXException; 
     
     /*
      * Finds WSDL by metadata.
