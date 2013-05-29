@@ -3,11 +3,6 @@ package org.cz.muni.fi.pb138.webrep_A;
 import java.util.Date;
 import org.w3c.dom.Document;
 
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author xmakovic
@@ -16,9 +11,25 @@ public class WarArchive {
 
     private Long id;
     private Date date;
-    private Document document;
+    private String document;
+    private String extract;
     private String fileName;
-    private Document extract;
+
+    public String getDocument() {
+        return document;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
+    }
+
+    public String getExtract() {
+        return extract;
+    }
+
+    public void setExtract(String extract) {
+        this.extract = extract;
+    }
 
     public Long getId() {
         return id;
@@ -36,28 +47,12 @@ public class WarArchive {
         this.date = date;
     }
 
-    public Document getDocument() {
-        return document;
-    }
-
-    public void setDocument(Document document) {
-        this.document = document;
-    }
-
     public String getFileName() {
         return fileName;
     }
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
-    }
-
-    public Document getExtract() {
-        return extract;
-    }
-
-    public void setExtract(Document extract) {
-        this.extract = extract;
     }
 
     @Override

@@ -16,53 +16,26 @@ public class WarArchiveManagerImpl implements WarArchiveManager {
         if (war.getId() != null) {
             throw new IllegalArgumentException("war id is already set");            
         }
-        /*try {
-            
-        }
-        catch {
-            
-        }
-        finally {
-          close db, etc.
-        }*/
+        throw new UnsupportedOperationException();
     }
     
     @Override
-    public WarArchive getWarArchive(Integer id) {
+    public String getWarArchive(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        /*try {
-            
-        }
-        catch {
-            
-        }
-        finally {
-          close db, etc.
-        }*/
-        return null;
+        throw new UnsupportedOperationException();
     }
     
     @Override
-    public List<WarArchive> getAllArchives() {
-        
-        /*try {
-            
-        }
-        catch {
-            
-        }
-        finally {
-          close db, etc.
-        }*/
-        return null;
+    public String getAllArchives() {
+        throw new UnsupportedOperationException();
     }
     
     /*
      * Finds desired web.xml by data
      */
-    public List<WarArchive> findWebXMLbyArtefact(String string){
-        return null;
+    public String findWebXMLbyArtefact(String string){
+        throw new UnsupportedOperationException();
     }
 }
