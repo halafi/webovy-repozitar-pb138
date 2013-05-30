@@ -28,7 +28,7 @@ public interface WSDLDocManager {
     /*
      * Finds WSDL by metadata.
      */
-    public String findWSDLByData(String definitonsName) throws BaseXException;
+    public String findWSDLByData(String metaData,String metaDataName) throws BaseXException;
 
     public void createWSDLCollection() throws BaseXException;
 }
