@@ -2,9 +2,9 @@ package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.io.IOException;
 import org.basex.core.BaseXException;
+import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
-import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.w3c.dom.Document;
 /**
  *
@@ -20,14 +20,10 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         this.dm = dm;
         this.wsdlCollection = wsdlCollection;
     }
-
-    public void setDatabaseManager(DatabaseManager dm) {
-        this.dm = dm;
-    }
     
     @Override
     public void createWSDL(WSDLDoc wsdl, Long id) throws BaseXException {
-        //this.dm.createCollection(this.wsdlCollection);
+        this.dm.createCollection(this.wsdlCollection);
         this.dm.addXML(this.wsdlCollection, id.toString() , wsdl.getDocument());
     }
 
