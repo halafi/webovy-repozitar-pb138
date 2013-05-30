@@ -20,11 +20,14 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         this.dm = dm;
         this.wsdlCollection = wsdlCollection;
     }
+    @Override
+    public void createWSDLCollection() throws BaseXException {
+        this.dm.createCollection(this.wsdlCollection);
+    }
     
     @Override
-    public void createWSDL(WSDLDoc wsdl, Long id) throws BaseXException {
-        this.dm.createCollection(this.wsdlCollection);
-        this.dm.addXML(this.wsdlCollection, id.toString() , wsdl.getDocument());
+    public void createWSDL(WSDLDoc wsdl) throws BaseXException {
+        this.dm.addXML(this.wsdlCollection, wsdl.getId().toString(), "<wsdl id='"+wsdl.getId().toString()+"'>"+wsdl.getDocument()+"</wsdl>");
     }
 
     @Override
