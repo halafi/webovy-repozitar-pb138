@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -19,7 +18,6 @@ import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WarArchiveParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
-import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 /**
@@ -56,18 +54,14 @@ public class TestingClass {
             // Close the reader
             reader.close();
             
-            
             WSDLDoc wsdl = new WSDLDoc();
             wsdl.setId(new Long(0));
             wsdl.setDate(null);
             wsdl.setFileName(testWSDL.toString());
             wsdl.setDocument(content);
-            Document doc = Util.stringToDoc(content);
-            Document extract = wsdlParser.wsdlExtract(doc);
-
-            //wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
+            wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
             //System.out.print(wsdl.getExtract());
-            //wsdlManager.createWSDL(wsdl, wsdl.getId());
+            wsdlManager.createWSDL(wsdl, wsdl.getId());
         }
     }
 }

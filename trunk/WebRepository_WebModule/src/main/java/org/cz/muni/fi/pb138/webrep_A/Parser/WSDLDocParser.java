@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.cz.muni.fi.pb138.webrep_A.Parser;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -20,31 +16,28 @@ public class WSDLDocParser {
     
     public Document wsdlExtract(Document doc) throws ParserConfigurationException{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        int i;
-                
         Document output;
         DocumentBuilder builder = factory.newDocumentBuilder();
         output = builder.newDocument(); 
 
-        NodeList operationList = doc.getElementsByTagName("operation");
-        NodeList messageList = doc.getElementsByTagName("message");
-        
-        Element root = (Element)output.createElement("operations_and_messages"); 
+        Element root = (Element) output.createElement("operations_and_messages"); 
         output.appendChild(root);
-        for (i = 0; i < operationList.getLength(); i++) {
+        
+        NodeList operationList = doc.getElementsByTagName("operation");
+        for (int i = 0; i < operationList.getLength(); i++) {
             if (operationList.item(i) instanceof Element) {
                 Element operationElement = (Element) operationList.item(i);
-                //Node newOperation = doc.createElement("operation");
-                //root.appendChild(newOperation);
-                root.appendChild(operationElement);
+                Node nodeToMove = output.importNode(operationElement, true);
+                root.appendChild(nodeToMove);
             }
         }
-        for (i = 0; i <  messageList.getLength(); i++) {
+        NodeList messageList = doc.getElementsByTagName("message");
+        
+        for (int i = 0; i <  messageList.getLength(); i++) {
             if (messageList.item(i) instanceof Element) {
                 Element messageElement = (Element) messageList.item(i);
-                //Node newMessage = doc.createElement("message");
-                //root.appendChild(newMessage);
-                root.appendChild(messageElement);
+                Node nodeToMove = output.importNode(messageElement, true);
+                root.appendChild(nodeToMove);
             }
         }
         return output;
