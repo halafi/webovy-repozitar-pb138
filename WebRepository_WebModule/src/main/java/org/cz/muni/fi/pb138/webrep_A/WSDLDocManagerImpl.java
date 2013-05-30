@@ -21,13 +21,19 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     public void setDatabaseManager(DatabaseManager dm) {
         this.dm = dm;
     }
+    
+    @Override
+    public void createWSDL(WSDLDoc wsdl, Long id) throws BaseXException {
+        //this.dm.createCollection(this.wsdlCollection);
+        this.dm.addXML(this.wsdlCollection, id.toString() , wsdl.getDocument());
+    }
 
     @Override
     public String getWSDL(Long id) throws BaseXException{
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        String wsdl = this.dm.queryCollection("collection('"+this.wsdlCollection+"')/wsdl[@id='"+id+"']");
+        String wsdl = this.dm.queryCollection("collection('"+this.wsdlCollection+"')/wsdl[@id='"+id.toString()+"']");
         if (wsdl.equals("")) {
             throw new BaseXException("WSDL does not exist");
         }
@@ -51,11 +57,5 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     @Override
     public String findWSDLByData(Document extract) throws BaseXException {
         throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public void createWSDL(WSDLDoc wsdl, String id) throws BaseXException {
-        //this.dm.createCollection(this.wsdlCollection);
-        this.dm.addXML(this.wsdlCollection, id , wsdl.getDocument());
     }
 }
