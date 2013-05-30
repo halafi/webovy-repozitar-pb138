@@ -70,7 +70,7 @@ public class TestingClass {
             wsdlManager.createWSDL(wsdl);
             wsdl.setId(new Long(3));
             wsdlManager.createWSDL(wsdl);
-            String output = wsdlManager.getAllWSDLs();
+            String output = wsdlManager.findWSDLByData("EndorsementSearch");
             System.out.println(output);
         }
     }
