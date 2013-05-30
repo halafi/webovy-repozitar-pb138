@@ -12,7 +12,7 @@ public interface XSDManager {
     /*
      * Stores XSD into database.
      */
-    public void createXSD(XSD xsd, Long id) throws BaseXException;
+    public void createXSD(XSD xsd) throws BaseXException;
     
     /*
      * Gets XSD from database.
@@ -22,11 +22,11 @@ public interface XSDManager {
     /*
      * Returns all xsds from database.
      */
-    public String getAllXSDs(); 
+    public String getAllXSDs() throws BaseXException; 
     
     /*
      * Finds XSD by data input.
      */
-    public String findXSDByData(String s);
-    
+    public String findXSDByData(String s) ;
+    public void createXSDCollection() throws BaseXException;
 }

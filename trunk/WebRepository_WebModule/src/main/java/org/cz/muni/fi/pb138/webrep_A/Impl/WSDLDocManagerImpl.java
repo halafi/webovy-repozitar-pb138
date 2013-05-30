@@ -12,7 +12,7 @@ import org.w3c.dom.Document;
  * @author xmakovic
  */
 public class WSDLDocManagerImpl implements WSDLDocManager {
-
+    
     private String wsdlCollection;
     private DatabaseManager dm;
 
@@ -20,6 +20,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         this.dm = dm;
         this.wsdlCollection = wsdlCollection;
     }
+    
     @Override
     public void createWSDLCollection() throws BaseXException {
         this.dm.createCollection(this.wsdlCollection);

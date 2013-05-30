@@ -13,55 +13,42 @@ import org.w3c.dom.NodeList;
  */
 public class XSDParser {
     public Document xsdExtract(Document doc) throws ParserConfigurationException{
-        String namespace = null;
-        if(doc.getDocumentElement().getNodeName().contains("xs")) {
-            namespace = "xs:";
-        }
-        if(doc.getDocumentElement().getNodeName().contains("xsd")) {
-            namespace = "xsd:";
-        }
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         Document output;
         DocumentBuilder builder = factory.newDocumentBuilder();
         output = builder.newDocument(); 
-
+        String namespace;
+        if(doc.getDocumentElement().getNodeName().contains("xsd")) {
+            namespace = "xsd:";
+        }
+        else if(doc.getDocumentElement().getNodeName().contains("xs")) {
+            namespace = "xs:";
+        }
+        else {
+            namespace = "";
+        }
+        System.out.println(namespace);
+        namespace = "xsd:";
+        
         Element root = (Element) output.createElement("types"); 
         output.appendChild(root);
 
         NodeList complexTypeList = doc.getElementsByTagName(namespace+"complexType");
         NodeList simpleTypeList = doc.getElementsByTagName(namespace+"simpleType");
-        NodeList elementsList = doc.getElementsByTagName(namespace+"element");
-        NodeList attributeList = doc.getElementsByTagName(namespace+"attribute");
         
-        output.appendChild(root);
         for (int i = 0; i < complexTypeList.getLength(); i++) {
             if (complexTypeList.item(i) instanceof Element) {
-                Element operationElement = (Element) complexTypeList.item(i);
-                Node nodeToMove = output.importNode(operationElement, true);
+                Element complexElement = (Element) complexTypeList.item(i);
+                Node nodeToMove = output.importNode(complexElement, true);
                 root.appendChild(nodeToMove);
             }
         }
         for (int i = 0; i < simpleTypeList.getLength(); i++) {
             if (simpleTypeList.item(i) instanceof Element) {
-                Element operationElement = (Element) simpleTypeList.item(i);
-                Node nodeToMove = output.importNode(operationElement, true);
+                Element simpleElement = (Element) simpleTypeList.item(i);
+                Node nodeToMove = output.importNode(simpleElement, true);
                 root.appendChild(nodeToMove);
             }
-        }
-        for (int i = 0; i < elementsList.getLength(); i++) {
-            if (elementsList.item(i) instanceof Element) {
-                Element operationElement = (Element) elementsList.item(i);
-                Node nodeToMove = output.importNode(operationElement, true);
-                root.appendChild(nodeToMove);
-            }
-        }
-        for (int i = 0; i < attributeList.getLength(); i++) {
-            if (attributeList.item(i) instanceof Element) {
-                Element operationElement = (Element) attributeList.item(i);
-                Node nodeToMove = output.importNode(operationElement, true);
-                root.appendChild(nodeToMove);
-            }
-        
         }
         return output;
     }

@@ -8,6 +8,7 @@ import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 
 /**
  *
+ * 
  * @author xmakovic
  */
 public class XSDManagerImpl implements XSDManager {
@@ -20,14 +21,17 @@ public class XSDManagerImpl implements XSDManager {
         this.xsdCollection = xsdCollection;
     }
 
-    public void setDatabaseManager(DatabaseManager dm) {
-        this.dm = dm;
+    @Override
+    public void createXSDCollection() throws BaseXException {
+        this.dm.createCollection(this.xsdCollection);
     }
 
     @Override
-    public void createXSD(XSD xsd, Long id) throws BaseXException {
-        this.dm.createCollection(this.xsdCollection);
-        this.dm.addXML(this.xsdCollection, id.toString(), xsd.getDocument());
+    public void createXSD(XSD xsd) throws BaseXException {
+        //this.dm.createCollection(this.xsdCollection);
+        this.dm.addXML(this.xsdCollection, xsd.getId().toString(),
+                "<xsd id='"+xsd.getId().toString()+"' date='"+xsd.getDate()
+                +"' fileName='"+xsd.getFileName()+"'>"+xsd.getDocument()+"</xsd>");
     }
 
     @Override
@@ -43,8 +47,10 @@ public class XSDManagerImpl implements XSDManager {
     }
 
     @Override
-    public String getAllXSDs() {
-        throw new UnsupportedOperationException();
+    public String getAllXSDs() throws BaseXException {
+        String query = "for $xsd in (collection('xsd')/xsd) "
+                + "return $xsd";
+        return "<XSDs> " + this.dm.queryCollection(query) + " </XSDs>";
     }
 
     /*
