@@ -17,9 +17,9 @@ public class WarArchiveManagerImpl implements WarArchiveManager {
     private String warCollection;
     private DatabaseManager dm;
 
-    public WarArchiveManagerImpl(String wsdlCollection, DatabaseManager dm) throws IOException {
+    public WarArchiveManagerImpl(String warCollection, DatabaseManager dm) throws IOException {
         this.dm = dm;
-        this.warCollection = wsdlCollection;
+        this.warCollection = warCollection;
     }
 
     public void setDatabaseManager(DatabaseManager dm) {

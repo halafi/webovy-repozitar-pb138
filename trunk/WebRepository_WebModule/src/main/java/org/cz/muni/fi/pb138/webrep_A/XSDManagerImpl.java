@@ -4,41 +4,54 @@
  */
 package org.cz.muni.fi.pb138.webrep_A;
 
-import java.util.List;
+import java.io.IOException;
+import org.basex.core.BaseXException;
 
 /**
  *
  * @author xmakovic
  */
 public class XSDManagerImpl implements XSDManager {
-    @Override
-    public void createXSD(XSD xsd) {
-        if (xsd.getId() != null) {
-            throw new IllegalArgumentException("xsd id is already set");            
-        }
-        throw new UnsupportedOperationException();
+
+    private String xsdCollection;
+    private DatabaseManager dm;
+
+    public XSDManagerImpl(String xsdCollection, DatabaseManager dm) throws IOException {
+        this.dm = dm;
+        this.xsdCollection = xsdCollection;
     }
-    
+
+    public void setDatabaseManager(DatabaseManager dm) {
+        this.dm = dm;
+    }
+
     @Override
-    public String getXSD(Long id) {
+    public void createXSD(XSD xsd, Long id) throws BaseXException {
+        this.dm.addXML(this.xsdCollection, id.toString(), xsd.getDocument());
+    }
+
+    @Override
+    public String getXSD(Long id) throws BaseXException {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        throw new UnsupportedOperationException();
-        
+        String xsd = this.dm.queryCollection("collection('" + this.xsdCollection + "')/web[@id='" + id.toString() + "']");
+        if (xsd.equals("")) {
+            throw new BaseXException("Desired web.xml does not exist");
+        }
+        return xsd;
     }
-    
+
     @Override
     public String getAllXSDs() {
         throw new UnsupportedOperationException();
     }
-    
-    
-     /*
+
+    /*
      * Finds XSD by data input.
      */
     @Override
-    public String findXSDByData(String s){
+    public String findXSDByData(String s) {
         throw new UnsupportedOperationException();
     }
 }

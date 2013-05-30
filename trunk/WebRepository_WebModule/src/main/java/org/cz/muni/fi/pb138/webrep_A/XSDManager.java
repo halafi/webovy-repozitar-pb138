@@ -4,7 +4,7 @@
  */
 package org.cz.muni.fi.pb138.webrep_A;
 
-import java.util.List;
+import org.basex.core.BaseXException;
 
 /**
  *
@@ -15,12 +15,12 @@ public interface XSDManager {
     /*
      * Stores XSD into database.
      */
-    public void createXSD(XSD xsd);
+    public void createXSD(XSD xsd, Long id) throws BaseXException;
     
     /*
      * Gets XSD from database.
      */
-    public String getXSD(Long id);  
+    public String getXSD(Long id) throws BaseXException;  
     
     /*
      * Returns all xsds from database.
