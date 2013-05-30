@@ -5,6 +5,7 @@
 package org.cz.muni.fi.pb138.webrep_A;
 
 import java.util.List;
+import org.basex.core.BaseXException;
 
 /**
  *
@@ -15,12 +16,12 @@ public interface WarArchiveManager {
     /*
      * Stores web.xml into database
      */
-    public void createWarArchive(WarArchive arch);
+    public void createWarArchive(WarArchive war, Long id) throws BaseXException;
     
     /*
      * Gets web.xml file from database
      */
-    public String getWarArchive(Long id);  
+    public String getWarArchive(Long id)throws BaseXException;  
     
     /*
      * gets all web.xml files from database
