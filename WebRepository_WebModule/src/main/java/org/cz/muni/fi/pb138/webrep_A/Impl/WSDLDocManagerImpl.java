@@ -44,13 +44,9 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
 
    @Override
     public String getAllWSDLs() throws BaseXException {
-        String query = "for $wsdl in distinct-values(collection('wsdl-list')/wsdl) "
-                + "let $id := /wsdl/id"
-                + "let $name := /wsdl/definions[@name]"
-                + "let $version := /wsdl[@version]"
-                + "order by $wsdl"
-                + "return <wsdl><id>{$id}</id><name>{$name}</name><version>{$version}</version></wsdl>";
-        return "<WSDLs>" + this.dm.queryCollection(query) + "</WSDLs>";
+        String query = "for $wsdl in (collection('wsdl')/wsdl) "
+                + "return $wsdl";
+        return "<WSDLs> " + this.dm.queryCollection(query) + " </WSDLs>";
     }
 
     /*

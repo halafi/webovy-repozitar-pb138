@@ -70,7 +70,8 @@ public class TestingClass {
             wsdlManager.createWSDL(wsdl);
             wsdl.setId(new Long(3));
             wsdlManager.createWSDL(wsdl);
-            //wsdlManager.getWSDL(wsdl.getId());
+            String output = wsdlManager.getAllWSDLs();
+            System.out.println(output);
         }
     }
 }
