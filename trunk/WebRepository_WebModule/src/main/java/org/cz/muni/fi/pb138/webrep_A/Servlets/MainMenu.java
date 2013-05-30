@@ -5,17 +5,12 @@
 package org.cz.muni.fi.pb138.webrep_A.Servlets;
 
 import java.io.IOException;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.basex.core.BaseXException;
-import org.cz.muni.fi.pb138.webrep_A.DatabaseManager;
 
 /**
  *
@@ -47,9 +42,9 @@ public class MainMenu extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        Locale locale = request.getLocale();
-        ResourceBundle labelsBundle;
-        labelsBundle = ResourceBundle.getBundle("labelsBundle", locale);
+//        Locale locale = request.getLocale();
+//        ResourceBundle labelsBundle;
+//        labelsBundle = ResourceBundle.getBundle("labelsBundle", locale);
 
 //        DatabaseManager dm = new DatabaseManager();
 //        CollectionManager cm = new CollectionManager("", dm);
@@ -63,6 +58,9 @@ public class MainMenu extends HttpServlet {
 //            request.getRequestDispatcher("/index.jsp").forward(request, response);
 //            return;
 //        }
+        
+        PrintWriter out = response.getWriter();
+        out.println("Hello World");
     }
 
     /** 
