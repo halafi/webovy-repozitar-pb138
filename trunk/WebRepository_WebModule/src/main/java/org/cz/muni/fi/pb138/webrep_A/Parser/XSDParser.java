@@ -39,7 +39,19 @@ public class XSDParser {
         for (int i = 0; i < complexTypeList.getLength(); i++) {
             if (complexTypeList.item(i) instanceof Element) {
                 Element complexElement = (Element) complexTypeList.item(i);
-                Node nodeToMove = output.importNode(complexElement, true);
+                Node nodeToMove = output.importNode(complexElement, false);
+                NodeList elementList = complexElement.getElementsByTagName(namespace+"element");
+                for (int j = 0; j < elementList.getLength(); j++) {
+                    Element element = (Element) elementList.item(j);
+                    Node subnodeToMove = output.importNode(element, false);
+                    nodeToMove.appendChild(subnodeToMove); 
+                }
+                NodeList attributeList = complexElement.getElementsByTagName(namespace+"attribute"); 
+                for (int k = 0; k < attributeList.getLength(); k++) {
+                    Element attribute = (Element) attributeList.item(k);
+                    Node subnodeToMove = output.importNode(attribute, false);
+                    nodeToMove.appendChild(subnodeToMove); 
+                }
                 root.appendChild(nodeToMove);
             }
         }
