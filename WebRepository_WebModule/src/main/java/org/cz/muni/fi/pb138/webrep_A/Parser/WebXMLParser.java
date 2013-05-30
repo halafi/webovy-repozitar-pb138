@@ -27,15 +27,15 @@ public class WebXMLParser {
         output.appendChild(root);
         
         NodeList filterList = doc.getElementsByTagName("filter");
+        NodeList listenerList = doc.getElementsByTagName("listener"); 
         for (int i = 0; i < filterList.getLength(); i++) {
             if (filterList.item(i) instanceof Element) {
                 Element operationElement = (Element) filterList.item(i);
                 Node nodeToMove = output.importNode(operationElement, true);
                 root.appendChild(nodeToMove);
             }
-        }
-        
-        NodeList listenerList = doc.getElementsByTagName("listener");        
+        }       
+               
         for (int i = 0; i <  listenerList.getLength(); i++) {
             if (listenerList.item(i) instanceof Element) {
                 Element messageElement = (Element) listenerList.item(i);

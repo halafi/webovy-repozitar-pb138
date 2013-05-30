@@ -24,14 +24,15 @@ public class WSDLDocParser {
         output.appendChild(root);
         
         NodeList operationList = doc.getElementsByTagName("operation");
+        NodeList messageList = doc.getElementsByTagName("message");
+        
         for (int i = 0; i < operationList.getLength(); i++) {
             if (operationList.item(i) instanceof Element) {
                 Element operationElement = (Element) operationList.item(i);
                 Node nodeToMove = output.importNode(operationElement, true);
                 root.appendChild(nodeToMove);
             }
-        }
-        NodeList messageList = doc.getElementsByTagName("message");
+        }        
         
         for (int i = 0; i <  messageList.getLength(); i++) {
             if (messageList.item(i) instanceof Element) {
