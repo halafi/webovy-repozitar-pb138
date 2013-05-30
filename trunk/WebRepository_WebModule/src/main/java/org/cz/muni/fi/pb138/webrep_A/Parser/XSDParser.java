@@ -20,8 +20,6 @@ public class XSDParser {
     private List<String> complexTypes;*/
     
     public Document xsdExtract(Document doc) throws ParserConfigurationException{
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        int i;
         String namespace = null;
         if(doc.getDocumentElement().getNodeName().contains("xs")) {
             namespace = "xs:";
@@ -29,62 +27,50 @@ public class XSDParser {
         if(doc.getDocumentElement().getNodeName().contains("xsd")) {
             namespace = "xsd:";
         }
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         Document output;
         DocumentBuilder builder = factory.newDocumentBuilder();
         output = builder.newDocument(); 
+
+        Element root = (Element) output.createElement("types"); 
+        output.appendChild(root);
 
         NodeList complexTypeList = doc.getElementsByTagName(namespace+"complexType");
         NodeList simpleTypeList = doc.getElementsByTagName(namespace+"simpleType");
         NodeList elementsList = doc.getElementsByTagName(namespace+"element");
         NodeList attributeList = doc.getElementsByTagName(namespace+"attribute");
         
-        Element root = (Element)output.createElement("types"); 
         output.appendChild(root);
-        for (i = 0; i < complexTypeList.getLength(); i++) {
+        for (int i = 0; i < complexTypeList.getLength(); i++) {
             if (complexTypeList.item(i) instanceof Element) {
-                Element complexElement = (Element) complexTypeList.item(i);
-                //Node newcom = doc.createElement("complexType");
-                //root.appendChild(newcom);
-                root.appendChild(complexElement);
+                Element operationElement = (Element) complexTypeList.item(i);
+                Node nodeToMove = output.importNode(operationElement, true);
+                root.appendChild(nodeToMove);
             }
         }
-        for (i = 0; i < simpleTypeList.getLength(); i++) {
+        for (int i = 0; i < simpleTypeList.getLength(); i++) {
             if (simpleTypeList.item(i) instanceof Element) {
-                Element simpleElement = (Element) simpleTypeList.item(i);
-                //Node newsim = doc.createElement("simpleType");
-                //root.appendChild(newsim);
-                root.appendChild(simpleElement);
+                Element operationElement = (Element) simpleTypeList.item(i);
+                Node nodeToMove = output.importNode(operationElement, true);
+                root.appendChild(nodeToMove);
             }
         }
-        for (i = 0; i < elementsList.getLength(); i++) {
+        for (int i = 0; i < elementsList.getLength(); i++) {
             if (elementsList.item(i) instanceof Element) {
-                Element elementElement = (Element) elementsList.item(i);
-                //Node newele = doc.createElement("element");
-                //root.appendChild(newele);
-                root.appendChild(elementElement);
+                Element operationElement = (Element) elementsList.item(i);
+                Node nodeToMove = output.importNode(operationElement, true);
+                root.appendChild(nodeToMove);
             }
         }
-        for (i = 0; i < attributeList.getLength(); i++) {
+        for (int i = 0; i < attributeList.getLength(); i++) {
             if (attributeList.item(i) instanceof Element) {
-                Element attElement = (Element) attributeList.item(i);
-                //Node newatt = doc.createElement("attribute");
-                //root.appendChild(newatt);
-                root.appendChild(attElement);
+                Element operationElement = (Element) attributeList.item(i);
+                Node nodeToMove = output.importNode(operationElement, true);
+                root.appendChild(nodeToMove);
             }
+        
         }
         return output;
     }
-    /*
-    private Map<String,List<String>> getElements(Document doc){
-        return null;
-    }
-    
-    private List<String> getSimpleTypes(Document doc){
-        return null;
-    }
-    
-    private List<String> getComplexTypes(Document doc){
-        return null;
-    }
-    */
 }
+      
