@@ -27,21 +27,21 @@ public class DatabaseManager {
                 ||(!Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && Filetype.WEB.equals(fileType))) {
             String path = getClass().getClassLoader().getResource(".").getPath();
             System.out.println(path);
-            File yourFile = new File(path+fileType+"Datab.xml");
+            File yourFile = new File(path+fileType+"Database");
             if(yourFile.exists()) {
-                this.DBPath = path+fileType+"Datab.xml";
+                this.DBPath = path+fileType+"Database";
             }
             else {
-                yourFile.createNewFile();
-                try {
-                    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path+fileType+"Datab.xml", true)));
+                yourFile.mkdir();
+                /*try {
+                    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path+fileType+"Database", true)));
                     out.println("<"+fileType+"s>");
                     out.print("</"+fileType+"s>");
                     out.close();
                 } catch (IOException e) {
                     //oh noes!
-                }
-                this.DBPath = path+fileType+"Datab.xml";
+                }*/
+                this.DBPath = path+fileType+"Database";
             }
         }
         else {
@@ -66,7 +66,9 @@ public class DatabaseManager {
         Context context = new Context();
         new Set("dbpath", this.DBPath).execute(context);
         new Open(collection).execute(context);
-        new Add(xml, name+".xml").execute(context);
+        //zde haze chybu
+            new Add(xml, name+".xml").execute(context);
+        //jojo tady no
         context.close();
     }
 

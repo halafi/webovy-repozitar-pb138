@@ -40,9 +40,10 @@ public class TestingClass {
         WebXMLParser webParser = new WebXMLParser();
         
         File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
-                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\test2.wsdl");
+                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\test3.wsdl");
         
-        if(testWSDL.exists()) {String content = "";
+        if(testWSDL.exists()) {
+            String content = "";
             String line;
             BufferedReader reader = new BufferedReader(new FileReader(testWSDL));
             while ((line = reader.readLine()) != null)
@@ -60,7 +61,7 @@ public class TestingClass {
             wsdl.setFileName(testWSDL.toString());
             wsdl.setDocument(content);
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
-            //System.out.print(wsdl.getExtract());
+
             wsdlManager.createWSDL(wsdl, wsdl.getId());
         }
     }
