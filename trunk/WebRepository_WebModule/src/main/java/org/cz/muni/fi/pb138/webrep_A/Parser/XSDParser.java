@@ -1,8 +1,5 @@
 package org.cz.muni.fi.pb138.webrep_A.Parser;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,10 +12,6 @@ import org.w3c.dom.NodeList;
  * @author xfasian
  */
 public class XSDParser {
-    /*private Map<String,List<String>> elements;
-    private List<String> simpleTypes;
-    private List<String> complexTypes;*/
-    
     public Document xsdExtract(Document doc) throws ParserConfigurationException{
         String namespace = null;
         if(doc.getDocumentElement().getNodeName().contains("xs")) {
