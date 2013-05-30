@@ -1,4 +1,4 @@
-package org.cz.muni.fi.pb138.webrep_A;
+package org.cz.muni.fi.pb138.webrep_A.Parser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class XSDParser {
     private List<String> simpleTypes;
     private List<String> complexTypes;*/
     
-    public Document XSDExtract(Document doc) throws ParserConfigurationException{
+    public Document xsdExtract(Document doc) throws ParserConfigurationException{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         int i;
         String namespace = null;
