@@ -6,13 +6,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>Archivator 3000+</title>
     </head>
 
     <body>
-        <a href ="showWSDL.jsp">WSDL archivation</a>
-        <a href ="showWeb.jsp">WAR archivation</a>
-        <a href ="showXSD.jsp">XSD archivation</a>
+        <h1>Archivator 3000+</h1>
+        <p>The. Best. App. Ever.</p> 
 
+        <div id="topNav">
+            <ul>
+                <li><a href ="showWSDL.jsp">WSDL archivation</a></li>
+                <li><a href ="showWeb.jsp">WAR archivation</a></li>
+                <li> <a href ="showXSD.jsp">XSD archivation</a></li>
+            </ul>
+        </div>
     </body>
 </html>
