@@ -1,0 +1,127 @@
+/* 
+    Document   : style
+    Created on : May 30, 2013, 2:00:30 PM
+    Author     : Andrej Makovicky
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+  input.error { 
+         background-color: pink; 
+     }
+     
+     input {
+         text-align: left;
+     }
+     
+     select.error {
+         background-color: yellow;
+     }
+     
+     body { 
+         font-family: Helvetica, sans-serif; 
+         background-color: white;
+         text-align: left;
+         margin: 0 auto;
+     }
+     
+     h1 { 
+         text-align: left; 
+         text-decoration: none; 
+         text-shadow: aquamarine; 
+         border: 0px black solid;
+         border-bottom: 1px white solid;
+         background-color: #86D67E;
+         padding: 5px;
+         margin: 0px;
+         border-bottom: 2px solid #3047DB;  
+     }
+     
+     p {
+         padding: 5px 5px 15px 5px;
+         border: 0px black solid;
+         border-bottom: 1px #3047DB solid;
+     }
+     
+     fieldset {
+         border: 0px black solid;
+         border-bottom: 1px #3047DB solid;
+         
+     }
+     
+     table {
+         text-align: left;
+     }
+     
+     table.zakladni { 
+         border-collapse: collapse; 
+         width: 85%;
+         margin: 5px;
+     }
+     
+     table.zakladni tr:nth-child(odd) {
+          background-color: #CEE8BA;
+     }
+     
+     table.zakladni tr:nth-child(even) {
+          background-color: white;
+     }
+     
+     table.zakladni tr:first-child {
+          background-color: #86D67E;
+     }
+     
+     table.zakladni th, table.zakladni td {  
+          border: solid 1px #69bbfa;
+          padding: 3px;
+     }
+     
+     #navigace {
+         width: 200px;
+         float: left;
+         margin: 7px 0 0 10px; 
+         
+     }
+     
+     #navigace ul { 
+         list-style: none;  
+         margin: 0;  
+         padding: 0;  
+         border: none; 
+     }
+     
+     #navigace li { 
+         border-bottom: 1px solid #3047DB;  
+         margin: 0; 
+     }
+     
+     #navigace li:last-child { 
+         border-bottom: 0px solid #90bade;  
+         margin: 0; 
+     }
+     
+     #navigace li a { 
+         display: block; 
+         padding: 15px 0 15px 2px;
+         background-color: white; 
+         color: black; 
+         text-decoration: none; 
+         font-size: 18px;
+         width: 100%; }
+     
+     #navigace li a:hover { 
+         background-color: #2586d7;  
+         color: #fff; 
+     }
+     
+     #paticka {
+         text-align: left;
+         margin: 20px;
+     }
+     
+      #obsah { 
+          float: right;
+          width: 84%;
+          background-color: #D0EDCC;
+          margin: 0px;
+      }
