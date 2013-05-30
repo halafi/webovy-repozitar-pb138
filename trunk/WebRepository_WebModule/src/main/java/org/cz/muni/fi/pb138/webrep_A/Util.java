@@ -1,5 +1,8 @@
 package org.cz.muni.fi.pb138.webrep_A;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -22,6 +25,20 @@ import org.xml.sax.SAXException;
  * @author xmakovic
  */
 public class Util {
+    public static String readFile(File file) throws IOException {
+        String content = "";
+        String line;
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        while ((line = reader.readLine()) != null)
+        {
+            content += "\n" + line;
+        }
+        // Cut of the first newline;
+        content = content.substring(1);
+        // Close the reader
+        reader.close();
+        return content;
+    }
     public static String docToString(Document doc) throws TransformerConfigurationException, TransformerException {
         DOMSource domSource = new DOMSource(doc);
         StringWriter writer = new StringWriter();

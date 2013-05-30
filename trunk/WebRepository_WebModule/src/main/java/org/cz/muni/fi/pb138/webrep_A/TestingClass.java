@@ -11,6 +11,7 @@ import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarArchiveManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
+import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarArchiveManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
@@ -42,18 +43,8 @@ public class TestingClass {
         File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\test2.wsdl");
         
-        if(testWSDL.exists()) {
-            String content = "";
-            String line;
-            BufferedReader reader = new BufferedReader(new FileReader(testWSDL));
-            while ((line = reader.readLine()) != null)
-            {
-                content += "\n" + line;
-            }
-            // Cut of the first newline;
-            content = content.substring(1);
-            // Close the reader
-            reader.close();
+        /*if(testWSDL.exists()) {
+            String content =Util.readFile(testWSDL);
             
             WSDLDoc wsdl = new WSDLDoc();
             wsdl.setId(new Long(0));
@@ -64,14 +55,27 @@ public class TestingClass {
             
             wsdlManager.createWSDLCollection();
             wsdlManager.createWSDL(wsdl);
-            wsdl.setId(new Long(1));
-            wsdlManager.createWSDL(wsdl);
-            wsdl.setId(new Long(2));
-            wsdlManager.createWSDL(wsdl);
-            wsdl.setId(new Long(3));
-            wsdlManager.createWSDL(wsdl);
-            String output = wsdlManager.findWSDLByData("EndorsementSearch");
-            System.out.println(output);
+            //String output = wsdlManager.findWSDLByData("EndorsementSearch");
+            //System.out.println(output);
+        }*/
+        
+        File testXSD = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
+                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\xmlSchema\\test.xsd");
+        if(testXSD.exists()) {
+            String content = Util.readFile(testXSD);
+            XSD xsd = new XSD();
+            xsd.setId(new Long(0));
+            xsd.setDate(null);
+            xsd.setFileName(testWSDL.toString());
+            xsd.setDocument(content);
+            xsd.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
+            System.out.println(xsd.getExtract());
+            xsdManager.createXSDCollection();
+            xsdManager.createXSD(xsd);
+            
+            String output = xsdManager.getAllXSDs();
+            //System.out.println(output);
+            
         }
     }
 }
