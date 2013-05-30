@@ -1,4 +1,4 @@
-package org.cz.muni.fi.pb138.webrep_A;
+package org.cz.muni.fi.pb138.webrep_A.Parser;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
