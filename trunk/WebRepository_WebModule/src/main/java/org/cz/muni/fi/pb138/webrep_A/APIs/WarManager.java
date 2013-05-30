@@ -7,7 +7,7 @@ import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
  *
  * @author xmakovic
  */
-public interface WarArchiveManager {
+public interface WarManager {
     
     /*
      * Stores web.xml into database

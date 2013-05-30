@@ -28,6 +28,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     
     @Override
     public void createWSDL(WSDLDoc wsdl) throws BaseXException {
+        //collection must be created!
         this.dm.addXML(this.wsdlCollection, wsdl.getId().toString(),
                 "<wsdl id='"+wsdl.getId().toString()+"' date='"+wsdl.getDate()
                 +"' fileName='"+wsdl.getFileName()+"'>"+wsdl.getDocument()+"</wsdl>");
@@ -57,6 +58,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
      */
     @Override
     public String findWSDLByData(String definitonsName) throws BaseXException {
+        //properly written, not working though
         String query = "for $wsdl in (collection('wsdl')/wsdl) "
                 + " let $name := $wsdl/definitions/@name"
                 + " where $name='"+definitonsName+"'"
