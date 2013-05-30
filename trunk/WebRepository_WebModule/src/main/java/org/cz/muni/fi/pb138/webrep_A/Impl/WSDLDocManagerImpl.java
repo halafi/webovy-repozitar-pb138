@@ -62,8 +62,16 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         String query = "for $wsdl in (collection('wsdl')/wsdl) "
                 + " let $name := $wsdl/"+metaData+"/@name"
                 + " let $metaDataName := " + metaDataName
-                + " where $name= $metaDataName"
+                + " where $name = $metaDataName"
                 + " return $wsdl";
         return "<WSDLs> " + this.dm.queryCollection(query) + " </WSDLs>";
     }
+    
+   /* @Override
+    public String findWSDLByData(String definitonsName) throws BaseXException {
+        String query = "for $wsdl in (collection('wsdl')/wsdl) "
+                + " let $name := $wsdl/definitions/@name"
+                + " where $name='"+definitonsName+"'"
+                + " return $wsdl";
+        return "<WSDLs> " + this.dm.queryCollection(query) + " </WSDLs>";*/
 }
