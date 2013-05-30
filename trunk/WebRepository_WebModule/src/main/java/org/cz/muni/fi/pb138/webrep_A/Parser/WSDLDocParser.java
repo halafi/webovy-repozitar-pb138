@@ -17,9 +17,9 @@ import org.w3c.dom.NodeList;
  * @author xfasian
  */
 public class WSDLDocParser {    
-       
-    public Document WSDLExtract(Document doc) throws ParserConfigurationException{
-       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    
+    public Document wsdlExtract(Document doc) throws ParserConfigurationException{
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         int i;
                 
         Document output;

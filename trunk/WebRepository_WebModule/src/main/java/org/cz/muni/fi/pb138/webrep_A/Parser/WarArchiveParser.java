@@ -16,7 +16,7 @@ import org.xml.sax.SAXException;
  */
 public class WarArchiveParser { 
 
-    public Document WARExtract(JarFile warFile) throws ParserConfigurationException, SAXException, IOException{
+    public Document warExtract(JarFile warFile) throws ParserConfigurationException, SAXException, IOException{
         Enumeration entries = warFile.entries();
         InputStream in = null;
         while (entries.hasMoreElements()) {

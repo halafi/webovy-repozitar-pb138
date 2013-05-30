@@ -1,7 +1,10 @@
 package org.cz.muni.fi.pb138.webrep_A;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import org.basex.core.BaseXException;
 import org.basex.core.Context;
 import org.basex.core.cmd.Add;
@@ -18,18 +21,31 @@ import org.basex.core.cmd.XQuery;
 public class DatabaseManager {
     private String DBPath;
 
-    public DatabaseManager(String fileType) throws IOException {
-        if(!"wsdl".equals(fileType) || !"xsd".equals(fileType) || !"web".equals(fileType)) {
-            throw new IllegalArgumentException(fileType + "is not used baseX database");
-        }   
-        
-        File yourFile = new File("src/main/resources/xml/"+fileType+"Datab.xml");
-        if(yourFile.exists()) {
-            this.DBPath = "src/main/resources/xml/"+fileType+"Datab.xml";
+    public DatabaseManager(Filetype fileType) throws IOException {
+        if((Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && !Filetype.WEB.equals(fileType))
+                ||(!Filetype.WSDL.equals(fileType) && Filetype.XSD.equals(fileType) && !Filetype.WEB.equals(fileType))
+                ||(!Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && Filetype.WEB.equals(fileType))) {
+            String path = getClass().getClassLoader().getResource(".").getPath();
+            System.out.println(path);
+            File yourFile = new File(path+fileType+"Datab.xml");
+            if(yourFile.exists()) {
+                this.DBPath = path+fileType+"Datab.xml";
+            }
+            else {
+                yourFile.createNewFile();
+                try {
+                    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path+fileType+"Datab.xml", true)));
+                    out.println("<"+fileType+"s>");
+                    out.print("</"+fileType+"s>");
+                    out.close();
+                } catch (IOException e) {
+                    //oh noes!
+                }
+                this.DBPath = path+fileType+"Datab.xml";
+            }
         }
         else {
-            yourFile.createNewFile();
-            this.DBPath = "src/main/resources/xml/"+fileType+"Datab.xml";
+            throw new IllegalArgumentException(fileType + " is not used baseX database");
         }
     }
     

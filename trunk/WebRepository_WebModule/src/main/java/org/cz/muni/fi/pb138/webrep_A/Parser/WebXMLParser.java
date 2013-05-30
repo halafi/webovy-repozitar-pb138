@@ -16,7 +16,7 @@ import org.w3c.dom.NodeList;
  * @author xfasian
  */
 public class WebXMLParser {
-    public Document WebXMLExtract(Document doc) throws ParserConfigurationException{
+    public Document webXMLExtract(Document doc) throws ParserConfigurationException{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         int i;
                 
