@@ -1,32 +1,19 @@
-package org.cz.muni.fi.pb138.webrep_A;
+package org.cz.muni.fi.pb138.webrep_A.Entities;
 
 import java.util.Date;
 import org.w3c.dom.Document;
 
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author xmakovic
  */
-public class WSDLDoc {
+public class XSD {
 
     private Long id;
     private Date date;
     private String document;
-    private String extract;
     private String fileName;
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
+    private String extract;
 
     public Long getId() {
         return id;
@@ -52,12 +39,12 @@ public class WSDLDoc {
         this.document = document;
     }
 
-    public String getExtract() {
-        return extract;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setExtract(String extract) {
-        this.extract = extract;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     @Override
@@ -65,6 +52,14 @@ public class WSDLDoc {
         int hash = 7;
         hash = 37 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
+    }
+
+    public String getExtract() {
+        return extract;
+    }
+
+    public void setExtract(String extract) {
+        this.extract = extract;
     }
 
     @Override
@@ -75,7 +70,7 @@ public class WSDLDoc {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final WSDLDoc other = (WSDLDoc) obj;
+        final XSD other = (XSD) obj;
         if (this.id == null || !this.id.equals(other.id)) {
             return false;
         }
@@ -84,6 +79,6 @@ public class WSDLDoc {
 
     @Override
     public String toString() {
-        return "WSDLDoc{" + "id=" + id + ", date=" + date + ", document=" + document + ", extract=" + extract + '}';
+        return "XSD{" + "id=" + id + ", date=" + date + ", document=" + document + ", fileName=" + fileName + ", extract=" + extract + '}';
     }
 }
