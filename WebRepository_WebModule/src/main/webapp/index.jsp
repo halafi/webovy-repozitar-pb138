@@ -4,15 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<f:message var="nadpis" key="top.main"/>
-<f:message var="welcome" key="welcome"/>
 
-
-
-<s:layout-render name="/mainLayout.jsp" nadpis="${nadpis}">
+<s:layout-render name="/mainLayout.jsp" nadpis="Archivator 3000+">
     <s:layout-component name="telo">
 
-        <s:label name="${welcome}"/>
+        <s:label name="Vitajte na stránke Archivator 3000+"/>
         <br/>
     </s:layout-component>
 </s:layout-render>
