@@ -1,6 +1,5 @@
 package org.cz.muni.fi.pb138.webrep_A.APIs;
 
-import java.util.List;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.w3c.dom.Document;

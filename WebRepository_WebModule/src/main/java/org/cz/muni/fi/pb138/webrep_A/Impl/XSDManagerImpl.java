@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.io.IOException;
 import org.basex.core.BaseXException;
+import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
 import org.cz.muni.fi.pb138.webrep_A.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
-import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
 
 /**
  *
@@ -30,6 +26,7 @@ public class XSDManagerImpl implements XSDManager {
 
     @Override
     public void createXSD(XSD xsd, Long id) throws BaseXException {
+        this.dm.createCollection(this.xsdCollection);
         this.dm.addXML(this.xsdCollection, id.toString(), xsd.getDocument());
     }
 

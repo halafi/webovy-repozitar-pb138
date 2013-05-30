@@ -1,13 +1,6 @@
 package org.cz.muni.fi.pb138.webrep_A.Entities;
 
 import java.util.Date;
-import org.w3c.dom.Document;
-
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author xmakovic
