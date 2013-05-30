@@ -5,7 +5,7 @@
         <servlet-class>org.cz.muni.fi.pb138.webrep_A.Servlets.MainMenu</servlet-class>
 </servlet>
 
-session-config>
+<session-config>
         <session-timeout>
             30
         </session-timeout>
