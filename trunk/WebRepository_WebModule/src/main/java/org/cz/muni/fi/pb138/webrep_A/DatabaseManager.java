@@ -23,21 +23,17 @@ public class DatabaseManager {
                 ||(!Filetype.WSDL.equals(fileType) && Filetype.XSD.equals(fileType) && !Filetype.WEB.equals(fileType))
                 ||(!Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && Filetype.WEB.equals(fileType))) {
             String path = DatabaseManager.class.getClassLoader().getResource(".").getPath()+"../../BaseXDB/";
-            System.out.println(path);
+            File basexdbDir = new File(path);
+            if(!basexdbDir.exists()) {
+                basexdbDir.mkdir();
+            }
+            System.out.println("mkdir:"+path+fileType+"Database");
             File yourFile = new File(path+fileType+"Database");
             if(yourFile.exists()) {
                 this.DBPath = path+fileType+"Database";
             }
             else {
                 yourFile.mkdir();
-                /*try {
-                    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path+fileType+"Database", true)));
-                    out.println("<"+fileType+"s>");
-                    out.print("</"+fileType+"s>");
-                    out.close();
-                } catch (IOException e) {
-                    //oh noes!
-                }*/
                 this.DBPath = path+fileType+"Database";
             }
         }
