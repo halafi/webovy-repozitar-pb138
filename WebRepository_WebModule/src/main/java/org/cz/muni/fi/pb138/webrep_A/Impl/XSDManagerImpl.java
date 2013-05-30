@@ -28,7 +28,7 @@ public class XSDManagerImpl implements XSDManager {
 
     @Override
     public void createXSD(XSD xsd) throws BaseXException {
-        //this.dm.createCollection(this.xsdCollection);
+        //collection must be created!
         this.dm.addXML(this.xsdCollection, xsd.getId().toString(),
                 "<xsd id='"+xsd.getId().toString()+"' date='"+xsd.getDate()
                 +"' fileName='"+xsd.getFileName()+"'>"+xsd.getDocument()+"</xsd>");
@@ -39,9 +39,9 @@ public class XSDManagerImpl implements XSDManager {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        String xsd = this.dm.queryCollection("collection('" + this.xsdCollection + "')/web[@id='" + id.toString() + "']");
+        String xsd = this.dm.queryCollection("collection('" + this.xsdCollection + "')/xsd[@id='" + id.toString() + "']");
         if (xsd.equals("")) {
-            throw new BaseXException("Desired web.xml does not exist");
+            throw new BaseXException("Desired xml schema does not exist");
         }
         return xsd;
     }
@@ -58,6 +58,7 @@ public class XSDManagerImpl implements XSDManager {
      */
     @Override
     public String findXSDByData(String s) {
+        //needs to be written, but it wont work
         throw new UnsupportedOperationException();
     }
 }

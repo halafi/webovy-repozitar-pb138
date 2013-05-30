@@ -9,31 +9,30 @@ import java.util.List;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
-import org.cz.muni.fi.pb138.webrep_A.APIs.WarArchiveManager;
+import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 
 /**
  *
  * @author xmakovic
  */
-public class WarArchiveManagerImpl implements WarArchiveManager {
+public class WarManagerImpl implements WarManager {
     
-    private String warCollection;
+    private String webCollection;
     private DatabaseManager dm;
 
-    public WarArchiveManagerImpl(String warCollection, DatabaseManager dm) throws IOException {
+    public WarManagerImpl(String warCollection, DatabaseManager dm) throws IOException {
         this.dm = dm;
-        this.warCollection = warCollection;
+        this.webCollection = warCollection;
     }
 
     public void setDatabaseManager(DatabaseManager dm) {
         this.dm = dm;
     }
     
-    
-    
     @Override
     public void createWarArchive(WarArchive war, Long id) throws BaseXException {
-        this.dm.addXML(this.warCollection, id.toString() , war.getDocument());
+        //collection must be created!
+        this.dm.addXML(this.webCollection, id.toString() , war.getDocument());
     }
     
     @Override
@@ -41,7 +40,7 @@ public class WarArchiveManagerImpl implements WarArchiveManager {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        String war = this.dm.queryCollection("collection('"+this.warCollection+"')/web[@id='"+id.toString()+"']");
+        String war = this.dm.queryCollection("collection('"+this.webCollection+"')/web[@id='"+id.toString()+"']");
         if (war.equals("")) {
             throw new BaseXException("Desired web.xml does not exist");
         }

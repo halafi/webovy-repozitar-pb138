@@ -8,12 +8,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
-import org.cz.muni.fi.pb138.webrep_A.APIs.WarArchiveManager;
+import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
-import org.cz.muni.fi.pb138.webrep_A.Impl.WarArchiveManagerImpl;
+import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WarArchiveParser;
@@ -33,7 +33,7 @@ public class TestingClass {
         
         WSDLDocManager wsdlManager = new WSDLDocManagerImpl("wsdl",wsdlDBManager);
         XSDManager xsdManager = new XSDManagerImpl("xsd",xsdDBManager);
-        WarArchiveManager warManager = new WarArchiveManagerImpl("web",webXmlDBManager);
+        WarManager warManager = new WarManagerImpl("web",webXmlDBManager);
         
         WSDLDocParser wsdlParser = new WSDLDocParser();
         XSDParser xsdParser = new XSDParser();
@@ -69,12 +69,11 @@ public class TestingClass {
             xsd.setFileName(testWSDL.toString());
             xsd.setDocument(content);
             xsd.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
-            System.out.println(xsd.getExtract());
             xsdManager.createXSDCollection();
             xsdManager.createXSD(xsd);
             
-            String output = xsdManager.getAllXSDs();
-            //System.out.println(output);
+            String output = xsdManager.getXSD(new Long(0));
+            System.out.println(output);
             
         }
     }
