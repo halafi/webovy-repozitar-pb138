@@ -25,7 +25,7 @@ public class DatabaseManager {
         if((Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && !Filetype.WEB.equals(fileType))
                 ||(!Filetype.WSDL.equals(fileType) && Filetype.XSD.equals(fileType) && !Filetype.WEB.equals(fileType))
                 ||(!Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && Filetype.WEB.equals(fileType))) {
-            String path = getClass().getClassLoader().getResource(".").getPath();
+            String path = DatabaseManager.class.getClassLoader().getResource(".").getPath()+"../../BaseXDB/";
             System.out.println(path);
             File yourFile = new File(path+fileType+"Database");
             if(yourFile.exists()) {
@@ -66,9 +66,7 @@ public class DatabaseManager {
         Context context = new Context();
         new Set("dbpath", this.DBPath).execute(context);
         new Open(collection).execute(context);
-        //zde haze chybu
-            new Add(xml, name+".xml").execute(context);
-        //jojo tady no
+        new Add(name, xml).execute(context);
         context.close();
     }
 

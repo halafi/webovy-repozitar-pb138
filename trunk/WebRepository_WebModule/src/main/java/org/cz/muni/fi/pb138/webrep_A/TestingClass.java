@@ -30,9 +30,9 @@ public class TestingClass {
         DatabaseManager xsdDBManager = new DatabaseManager(Filetype.XSD);
         DatabaseManager webXmlDBManager = new DatabaseManager(Filetype.WEB);
         
-        WSDLDocManager wsdlManager = new WSDLDocManagerImpl("wsdl-list",wsdlDBManager);
-        XSDManager xsdManager = new XSDManagerImpl("xsd-list",xsdDBManager);
-        WarArchiveManager warManager = new WarArchiveManagerImpl("web-list",webXmlDBManager);
+        WSDLDocManager wsdlManager = new WSDLDocManagerImpl("wsdl",wsdlDBManager);
+        XSDManager xsdManager = new XSDManagerImpl("xsd",xsdDBManager);
+        WarArchiveManager warManager = new WarArchiveManagerImpl("web",webXmlDBManager);
         
         WSDLDocParser wsdlParser = new WSDLDocParser();
         XSDParser xsdParser = new XSDParser();
@@ -40,7 +40,7 @@ public class TestingClass {
         WebXMLParser webParser = new WebXMLParser();
         
         File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
-                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\test3.wsdl");
+                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\test2.wsdl");
         
         if(testWSDL.exists()) {
             String content = "";
@@ -61,8 +61,16 @@ public class TestingClass {
             wsdl.setFileName(testWSDL.toString());
             wsdl.setDocument(content);
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
-
-            wsdlManager.createWSDL(wsdl, wsdl.getId());
+            
+            wsdlManager.createWSDLCollection();
+            wsdlManager.createWSDL(wsdl);
+            wsdl.setId(new Long(1));
+            wsdlManager.createWSDL(wsdl);
+            wsdl.setId(new Long(2));
+            wsdlManager.createWSDL(wsdl);
+            wsdl.setId(new Long(3));
+            wsdlManager.createWSDL(wsdl);
+            //wsdlManager.getWSDL(wsdl.getId());
         }
     }
 }

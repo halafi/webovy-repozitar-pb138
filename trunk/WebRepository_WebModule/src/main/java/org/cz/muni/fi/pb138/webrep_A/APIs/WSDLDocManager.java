@@ -13,7 +13,7 @@ public interface WSDLDocManager {
     /*
      * Saves WSDL into database
      */
-    public void createWSDL(WSDLDoc wsdl, Long id) throws BaseXException;
+    public void createWSDL(WSDLDoc wsdl) throws BaseXException;
     
     /*
      * Gets WSDL from database
@@ -29,4 +29,6 @@ public interface WSDLDocManager {
      * Finds WSDL by metadata.
      */
     public String findWSDLByData(Document extract) throws BaseXException;
+
+    public void createWSDLCollection() throws BaseXException;
 }
