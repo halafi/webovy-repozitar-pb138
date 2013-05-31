@@ -13,23 +13,21 @@ import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
  */
 public class XSDManagerImpl implements XSDManager {
 
-    private String xsdCollection;
     private DatabaseManager dm;
 
-    public XSDManagerImpl(String xsdCollection, DatabaseManager dm) throws IOException {
+    public XSDManagerImpl(DatabaseManager dm) throws IOException {
         this.dm = dm;
-        this.xsdCollection = xsdCollection;
     }
 
     @Override
     public void createXSDCollection() throws BaseXException {
-        this.dm.createCollection(this.xsdCollection);
+        this.dm.createCollection("xsd");
     }
 
     @Override
     public void createXSD(XSD xsd) throws BaseXException {
         //collection must be created!
-        this.dm.addXML(this.xsdCollection, xsd.getId().toString(),
+        this.dm.addXML("xsd", xsd.getId().toString(),
                 "<xsd id='"+xsd.getId().toString()+"' date='"+xsd.getDate()
                 +"' fileName='"+xsd.getFileName()+"'>"+xsd.getDocument()+"</xsd>");
     }
@@ -39,7 +37,7 @@ public class XSDManagerImpl implements XSDManager {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        String xsd = this.dm.queryCollection("collection('" + this.xsdCollection + "')/xsd[@id='" + id.toString() + "']");
+        String xsd = this.dm.queryCollection("collection('xsd')/xsd[@id='" + id.toString() + "']");
         if (xsd.equals("")) {
             throw new BaseXException("Desired xml schema does not exist");
         }

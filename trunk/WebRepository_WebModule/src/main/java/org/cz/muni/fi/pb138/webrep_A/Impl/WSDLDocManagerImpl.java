@@ -13,23 +13,21 @@ import org.w3c.dom.Document;
  */
 public class WSDLDocManagerImpl implements WSDLDocManager {
     
-    private String wsdlCollection;
     private DatabaseManager dm;
 
-    public WSDLDocManagerImpl(String wsdlCollection, DatabaseManager dm) throws IOException {
+    public WSDLDocManagerImpl(DatabaseManager dm) throws IOException {
         this.dm = dm;
-        this.wsdlCollection = wsdlCollection;
     }
     
     @Override
     public void createWSDLCollection() throws BaseXException {
-        this.dm.createCollection(this.wsdlCollection);
+        this.dm.createCollection("wsdl");
     }
     
     @Override
     public void createWSDL(WSDLDoc wsdl) throws BaseXException {
         //collection must be created!
-        this.dm.addXML(this.wsdlCollection, wsdl.getId().toString(),
+        this.dm.addXML("wsdl", wsdl.getId().toString(),
                 "<wsdl id='"+wsdl.getId().toString()+"' date='"+wsdl.getDate()
                 +"' fileName='"+wsdl.getFileName()+"'>"+wsdl.getDocument()+"</wsdl>");
     }
@@ -39,7 +37,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        String wsdl = this.dm.queryCollection("collection('"+this.wsdlCollection+"')/wsdl[@id='"+id.toString()+"']");
+        String wsdl = this.dm.queryCollection("collection('wsdl')/wsdl[@id='"+id.toString()+"']");
         if (wsdl.equals("")) {
             throw new BaseXException("WSDL does not exist");
         }
