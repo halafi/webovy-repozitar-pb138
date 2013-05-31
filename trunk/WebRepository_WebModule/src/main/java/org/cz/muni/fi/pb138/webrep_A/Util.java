@@ -38,9 +38,10 @@ public class Util {
      * @throws ParserConfigurationException
      * @throws SAXException
      * @throws IOException 
-     */
-    
-    public static Document warExtract(File warFile) throws ParserConfigurationException, SAXException, IOException{
+     */    
+    public static Document warExtract(File warFile) throws ParserConfigurationException, 
+                                                           SAXException, 
+                                                           IOException{
         JarFile jar = new JarFile(warFile);
         Enumeration entries = jar.entries();
         InputStream in = null;
@@ -68,11 +69,26 @@ public class Util {
         return output;
     }
     
-    public static String stripXMLHeader(String input) throws TransformerConfigurationException, TransformerConfigurationException, TransformerException, SAXException, ParserConfigurationException, IOException {
+    /**
+     * Strip XML header
+     * @param input XML file as String
+     * @return XML file as String without XML header
+     * @throws TransformerConfigurationException
+     * @throws TransformerConfigurationException
+     * @throws TransformerException
+     * @throws SAXException
+     * @throws ParserConfigurationException
+     * @throws IOException 
+     */
+    public static String stripXMLHeader(String input) throws TransformerConfigurationException, 
+                                                             TransformerConfigurationException, 
+                                                             TransformerException, 
+                                                             SAXException, 
+                                                             ParserConfigurationException, 
+                                                             IOException {
         Document doc = stringToDoc(input);
         String output = docToString(doc);
         return output;
-
     }
     
     public static String readFile(File file) throws IOException {
@@ -97,7 +113,8 @@ public class Util {
      * @throws TransformerConfigurationException
      * @throws TransformerException 
      */
-    public static String docToString(Document doc) throws TransformerConfigurationException, TransformerException {
+    public static String docToString(Document doc) throws TransformerConfigurationException, 
+                                                          TransformerException {
         DOMSource domSource = new DOMSource(doc);
         StringWriter writer = new StringWriter();
         StreamResult result = new StreamResult(writer);
