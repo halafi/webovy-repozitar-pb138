@@ -16,23 +16,21 @@ import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
  */
 public class WarManagerImpl implements WarManager {
     
-    private String warCollection;
     private DatabaseManager dm;
 
-    public WarManagerImpl(String warCollection, DatabaseManager dm) throws IOException {
+    public WarManagerImpl(DatabaseManager dm) throws IOException {
         this.dm = dm;
-        this.warCollection = warCollection;
     }
     
     @Override
     public void createWARCollection() throws BaseXException {
-        this.dm.createCollection(this.warCollection);
+        this.dm.createCollection("war");
     }
     
     @Override
     public void createWarArchive(WarArchive war) throws BaseXException {
         //collection must be created!
-        this.dm.addXML(this.warCollection, war.getId().toString(),
+        this.dm.addXML("war", war.getId().toString(),
                 "<war id='"+war.getId().toString()+"' date='"+war.getDate()
                 +"' fileName='"+war.getFileName()+"'>"+"<web.xml>"+war.getWebXml()+"</web.xml></war>");
     }
@@ -42,7 +40,7 @@ public class WarManagerImpl implements WarManager {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        String war = this.dm.queryCollection("collection('"+this.warCollection+"')/war[@id='"+id.toString()+"']");
+        String war = this.dm.queryCollection("collection('war')/war[@id='"+id.toString()+"']");
         if (war.equals("")) {
             throw new BaseXException("Desired war does not exist");
         }

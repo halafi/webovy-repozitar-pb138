@@ -30,9 +30,9 @@ public class TestingClass {
         DatabaseManager xsdDBManager = new DatabaseManager(Filetype.XSD);
         DatabaseManager warXmlDBManager = new DatabaseManager(Filetype.WAR);
         
-        WSDLDocManager wsdlManager = new WSDLDocManagerImpl("wsdl",wsdlDBManager);
-        XSDManager xsdManager = new XSDManagerImpl("xsd",xsdDBManager);
-        WarManager warManager = new WarManagerImpl("war",warXmlDBManager);
+        WSDLDocManager wsdlManager = new WSDLDocManagerImpl(wsdlDBManager);
+        XSDManager xsdManager = new XSDManagerImpl(xsdDBManager);
+        WarManager warManager = new WarManagerImpl(warXmlDBManager);
         
         WSDLDocParser wsdlParser = new WSDLDocParser();
         XSDParser xsdParser = new XSDParser();
@@ -60,7 +60,7 @@ public class TestingClass {
             wsdlManager.createWSDL(wsdl);
             wsdl.setId(new Long(2));
             wsdlManager.createWSDL(wsdl);
-            System.out.println(wsdlManager.getAllWSDLs());
+            System.out.println(wsdlManager.getWSDL(new Long(1)));
             
             //String output = wsdlManager.findWSDLByData("EndorsementSearch");
             //System.out.println(output);
