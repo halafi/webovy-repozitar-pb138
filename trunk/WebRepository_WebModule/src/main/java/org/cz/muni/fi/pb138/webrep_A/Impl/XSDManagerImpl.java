@@ -5,6 +5,7 @@ import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
 import org.cz.muni.fi.pb138.webrep_A.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
+import org.cz.muni.fi.pb138.webrep_A.Util;
 
 /**
  *
@@ -30,7 +31,7 @@ public class XSDManagerImpl implements XSDManager {
     public void createXSD(XSD xsd) throws BaseXException {
         //collection must be created!
         this.dm.addXML(this.xsdCollection, xsd.getId().toString(),
-                "<xsd id='"+xsd.getId().toString()+"' date='"+xsd.getDate()
+                "<xsd id='"+xsd.getId().toString()+"' date='"+Util.getDate(xsd.getDate())
                 +"' fileName='"+xsd.getFileName()+"'>"+xsd.getDocument()+"</xsd>");
     }
 

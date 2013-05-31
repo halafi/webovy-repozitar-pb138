@@ -5,6 +5,7 @@ import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
+import org.cz.muni.fi.pb138.webrep_A.Util;
 import org.w3c.dom.Document;
 /**
  *
@@ -30,7 +31,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     public void createWSDL(WSDLDoc wsdl) throws BaseXException {
         //collection must be created!
         this.dm.addXML(this.wsdlCollection, wsdl.getId().toString(),
-                "<wsdl id='"+wsdl.getId().toString()+"' date='"+wsdl.getDate()
+                "<wsdl id='"+wsdl.getId().toString()+"' date='"+Util.getDate(wsdl.getDate())
                 +"' fileName='"+wsdl.getFileName()+"'>"+wsdl.getDocument()+"</wsdl>");
     }
 
