@@ -28,11 +28,11 @@ public class TestingClass {
     public static void main(String[] args) throws IOException, TransformerConfigurationException, TransformerException, ParserConfigurationException, SAXException {
         DatabaseManager wsdlDBManager = new DatabaseManager(Filetype.WSDL);
         DatabaseManager xsdDBManager = new DatabaseManager(Filetype.XSD);
-        DatabaseManager webXmlDBManager = new DatabaseManager(Filetype.WEB);
+        DatabaseManager warXmlDBManager = new DatabaseManager(Filetype.WAR);
         
         WSDLDocManager wsdlManager = new WSDLDocManagerImpl("wsdl",wsdlDBManager);
         XSDManager xsdManager = new XSDManagerImpl("xsd",xsdDBManager);
-        WarManager warManager = new WarManagerImpl("web",webXmlDBManager);
+        WarManager warManager = new WarManagerImpl("war",warXmlDBManager);
         
         WSDLDocParser wsdlParser = new WSDLDocParser();
         XSDParser xsdParser = new XSDParser();
@@ -82,10 +82,9 @@ public class TestingClass {
         File testWAR = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\Calendar.war");
         
-        /*if(testWAR.exists()) {
+        if(testWAR.exists()) {
             Document testWEB = Util.warExtract(testWAR);
             String content = Util.docToString(testWEB);
-            System.out.println(content);
             WarArchive war = new WarArchive();
             war.setId(new Long(0));
             war.setDate(null);
@@ -94,8 +93,8 @@ public class TestingClass {
             warManager.createWARCollection();
             warManager.createWarArchive(war);
             
-            //String output = warManager.getWarArchive(new Long(0));
-            //System.out.println(output);
-        }*/
+            String output = warManager.getAllArchives();
+            System.out.println(output);
+        }
     }
 }
