@@ -27,9 +27,9 @@ public class XSDManagerImpl implements XSDManager {
     @Override
     public void createXSD(XSD xsd) throws BaseXException {
         //collection must be created!
-        this.dm.addXML("xsd", xsd.getId().toString(),
-                "<xsd id='"+xsd.getId().toString()+"' date='"+xsd.getDate()
-                +"' fileName='"+xsd.getFileName()+"'>"+xsd.getDocument()+"</xsd>");
+        String xml = "<xsd id='"+xsd.getId().toString()+"' date='"+xsd.getDate()
+                +"' fileName='"+xsd.getFileName()+"'>"+xsd.getDocument()+"</xsd>";
+        this.dm.addXML("xsd", xsd.getId().toString(),xml);
     }
 
     @Override
