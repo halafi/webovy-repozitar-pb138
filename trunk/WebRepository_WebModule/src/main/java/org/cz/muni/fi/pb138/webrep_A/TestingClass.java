@@ -37,10 +37,12 @@ public class TestingClass {
         XSDParser xsdParser = new XSDParser();
         WebXMLParser webParser = new WebXMLParser();
         
-        File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
+
+        /* WSDL TEST
+         * 
+           File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\webservice.wsdl");
-        
-        /*if(testWSDL.exists()) {
+         if(testWSDL.exists()) {
             String content = Util.readFile(testWSDL);
             
             WSDLDoc wsdl = new WSDLDoc();
@@ -59,10 +61,12 @@ public class TestingClass {
         }
         */
         
-        File testXSD = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
-                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\xmlSchema\\test.xsd");
         
-        /*if(testXSD.exists()) {
+        
+        /* XSD TEST
+            File testXSD = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
+                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\xmlSchema\\test.xsd");
+         if(testXSD.exists()) {
             String content = Util.readFile(testXSD);
             XSD xsd = new XSD();
             xsd.setId(new Long(0));
@@ -78,9 +82,11 @@ public class TestingClass {
             
         }*/
         
-        File testWAR = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
-                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\Calendar.war");
         
+        /*
+         * WAR TEST
+        File testWAR = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
+                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\jop.war");
         if(testWAR.exists()) {
             Document testWEB = Util.warExtract(testWAR);
             String content = Util.docToString(testWEB);
@@ -89,11 +95,14 @@ public class TestingClass {
             war.setDate(new Date());
             war.setFileName(testWAR.toString());
             war.setWebXml(content);
+            war.setExtract(Util.docToString(webParser.webXMLExtract(Util.stringToDoc(content))));
             warManager.createWARCollection();
             warManager.createWarArchive(war);
             
             String output = warManager.getWarArchive(new Long(0));
             System.out.println(output);
         }
+        *
+        */
     }
 }
