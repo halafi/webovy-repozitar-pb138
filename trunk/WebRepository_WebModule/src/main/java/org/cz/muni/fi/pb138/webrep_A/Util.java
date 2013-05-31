@@ -13,6 +13,7 @@ import java.util.zip.ZipEntry;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -38,15 +39,16 @@ public class Util {
      * @throws SAXException
      * @throws IOException 
      */
+    
     public static Document warExtract(File warFile) throws ParserConfigurationException, SAXException, IOException{
         JarFile jar = new JarFile(warFile);
         Enumeration entries = jar.entries();
         InputStream in = null;
         while (entries.hasMoreElements()) {
            ZipEntry entry = (ZipEntry)entries.nextElement();
-           System.out.println(entry.toString());
            if (entry.getName().toLowerCase().indexOf("web.xml") != -1) {
                in = jar.getInputStream(entry);
+               System.out.println("web.xml extracted");
                break;
            }
            if (!entries.hasMoreElements()) {
@@ -64,6 +66,13 @@ public class Util {
              throw new IOException(ex);
          }
         return output;
+    }
+    
+    public static String stripXMLHeader(String input) throws TransformerConfigurationException, TransformerConfigurationException, TransformerException, SAXException, ParserConfigurationException, IOException {
+        Document doc = stringToDoc(input);
+        String output = docToString(doc);
+        return output;
+
     }
     
     public static String readFile(File file) throws IOException {
@@ -94,6 +103,7 @@ public class Util {
         StreamResult result = new StreamResult(writer);
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
+        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
         transformer.transform(domSource, result);
         return writer.toString();
     }
