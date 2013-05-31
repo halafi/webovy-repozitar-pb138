@@ -2,19 +2,21 @@ package org.cz.muni.fi.pb138.webrep_A;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.jar.JarFile;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
-import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 /**
@@ -56,7 +58,8 @@ public class TestingClass {
         
         File testXSD = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\xmlSchema\\test.xsd");
-        if(testXSD.exists()) {
+        
+        /*if(testXSD.exists()) {
             String content = Util.readFile(testXSD);
             XSD xsd = new XSD();
             xsd.setId(new Long(0));
@@ -70,6 +73,25 @@ public class TestingClass {
             String output = xsdManager.getXSD(new Long(0));
             System.out.println(output);
             
+        }*/
+        
+        File testWAR = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
+                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\Calendar.war");
+        
+        if(testWAR.exists()) {
+            Document testWEB = Util.warExtract(testWAR);
+            String content = Util.docToString(testWEB);
+            WarArchive war = new WarArchive();
+            war.setId(new Long(0));
+            war.setDate(null);
+            war.setFileName(testWAR.toString());
+            war.setDocument(content);
+            war.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
+            warManager.createWARCollection();
+            warManager.createWarArchive(war);
+            
+            String output = warManager.getWarArchive(new Long(0));
+            System.out.println(output);
         }
     }
 }

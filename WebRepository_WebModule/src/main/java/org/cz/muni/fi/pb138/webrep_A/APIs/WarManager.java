@@ -12,7 +12,7 @@ public interface WarManager {
     /*
      * Stores web.xml into database
      */
-    public void createWarArchive(WarArchive war, Long id) throws BaseXException;
+    public void createWarArchive(WarArchive war) throws BaseXException;
     
     /*
      * Gets web.xml file from database
@@ -28,5 +28,5 @@ public interface WarManager {
      * Finds desired web.xml by data
      */
     public String findWebXMLbyArtefact(String string);
-    
+    public void createWARCollection() throws BaseXException;
 }
