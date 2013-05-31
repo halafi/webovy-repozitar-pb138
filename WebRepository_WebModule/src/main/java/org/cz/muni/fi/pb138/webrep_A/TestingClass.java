@@ -9,6 +9,7 @@ import javax.xml.transform.TransformerException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
@@ -37,9 +38,10 @@ public class TestingClass {
         XSDParser xsdParser = new XSDParser();
         WebXMLParser webParser = new WebXMLParser();
         
+        
 
-        /* WSDL TEST
-         * 
+        // WSDL TEST
+         
            File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\webservice.wsdl");
          if(testWSDL.exists()) {
@@ -54,12 +56,16 @@ public class TestingClass {
             
             wsdlManager.createWSDLCollection();
             wsdlManager.createWSDL(wsdl);
+            wsdl.setId(new Long(1));
+            wsdlManager.createWSDL(wsdl);
+            wsdl.setId(new Long(2));
+            wsdlManager.createWSDL(wsdl);
             System.out.println(wsdlManager.getAllWSDLs());
             
             //String output = wsdlManager.findWSDLByData("EndorsementSearch");
             //System.out.println(output);
         }
-        */
+        
         
         
         
