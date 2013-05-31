@@ -50,8 +50,10 @@ public class WarManagerImpl implements WarManager {
     }
     
     @Override
-    public String getAllArchives() {
-        throw new UnsupportedOperationException();
+    public String getAllArchives() throws BaseXException {
+        String query = "for $war in (collection('war')/war) "
+                + "return $war";
+        return "<WARs> " + this.dm.queryCollection(query) + " </WARs>";
     }
     
     /*
