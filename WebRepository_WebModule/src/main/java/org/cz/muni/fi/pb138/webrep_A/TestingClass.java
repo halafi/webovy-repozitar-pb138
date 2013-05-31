@@ -1,8 +1,6 @@
 package org.cz.muni.fi.pb138.webrep_A;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
@@ -10,13 +8,11 @@ import javax.xml.transform.TransformerException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
-import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
-import org.cz.muni.fi.pb138.webrep_A.Parser.WarArchiveParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
 import org.xml.sax.SAXException;
@@ -37,7 +33,6 @@ public class TestingClass {
         
         WSDLDocParser wsdlParser = new WSDLDocParser();
         XSDParser xsdParser = new XSDParser();
-        WarArchiveParser warParser = new WarArchiveParser();
         WebXMLParser webParser = new WebXMLParser();
         
         File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"

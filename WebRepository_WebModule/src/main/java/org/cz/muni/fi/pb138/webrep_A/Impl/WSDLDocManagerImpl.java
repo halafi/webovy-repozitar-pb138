@@ -58,7 +58,8 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
      */    
     @Override
     public String findWSDLByData(String definitonsName) throws BaseXException {
-        String query = "for $wsdl in (collection('wsdl')/wsdl) "
+        //bitch wont work
+        String query = "for $wsdl in collection('wsdl')/wsd) "
                 + " let $name := $wsdl/definitions/@name"
                 + " where $name='"+definitonsName+"'"
                 + " return $wsdl";
