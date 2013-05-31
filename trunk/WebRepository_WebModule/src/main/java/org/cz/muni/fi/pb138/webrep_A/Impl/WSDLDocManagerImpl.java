@@ -1,15 +1,10 @@
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.io.IOException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
-import org.cz.muni.fi.pb138.webrep_A.Util;
-import org.xml.sax.SAXException;
 /**
  *
  *
@@ -42,7 +37,10 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        String wsdl = this.dm.queryCollection("collection('wsdl')/wsdl[@id='"+id.toString()+"']/definitions");
+
+        String wsdl = this.dm.queryCollection("declare default element namespace ='http://www.w3.or/2001/XMLSchema'; "
+                + " declare namespace wsdl = 'http://schemas.xmlsoap.org/wsdl/'; declare target namespace 'http://schemas.xmlsoap.org/wsdl/'; "
+                + " collection('wsdl')/wsdl[@id='"+id.toString()+"']");
         if (wsdl.equals("")) {
             throw new BaseXException("WSDL does not exist");
         }
