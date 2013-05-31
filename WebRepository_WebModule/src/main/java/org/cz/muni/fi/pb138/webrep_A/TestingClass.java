@@ -9,6 +9,7 @@ import javax.xml.transform.TransformerException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
@@ -38,23 +39,26 @@ public class TestingClass {
         WebXMLParser webParser = new WebXMLParser();
         
         File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
-                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\test2.wsdl");
+                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\webservice.wsdl");
         
         /*if(testWSDL.exists()) {
-            String content =Util.readFile(testWSDL);
+            String content = Util.readFile(testWSDL);
             
             WSDLDoc wsdl = new WSDLDoc();
             wsdl.setId(new Long(0));
             wsdl.setDate(null);
             wsdl.setFileName(testWSDL.toString());
-            wsdl.setDocument(content);
+            wsdl.setDocument(Util.stripXMLHeader(content));
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
             
             wsdlManager.createWSDLCollection();
             wsdlManager.createWSDL(wsdl);
+            System.out.println(wsdlManager.getAllWSDLs());
+            
             //String output = wsdlManager.findWSDLByData("EndorsementSearch");
             //System.out.println(output);
-        }*/
+        }
+        */
         
         File testXSD = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\xmlSchema\\test.xsd");
@@ -78,20 +82,20 @@ public class TestingClass {
         File testWAR = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\Calendar.war");
         
-        if(testWAR.exists()) {
+        /*if(testWAR.exists()) {
             Document testWEB = Util.warExtract(testWAR);
             String content = Util.docToString(testWEB);
+            System.out.println(content);
             WarArchive war = new WarArchive();
             war.setId(new Long(0));
             war.setDate(null);
             war.setFileName(testWAR.toString());
-            war.setDocument(content);
-            war.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
+            war.setWebXml(content);
             warManager.createWARCollection();
             warManager.createWarArchive(war);
             
-            String output = warManager.getWarArchive(new Long(0));
-            System.out.println(output);
-        }
+            //String output = warManager.getWarArchive(new Long(0));
+            //System.out.println(output);
+        }*/
     }
 }
