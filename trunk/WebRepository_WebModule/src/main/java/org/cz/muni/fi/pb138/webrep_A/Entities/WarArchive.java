@@ -9,24 +9,15 @@ public class WarArchive {
 
     private Long id;
     private Date date;
-    private String document;
-    private String extract;
+    private String webXml;
     private String fileName;
 
-    public String getDocument() {
-        return document;
+    public String getWebXml() {
+        return webXml;
     }
 
-    public void setDocument(String document) {
-        this.document = document;
-    }
-
-    public String getExtract() {
-        return extract;
-    }
-
-    public void setExtract(String extract) {
-        this.extract = extract;
+    public void setWebXml(String webXml) {
+        this.webXml = webXml;
     }
 
     public Long getId() {
@@ -77,6 +68,8 @@ public class WarArchive {
 
     @Override
     public String toString() {
-        return "WarArchive{" + "id=" + id + ", date=" + date + ", document=" + document + ", fileName=" + fileName + ", extract=" + extract + '}';
+        return "WarArchive{" + "id=" + id + ", date=" + date + ", webXml=" + webXml + ", fileName=" + fileName + '}';
     }
+
+ 
 }
