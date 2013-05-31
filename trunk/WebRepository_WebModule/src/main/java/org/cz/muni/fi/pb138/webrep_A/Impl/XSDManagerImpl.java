@@ -57,8 +57,12 @@ public class XSDManagerImpl implements XSDManager {
      * Finds XSD by data input.
      */
     @Override
-    public String findXSDByData(String s) {
-        //needs to be written, but it wont work
-        throw new UnsupportedOperationException();
+    public String findXSDByData(String s) throws BaseXException{
+        String query = "for $xsd in collection('xsd')//xsd) "
+                + " let $name := $xsd//element/@name"
+                + " let $nameElement := " + s
+                + " where $name= $nameElement"
+                + " return $xsd";
+        return "<XSDs> " + this.dm.queryCollection(query) + " </XSDs>";
     }
 }
