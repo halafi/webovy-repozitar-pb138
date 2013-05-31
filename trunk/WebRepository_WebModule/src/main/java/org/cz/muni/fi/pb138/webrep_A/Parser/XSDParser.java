@@ -12,6 +12,13 @@ import org.w3c.dom.NodeList;
  * @author xfasian
  */
 public class XSDParser {
+    
+    /**
+    * Create extract document from XSD 
+    * @param doc original XSD as dom.Document
+    * @return Extracted XSD as dom.Document
+    * @throws ParserConfigurationException 
+    */
     public Document xsdExtract(Document doc) throws ParserConfigurationException{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         Document output;
