@@ -9,23 +9,34 @@ import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
  */
 public interface WarManager {
     
-    /*
-     * Stores web.xml into database
+    /**
+     * Saves web.XML into database
+     * @param war is war archive
+     * @param id id in database
+     * @throws BaseXException 
      */
     public void createWarArchive(WarArchive war) throws BaseXException;
     
-    /*
-     * Gets web.xml file from database
+    /**
+     * Gets web.XML from database
+     * @param id
+     * @return Single web.XML file as String
+     * @throws BaseXException 
      */
     public String getWarArchive(Long id)throws BaseXException;  
     
-    /*
-     * gets all web.xml files from database
+    /**
+     * Gets all web.XMLs from database.
+     * @return All web.XMLs from database as String
+     * @throws BaseXException 
      */
     public String getAllArchives();
     
-    /*
-     * Finds desired web.xml by data
+    /**
+     * Finds web.XML by meta data.
+     * @param definitonsName
+     * @return All web.XMLs satisfactory search.
+     * @throws BaseXException 
      */
     public String findWebXMLbyArtefact(String string);
     public void createWARCollection() throws BaseXException;
