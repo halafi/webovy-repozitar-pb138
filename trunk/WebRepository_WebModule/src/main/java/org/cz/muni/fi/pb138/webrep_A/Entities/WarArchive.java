@@ -11,10 +11,19 @@ public class WarArchive {
     private Long id;
     private Date date;
     private String webXml;
+    private String extract;
     private String fileName;
 
     public String getWebXml() {
         return webXml;
+    }
+
+    public String getExtract() {
+        return extract;
+    }
+
+    public void setExtract(String extract) {
+        this.extract = extract;
     }
 
     public void setWebXml(String webXml) {
