@@ -30,7 +30,7 @@ public interface WarManager {
      * @return All web.XMLs from database as String
      * @throws BaseXException 
      */
-    public String getAllArchives();
+    public String getAllArchives() throws BaseXException;
     
     /**
      * Finds web.XML by meta data.
