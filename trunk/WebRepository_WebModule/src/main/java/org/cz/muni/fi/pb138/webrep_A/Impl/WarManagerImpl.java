@@ -9,7 +9,6 @@ import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
-import org.cz.muni.fi.pb138.webrep_A.Util;
 
 /**
  *
@@ -34,7 +33,7 @@ public class WarManagerImpl implements WarManager {
     public void createWarArchive(WarArchive war) throws BaseXException {
         //collection must be created!
         this.dm.addXML(this.warCollection, war.getId().toString(),
-                "<war id='"+war.getId().toString()+"' date='"+Util.getDate(war.getDate())
+                "<war id='"+war.getId().toString()+"' date='"+war.getDate()
                 +"' fileName='"+war.getFileName()+"'>"+"<web.xml>"+war.getWebXml()+"</web.xml></war>");
     }
     
@@ -61,13 +60,5 @@ public class WarManagerImpl implements WarManager {
         String query = "for $war in collection('war')/war "
                 + " return $war";
         return "<WARs> " + this.dm.queryCollection(query) + " </WARs>";
-    }
-    
-    /*
-     * Finds desired web.xml by data
-     */
-    @Override
-    public String findWebXMLbyArtefact(String string){
-        throw new UnsupportedOperationException();
     }
 }

@@ -32,12 +32,5 @@ public interface WarManager {
      */
     public String getAllArchives() throws BaseXException;
     
-    /**
-     * Finds web.XML by meta data.
-     * @param definitonsName
-     * @return All web.XMLs satisfactory search.
-     * @throws BaseXException 
-     */
-    public String findWebXMLbyArtefact(String string);
     public void createWARCollection() throws BaseXException;
 }
