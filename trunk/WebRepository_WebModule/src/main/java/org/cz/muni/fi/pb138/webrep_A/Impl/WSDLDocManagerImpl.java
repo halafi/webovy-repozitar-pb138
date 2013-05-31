@@ -1,11 +1,15 @@
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.io.IOException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
-import org.w3c.dom.Document;
+import org.cz.muni.fi.pb138.webrep_A.Util;
+import org.xml.sax.SAXException;
 /**
  *
  *
@@ -27,17 +31,18 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     @Override
     public void createWSDL(WSDLDoc wsdl) throws BaseXException {
         //collection must be created!
-        this.dm.addXML("wsdl", wsdl.getId().toString(),
-                "<wsdl id='"+wsdl.getId().toString()+"' date='"+wsdl.getDate()
-                +"' fileName='"+wsdl.getFileName()+"'>"+wsdl.getDocument()+"</wsdl>");
+        String xml = "<wsdl id='"+wsdl.getId().toString()+"' date='"+wsdl.getDate()
+                +"' fileName='"+wsdl.getFileName()+"'>"+wsdl.getDocument()+"</wsdl>";
+        this.dm.addXML("wsdl", wsdl.getId().toString(),xml);
     }
 
+    
     @Override
-    public String getWSDL(Long id) throws BaseXException{
+    public String getWSDL(Long id) throws BaseXException {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        String wsdl = this.dm.queryCollection("collection('wsdl')/wsdl[@id='"+id.toString()+"']");
+        String wsdl = this.dm.queryCollection("collection('wsdl')/wsdl[@id='"+id.toString()+"']/definitions");
         if (wsdl.equals("")) {
             throw new BaseXException("WSDL does not exist");
         }

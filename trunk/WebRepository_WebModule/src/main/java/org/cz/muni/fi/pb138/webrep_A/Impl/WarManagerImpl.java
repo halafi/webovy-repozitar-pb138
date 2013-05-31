@@ -6,9 +6,9 @@ package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.io.IOException;
 import org.basex.core.BaseXException;
+import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
-import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 
 /**
  *
@@ -30,9 +30,9 @@ public class WarManagerImpl implements WarManager {
     @Override
     public void createWarArchive(WarArchive war) throws BaseXException {
         //collection must be created!
-        this.dm.addXML("war", war.getId().toString(),
-                "<war id='"+war.getId().toString()+"' date='"+war.getDate()
-                +"' fileName='"+war.getFileName()+"'>"+"<web.xml>"+war.getWebXml()+"</web.xml></war>");
+        String xml = "<war id='"+war.getId().toString()+"' date='"+war.getDate()
+                +"' fileName='"+war.getFileName()+"'>"+"<web.xml>"+war.getWebXml()+"</web.xml></war>";
+        this.dm.addXML("war", war.getId().toString(),xml);
     }
     
     @Override
