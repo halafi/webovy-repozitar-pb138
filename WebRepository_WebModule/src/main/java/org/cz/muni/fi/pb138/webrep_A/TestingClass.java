@@ -43,7 +43,7 @@ public class TestingClass {
         // WSDL TEST
          
            File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
-                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\webservice.wsdl");
+                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\test2.wsdl");
          if(testWSDL.exists()) {
             String content = Util.readFile(testWSDL);
             

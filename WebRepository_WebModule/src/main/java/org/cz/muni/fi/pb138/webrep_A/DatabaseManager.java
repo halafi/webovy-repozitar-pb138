@@ -11,6 +11,7 @@ import org.basex.core.cmd.DropDB;
 import org.basex.core.cmd.Open;
 import org.basex.core.cmd.Set;
 import org.basex.core.cmd.XQuery;
+import org.basex.query.QueryProcessor;
 /**
  *
  * @author xmakovic
