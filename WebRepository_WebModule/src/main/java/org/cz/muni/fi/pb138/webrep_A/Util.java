@@ -29,7 +29,15 @@ import org.xml.sax.SAXException;
  * @author xmakovic
  */
 public class Util {
-    
+
+    /**
+     * Extract web.XML from war archive.
+     * @param warFile
+     * @return web.XML as dom.Document
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws IOException 
+     */
     public static Document warExtract(File warFile) throws ParserConfigurationException, SAXException, IOException{
         JarFile jar = new JarFile(warFile);
         Enumeration entries = jar.entries();
@@ -72,6 +80,14 @@ public class Util {
         reader.close();
         return content;
     }
+    
+    /**
+     * Convert dom.Document to String
+     * @param doc
+     * @return XML document as String
+     * @throws TransformerConfigurationException
+     * @throws TransformerException 
+     */
     public static String docToString(Document doc) throws TransformerConfigurationException, TransformerException {
         DOMSource domSource = new DOMSource(doc);
         StringWriter writer = new StringWriter();
@@ -81,7 +97,14 @@ public class Util {
         transformer.transform(domSource, result);
         return writer.toString();
     }
-    
+    /**
+     * Convert String to dom.Document
+     * @param xmlSource
+     * @return XML document as dom.Document
+     * @throws SAXException
+     * @throws ParserConfigurationException
+     * @throws IOException 
+     */
     public static Document stringToDoc(String xmlSource) throws SAXException, ParserConfigurationException, IOException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
