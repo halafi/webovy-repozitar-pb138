@@ -27,10 +27,10 @@
             <table class="zakladni" border="1">
                 <thead>
                     <tr>
-                        <th>jmeno</th>
-                        <th>adresa</th>
-                        <th>email</th>
-                        <th>telefon</th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Version</th>
+                        <th>Link</th>
 
                     </tr>
                 </thead>
