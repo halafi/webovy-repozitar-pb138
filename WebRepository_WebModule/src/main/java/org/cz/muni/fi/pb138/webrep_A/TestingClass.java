@@ -11,6 +11,7 @@ import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
+import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
@@ -38,7 +39,7 @@ public class TestingClass {
         XSDParser xsdParser = new XSDParser();
         WebXMLParser webParser = new WebXMLParser();
         
-        
+        /*
 
         // WSDL TEST
          
@@ -65,11 +66,8 @@ public class TestingClass {
             //String output = wsdlManager.findWSDLByData("EndorsementSearch");
             //System.out.println(output);
         }
+        */
         
-        
-        
-        
-        /* XSD TEST
             File testXSD = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\xmlSchema\\test.xsd");
          if(testXSD.exists()) {
@@ -77,7 +75,7 @@ public class TestingClass {
             XSD xsd = new XSD();
             xsd.setId(new Long(0));
             xsd.setDate(null);
-            xsd.setFileName(testWSDL.toString());
+            xsd.setFileName(testXSD.toString());
             xsd.setDocument(content);
             xsd.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
             xsdManager.createXSDCollection();
@@ -86,7 +84,7 @@ public class TestingClass {
             String output = xsdManager.getXSD(new Long(0));
             System.out.println(output);
             
-        }*/
+        }
         
         
         /*
