@@ -2,14 +2,13 @@ package org.cz.muni.fi.pb138.webrep_A;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.jar.JarFile;
+import java.util.Date;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
-import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
@@ -87,13 +86,13 @@ public class TestingClass {
             String content = Util.docToString(testWEB);
             WarArchive war = new WarArchive();
             war.setId(new Long(0));
-            war.setDate(null);
+            war.setDate(new Date());
             war.setFileName(testWAR.toString());
             war.setWebXml(content);
             warManager.createWARCollection();
             warManager.createWarArchive(war);
             
-            String output = warManager.getAllArchives();
+            String output = warManager.getWarArchive(new Long(0));
             System.out.println(output);
         }
     }

@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
@@ -30,6 +33,10 @@ import org.xml.sax.SAXException;
  * @author xmakovic
  */
 public class Util {
+    public static String getDate(Date date) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        return(dateFormat.format(date));
+    }
 
     /**
      * Extract web.XML from war archive.
