@@ -37,7 +37,8 @@ public class XSDManagerImpl implements XSDManager {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
-        String xsd = this.dm.queryCollection("collection('xsd')/xsd[@id='" + id.toString() + "']");
+        String xsd = this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
+                + "collection('xsd')/xsd[@id='" + id.toString() + "']/xsd:schema");
         if (xsd.equals("")) {
             throw new BaseXException("Desired xml schema does not exist");
         }

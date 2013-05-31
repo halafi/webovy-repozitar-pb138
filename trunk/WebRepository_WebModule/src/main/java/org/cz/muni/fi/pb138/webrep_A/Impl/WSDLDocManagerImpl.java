@@ -38,8 +38,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
             throw new IllegalArgumentException("id is null");
         }
 
-        String wsdl = this.dm.queryCollection("declare default element namespace ='http://www.w3.or/2001/XMLSchema'; "
-                + " declare namespace wsdl = 'http://schemas.xmlsoap.org/wsdl/'; declare target namespace 'http://schemas.xmlsoap.org/wsdl/'; "
+        String wsdl = this.dm.queryCollection("declare default element namespace 'http://www.w3.or/2001/XMLSchema'; "
                 + " collection('wsdl')/wsdl[@id='"+id.toString()+"']");
         if (wsdl.equals("")) {
             throw new BaseXException("WSDL does not exist");
