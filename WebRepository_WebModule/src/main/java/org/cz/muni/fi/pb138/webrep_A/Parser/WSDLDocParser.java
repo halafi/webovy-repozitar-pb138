@@ -14,6 +14,12 @@ import org.w3c.dom.NodeList;
  */
 public class WSDLDocParser {    
     
+    /**
+     * Create extract document from WSDL 
+     * @param doc original WSDL as dom.Document
+     * @return Extracted WSDL as dom.Document
+     * @throws ParserConfigurationException 
+     */
     public Document wsdlExtract(Document doc) throws ParserConfigurationException{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         Document output;
