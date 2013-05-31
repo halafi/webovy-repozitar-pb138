@@ -19,9 +19,9 @@ public class DatabaseManager {
     private String DBPath;
 
     public DatabaseManager(Filetype fileType) throws IOException {
-        if((Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && !Filetype.WEB.equals(fileType))
-                ||(!Filetype.WSDL.equals(fileType) && Filetype.XSD.equals(fileType) && !Filetype.WEB.equals(fileType))
-                ||(!Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && Filetype.WEB.equals(fileType))) {
+        if((Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && !Filetype.WAR.equals(fileType))
+                ||(!Filetype.WSDL.equals(fileType) && Filetype.XSD.equals(fileType) && !Filetype.WAR.equals(fileType))
+                ||(!Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && Filetype.WAR.equals(fileType))) {
             String path = DatabaseManager.class.getClassLoader().getResource(".").getPath()+"../../BaseXDB/";
             File basexdbDir = new File(path);
             if(!basexdbDir.exists()) {
