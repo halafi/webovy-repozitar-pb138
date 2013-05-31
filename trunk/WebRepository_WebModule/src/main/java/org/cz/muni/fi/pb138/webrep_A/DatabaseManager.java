@@ -27,12 +27,14 @@ public class DatabaseManager {
             if(!basexdbDir.exists()) {
                 basexdbDir.mkdir();
             }
-            System.out.println("mkdir:"+path+fileType+"Database");
+            
             File yourFile = new File(path+fileType+"Database");
             if(yourFile.exists()) {
+                System.out.println("found:"+path+fileType+"Database");
                 this.DBPath = path+fileType+"Database";
             }
             else {
+                System.out.println("mkdir:"+path+fileType+"Database");
                 yourFile.mkdir();
                 this.DBPath = path+fileType+"Database";
             }

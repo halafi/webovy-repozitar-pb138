@@ -30,15 +30,19 @@ import org.xml.sax.SAXException;
  */
 public class Util {
     
-    public static Document warExtract(JarFile warFile) throws ParserConfigurationException, SAXException, IOException{
-        Enumeration entries = warFile.entries();
+    public static Document warExtract(File warFile) throws ParserConfigurationException, SAXException, IOException{
+        JarFile jar = new JarFile(warFile);
+        Enumeration entries = jar.entries();
         InputStream in = null;
         while (entries.hasMoreElements()) {
            ZipEntry entry = (ZipEntry)entries.nextElement();
-           if (entry.getName().equals("web.xml")) {
-               in = warFile.getInputStream(entry);
+           System.out.println(entry.toString());
+           if (entry.getName().toLowerCase().indexOf("web.xml") != -1) {
+               in = jar.getInputStream(entry);
                break;
-               //prohledava podslozky?
+           }
+           if (!entries.hasMoreElements()) {
+               throw new IllegalArgumentException("No web.xml file in WAR archive.");
            }
         }
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
