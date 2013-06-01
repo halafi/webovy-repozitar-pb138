@@ -1,13 +1,16 @@
 package org.cz.muni.fi.pb138.webrep_A.Util;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
 import org.basex.core.BaseXException;
 import org.basex.core.Context;
 import org.basex.core.cmd.Add;
 import org.basex.core.cmd.CreateDB;
-import org.basex.core.cmd.Delete;
-import org.basex.core.cmd.DropDB;
 import org.basex.core.cmd.Open;
 import org.basex.core.cmd.Set;
 import org.basex.core.cmd.XQuery;
@@ -17,6 +20,11 @@ import org.basex.core.cmd.XQuery;
  */
 public class DatabaseManager {
     private String DBPath;
+    public static final Logger logger = Logger.getLogger(DatabaseManager.class.getName());
+  
+    public void setLogger(FileOutputStream fs) {
+        logger.addHandler(new StreamHandler(fs, new SimpleFormatter()));
+    }
 
     public DatabaseManager(Filetype fileType) throws IOException {
         if((Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && !Filetype.WAR.equals(fileType))
@@ -55,28 +63,16 @@ public class DatabaseManager {
     * @param collection collection name
     * @param name name of the xml file (without extension)
     * @param xml well-formed XML string
-    * @throws BaseXException on database error
     */
-    public void addXML(String collection, String name, String xml) throws BaseXException {
+    public void addXML(String collection, String name, String xml) {
         Context context = new Context();
-        new Set("dbpath", this.DBPath).execute(context);
-        new Open(collection).execute(context);
-        new Add(name, xml).execute(context);
-        context.close();
-    }
-
-    /**
-    * Removes a xml file from a collection
-    * 
-    * @param collection collection name
-    * @param name name of the xml file (without extension)
-    * @throws BaseXException if a database command fails
-    */
-    public void removeXML(String collection, String name) throws BaseXException {
-        Context context = new Context();
-        new Set("dbpath", this.DBPath).execute(context);
-        new Open(collection).execute(context);
-        new Delete(name+".xml").execute(context);
+        try {
+            new Set("dbpath", this.DBPath).execute(context);
+            new Open(collection).execute(context);
+            new Add(name, xml).execute(context);
+        } catch (BaseXException ex) {
+            logger.log(Level.SEVERE, "DBError when adding XML file");
+        }
         context.close();
     }
     
@@ -98,25 +94,16 @@ public class DatabaseManager {
     /**
     * Creates a collection
     * @param collection name of the collection
-    * @throws BaseXException on database error
     */
-    public void createCollection(String collection) throws BaseXException {
+    public void createCollection(String collection) {
         Context context = new Context();
-        new Set("dbpath", this.DBPath).execute(context);
-        new CreateDB(collection).execute(context);
+        try {
+            new Set("dbpath", this.DBPath).execute(context);
+            new CreateDB(collection).execute(context);
+        } catch (BaseXException ex) {
+            logger.log(Level.SEVERE, "DBError when creating collection.");
+        }
         context.close();
     }
 
-    /**
-    * Removes an existing collection
-    * @param collection name of the collection
-    * @throws BaseXException on database error
-    */
-    public void removeCollection(String collection) throws BaseXException {
-        Context context = new Context();
-        new Set("dbpath", this.DBPath).execute(context);
-        //new Open(collection).execute(context);
-        new DropDB(collection).execute(context);
-        context.close();
-    }
 }

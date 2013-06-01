@@ -41,6 +41,10 @@ public class TestingClass {
         DatabaseManager xsdDBManager = new DatabaseManager(Filetype.XSD);
         DatabaseManager warXmlDBManager = new DatabaseManager(Filetype.WAR);
         
+        wsdlDBManager.setLogger(fs);
+        xsdDBManager.setLogger(fs);
+        warXmlDBManager.setLogger(fs);
+        
         WSDLDocManager wsdlManager = new WSDLDocManagerImpl(wsdlDBManager);
         XSDManager xsdManager = new XSDManagerImpl(xsdDBManager);
         WarManager warManager = new WarManagerImpl(warXmlDBManager);
