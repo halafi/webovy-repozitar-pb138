@@ -62,21 +62,12 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         wsdl.setId(id);
         
         wsdl.setFileName(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
-                +" declare namespace soap = 'http://schemas.xmlsoap.org/wsdl/soap/';"
-                +" declare namespace tns = 'http://www.examples.com/wsdl/HelloService.wsdl';"
-                +" declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 +" for $ wsdl in collection('wsdl')/wsdl[@id='" + id.toString() + "']"
                 +" return data($wsdl/@fileName)"));
         wsdl.setTimestamp(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
-                +" declare namespace soap = 'http://schemas.xmlsoap.org/wsdl/soap/';"
-                +" declare namespace tns = 'http://www.examples.com/wsdl/HelloService.wsdl';"
-                +" declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 +" for $ wsdl in collection('wsdl')/wsdl[@id='" + id.toString() + "']"
                 +" return data($wsdl/@date)"));
         wsdl.setDocument(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
-                +" declare namespace soap = 'http://schemas.xmlsoap.org/wsdl/soap/';"
-                +" declare namespace tns = 'http://www.examples.com/wsdl/HelloService.wsdl';"
-                +" declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions"));
         try {
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(wsdl.getDocument()))));
@@ -111,9 +102,6 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     public List<WSDLDoc> findWSDLByData(String definitonsName) throws BaseXException {
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
         String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';" 
-                + " declare namespace soap = 'http://schemas.xmlsoap.org/wsdl/soap/';"
-                + " declare namespace tns = 'http://www.examples.com/wsdl/HelloService.wsdl';"
-                + " declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + " for $wsdl in collection('wsdl')/wsdl "
                 + " let $name := $wsdl/def:definitions/@name"
                 + " where $name='"+definitonsName+"'"
