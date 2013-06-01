@@ -1,5 +1,6 @@
 package org.cz.muni.fi.pb138.webrep_A.APIs;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,7 +21,7 @@ public interface XSDManager {
      * @param xsd
      * @throws BaseXException 
      */
-    public void createXSD(XSD xsd) throws BaseXException, ParseException;
+    public void createXSD(XSD xsd);
     
     /**
      * Gets XSD from database
@@ -51,5 +52,8 @@ public interface XSDManager {
      * @throws BaseXException 
      */
     public String findXSDByData(String s) throws BaseXException;
-    public void createXSDCollection() throws BaseXException;
+    
+    public void createXSDCollection();
+    
+    public void setLogger(FileOutputStream fs);
 }
