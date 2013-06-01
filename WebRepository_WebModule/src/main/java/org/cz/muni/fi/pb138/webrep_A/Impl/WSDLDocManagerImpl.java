@@ -110,12 +110,13 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     @Override
     public List<WSDLDoc> findWSDLByData(String definitonsName) throws BaseXException {
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
-        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"                 
+        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';" 
+                + " declare namespace soap = 'http://schemas.xmlsoap.org/wsdl/soap/';"
+                + " declare namespace tns = 'http://www.examples.com/wsdl/HelloService.wsdl';"
+                + " declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + " for $wsdl in collection('wsdl')/wsdl "
-                + " let $nameDef := $wsdl/def:definitions/@name"
-                + " let $name := $wsdl/definitions/@name"               
-                + " let $ret := fn:concat($name,$nameDef)"
-                + " where fn:contains($ret,'"+definitonsName+"')"
+                + " let $name := $wsdl/def:definitions/@name"
+                + " where $name='"+definitonsName+"'"
                 + " return distinct-values($wsdl/@id)");
         String strarray[] = query.split(" ");
         int intarray[] = new int[strarray.length];
