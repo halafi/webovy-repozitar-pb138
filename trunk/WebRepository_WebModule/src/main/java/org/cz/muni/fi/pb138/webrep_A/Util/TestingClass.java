@@ -104,7 +104,7 @@ public class TestingClass {
             xsd.setId(new Long(1));
             xsdManager.createXSD(xsd);
             //XSD xsd2 = xsdManager.getXSD(new Long(0));
-            //System.out.println(xsdManager.findXSDByData("city"));
+            System.out.println(xsdManager.findXSDByData("city"));
             //System.out.println(xsdManager.getAllXSDs());
             
         }

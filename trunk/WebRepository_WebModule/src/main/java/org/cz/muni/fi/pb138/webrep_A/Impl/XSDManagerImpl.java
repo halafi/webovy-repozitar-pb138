@@ -105,13 +105,37 @@ public class XSDManagerImpl implements XSDManager {
      * Finds XSD by data input.
      */
     @Override
-    public String findXSDByData(String s) throws BaseXException{
-        String query = "declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
+    public List<XSD> findXSDByData(String s) throws BaseXException{
+        List<XSD> output = new ArrayList<XSD>();
+        String query =  this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + "distinct-values( for $xsd in collection('xsd')/xsd "
                 + " for $nodes in $xsd//*"
                 + " for $attr in $nodes/xsd:element/@name"
                 + " where fn:contains($attr,'"+s+"')"
-                + " return distinct-values($xsd/@id))";
-        return this.dm.queryCollection(query);
+                + " return distinct-values($xsd/@id))");
+        String strarray[] = query.split(" ");
+        int intarray[] = new int[strarray.length];
+        for (int i=0; i < intarray.length; i++) {
+            intarray[i] = Integer.parseInt(strarray[i]);
+        }
+        for (int x : intarray) {
+            try {
+                output.add(this.getXSD(new Long(x)));
+            } catch (TransformerConfigurationException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            } catch (TransformerException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            } catch (SAXException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            } catch (ParserConfigurationException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            }
+            System.out.println(x);
+        }
+        return output;
     }
 }
