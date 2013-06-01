@@ -3,3 +3,42 @@
 Každý řešitel samostatně vypracuje závěrečnou zprávu o svém podílu na řešení projektu v rozsahu cca jedné stránky.
 
 Závěrečné zprávy k projektu musí být primárně ve formátu DocBook, z něhož se potom generuje např. HTML nebo PDF. Vhodným umístěním je opět sekce Downloads vašeho projektu.
+
+.xml example:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<article>
+  <title>Závěrečná zpráva - Jaroslav Dufek</title>
+
+  <section>
+    <title>Parser pro Moname</title>
+
+    <para>Na stránce Moname je vždy menu jen pro aktuální den. Nadpisi sekcí jako
+	"polévka:", "hlavní jídla:" a "dezert:" aji názvy jednotlivých jídel jsou
+	ale všechny v nerozlišených elemementech &lt;p&gt;. Takže jsem zvolil možnost 
+	vyříznutí názvů jídel z konkrétních čísel elementů &lt;p&gt; v pořadí.
+	Problém nastává jen o víkendu, kdy je jen jedno hlavní jídlo, čili parser
+	si na začátku zjistí jestli je víkend nebo všední den a podle toho se zařídí.
+	Kromě toho byl ještě problém v tom, že na stránkách Moname se místo znaků s
+	diakritikou používájí character entities, takže jsem si na Internetu našel
+	třídu jménem StringHelper, která má implementovanou funkci na přeložení všech
+	character entities do prostého textu. Takže než se html kód pošle do mého parseru
+	projde, ještě touto funkcí.
+    </para>
+  </section>
+
+  <section>
+    <title>Vzhled e-mailu</title>
+
+    <para>Dále jsem měl za úkol vytvořit vzhled e-mailu, ve kterém se posílají menu
+	restaurací. Šířka e-mailu je 875px. Do záhlaví e-mailu jsem dal pěkný obrázek
+	jídla na talíři o výšce 250px, vedle kterého je text "Denní menu". Názvy restaurací jsou
+	odděléne bannery o výšce 100px s barvou pozadí typickou pro jednotlivé restaurace, společně
+	s logem restaurace zarovnanému k pravému kraji. Pod názvy jednotlivých jídel je
+	nerušivé béžové pozadí.
+    </para>
+  </section>
+</article>
+}}}
