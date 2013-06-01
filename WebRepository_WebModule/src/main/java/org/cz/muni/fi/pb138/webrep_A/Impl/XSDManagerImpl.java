@@ -3,6 +3,8 @@ package org.cz.muni.fi.pb138.webrep_A.Impl;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -12,9 +14,9 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
-import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
+import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 import org.xml.sax.SAXException;
 
@@ -50,9 +52,9 @@ public class XSDManagerImpl implements XSDManager {
     }
 
     @Override
-    public XSD getXSD(Long id) throws TransformerConfigurationException, 
-        TransformerConfigurationException, TransformerException, SAXException, 
-        ParserConfigurationException, IOException, BaseXException, ParseException{
+    public XSD getXSD(Long id) throws TransformerConfigurationException,
+        TransformerException, SAXException, ParserConfigurationException,
+        IOException, BaseXException, ParseException{
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
@@ -78,11 +80,27 @@ public class XSDManagerImpl implements XSDManager {
     }
 
     @Override
-    public String getAllXSDs() throws BaseXException {
-        String query = "declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
-                + "for $xsd in (collection('xsd')/xsd) "
-                + "return $xsd";
-        return "<XSDs> " + this.dm.queryCollection(query) + " </XSDs>";
+    public List<XSD> getAllXSDs() throws BaseXException {
+        List<XSD> output = new ArrayList<XSD>();
+        String c = this.dm.queryCollection("count(collection('xsd')/xsd)");
+        for(int i=0;i<new Integer(c);i++) {
+            try {
+                output.add(this.getXSD(new Long(i)));
+            } catch (TransformerConfigurationException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            } catch (TransformerException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            } catch (SAXException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            } catch (ParserConfigurationException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                logger.log(Level.SEVERE, null, ex);
+            }
+        }
+        return output;
     }
 
     /*
@@ -96,6 +114,6 @@ public class XSDManagerImpl implements XSDManager {
                 + " for $attr in $nodes/xsd:element/@name"
                 + " where fn:contains($attr,'"+s+"')"
                 + " return $xsd";
-        return "<XSDs> " + this.dm.queryCollection(query) + " </XSDs>";
+        return this.dm.queryCollection(query);
     }
 }
