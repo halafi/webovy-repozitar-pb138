@@ -1,7 +1,7 @@
 package org.cz.muni.fi.pb138.webrep_A.Entities;
 
 import java.util.Date;
-import org.cz.muni.fi.pb138.webrep_A.Util;
+import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 /**
  *
  * @author xmakovic
