@@ -26,7 +26,7 @@ public class DatabaseManager {
         logger.addHandler(new StreamHandler(fs, new SimpleFormatter()));
     }
 
-    public DatabaseManager(Filetype fileType) throws IOException {
+    public DatabaseManager(Filetype fileType) {
         if((Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && !Filetype.WAR.equals(fileType))
                 ||(!Filetype.WSDL.equals(fileType) && Filetype.XSD.equals(fileType) && !Filetype.WAR.equals(fileType))
                 ||(!Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && Filetype.WAR.equals(fileType))) {
