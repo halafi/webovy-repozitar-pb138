@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
@@ -33,9 +34,11 @@ import org.xml.sax.SAXException;
  * @author xmakovic
  */
 public class Util {
-    public static String getDate(Date date) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        return(dateFormat.format(date));
+    public static Date getDate(String strdate) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date date ; 
+        date = dateFormat.parse(strdate);
+        return date;
     }
 
     /**

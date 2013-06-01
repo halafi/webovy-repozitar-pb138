@@ -1,10 +1,18 @@
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.Date;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
+import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
+import org.cz.muni.fi.pb138.webrep_A.Util.Util;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -33,16 +41,39 @@ public class XSDManagerImpl implements XSDManager {
     }
 
     @Override
-    public String getXSD(Long id) throws BaseXException {
+    public String getXSD(Long id) throws TransformerConfigurationException, 
+                                                             TransformerConfigurationException, 
+                                                             TransformerException, 
+                                                             SAXException, 
+                                                             ParserConfigurationException, 
+                                                             IOException,
+                                                             BaseXException,
+                                                             ParseException{
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
+        XSD schema = new XSD();
+        XSDParser xsdParser = new XSDParser();
         String xsd = this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + "collection('xsd')/xsd[@id='" + id.toString() + "']/xsd:schema");
+        String date = this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
+                + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
+                + " return data($xsd/@date)");
+        String fileName = this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
+                + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
+                + " return data($xsd/@fileName)");
         if (xsd.equals("")) {
             throw new BaseXException("Desired xml schema does not exist");
         }
-        return xsd;
+        
+        schema.setDocument(xsd);
+        schema.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(xsd))));
+        Date datee;
+        
+        schema.setDate(Util.getDate(date));
+        schema.setId(id);
+        schema.setFileName(fileName);
+        return date;
     }
 
     @Override

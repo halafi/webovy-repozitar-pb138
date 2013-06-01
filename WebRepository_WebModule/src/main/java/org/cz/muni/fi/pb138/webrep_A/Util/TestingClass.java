@@ -2,10 +2,12 @@ package org.cz.muni.fi.pb138.webrep_A.Util;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Date;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
+import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
@@ -26,7 +28,7 @@ import org.xml.sax.SAXException;
  * @author Filip
  */
 public class TestingClass {
-    public static void main(String[] args) throws IOException, TransformerConfigurationException, TransformerException, ParserConfigurationException, SAXException {
+    public static void main(String[] args) throws IOException, TransformerConfigurationException, TransformerException, ParserConfigurationException, SAXException, BaseXException, BaseXException, ParseException {
         DatabaseManager wsdlDBManager = new DatabaseManager(Filetype.WSDL);
         DatabaseManager xsdDBManager = new DatabaseManager(Filetype.XSD);
         DatabaseManager warXmlDBManager = new DatabaseManager(Filetype.WAR);
@@ -74,14 +76,14 @@ public class TestingClass {
             String content = Util.readFile(testXSD);
             XSD xsd = new XSD();
             xsd.setId(new Long(0));
-            xsd.setDate(null);
+            xsd.setDate(new Date());
             xsd.setFileName(testXSD.toString());
             xsd.setDocument(Util.stripXMLHeader(content));
             xsd.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
             xsdManager.createXSDCollection();
             xsdManager.createXSD(xsd);
             
-            String output = xsdManager.findXSDByData("addressLine");
+            String output = xsdManager.getXSD(new Long(0));
             System.out.println(output);
             
         }
