@@ -5,3 +5,4 @@
   * [Dokumentace Dokumentace]
   * [Zpravy Závěrečné zprávy]
   * [Prezentace Prezentace]
+  * [Instalace Instalace a spuštění]
