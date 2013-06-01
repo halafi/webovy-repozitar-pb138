@@ -42,7 +42,7 @@ public class WSDLActionBean implements ActionBean {
         this.wsdlInput = wsdlInput;
     }
 
-    public void filewalk() {
+    public void wsdlUpload() {
         try {
             is = wsdlInput.getInputStream();
             os = new FileOutputStream(new File("/Users/mkyong/Downloads/holder-new.js")); //set File Path  ! ! ! 

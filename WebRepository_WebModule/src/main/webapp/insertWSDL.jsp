@@ -24,7 +24,7 @@
             </ul>
         </div> 
         
-        <s:form action="filewalk" beanclass="wsdlInput">
+        <s:form action="wsdlUpload" beanclass="WSDLActionBean">
             <s:file name="WSDL"/> 
         </s:form>
         

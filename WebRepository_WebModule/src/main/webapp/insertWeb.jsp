@@ -24,9 +24,9 @@
             </ul>
         </div> 
         
-        <%--<s:form action="stringToDoc" beanclass="Util">--%>
-            <%--<s:file name="XSD"/>--%> 
-        <%--</s:form>--%>
+        <s:form action="warUpload" beanclass="WARActionBean">
+                <s:file name="WAR"/>
+        </s:form>
         
 
 
