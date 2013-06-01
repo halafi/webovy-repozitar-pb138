@@ -15,7 +15,6 @@ import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
-import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
@@ -52,9 +51,9 @@ public class TestingClass {
         WebXMLParser webParser = new WebXMLParser();
         
 
-           File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
+        File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\webservice.wsdl");
-         if(testWSDL.exists()) {
+        if(testWSDL.exists()) {
             String content = Util.readFile(testWSDL);
             
             WSDLDoc wsdl = new WSDLDoc();
@@ -71,7 +70,7 @@ public class TestingClass {
             wsdl.setId(new Long(2));
             wsdlManager.createWSDL(wsdl);
 
-            System.out.println(wsdlManager.findWSDLByData("TemperatureService"));
+            System.out.println(wsdlManager.getWSDL(new Long(1)));
         }
         
         /*
