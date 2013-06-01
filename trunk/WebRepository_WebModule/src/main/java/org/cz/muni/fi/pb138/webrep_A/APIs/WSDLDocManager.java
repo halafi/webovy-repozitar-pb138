@@ -45,7 +45,7 @@ public interface WSDLDocManager {
      * @return All WSDLs satisfactory search.
      * @throws BaseXException 
      */
-    public String findWSDLByData(String definitonsName) throws BaseXException;
+    public List<WSDLDoc> findWSDLByData(String definitonsName) throws BaseXException;
 
     public void createWSDLCollection();
     public void setLogger(FileOutputStream fs);
