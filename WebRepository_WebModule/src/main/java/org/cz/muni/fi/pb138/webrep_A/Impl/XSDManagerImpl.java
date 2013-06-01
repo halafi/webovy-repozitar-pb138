@@ -47,7 +47,8 @@ public class XSDManagerImpl implements XSDManager {
 
     @Override
     public String getAllXSDs() throws BaseXException {
-        String query = "for $xsd in (collection('xsd')/xsd) "
+        String query = "declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
+                + "for $xsd in (collection('xsd')/xsd) "
                 + "return $xsd";
         return "<XSDs> " + this.dm.queryCollection(query) + " </XSDs>";
     }
@@ -57,10 +58,11 @@ public class XSDManagerImpl implements XSDManager {
      */
     @Override
     public String findXSDByData(String s) throws BaseXException{
-        String query = "for $xsd in collection('xsd')//xsd) "
-                + " let $name := $xsd//element/@name"
-                + " let $nameElement := " + s
-                + " where $name= $nameElement"
+        String query = "declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
+                + " for $xsd in collection('xsd')/xsd "
+                + " let $elementName := $xsd/xsd:schema/xsd:element/@name"
+                + " let $match :='"+s+"'"
+                + " where $elementName= $match"
                 + " return $xsd";
         return "<XSDs> " + this.dm.queryCollection(query) + " </XSDs>";
     }
