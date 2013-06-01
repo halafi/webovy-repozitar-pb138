@@ -115,8 +115,13 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
                 + " declare namespace tns = 'http://www.examples.com/wsdl/HelloService.wsdl';"
                 + " declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + " for $wsdl in collection('wsdl')/wsdl "
-                + " let $name := $wsdl/def:definitions/@name"
-                + " where $name='"+definitonsName+"'"
+                + " let $nameDef := $wsdl/def:definitions/@name"
+                + " let $name := $wsdl/definitions/@name"
+                + " let $nameSoap := $wsdl/soap:definitions/@name"
+                + " let $nameTns := $wsdl/tns:definitions/@name"
+                + " let $nameXsd := $wsdl/xsd:definitions/@name"
+                + " let $ret := fn:concat($name,$nameSoap,$nameTns,$nameXsd,$nameDef)"
+                + " where fn:contains($ret,'"+definitonsName+"')"
                 + " return distinct-values($wsdl/@id)");
         String strarray[] = query.split(" ");
         int intarray[] = new int[strarray.length];
