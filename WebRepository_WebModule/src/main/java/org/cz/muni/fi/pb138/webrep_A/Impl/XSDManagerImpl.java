@@ -105,10 +105,9 @@ public class XSDManagerImpl implements XSDManager {
     @Override
     public String findXSDByData(String s) throws BaseXException{
         String query = "declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
-                + " for $xsd in collection('xsd')/xsd "
-                + " let $elementName := $xsd/xsd:schema/xsd:element/@name"
-                + " let $match :='"+s+"'"
-                + " where $elementName= $match"
+                + " for $xsd in collection('xsd')//* "
+                + " $attr in $xsd/xsd:element/@name"
+                + " where $attr= '"+s+"'"
                 + " return $xsd";
         return "<XSDs> " + this.dm.queryCollection(query) + " </XSDs>";
     }
