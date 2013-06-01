@@ -48,32 +48,32 @@ public class WSDLActionBean implements ActionBean {
         this.wsdlInput = wsdlInput;
     }
     
-    public ForwardResolution wsdlUpload() {
-        try {
-            is = wsdlInput.getInputStream();
-            os = new FileOutputStream(new File("/Users/mkyong/Downloads/holder-new.js")); //set File Path  ! ! ! 
-            int read = 0;
-            byte[] bytes = new byte[1024];
-
-            while ((read = is.read(bytes)) != -1) {
-                os.write(bytes, 0, read);
-            }
-        } catch (IOException e) {
-            
-        } finally {
-
-            try {
-                is.close();
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return new ForwardResolution("/WEB-INF/showWSDL.jsp");
-        
-    }
+//    public ForwardResolution wsdlUpload() {
+//        try {
+//            is = wsdlInput.getInputStream();
+//            os = new FileOutputStream(new File("/Users/mkyong/Downloads/holder-new.js")); //set File Path  ! ! ! 
+//            int read = 0;
+//            byte[] bytes = new byte[1024];
+//
+//            while ((read = is.read(bytes)) != -1) {
+//                os.write(bytes, 0, read);
+//            }
+//        } catch (IOException e) {
+//            
+//        } finally {
+//
+//            try {
+//                is.close();
+//                os.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return new ForwardResolution("/WEB-INF/showWSDL.jsp");
+//        
+//    }
     
-    public Resolution upload(){
+    public Resolution wsdlUpload(){
         try {
             is = wsdlInput.getInputStream();
             os = new FileOutputStream(new File("/Users/mkyong/Downloads/holder-new.js")); //set File Path  ! ! ! 
