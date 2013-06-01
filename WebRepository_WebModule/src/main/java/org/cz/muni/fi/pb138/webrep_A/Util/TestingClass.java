@@ -4,12 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-<<<<<<< .mine
-=======
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
->>>>>>> .r202
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -104,8 +101,8 @@ public class TestingClass {
             xsd.setId(new Long(1));
             xsdManager.createXSD(xsd);
             //XSD xsd2 = xsdManager.getXSD(new Long(0));
-            //System.out.println(xsdManager.findXSDByData("POBox"));
-            System.out.println(xsdManager.getAllXSDs());
+            System.out.println(xsdManager.findXSDByData("city"));
+            //System.out.println(xsdManager.getAllXSDs());
             
         }
         
