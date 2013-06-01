@@ -62,20 +62,18 @@ public class XSDManagerImpl implements XSDManager {
         XSDParser xsdParser = new XSDParser();
         String xsd = this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + "collection('xsd')/xsd[@id='" + id.toString() + "']/xsd:schema");
-        String date = this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
-                + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
-                + " return data($xsd/@date)");
-        String fileName = this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
-                + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
-                + " return data($xsd/@fileName)");
         if (xsd.equals("")) {
             throw new BaseXException("Desired xml schema does not exist");
         }
         schema.setDocument(xsd);
         schema.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(xsd))));     
-        schema.setTimestamp(date);
+        schema.setTimestamp(this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
+                + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
+                + " return data($xsd/@date)"));
         schema.setId(id);
-        schema.setFileName(fileName);
+        schema.setFileName(this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
+                + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
+                + " return data($xsd/@fileName)"));
         return schema;
     }
 
