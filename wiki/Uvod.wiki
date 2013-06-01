@@ -12,7 +12,7 @@
 
 *Andrej Makovický*, učo 374351 - programátor, teamleader
 
-*Bc. Martin Váňa*, učo 359685 - programátor, web specialist
+*Bc. Martin Váňa*, učo 359685 - null
 
 = Oficiální zadání =
 
