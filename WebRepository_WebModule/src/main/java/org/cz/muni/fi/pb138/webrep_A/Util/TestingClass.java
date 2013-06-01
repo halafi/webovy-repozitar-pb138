@@ -70,10 +70,8 @@ public class TestingClass {
             wsdlManager.createWSDL(wsdl);
             wsdl.setId(new Long(2));
             wsdlManager.createWSDL(wsdl);
-            System.out.println(wsdlManager.getWSDL(new Long(1)));
-            
-            //String output = wsdlManager.findWSDLByData("EndorsementSearch");
-            //System.out.println(output);
+
+            System.out.println(wsdlManager.findWSDLByData("TemperatureService"));
         }
         
         /*

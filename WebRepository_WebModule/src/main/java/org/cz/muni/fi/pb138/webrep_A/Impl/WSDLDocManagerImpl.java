@@ -108,13 +108,25 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
      * Finds WSDL by metadata.
      */    
     @Override
-    public String findWSDLByData(String definitonsName) throws BaseXException {
-        //bitch wont work
-        String query = "for $wsdl in collection('wsdl')/wsdl) "
-                + " let $name := $wsdl/definitions/@name"
+    public List<WSDLDoc> findWSDLByData(String definitonsName) throws BaseXException {
+        List<WSDLDoc> output = new ArrayList<WSDLDoc>();
+        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';" 
+                + " declare namespace soap = 'http://schemas.xmlsoap.org/wsdl/soap/';"
+                + " declare namespace tns = 'http://www.examples.com/wsdl/HelloService.wsdl';"
+                + " declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
+                + " for $wsdl in collection('wsdl')/wsdl "
+                + " let $name := $wsdl/def:definitions/@name"
                 + " where $name='"+definitonsName+"'"
-                + " return $wsdl";
-        return this.dm.queryCollection(query);
+                + " return distinct-values($wsdl/@id)");
+        String strarray[] = query.split(" ");
+        int intarray[] = new int[strarray.length];
+        for (int i=0; i < intarray.length; i++) {
+            intarray[i] = Integer.parseInt(strarray[i]);
+        }
+        for (int x : intarray) {
+            output.add(this.getWSDL(new Long(x)));
+        }
+        return output;
     }
   
 }
