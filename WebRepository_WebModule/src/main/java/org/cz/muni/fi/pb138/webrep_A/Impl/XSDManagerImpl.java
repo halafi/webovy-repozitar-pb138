@@ -1,9 +1,12 @@
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -21,24 +24,37 @@ import org.xml.sax.SAXException;
  * @author xmakovic
  */
 public class XSDManagerImpl implements XSDManager {
-
+    public static final Logger logger = Logger.getLogger(XSDManagerImpl.class.getName());
     private DatabaseManager dm;
 
     public XSDManagerImpl(DatabaseManager dm) throws IOException {
         this.dm = dm;
     }
-
+    
     @Override
-    public void createXSDCollection() throws BaseXException {
-        this.dm.createCollection("xsd");
+    public void setLogger(FileOutputStream fs) {
+        logger.addHandler(new StreamHandler(fs, new SimpleFormatter()));
     }
 
     @Override
-    public void createXSD(XSD xsd) throws BaseXException, ParseException {
+    public void createXSDCollection() {
+        try {
+            this.dm.createCollection("xsd");
+        } catch (BaseXException ex) {
+            logger.log(Level.SEVERE, "Error when creating collection");
+        }
+    }
+
+    @Override
+    public void createXSD(XSD xsd) {
         //collection must be created!
         String xml = "<xsd id='"+xsd.getId().toString()+"' date='"+xsd.getDate()
                 +"' fileName='"+xsd.getFileName()+"'>"+xsd.getDocument()+"</xsd>";
-        this.dm.addXML("xsd", xsd.getId().toString(),xml);
+        try {
+            this.dm.addXML("xsd", xsd.getId().toString(),xml);
+        } catch (BaseXException ex) {
+            logger.log(Level.SEVERE, "Error when creating xsd");
+        }
     }
 
     @Override

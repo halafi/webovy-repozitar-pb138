@@ -1,6 +1,4 @@
 package org.cz.muni.fi.pb138.webrep_A.Entities;
-
-import java.util.Date;
 /**
  *
  * @author xmakovic
@@ -8,7 +6,7 @@ import java.util.Date;
 public class XSD {
 
     private Long id;
-    private String date;
+    private String timestamp;
     private String document;
     private String fileName;
     private String extract;
@@ -22,11 +20,11 @@ public class XSD {
     }
 
     public String getDate() {
-        return date;
+        return timestamp;
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.timestamp = date;
     }
 
     public String getDocument() {
@@ -77,6 +75,6 @@ public class XSD {
 
     @Override
     public String toString() {
-        return "XSD{" + "id=" + id + ", date=" + date + ", document=" + document + ", fileName=" + fileName + ", extract=" + extract + '}';
+        return "XSD{" + "id=" + id + ", date=" + timestamp + ", document=" + document + ", fileName=" + fileName + ", extract=" + extract + '}';
     }
 }

@@ -1,5 +1,6 @@
 package org.cz.muni.fi.pb138.webrep_A.APIs;
 
+import java.io.FileOutputStream;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 
@@ -15,7 +16,7 @@ public interface WarManager {
      * @param id id in database
      * @throws BaseXException 
      */
-    public void createWarArchive(WarArchive war) throws BaseXException;
+    public void createWarArchive(WarArchive war);
     
     /**
      * Gets web.XML from database
@@ -32,5 +33,7 @@ public interface WarManager {
      */
     public String getAllArchives() throws BaseXException;
     
-    public void createWARCollection() throws BaseXException;
+    public void createWARCollection();
+    
+    public void setLogger(FileOutputStream fs);
 }

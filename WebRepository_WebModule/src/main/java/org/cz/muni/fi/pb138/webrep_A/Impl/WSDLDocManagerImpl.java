@@ -1,6 +1,11 @@
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
@@ -11,24 +16,37 @@ import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
  * @author xmakovic
  */
 public class WSDLDocManagerImpl implements WSDLDocManager {
-    
+    public static final Logger logger = Logger.getLogger(WSDLDocManagerImpl.class.getName());
     private DatabaseManager dm;
 
+    @Override
+    public void setLogger(FileOutputStream fs) {
+        logger.addHandler(new StreamHandler(fs, new SimpleFormatter()));
+    }
+    
     public WSDLDocManagerImpl(DatabaseManager dm) throws IOException {
         this.dm = dm;
     }
     
     @Override
-    public void createWSDLCollection() throws BaseXException {
-        this.dm.createCollection("wsdl");
+    public void createWSDLCollection() {
+        try {
+            this.dm.createCollection("wsdl");
+        } catch (BaseXException ex) {
+            logger.log(Level.SEVERE, "Error when creating collection");
+        }
     }
     
     @Override
-    public void createWSDL(WSDLDoc wsdl) throws BaseXException {
+    public void createWSDL(WSDLDoc wsdl) {
         //collection must be created!
         String xml = "<wsdl id='"+wsdl.getId().toString()+"' date='"+wsdl.getDate()
                 +"' fileName='"+wsdl.getFileName()+"'>"+wsdl.getDocument()+"</wsdl>";
-        this.dm.addXML("wsdl", wsdl.getId().toString(),xml);
+        try {
+            this.dm.addXML("wsdl", wsdl.getId().toString(),xml);
+        } catch (BaseXException ex) {
+            logger.log(Level.SEVERE, "Error when creating wsdl");
+        }
     }
 
     

@@ -1,5 +1,6 @@
 package org.cz.muni.fi.pb138.webrep_A.APIs;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
@@ -20,7 +21,7 @@ public interface WSDLDocManager {
      * @param wsdl
      * @throws BaseXException 
      */
-    public void createWSDL(WSDLDoc wsdl) throws BaseXException;
+    public void createWSDL(WSDLDoc wsdl);
     
     /**
      * Gets WSDL from database
@@ -45,5 +46,6 @@ public interface WSDLDocManager {
      */
     public String findWSDLByData(String definitonsName) throws BaseXException;
 
-    public void createWSDLCollection() throws BaseXException;
+    public void createWSDLCollection();
+    public void setLogger(FileOutputStream fs);
 }

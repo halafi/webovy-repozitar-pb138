@@ -4,7 +4,12 @@
  */
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
@@ -15,7 +20,7 @@ import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
  * @author xmakovic
  */
 public class WarManagerImpl implements WarManager {
-    
+    public static final Logger logger = Logger.getLogger(WarManagerImpl.class.getName());
     private DatabaseManager dm;
 
     public WarManagerImpl(DatabaseManager dm) throws IOException {
@@ -23,16 +28,29 @@ public class WarManagerImpl implements WarManager {
     }
     
     @Override
-    public void createWARCollection() throws BaseXException {
-        this.dm.createCollection("war");
+    public void setLogger(FileOutputStream fs) {
+        logger.addHandler(new StreamHandler(fs, new SimpleFormatter()));
     }
     
     @Override
-    public void createWarArchive(WarArchive war) throws BaseXException {
+    public void createWARCollection() {
+        try {
+            this.dm.createCollection("war");
+        } catch (BaseXException ex) {
+            logger.log(Level.SEVERE, "Error when creating collection");
+        }
+    }
+    
+    @Override
+    public void createWarArchive(WarArchive war) {
         //collection must be created!
         String xml = "<war id='"+war.getId().toString()+"' date='"+war.getDate()
                 +"' fileName='"+war.getFileName()+"'>"+"<web.xml>"+war.getWebXml()+"</web.xml></war>";
-        this.dm.addXML("war", war.getId().toString(),xml);
+        try {
+            this.dm.addXML("war", war.getId().toString(),xml);
+        } catch (BaseXException ex) {
+            logger.log(Level.SEVERE, "Error when creating war");
+        }
     }
     
     @Override

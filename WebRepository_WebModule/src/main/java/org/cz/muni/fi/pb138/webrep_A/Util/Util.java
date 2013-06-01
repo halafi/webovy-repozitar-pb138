@@ -36,13 +36,6 @@ import org.xml.sax.SAXException;
  */
 public class Util {
 
-    public static Date getDate(String strdate) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        Date date ; 
-        date = (Date) dateFormat.parse(strdate);
-        return date;
-    }
-    
     public static String getTimeStamp() {
         return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
     }
@@ -78,9 +71,9 @@ public class Util {
          try {
              output = builder.parse(in);
          } catch (SAXException ex) {
-             throw new SAXException(ex);
+             
          } catch (IOException ex) {
-             throw new IOException(ex);
+             
          }
         return output;
     }

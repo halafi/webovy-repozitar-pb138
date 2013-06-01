@@ -1,7 +1,4 @@
 package org.cz.muni.fi.pb138.webrep_A.Entities;
-
-import java.util.Date;
-import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 /**
  *
  * @author xmakovic
@@ -9,7 +6,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 public class WarArchive {
 
     private Long id;
-    private Date date;
+    private String timestamp;
     private String webXml;
     private String extract;
     private String fileName;
@@ -38,12 +35,12 @@ public class WarArchive {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        return timestamp;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(String date) {
+        this.timestamp = date;
     }
 
     public String getFileName() {
@@ -78,7 +75,7 @@ public class WarArchive {
 
     @Override
     public String toString() {
-        return "WarArchive{" + "id=" + id + ", date=" + date + ", webXml=" + webXml + ", fileName=" + fileName + '}';
+        return "WarArchive{" + "id=" + id + ", date=" + timestamp + ", webXml=" + webXml + ", fileName=" + fileName + '}';
     }
 
  
