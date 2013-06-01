@@ -24,9 +24,13 @@
             </ul>
         </div> 
         
-        <s:form action="wsdlUpload" beanclass="WSDLActionBean">
-            <s:file name="WSDL"/> 
+        <s:form action="wsdlUpload">
+            <s:file name="WSDL"/>
+            </br>
+            <s:submit name="uploadThisShit">Submit</s:submit>
         </s:form>
+        </br>
+        
         
 
 

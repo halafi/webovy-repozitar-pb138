@@ -12,6 +12,7 @@ import java.io.OutputStream;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.action.FileBean;
+import net.sourceforge.stripes.action.ForwardResolution;
 
 /**
  *
@@ -42,7 +43,7 @@ public class XSDActionBean implements ActionBean {
         this.xsdInput = xsdInput;
     }
 
-    public void xsdUpload() {
+    public ForwardResolution xsdUpload() {
         try {
             is = xsdInput.getInputStream();
             os = new FileOutputStream(new File("/Users/mkyong/Downloads/holder-new.js")); //set File Path  ! ! ! 
@@ -63,6 +64,8 @@ public class XSDActionBean implements ActionBean {
                 e.printStackTrace();
             }
         }
+        
+        return new ForwardResolution("/WEB-INF/showXSD.jsp");
     }
     
 }

@@ -24,8 +24,8 @@
             </ul>
         </div> 
 
-        <s:form action="xsdUpload" beanclass="XSDActionBean">
-                <s:file name="XSD"/>
+        <s:form action="xsdUpload">
+                <s:file name="xsdInput"/>
         </s:form>
 
 
