@@ -8,7 +8,7 @@ import java.util.Date;
 public class XSD {
 
     private Long id;
-    private Date date;
+    private String date;
     private String document;
     private String fileName;
     private String extract;
@@ -21,11 +21,11 @@ public class XSD {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

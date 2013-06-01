@@ -3,6 +3,8 @@ package org.cz.muni.fi.pb138.webrep_A.Util;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
@@ -76,15 +78,15 @@ public class TestingClass {
             String content = Util.readFile(testXSD);
             XSD xsd = new XSD();
             xsd.setId(new Long(0));
-            xsd.setDate(new Date());
+            xsd.setDate(Util.getTimeStamp());
             xsd.setFileName(testXSD.toString());
             xsd.setDocument(Util.stripXMLHeader(content));
             xsd.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
             xsdManager.createXSDCollection();
             xsdManager.createXSD(xsd);
             
-            String output = xsdManager.getXSD(new Long(0));
-            System.out.println(output);
+            XSD xsd2 = xsdManager.getXSD(new Long(0));
+            System.out.println(xsd2.toString());
             
         }
         
