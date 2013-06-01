@@ -4,7 +4,8 @@
  */
 package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
-import com.sun.xml.internal.ws.api.server.SDDocument.WSDL;
+
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,20 +15,24 @@ import java.util.ArrayList;
 import java.util.List;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
+import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.FileBean;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
+import net.sourceforge.stripes.action.UrlBinding;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 
 /**
  *
  * @author Andrej Makovicky
  */
+@UrlBinding("/")
 public class WSDLActionBean implements ActionBean {
 
     private FileBean wsdlInput;
     private InputStream is;
     private OutputStream os;
-    private List<WSDL> wsdls = new ArrayList<WSDL>();
+    private List<WSDLDoc> wsdls = new ArrayList<WSDLDoc>();
 
     @Override
     public void setContext(ActionBeanContext abc) {
@@ -46,6 +51,11 @@ public class WSDLActionBean implements ActionBean {
 
     public void setwsdlInput(FileBean wsdlInput) {
         this.wsdlInput = wsdlInput;
+    }
+    
+    @DefaultHandler
+    public Resolution all() {
+        return new ForwardResolution("/showPlayers.jsp");
     }
     
 //    public ForwardResolution wsdlUpload() {
@@ -76,7 +86,7 @@ public class WSDLActionBean implements ActionBean {
     public Resolution wsdlUpload(){
         try {
             is = wsdlInput.getInputStream();
-            os = new FileOutputStream(new File("/Users/mkyong/Downloads/holder-new.js")); //set File Path  ! ! ! 
+            os = new FileOutputStream(new File("D:\\Fail\bla.jpg")); //set File Path  ! ! ! 
             int read = 0;
             byte[] bytes = new byte[1024];
 

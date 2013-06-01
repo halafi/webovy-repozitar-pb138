@@ -7,7 +7,7 @@
         <filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
         <init-param>
             <param-name>ActionResolver.Packages</param-name>
-            <param-value>org.cz.muni.fi.pg138.webrep_A.ActionBeans</param-value>
+            <param-value>org.cz.muni.fi.pb138.webrep_A.ActionBeans</param-value>
         </init-param>
     </filter>
 	
