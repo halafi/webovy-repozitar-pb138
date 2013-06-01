@@ -1,4 +1,4 @@
-package org.cz.muni.fi.pb138.webrep_A;
+package org.cz.muni.fi.pb138.webrep_A.Util;
 
 import java.io.File;
 import java.io.IOException;

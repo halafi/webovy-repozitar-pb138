@@ -3,7 +3,7 @@ package org.cz.muni.fi.pb138.webrep_A.Impl;
 import java.io.IOException;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
-import org.cz.muni.fi.pb138.webrep_A.DatabaseManager;
+import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 /**
  *
