@@ -24,7 +24,7 @@ public interface WarManager {
      * @return Single web.XML file as String
      * @throws BaseXException 
      */
-    public String getWarArchive(Long id)throws BaseXException;  
+    public WarArchive getWarArchive(Long id)throws BaseXException;  
     
     /**
      * Gets all web.XMLs from database.

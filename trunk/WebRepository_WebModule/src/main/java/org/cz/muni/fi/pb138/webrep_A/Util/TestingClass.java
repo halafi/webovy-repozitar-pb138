@@ -109,8 +109,6 @@ public class TestingClass {
             
         }
         
-        
-        
         File testWAR = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\jop.war");
         if(testWAR.exists()) {
@@ -125,7 +123,7 @@ public class TestingClass {
             warManager.createWARCollection();
             warManager.createWarArchive(war);
             
-            String output = warManager.getWarArchive(new Long(0));
+            WarArchive output = warManager.getWarArchive(new Long(0));
             System.out.println(output);
         }
     }
