@@ -51,13 +51,8 @@ public class XSDManagerImpl implements XSDManager {
 
     @Override
     public XSD getXSD(Long id) throws TransformerConfigurationException, 
-                                                             TransformerConfigurationException, 
-                                                             TransformerException, 
-                                                             SAXException, 
-                                                             ParserConfigurationException, 
-                                                             IOException,
-                                                             BaseXException,
-                                                             ParseException{
+        TransformerConfigurationException, TransformerException, SAXException, 
+        ParserConfigurationException, IOException, BaseXException, ParseException{
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
@@ -74,7 +69,6 @@ public class XSDManagerImpl implements XSDManager {
         if (xsd.equals("")) {
             throw new BaseXException("Desired xml schema does not exist");
         }
-        
         schema.setDocument(xsd);
         schema.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(xsd))));     
         schema.setDate(date);

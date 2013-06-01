@@ -68,9 +68,9 @@ public class Util {
          try {
              output = builder.parse(in);
          } catch (SAXException ex) {
-             
+             throw new SAXException(ex);
          } catch (IOException ex) {
-             
+             throw new IOException(ex);
          }
         return output;
     }
@@ -87,11 +87,7 @@ public class Util {
      * @throws IOException 
      */
     public static String stripXMLHeader(String input) throws TransformerConfigurationException, 
-                                                             TransformerConfigurationException, 
-                                                             TransformerException, 
-                                                             SAXException, 
-                                                             ParserConfigurationException, 
-                                                             IOException {
+           TransformerConfigurationException, TransformerException, SAXException, ParserConfigurationException, IOException {
         Document doc = stringToDoc(input);
         String output = docToString(doc);
         return output;
@@ -120,7 +116,7 @@ public class Util {
      * @throws TransformerException 
      */
     public static String docToString(Document doc) throws TransformerConfigurationException, 
-                                                          TransformerException {
+           TransformerException {
         DOMSource domSource = new DOMSource(doc);
         StringWriter writer = new StringWriter();
         StreamResult result = new StreamResult(writer);
@@ -138,7 +134,8 @@ public class Util {
      * @throws ParserConfigurationException
      * @throws IOException 
      */
-    public static Document stringToDoc(String xmlSource) throws SAXException, ParserConfigurationException, IOException {
+    public static Document stringToDoc(String xmlSource) throws SAXException,
+            ParserConfigurationException, IOException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         return builder.parse(new InputSource(new StringReader(xmlSource)));

@@ -98,9 +98,11 @@ public class TestingClass {
             xsd.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
             xsdManager.createXSDCollection();
             xsdManager.createXSD(xsd);
-            
-            XSD xsd2 = xsdManager.getXSD(new Long(0));
-            System.out.println(xsd2.toString());
+            xsd.setId(new Long(1));
+            xsdManager.createXSD(xsd);
+            //XSD xsd2 = xsdManager.getXSD(new Long(0));
+            //System.out.println(xsdManager.findXSDByData("POBox"));
+            System.out.println(xsdManager.getAllXSDs());
             
         }
         
