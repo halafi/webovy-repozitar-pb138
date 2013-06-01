@@ -76,12 +76,12 @@ public class TestingClass {
             xsd.setId(new Long(0));
             xsd.setDate(null);
             xsd.setFileName(testXSD.toString());
-            xsd.setDocument(content);
+            xsd.setDocument(Util.stripXMLHeader(content));
             xsd.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
             xsdManager.createXSDCollection();
             xsdManager.createXSD(xsd);
             
-            String output = xsdManager.getXSD(new Long(0));
+            String output = xsdManager.findXSDByData("addressLine");
             System.out.println(output);
             
         }
