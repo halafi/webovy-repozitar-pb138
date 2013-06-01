@@ -14,6 +14,7 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
@@ -92,4 +93,36 @@ public class WarManagerImpl implements WarManager {
          }
         return output;
     }
+       
+    //Maybe work
+//    /**
+//     * Find by meta data
+//     * @param metaData is name of meta data e.g. message
+//     * @param atributeName is name of meta Data
+//     * @return List of WSDLDoc
+//     * @throws BaseXException 
+//     */
+//    public List<WSDLDoc> findWSDLByMetaData(String metaData, String atributeName) throws BaseXException {
+//        String input;
+//        if (metaData == "listener")
+//            input = "listener-class";
+//        else if (metaData == "filter")
+//            input  =  "filter-name";
+//        List<WSDLDoc> output = new ArrayList<WSDLDoc>();
+//        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';" 
+//                + " distinct-values(for $war in collection('war')/war "
+//                + " for $nodes in $war//*"
+//                + " for $attr in $nodes/def:"+metaData
+//                + " where fn:contains($attr,'"+atributeName+"')"
+//                + " return distinct-values($wsdl/@id))");
+//        String strarray[] = query.split(" ");
+//        int intarray[] = new int[strarray.length];
+//        for (int i=0; i < intarray.length; i++) {
+//            intarray[i] = Integer.parseInt(strarray[i]);
+//        }
+//        for (int x : intarray) {
+//            output.add(this.getWarArchive(new Long(x)));
+//        }
+//        return output;
+//    }
 }
