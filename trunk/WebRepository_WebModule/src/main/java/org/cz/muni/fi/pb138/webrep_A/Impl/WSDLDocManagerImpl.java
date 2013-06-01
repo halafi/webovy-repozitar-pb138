@@ -30,11 +30,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     
     @Override
     public void createWSDLCollection() {
-        try {
-            this.dm.createCollection("wsdl");
-        } catch (BaseXException ex) {
-            logger.log(Level.SEVERE, "Error when creating collection");
-        }
+        this.dm.createCollection("wsdl");
     }
     
     @Override
@@ -42,11 +38,8 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         //collection must be created!
         String xml = "<wsdl id='"+wsdl.getId().toString()+"' date='"+wsdl.getDate()
                 +"' fileName='"+wsdl.getFileName()+"'>"+wsdl.getDocument()+"</wsdl>";
-        try {
-            this.dm.addXML("wsdl", wsdl.getId().toString(),xml);
-        } catch (BaseXException ex) {
-            logger.log(Level.SEVERE, "Error when creating wsdl");
-        }
+        this.dm.addXML("wsdl", wsdl.getId().toString(),xml);
+
     }
 
     

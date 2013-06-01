@@ -1,9 +1,5 @@
 <definitions name="EndorsementSearch"
-  targetNamespace="http://namespaces.snowboard-info.com"
-  xmlns:es="http://www.snowboard-info.com/EndorsementSearch.wsdl"
-  xmlns:esxsd="http://schemas.snowboard-info.com/EndorsementSearch.xsd"
-  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-  xmlns="http://schemas.xmlsoap.org/wsdl/"
+
 >
 
   <!-- omitted types section with content model schema info -->
