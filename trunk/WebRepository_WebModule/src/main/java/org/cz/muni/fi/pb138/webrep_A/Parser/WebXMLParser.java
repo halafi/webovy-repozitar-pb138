@@ -8,13 +8,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+public class WebXMLParser {
     /**
     * Create extract document from web.XML 
     * @param doc original web.XML as dom.Document
     * @return Extracted web.XML as dom.Document
     * @throws ParserConfigurationException 
     */
-public class WebXMLParser {
     public Document webXMLExtract(Document doc) throws ParserConfigurationException{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         Document output;

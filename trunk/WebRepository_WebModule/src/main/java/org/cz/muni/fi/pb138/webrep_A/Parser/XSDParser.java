@@ -1,5 +1,7 @@
 package org.cz.muni.fi.pb138.webrep_A.Parser;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,11 +21,17 @@ public class XSDParser {
     * @return Extracted XSD as dom.Document
     * @throws ParserConfigurationException 
     */
-    public Document xsdExtract(Document doc) throws ParserConfigurationException{
+    public Document xsdExtract(Document doc) throws ParserConfigurationException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         Document output;
-        DocumentBuilder builder = factory.newDocumentBuilder();
+        DocumentBuilder builder;
+        
+        builder = factory.newDocumentBuilder();
         output = builder.newDocument(); 
+        Element root = (Element) output.createElement("types"); 
+        output.appendChild(root);
+        
+        
         String namespace;
         if(doc.getDocumentElement().getNodeName().contains("xsd")) {
             namespace = "xsd:";
@@ -34,11 +42,6 @@ public class XSDParser {
         else {
             namespace = "";
         }
-        System.out.println(namespace);
-        namespace = "xsd:";
-        
-        Element root = (Element) output.createElement("types"); 
-        output.appendChild(root);
 
         NodeList complexTypeList = doc.getElementsByTagName(namespace+"complexType");
         NodeList simpleTypeList = doc.getElementsByTagName(namespace+"simpleType");
