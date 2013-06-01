@@ -1,6 +1,7 @@
 package org.cz.muni.fi.pb138.webrep_A.APIs;
 
 import java.io.FileOutputStream;
+import java.util.List;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 
@@ -31,7 +32,7 @@ public interface WarManager {
      * @return All web.XMLs from database as String
      * @throws BaseXException 
      */
-    public String getAllArchives() throws BaseXException;
+    public List<WarArchive> getAllArchives() throws BaseXException;
     
     public void createWARCollection();
     
