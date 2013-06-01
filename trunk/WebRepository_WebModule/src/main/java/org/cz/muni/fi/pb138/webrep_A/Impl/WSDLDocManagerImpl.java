@@ -117,4 +117,29 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         return output;
     }
   
+    /**
+     * Find by meta data
+     * @param metaData is name of meta data e.g. message
+     * @param atributeName is name of meta Data
+     * @return List of WSDLDoc
+     * @throws BaseXException 
+     */
+    public List<WSDLDoc> findWSDLByMetaData(String metaData, String atributeName) throws BaseXException {
+        List<WSDLDoc> output = new ArrayList<WSDLDoc>();
+        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';" 
+                + " distinct-values(for $wsdl in collection('wsdl')/wsdl "
+                + " for $nodes in $wsdl//*"
+                + " for $attr in $nodes/xsd:"+metaData+"/@name"
+                + " where fn:contains($attr,'"+atributeName+"')"
+                + " return distinct-values($wsdl/@id))");
+        String strarray[] = query.split(" ");
+        int intarray[] = new int[strarray.length];
+        for (int i=0; i < intarray.length; i++) {
+            intarray[i] = Integer.parseInt(strarray[i]);
+        }
+        for (int x : intarray) {
+            output.add(this.getWSDL(new Long(x)));
+        }
+        return output;
+    }
 }
