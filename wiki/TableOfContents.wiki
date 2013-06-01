@@ -3,3 +3,4 @@
   * [Uvod Úvod]
   * [Navrh Návrh]
   * [Dokumentace Dokumentace]
+  * [Zpravy Závěrečné zprávy]
