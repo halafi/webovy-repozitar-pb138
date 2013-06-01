@@ -46,7 +46,7 @@ public class XSDManagerImpl implements XSDManager {
     @Override
     public void createXSD(XSD xsd) {
         //collection must be created!
-        String xml = "<xsd id='"+xsd.getId().toString()+"' date='"+xsd.getDate()
+        String xml = "<xsd id='"+xsd.getId().toString()+"' date='"+xsd.getTimestamp()
                 +"' fileName='"+xsd.getFileName()+"'>"+xsd.getDocument()+"</xsd>";
         this.dm.addXML("xsd", xsd.getId().toString(),xml);
     }
@@ -73,7 +73,7 @@ public class XSDManagerImpl implements XSDManager {
         }
         schema.setDocument(xsd);
         schema.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(xsd))));     
-        schema.setDate(date);
+        schema.setTimestamp(date);
         schema.setId(id);
         schema.setFileName(fileName);
         return schema;

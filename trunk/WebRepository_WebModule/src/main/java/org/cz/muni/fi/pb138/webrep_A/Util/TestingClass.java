@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,6 +15,7 @@ import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
@@ -21,6 +23,7 @@ import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 /**
@@ -68,7 +71,7 @@ public class TestingClass {
             
             WSDLDoc wsdl = new WSDLDoc();
             wsdl.setId(new Long(0));
-            wsdl.setDate(null);
+            wsdl.setTimestamp(null);
             wsdl.setFileName(testWSDL.toString());
             wsdl.setDocument(Util.stripXMLHeader(content));
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
@@ -92,7 +95,7 @@ public class TestingClass {
             String content = Util.readFile(testXSD);
             XSD xsd = new XSD();
             xsd.setId(new Long(0));
-            xsd.setDate(Util.getTimeStamp());
+            xsd.setTimestamp(Util.getTimeStamp());
             xsd.setFileName(testXSD.toString());
             xsd.setDocument(Util.stripXMLHeader(content));
             xsd.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
@@ -101,14 +104,13 @@ public class TestingClass {
             xsd.setId(new Long(1));
             xsdManager.createXSD(xsd);
             //XSD xsd2 = xsdManager.getXSD(new Long(0));
-            System.out.println(xsdManager.findXSDByData("city"));
+            //System.out.println(xsdManager.findXSDByData("city"));
             //System.out.println(xsdManager.getAllXSDs());
             
         }
         
         
-        /*
-         * WAR TEST
+        
         File testWAR = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\jop.war");
         if(testWAR.exists()) {
@@ -116,7 +118,7 @@ public class TestingClass {
             String content = Util.docToString(testWEB);
             WarArchive war = new WarArchive();
             war.setId(new Long(0));
-            war.setDate(new Date());
+            war.setTimestamp(Util.getTimeStamp());
             war.setFileName(testWAR.toString());
             war.setWebXml(content);
             war.setExtract(Util.docToString(webParser.webXMLExtract(Util.stringToDoc(content))));
@@ -126,7 +128,5 @@ public class TestingClass {
             String output = warManager.getWarArchive(new Long(0));
             System.out.println(output);
         }
-        *
-        */
     }
 }

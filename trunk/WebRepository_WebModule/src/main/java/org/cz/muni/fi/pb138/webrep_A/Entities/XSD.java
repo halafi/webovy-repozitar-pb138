@@ -19,13 +19,6 @@ public class XSD {
         this.id = id;
     }
 
-    public String getDate() {
-        return timestamp;
-    }
-
-    public void setDate(String date) {
-        this.timestamp = date;
-    }
 
     public String getDocument() {
         return document;
@@ -75,6 +68,16 @@ public class XSD {
 
     @Override
     public String toString() {
-        return "XSD{" + "id=" + id + ", date=" + timestamp + ", document=" + document + ", fileName=" + fileName + ", extract=" + extract + '}';
+        return "XSD{" + "id=" + id + ", timestamp=" + timestamp + ", document=" + document + ", fileName=" + fileName + ", extract=" + extract + '}';
     }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+
 }

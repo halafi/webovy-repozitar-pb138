@@ -34,7 +34,7 @@ public class WarManagerImpl implements WarManager {
     @Override
     public void createWarArchive(WarArchive war) {
         //collection must be created!
-        String xml = "<war id='"+war.getId().toString()+"' date='"+war.getDate()
+        String xml = "<war id='"+war.getId().toString()+"' date='"+war.getTimestamp()
                 +"' fileName='"+war.getFileName()+"'>"+"<web.xml>"+war.getWebXml()+"</web.xml></war>";
         this.dm.addXML("war", war.getId().toString(),xml);
 
