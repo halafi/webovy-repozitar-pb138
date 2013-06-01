@@ -2,6 +2,7 @@ package org.cz.muni.fi.pb138.webrep_A.APIs;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -29,14 +30,14 @@ public interface WSDLDocManager {
      * @return WSDL file as String
      * @throws BaseXException 
      */
-    public String getWSDL(Long id) throws BaseXException;
+    public WSDLDoc getWSDL(Long id) throws BaseXException;
     
     /**
      * Gets all WSDLs from database.
      * @return all WSDLs from database as String
      * @throws BaseXException 
      */
-    public String getAllWSDLs() throws BaseXException; 
+    public List<WSDLDoc> getAllWSDLs() throws BaseXException; 
     
     /**
      * Finds WSDLs by meta data.

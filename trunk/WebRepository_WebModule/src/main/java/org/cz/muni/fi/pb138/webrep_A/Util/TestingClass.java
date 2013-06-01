@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
@@ -16,7 +14,7 @@ import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
-import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
@@ -24,55 +22,44 @@ import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
-import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-
 /**
  *
  * @author Filip
  */
 public class TestingClass {
     public static void main(String[] args) throws IOException, TransformerConfigurationException, TransformerException, ParserConfigurationException, SAXException, BaseXException, BaseXException, ParseException {
-
         FileOutputStream fs = null;
         try {
             fs = new FileOutputStream("main.log", true);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TestingClass.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         DatabaseManager wsdlDBManager = new DatabaseManager(Filetype.WSDL);
         DatabaseManager xsdDBManager = new DatabaseManager(Filetype.XSD);
         DatabaseManager warXmlDBManager = new DatabaseManager(Filetype.WAR);
-        
         wsdlDBManager.setLogger(fs);
         xsdDBManager.setLogger(fs);
         warXmlDBManager.setLogger(fs);
-        
         WSDLDocManager wsdlManager = new WSDLDocManagerImpl(wsdlDBManager);
         XSDManager xsdManager = new XSDManagerImpl(xsdDBManager);
         WarManager warManager = new WarManagerImpl(warXmlDBManager);
-        
         wsdlManager.setLogger(fs);
         xsdManager.setLogger(fs);
         warManager.setLogger(fs);
-        
         WSDLDocParser wsdlParser = new WSDLDocParser();
         XSDParser xsdParser = new XSDParser();
         WebXMLParser webParser = new WebXMLParser();
         
-        /*
 
-        // WSDL TEST
-         
            File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
-                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\test2.wsdl");
+                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\webservice.wsdl");
          if(testWSDL.exists()) {
             String content = Util.readFile(testWSDL);
             
             WSDLDoc wsdl = new WSDLDoc();
             wsdl.setId(new Long(0));
-            wsdl.setTimestamp(null);
+            wsdl.setTimestamp(Util.getTimeStamp());
             wsdl.setFileName(testWSDL.toString());
             wsdl.setDocument(Util.stripXMLHeader(content));
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
@@ -88,7 +75,8 @@ public class TestingClass {
             //String output = wsdlManager.findWSDLByData("EndorsementSearch");
             //System.out.println(output);
         }
-        */
+        
+        /*
             File testXSD = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\xmlSchema\\test.xsd");
          if(testXSD.exists()) {
@@ -108,6 +96,9 @@ public class TestingClass {
             //System.out.println(xsdManager.getAllXSDs());
             
         }
+        * 
+        * */
+        
         /*
         File testWAR = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\jop.war");
