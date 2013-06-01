@@ -4,7 +4,7 @@ Každý řešitel samostatně vypracuje závěrečnou zprávu o svém podílu na
 
 Závěrečné zprávy k projektu musí být primárně ve formátu DocBook, z něhož se potom generuje např. HTML nebo PDF. Vhodným umístěním je opět sekce Downloads vašeho projektu.
 
-.xml example:
+.xml example, generate html:
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
