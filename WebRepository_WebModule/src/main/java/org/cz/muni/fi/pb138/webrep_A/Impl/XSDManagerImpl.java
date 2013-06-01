@@ -38,11 +38,7 @@ public class XSDManagerImpl implements XSDManager {
 
     @Override
     public void createXSDCollection() {
-        try {
-            this.dm.createCollection("xsd");
-        } catch (BaseXException ex) {
-            logger.log(Level.SEVERE, "Error when creating collection");
-        }
+        this.dm.createCollection("xsd");
     }
 
     @Override
@@ -50,11 +46,7 @@ public class XSDManagerImpl implements XSDManager {
         //collection must be created!
         String xml = "<xsd id='"+xsd.getId().toString()+"' date='"+xsd.getDate()
                 +"' fileName='"+xsd.getFileName()+"'>"+xsd.getDocument()+"</xsd>";
-        try {
-            this.dm.addXML("xsd", xsd.getId().toString(),xml);
-        } catch (BaseXException ex) {
-            logger.log(Level.SEVERE, "Error when creating xsd");
-        }
+        this.dm.addXML("xsd", xsd.getId().toString(),xml);
     }
 
     @Override

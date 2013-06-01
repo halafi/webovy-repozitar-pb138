@@ -34,11 +34,7 @@ public class WarManagerImpl implements WarManager {
     
     @Override
     public void createWARCollection() {
-        try {
-            this.dm.createCollection("war");
-        } catch (BaseXException ex) {
-            logger.log(Level.SEVERE, "Error when creating collection");
-        }
+        this.dm.createCollection("war");
     }
     
     @Override
@@ -46,11 +42,8 @@ public class WarManagerImpl implements WarManager {
         //collection must be created!
         String xml = "<war id='"+war.getId().toString()+"' date='"+war.getDate()
                 +"' fileName='"+war.getFileName()+"'>"+"<web.xml>"+war.getWebXml()+"</web.xml></war>";
-        try {
-            this.dm.addXML("war", war.getId().toString(),xml);
-        } catch (BaseXException ex) {
-            logger.log(Level.SEVERE, "Error when creating war");
-        }
+        this.dm.addXML("war", war.getId().toString(),xml);
+
     }
     
     @Override
