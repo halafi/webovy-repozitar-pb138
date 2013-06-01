@@ -33,10 +33,6 @@ import org.xml.sax.SAXException;
  */
 public class Util {
 
-    public static String getTimeStamp() {
-        return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-    }
-
     /**
      * Extract web.XML from war archive.
      * @param warFile
@@ -73,6 +69,10 @@ public class Util {
              throw new IOException(ex);
          }
         return output;
+    }
+    
+    public static String getTimeStamp() {
+        return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
     }
     
     /**
@@ -126,6 +126,7 @@ public class Util {
         transformer.transform(domSource, result);
         return writer.toString();
     }
+    
     /**
      * Convert String to dom.Document
      * @param xmlSource
