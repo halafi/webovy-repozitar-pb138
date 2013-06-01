@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
@@ -88,7 +89,6 @@ public class TestingClass {
             //System.out.println(output);
         }
         */
-        
             File testXSD = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\xmlSchema\\test.xsd");
          if(testXSD.exists()) {
@@ -108,7 +108,7 @@ public class TestingClass {
             //System.out.println(xsdManager.getAllXSDs());
             
         }
-        
+        /*
         File testWAR = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\jop.war");
         if(testWAR.exists()) {
@@ -122,9 +122,12 @@ public class TestingClass {
             war.setExtract(Util.docToString(webParser.webXMLExtract(Util.stringToDoc(content))));
             warManager.createWARCollection();
             warManager.createWarArchive(war);
+            war.setId(new Long(1));
+            warManager.createWarArchive(war);
             
-            WarArchive output = warManager.getWarArchive(new Long(0));
+            List<WarArchive> output = warManager.getAllArchives();
             System.out.println(output);
         }
+        * */
     }
 }

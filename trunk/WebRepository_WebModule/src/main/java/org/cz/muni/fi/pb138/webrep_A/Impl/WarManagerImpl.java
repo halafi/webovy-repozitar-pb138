@@ -2,6 +2,9 @@ package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -12,6 +15,7 @@ import javax.xml.transform.TransformerException;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
+import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
@@ -80,15 +84,12 @@ public class WarManagerImpl implements WarManager {
     }
     
     @Override
-    public String getAllArchives() throws BaseXException {
-        /*String query = "for $war in collection('war')/war "
-                + " let $id := $war/@id"
-                + " let $fileName := $war/@fileName"
-                + " let $date := $war/@date"
-                + " return <war id ='{$id}' date = '{$date}' fileName = '{$fileName}'>"
-                + " </war>";*/
-        String query = "for $war in collection('war')/war "
-                + " return $war";
-        return "<WARs> " + this.dm.queryCollection(query) + " </WARs>";
+    public List<WarArchive> getAllArchives() throws BaseXException {
+        List<WarArchive> output = new ArrayList<WarArchive>();
+        String c = this.dm.queryCollection("count(collection('war')/war)");
+         for(int i=0;i<new Integer(c);i++) { 
+             output.add(this.getWarArchive(new Long(i)));
+         }
+        return output;
     }
 }
