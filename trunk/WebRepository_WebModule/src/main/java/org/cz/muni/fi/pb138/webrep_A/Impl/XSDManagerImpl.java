@@ -2,7 +2,6 @@ package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -52,28 +51,34 @@ public class XSDManagerImpl implements XSDManager {
     }
 
     @Override
-    public XSD getXSD(Long id) throws TransformerConfigurationException,
-        TransformerException, SAXException, ParserConfigurationException,
-        IOException, BaseXException, ParseException{
+    public XSD getXSD(Long id) throws BaseXException {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
         XSD schema = new XSD();
         XSDParser xsdParser = new XSDParser();
-        String xsd = this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
-                + "collection('xsd')/xsd[@id='" + id.toString() + "']/xsd:schema");
-        if (xsd.equals("")) {
-            throw new BaseXException("Desired xml schema does not exist");
-        }
-        schema.setDocument(xsd);
-        schema.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(xsd))));     
+        schema.setId(id);
+        schema.setDocument(this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
+                + "collection('xsd')/xsd[@id='" + id.toString() + "']/xsd:schema"));
         schema.setTimestamp(this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
                 + " return data($xsd/@date)"));
-        schema.setId(id);
         schema.setFileName(this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
                 + " return data($xsd/@fileName)"));
+        try {     
+            schema.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(schema.getDocument()))));
+        } catch (SAXException ex) {
+            logger.log(Level.SEVERE, null, ex);
+        } catch (ParserConfigurationException ex) {
+            logger.log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            logger.log(Level.SEVERE, null, ex);
+        } catch (TransformerConfigurationException ex) {
+            logger.log(Level.SEVERE, null, ex);
+        } catch (TransformerException ex) {
+            logger.log(Level.SEVERE, null, ex);
+        }
         return schema;
     }
 
@@ -82,21 +87,7 @@ public class XSDManagerImpl implements XSDManager {
         List<XSD> output = new ArrayList<XSD>();
         String c = this.dm.queryCollection("count(collection('xsd')/xsd)");
         for(int i=0;i<new Integer(c);i++) {
-            try {
-                output.add(this.getXSD(new Long(i)));
-            } catch (TransformerConfigurationException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            } catch (TransformerException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            } catch (SAXException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            } catch (ParserConfigurationException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            } catch (ParseException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            }
+            output.add(this.getXSD(new Long(i)));
         }
         return output;
     }
@@ -119,22 +110,7 @@ public class XSDManagerImpl implements XSDManager {
             intarray[i] = Integer.parseInt(strarray[i]);
         }
         for (int x : intarray) {
-            try {
-                output.add(this.getXSD(new Long(x)));
-            } catch (TransformerConfigurationException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            } catch (TransformerException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            } catch (SAXException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            } catch (ParserConfigurationException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            } catch (ParseException ex) {
-                logger.log(Level.SEVERE, null, ex);
-            }
-            System.out.println(x);
+            output.add(this.getXSD(new Long(x)));
         }
         return output;
     }
