@@ -36,7 +36,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     @Override
     public void createWSDL(WSDLDoc wsdl) {
         //collection must be created!
-        String xml = "<wsdl id='"+wsdl.getId().toString()+"' date='"+wsdl.getDate()
+        String xml = "<wsdl id='"+wsdl.getId().toString()+"' date='"+wsdl.getTimestamp()
                 +"' fileName='"+wsdl.getFileName()+"'>"+wsdl.getDocument()+"</wsdl>";
         this.dm.addXML("wsdl", wsdl.getId().toString(),xml);
 

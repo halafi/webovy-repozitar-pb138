@@ -27,14 +27,6 @@ public class WSDLDoc {
         this.id = id;
     }
 
-    public String getDate() {
-        return timestamp;
-    }
-
-    public void setDate(String date) {
-        this.timestamp = date;
-    }
-
     public String getDocument() {
         return document;
     }
@@ -75,6 +67,15 @@ public class WSDLDoc {
 
     @Override
     public String toString() {
-        return "WSDLDoc{" + "id=" + id + ", date=" + timestamp + ", document=" + document + ", extract=" + extract + '}';
+        return "WSDLDoc{" + "id=" + id + ", timestamp=" + timestamp + ", document=" + document + ", extract=" + extract + ", fileName=" + fileName + '}';
     }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
 }

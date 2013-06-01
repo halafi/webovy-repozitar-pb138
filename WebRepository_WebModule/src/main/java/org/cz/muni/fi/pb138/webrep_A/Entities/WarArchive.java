@@ -35,13 +35,7 @@ public class WarArchive {
         this.id = id;
     }
 
-    public String getDate() {
-        return timestamp;
-    }
 
-    public void setDate(String date) {
-        this.timestamp = date;
-    }
 
     public String getFileName() {
         return fileName;
@@ -73,10 +67,19 @@ public class WarArchive {
         return true;
     }
 
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
     @Override
     public String toString() {
-        return "WarArchive{" + "id=" + id + ", date=" + timestamp + ", webXml=" + webXml + ", fileName=" + fileName + '}';
+        return "WarArchive{" + "id=" + id + ", timestamp=" + timestamp + ", webXml=" + webXml + ", extract=" + extract + ", fileName=" + fileName + '}';
     }
+
 
  
 }
