@@ -23,11 +23,11 @@
                 <li><a href="findXSD.jsp">Find XSD</a></li>
             </ul>
         </div> 
-        
-        <%--<s:form action="stringToDoc" beanclass="Util">--%>
-            <%--<s:file name="XSD"/>--%> 
-        <%--</s:form>--%>
-        
+
+        <s:form action="xsdUpload" beanclass="XSDActionBean">
+                <s:file name="XSD"/>
+        </s:form>
+
 
 
     </body>
