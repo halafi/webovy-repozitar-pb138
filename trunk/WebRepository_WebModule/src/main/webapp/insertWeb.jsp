@@ -24,7 +24,7 @@
             </ul>
         </div> 
         
-        <s:form action="warUpload" beanclass="WARActionBean">
+        <s:form action="warUpload">
                 <s:file name="WAR"/>
         </s:form>
         
