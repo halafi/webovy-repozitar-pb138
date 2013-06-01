@@ -20,7 +20,7 @@ public interface XSDManager {
      * @param xsd
      * @throws BaseXException 
      */
-    public void createXSD(XSD xsd) throws BaseXException;
+    public void createXSD(XSD xsd) throws BaseXException, ParseException;
     
     /**
      * Gets XSD from database
@@ -28,7 +28,7 @@ public interface XSDManager {
      * @return XML file as String
      * @throws BaseXException 
      */
-    public String getXSD(Long id) throws TransformerConfigurationException, 
+    public XSD getXSD(Long id) throws TransformerConfigurationException, 
                                                              TransformerConfigurationException, 
                                                              TransformerException, 
                                                              SAXException, 

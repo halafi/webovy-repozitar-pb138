@@ -10,6 +10,7 @@ import java.io.StringWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.jar.JarFile;
@@ -34,11 +35,16 @@ import org.xml.sax.SAXException;
  * @author xmakovic
  */
 public class Util {
+
     public static Date getDate(String strdate) throws ParseException {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         Date date ; 
-        date = dateFormat.parse(strdate);
+        date = (Date) dateFormat.parse(strdate);
         return date;
+    }
+    
+    public static String getTimeStamp() {
+        return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
     }
 
     /**

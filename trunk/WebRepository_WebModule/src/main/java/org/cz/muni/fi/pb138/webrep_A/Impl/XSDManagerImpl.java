@@ -2,6 +2,7 @@ package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
@@ -33,7 +34,7 @@ public class XSDManagerImpl implements XSDManager {
     }
 
     @Override
-    public void createXSD(XSD xsd) throws BaseXException {
+    public void createXSD(XSD xsd) throws BaseXException, ParseException {
         //collection must be created!
         String xml = "<xsd id='"+xsd.getId().toString()+"' date='"+xsd.getDate()
                 +"' fileName='"+xsd.getFileName()+"'>"+xsd.getDocument()+"</xsd>";
@@ -41,7 +42,7 @@ public class XSDManagerImpl implements XSDManager {
     }
 
     @Override
-    public String getXSD(Long id) throws TransformerConfigurationException, 
+    public XSD getXSD(Long id) throws TransformerConfigurationException, 
                                                              TransformerConfigurationException, 
                                                              TransformerException, 
                                                              SAXException, 
@@ -67,13 +68,11 @@ public class XSDManagerImpl implements XSDManager {
         }
         
         schema.setDocument(xsd);
-        schema.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(xsd))));
-        Date datee;
-        
-        schema.setDate(Util.getDate(date));
+        schema.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(xsd))));     
+        schema.setDate(date);
         schema.setId(id);
         schema.setFileName(fileName);
-        return date;
+        return schema;
     }
 
     @Override
