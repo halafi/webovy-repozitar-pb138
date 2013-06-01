@@ -52,7 +52,7 @@ public interface XSDManager {
      * @return All XSDs satisfactory search.
      * @throws BaseXException 
      */
-    public String findXSDByData(String s) throws BaseXException;
+    public List<XSD> findXSDByData(String s) throws BaseXException;
     
     public void createXSDCollection();
     
