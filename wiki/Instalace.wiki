@@ -1,0 +1,6 @@
+#labels Phase-Deploy
+= Instalace a spuštění =
+
+Add your content here.
+
+
