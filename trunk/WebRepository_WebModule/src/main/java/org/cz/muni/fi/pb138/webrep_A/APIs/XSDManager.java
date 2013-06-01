@@ -1,7 +1,13 @@
 package org.cz.muni.fi.pb138.webrep_A.APIs;
 
+import java.io.IOException;
+import java.text.ParseException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -22,7 +28,14 @@ public interface XSDManager {
      * @return XML file as String
      * @throws BaseXException 
      */
-    public String getXSD(Long id) throws BaseXException;  
+    public String getXSD(Long id) throws TransformerConfigurationException, 
+                                                             TransformerConfigurationException, 
+                                                             TransformerException, 
+                                                             SAXException, 
+                                                             ParserConfigurationException, 
+                                                             IOException,
+                                                             BaseXException,
+                                                            ParseException;
     
     /**
      * Gets all XSDs from database.
