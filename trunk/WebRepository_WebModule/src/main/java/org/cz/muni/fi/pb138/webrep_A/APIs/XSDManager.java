@@ -3,6 +3,7 @@ package org.cz.muni.fi.pb138.webrep_A.APIs;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -43,7 +44,7 @@ public interface XSDManager {
      * @return all XSDs from database as String
      * @throws BaseXException 
      */
-    public String getAllXSDs() throws BaseXException; 
+    public List<XSD> getAllXSDs() throws BaseXException; 
     
     /**
      * Finds XSD by meta data.

@@ -1,20 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
-import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
-
+import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 /**
  *
  * @author xmakovic
