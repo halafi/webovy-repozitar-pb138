@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <title>Show Signe WSDL</title>
+        <title>Show Single WSDL</title>
     </head>
     <body>
         <h2>WSDL archiver</h2>

@@ -77,11 +77,6 @@ public class WSDLActionBean implements ActionBean {
     }
     
     public Resolution showSingle(){
-        
-        
-        
-        
-        
        return new ForwardResolution("/showSingleWSDL.jsp");
     }
     

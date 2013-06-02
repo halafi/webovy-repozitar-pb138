@@ -40,12 +40,7 @@
                         <td><c:out value="${WSDLDoc.id}"/></td>
                         <td><c:out value="${WSDLDoc.fileName}"/></td>
                         <td><c:out value="${WSDLDoc.timestamp}"/></td>
-
-
-                        <td><form method="post" action="${pageContext.request.contextPath}/customers/delete?id=${customer.id}"
-                                  style="margin-bottom: 0;"><input type="submit" value="Zobrazit"></form></td>
-                        </td>
-
+                        
                     </tr>
                 </c:forEach>
             </table>
