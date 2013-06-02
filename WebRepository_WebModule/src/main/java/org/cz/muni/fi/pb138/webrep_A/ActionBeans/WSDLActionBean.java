@@ -40,7 +40,7 @@ public class WSDLActionBean implements ActionBean {
     private ActionBeanContext context;
     private WSDLDoc singleWSDL;
     private DatabaseManager dataMan = new DatabaseManager(Filetype.WSDL);
-//    private WSDLDocManager manager = new WSDLDocManagerImpl(dataMan);
+    private WSDLDocManager manager = new WSDLDocManagerImpl(dataMan);
     
 
     @Override
@@ -107,7 +107,7 @@ public class WSDLActionBean implements ActionBean {
     public Resolution find(){
         String def = "TBD";
         
-//        wsdls = manager.findWSDLByData(def);
+        wsdls = manager.findWSDLByData(def);
         // wsdl print doc
         //wsdl print extract
         
