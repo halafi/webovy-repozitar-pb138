@@ -2,6 +2,7 @@ package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sourceforge.stripes.action.ActionBean;
@@ -12,6 +13,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
@@ -72,6 +74,10 @@ public class XSDActionBean implements ActionBean {
             Logger.getLogger(XSDActionBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new ForwardResolution("/showXSD.jsp");
+    }
+    
+    public List<XSD> getXSDs(){
+        return manager.getAllXSDs() ;
     }
     
 }
