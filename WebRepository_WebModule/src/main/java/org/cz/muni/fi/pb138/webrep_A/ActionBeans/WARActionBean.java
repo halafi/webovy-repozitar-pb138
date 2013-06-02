@@ -34,7 +34,7 @@ public class WARActionBean implements ActionBean {
     private ActionBeanContext context;
     private WarArchive singleWAR;
     private DatabaseManager dataMan = new DatabaseManager(Filetype.WAR);
-//    private WarManager manager = new WarManagerImpl(dataMan);
+    private WarManager manager = new WarManagerImpl(dataMan);
 
     @Override
     public void setContext(ActionBeanContext abc) {
