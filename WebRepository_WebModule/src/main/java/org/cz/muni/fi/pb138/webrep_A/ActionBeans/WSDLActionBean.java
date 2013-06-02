@@ -32,6 +32,7 @@ public class WSDLActionBean implements ActionBean {
     private DatabaseManager dm = new DatabaseManager(Filetype.WSDL);
     private WSDLDocManager manager = new WSDLDocManagerImpl(dm);
     private WSDLDocParser wsdlParser = new WSDLDocParser();
+    private Long id;
     
 
     @Override
@@ -53,6 +54,13 @@ public class WSDLActionBean implements ActionBean {
         return new ForwardResolution("/showPlayers.jsp");
     }
 
+    public void setId(String id) {
+        this.id = new Long(id);
+    }
+    
+    public WSDLDoc getDoc() {
+        return manager.getWSDL(this.id);
+    }
     
     public Resolution wsdlUpload() {
         try {
