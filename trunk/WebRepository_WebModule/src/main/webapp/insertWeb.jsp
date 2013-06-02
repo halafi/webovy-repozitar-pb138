@@ -24,9 +24,12 @@
             </ul>
         </div> 
         
-        <s:form action="warUpload">
-                <s:file name="WAR"/>
+        <s:form action="warUpload" method="POST" >
+            <s:file name="warInput"/>
+            </br>
+            <s:submit name="warUpload">Submit</s:submit>
         </s:form>
+        </br>
         
 
 
