@@ -24,8 +24,8 @@
             </ul>
         </div> 
         
-        <s:form action="wsdlUpload">
-            <s:file name="wsdlUpload"/>
+        <s:form action="wsdlUpload" method="POST">
+            <s:file name="wsdlInput"/>
             </br>
             <s:submit name="wsdlUpload">Submit</s:submit>
         </s:form>
