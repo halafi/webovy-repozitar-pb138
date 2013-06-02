@@ -2,10 +2,6 @@ package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sourceforge.stripes.action.ActionBean;
@@ -31,11 +27,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 public class WSDLActionBean implements ActionBean {
 
     private FileBean wsdlInput;
-    private InputStream is;
-    private OutputStream os;
-    private List<WSDLDoc> wsdls = new ArrayList<WSDLDoc>();
     private ActionBeanContext context;
-    private WSDLDoc singleWSDL;
     private DatabaseManager dm = new DatabaseManager(Filetype.WSDL);
     private WSDLDocManager manager = new WSDLDocManagerImpl(dm);
     private WSDLDocParser wsdlParser = new WSDLDocParser();
@@ -103,7 +95,7 @@ public class WSDLActionBean implements ActionBean {
     public Resolution find(){
         String def = "TBD";
         
-        wsdls = manager.findWSDLByData(def);
+        //wsdls = manager.findWSDLByData(def);
         // wsdl print doc
         //wsdl print extract
         

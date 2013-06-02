@@ -64,6 +64,6 @@ public class WARActionBean implements ActionBean {
         } catch (IOException ex) {
             Logger.getLogger(WSDLActionBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return new ForwardResolution("/showWSDL.jsp");
+        return new ForwardResolution("/showWeb.jsp");
     }
 }
