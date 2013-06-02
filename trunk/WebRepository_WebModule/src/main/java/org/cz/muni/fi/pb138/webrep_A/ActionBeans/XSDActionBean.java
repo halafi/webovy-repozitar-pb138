@@ -5,10 +5,7 @@
 package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sourceforge.stripes.action.ActionBean;
@@ -16,8 +13,8 @@ import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.action.FileBean;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
+import net.sourceforge.stripes.action.UrlBinding;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
-import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
@@ -29,6 +26,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
  *
  * @author Andrej Makovicky
  */
+@UrlBinding("/")
 public class XSDActionBean implements ActionBean {
 
     private ActionBeanContext context;
