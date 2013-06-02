@@ -1,9 +1,3 @@
-<%-- 
-    Document   : findWSDL
-    Created on : May 30, 2013, 10:25:14 PM
-    Author     : Andrej Makovicky
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <!DOCTYPE html>
@@ -11,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <title>WSDLSearch</title>
+        <title>WSDL Search</title>
     </head>
     <body>
         <h2>Search in WSDL</h2>

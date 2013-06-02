@@ -1,6 +1,6 @@
 <%-- 
-    Document   : insertWeb
-    Created on : May 30, 2013, 10:26:05 PM
+    Document   : findWeb
+    Created on : May 30, 2013, 10:25:23 PM
     Author     : Andrej Makovicky
 --%>
 
@@ -11,28 +11,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <title>Insert WAR</title>
+        <title>WAR Search</title>
     </head>
     <body>
-        <h2>Extract web.xml</h2>
+        <h2>Search WARs by web.xml</h2>
         </br>
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="showWeb.jsp">Show web.xmls</a></li>
-                <li><a href="findWeb.jsp">Find web.xml</a></li>
+                <li><a href="showWAR.jsp">Show WAR and web.xml</a></li>
+                <li><a href="insertWAR.jsp">Insert WAR</a></li>
             </ul>
         </div> 
         
-        <s:form action="warUpload" method="POST " beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WARActionBean" >
-            <s:file name="warInput"/>
-            </br>
-            <s:submit name="warUpload">Submit</s:submit>
-        </s:form>
-        </br>
+        <%--<s:form action="stringToDoc" beanclass="Util">--%>
+            <%--<s:file name="XSD"/>--%> 
+        <%--</s:form>--%>
         
 
 
     </body>
 </html>
-
