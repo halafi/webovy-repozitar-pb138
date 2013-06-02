@@ -24,7 +24,7 @@
             </ul>
         </div> 
 
-        <s:form action="xsdUpload" method="POST" >
+        <s:form action="xsdUpload" method="POST" beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.XSDActionBean">
             <s:file name="xsdInput"/>
             </br>
             <s:submit name="xsdUpload">Submit</s:submit>
