@@ -85,7 +85,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         return wsdl;
     }
 
-   @Override
+    @Override
     public List<WSDLDoc> getAllWSDLs() {
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
         String c = this.dm.queryCollection("count(collection('wsdl')/wsdl)");
@@ -94,6 +94,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         }
         return output;
     }
+   
 
     /*
      * Finds WSDL by definitions name.
