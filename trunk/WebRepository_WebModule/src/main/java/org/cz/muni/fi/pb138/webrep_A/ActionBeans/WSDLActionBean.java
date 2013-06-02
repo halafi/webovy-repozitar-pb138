@@ -63,7 +63,7 @@ public class WSDLActionBean implements ActionBean {
     
     public Resolution wsdlUpload() {
         try {
-            File toFile = new File(System.getProperty("user.home")+"/"+wsdlInput.getFileName());
+            File toFile = new File(System.getProperty("user.home")+File.separator+wsdlInput.getFileName());
             wsdlInput.save(toFile);
             String content = Util.readFile(toFile);
 
