@@ -1,9 +1,3 @@
-<%-- 
-    Document   : insertXSD
-    Created on : May 30, 2013, 10:25:56 PM
-    Author     : Andrej Makovicky
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <!DOCTYPE html>
@@ -28,8 +22,7 @@
             <s:file name="xsdInput"/>
             </br>
             <s:submit name="xsdUpload">Submit</s:submit>
-        </s:form>    
-
-
+        </s:form>  
+        </br> 
     </body>
 </html>

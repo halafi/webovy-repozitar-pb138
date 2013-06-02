@@ -7,7 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <title>Show Webs </title>
+        <title>Show WAR archives</title>
     </head>
     <body>
         <h2>WAR archiver </h2>
@@ -15,8 +15,8 @@
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="insertWeb.jsp">Extract web.xml</a></li>
-                <li><a href="findWeb.jsp">Find web.xml</a></li>
+                <li><a href="insertWAR.jsp">Insert WAR</a></li>
+                <li><a href="findWAR.jsp">Search WARs by web.xml</a></li>
             </ul>
         </div> 
         <div id="tabulka">
