@@ -67,19 +67,8 @@ public class WarManagerImpl implements WarManager {
                 + " for $war in collection('war')/war[@id='" + id.toString() + "']"
                 + " return data($war/@fileName)"));
         war.setWebXml(this.dm.queryCollection("collection('war')/war[@id='"+id.toString()+"']/web.xml"));
-        try {
-           war.setExtract(Util.docToString(webXmlParser.webXMLExtract(Util.stringToDoc(war.getWebXml()))));
-        } catch (SAXException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (ParserConfigurationException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (TransformerConfigurationException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (TransformerException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        }
+        war.setExtract(Util.docToString(webXmlParser.webXMLExtract(Util.stringToDoc(war.getWebXml()))));
+
 
         return war;
     }

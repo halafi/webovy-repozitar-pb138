@@ -66,19 +66,8 @@ public class XSDManagerImpl implements XSDManager {
         schema.setFileName(this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
                 + " return data($xsd/@fileName)"));
-        try {     
-            schema.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(schema.getDocument()))));
-        } catch (SAXException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (ParserConfigurationException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (TransformerConfigurationException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (TransformerException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        }
+        schema.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(schema.getDocument()))));
+
         return schema;
     }
 
