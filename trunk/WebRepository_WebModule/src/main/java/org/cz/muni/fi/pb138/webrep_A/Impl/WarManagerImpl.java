@@ -1,26 +1,16 @@
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
-import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
-import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
-import org.xml.sax.SAXException;
 /**
  *
  * @author xmakovic

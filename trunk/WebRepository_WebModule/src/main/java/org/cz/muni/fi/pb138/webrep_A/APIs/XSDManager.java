@@ -1,15 +1,9 @@
 package org.cz.muni.fi.pb138.webrep_A.APIs;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.List;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
-import org.xml.sax.SAXException;
 
 /**
  *

@@ -1,7 +1,6 @@
 package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -9,9 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.action.DefaultHandler;
@@ -26,7 +22,6 @@ import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Filetype;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
-import org.xml.sax.SAXException;
 
 /**
  *
