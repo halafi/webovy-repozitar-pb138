@@ -9,10 +9,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.action.FileBean;
 import net.sourceforge.stripes.action.ForwardResolution;
+import net.sourceforge.stripes.action.Resolution;
+import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
+import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
+import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
+import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
+import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
+import org.cz.muni.fi.pb138.webrep_A.Util.Filetype;
+import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 
 /**
  *
@@ -20,20 +31,18 @@ import net.sourceforge.stripes.action.ForwardResolution;
  */
 public class XSDActionBean implements ActionBean {
 
+    private ActionBeanContext context;
     private FileBean xsdInput;
-    private InputStream is;
-    private OutputStream os;
-
+    private DatabaseManager xsdDBManager = new DatabaseManager(Filetype.XSD);
+    XSDManager manager = new XSDManagerImpl(xsdDBManager);
+    XSDParser xsdParser = new XSDParser();
+    
     @Override
-    public void setContext(ActionBeanContext abc) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools o| Templates.
-    }
-
+    public ActionBeanContext getContext() { return context; }
+    
     @Override
-    public ActionBeanContext getContext() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return null;
-    }
+    public void setContext(ActionBeanContext context) { this.context = context; }
+
 
     public FileBean getxsdInput() {
         return xsdInput;
@@ -43,29 +52,26 @@ public class XSDActionBean implements ActionBean {
         this.xsdInput = xsdInput;
     }
 
-    public ForwardResolution xsdUpload() {
+    public Resolution xsdUpload() {
         try {
-            is = xsdInput.getInputStream();
-            os = new FileOutputStream(new File("/Users/mkyong/Downloads/holder-new.js")); //set File Path  ! ! ! 
-            int read = 0;
-            byte[] bytes = new byte[1024];
+            File toFile = new File(System.getProperty("user.home")+File.separator+xsdInput.getFileName());
+            xsdInput.save(toFile);
+            String content = Util.readFile(toFile);
 
-            while ((read = is.read(bytes)) != -1) {
-                os.write(bytes, 0, read);
-            }
-        } catch (IOException e) {
+            XSD xsd = new XSD();
+            xsd.setId(manager.getNewId());
+            xsd.setTimestamp(Util.getTimeStamp());
+            xsd.setFileName(xsdInput.getFileName());
+            xsd.setDocument(Util.stripXMLHeader(content));
+            xsd.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
+            manager.createXSD(xsd);
             
-        } finally {
-
-            try {
-                is.close();
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            toFile.delete();
+            xsdInput.delete();
+        } catch (IOException ex) {
+            Logger.getLogger(WSDLActionBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return new ForwardResolution("/WEB-INF/showXSD.jsp");
+        return new ForwardResolution("/showXSD.jsp");
     }
     
 }

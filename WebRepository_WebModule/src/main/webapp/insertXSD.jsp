@@ -24,10 +24,11 @@
             </ul>
         </div> 
 
-        <s:form action="xsdUpload">
-                <s:file name="xsdInput"/>
-        </s:form>
-
+        <s:form action="xsdUpload" method="POST" >
+            <s:file name="xsdInput"/>
+            </br>
+            <s:submit name="xsdUpload">Submit</s:submit>
+        </s:form>    
 
 
     </body>
