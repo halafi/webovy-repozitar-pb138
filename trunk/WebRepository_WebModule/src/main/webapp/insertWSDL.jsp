@@ -25,9 +25,9 @@
         </div> 
         
         <s:form action="wsdlUpload">
-            <s:file name="WSDL"/>
+            <s:file name="wsdlUpload"/>
             </br>
-            <s:submit name="uploadThisShit">Submit</s:submit>
+            <s:submit name="wsdlUpload">Submit</s:submit>
         </s:form>
         </br>
         
