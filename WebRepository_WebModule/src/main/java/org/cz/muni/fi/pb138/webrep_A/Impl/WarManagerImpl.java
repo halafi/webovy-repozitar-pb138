@@ -29,7 +29,7 @@ public class WarManagerImpl implements WarManager {
     public static final Logger logger = Logger.getLogger(WarManagerImpl.class.getName());
     private DatabaseManager dm;
 
-    public WarManagerImpl(DatabaseManager dm) throws IOException {
+    public WarManagerImpl(DatabaseManager dm) {
         this.dm = dm;
     }
     

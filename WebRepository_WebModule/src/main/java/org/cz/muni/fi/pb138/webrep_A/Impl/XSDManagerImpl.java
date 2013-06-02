@@ -28,7 +28,7 @@ public class XSDManagerImpl implements XSDManager {
     public static final Logger logger = Logger.getLogger(XSDManagerImpl.class.getName());
     private DatabaseManager dm;
 
-    public XSDManagerImpl(DatabaseManager dm) throws IOException {
+    public XSDManagerImpl(DatabaseManager dm) {
         this.dm = dm;
     }
     
