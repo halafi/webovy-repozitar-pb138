@@ -30,8 +30,6 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Version</th>
-
-
                     </tr>
                 </thead>
                 <s:useActionBean beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WARActionBean" var="actionBean"/>
