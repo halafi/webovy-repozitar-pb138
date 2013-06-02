@@ -69,19 +69,8 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
                 +" return data($wsdl/@date)"));
         wsdl.setDocument(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
                 +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions"));
-        try {
-            wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(wsdl.getDocument()))));
-        } catch (ParserConfigurationException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (TransformerConfigurationException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        } catch (TransformerException ex) {
-            logger.log(Level.SEVERE, null, ex);
-        }
+        wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(wsdl.getDocument()))));
+
         return wsdl;
     }
 

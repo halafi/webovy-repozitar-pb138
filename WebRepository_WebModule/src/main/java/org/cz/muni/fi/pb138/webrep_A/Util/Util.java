@@ -2,6 +2,7 @@ package org.cz.muni.fi.pb138.webrep_A.Util;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.jar.JarFile;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -41,34 +44,35 @@ public class Util {
      * @throws SAXException
      * @throws IOException 
      */    
-    public static Document warExtract(File warFile) throws ParserConfigurationException, 
-                                                           SAXException, 
-                                                           IOException{
-        JarFile jar = new JarFile(warFile);
-        Enumeration entries = jar.entries();
-        InputStream in = null;
-        while (entries.hasMoreElements()) {
-           ZipEntry entry = (ZipEntry)entries.nextElement();
-           if (entry.getName().toLowerCase().indexOf("web.xml") != -1) {
-               in = jar.getInputStream(entry);
-               System.out.println("web.xml extracted");
-               break;
-           }
-           if (!entries.hasMoreElements()) {
-               throw new IllegalArgumentException("No web.xml file in WAR archive.");
-           }
+    public static Document warExtract(File warFile) {
+        try {
+            JarFile jar = new JarFile(warFile);
+            Enumeration entries = jar.entries();
+            InputStream in = null;
+            while (entries.hasMoreElements()) {
+               ZipEntry entry = (ZipEntry)entries.nextElement();
+               if (entry.getName().toLowerCase().indexOf("web.xml") != -1) {
+                   in = jar.getInputStream(entry);
+                   System.out.println("web.xml extracted");
+                   break;
+               }
+               if (!entries.hasMoreElements()) {
+                   throw new IllegalArgumentException("No web.xml file in WAR archive.");
+               }
+            }
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document output = null;
+            output = builder.parse(in);
+            return output;
+        } catch (SAXException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
         }
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document output = null;
-         try {
-             output = builder.parse(in);
-         } catch (SAXException ex) {
-             throw new SAXException(ex);
-         } catch (IOException ex) {
-             throw new IOException(ex);
-         }
-        return output;
+        return null;
     }
     
     public static String getTimeStamp() {
@@ -86,26 +90,37 @@ public class Util {
      * @throws ParserConfigurationException
      * @throws IOException 
      */
-    public static String stripXMLHeader(String input) throws TransformerConfigurationException, 
-           TransformerConfigurationException, TransformerException, SAXException, ParserConfigurationException, IOException {
+    public static String stripXMLHeader(String input) {
         Document doc = stringToDoc(input);
         String output = docToString(doc);
         return output;
     }
     
-    public static String readFile(File file) throws IOException {
-        String content = "";
-        String line;
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        while ((line = reader.readLine()) != null)
-        {
-            content += "\n" + line;
+    public static String readFile(File file) {
+        BufferedReader reader = null;
+        try {
+            String content = "";
+            String line;
+            reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null)
+            {
+                content += "\n" + line;
+            }
+            // Cut of the first newline;
+            content = content.substring(1);
+            // Close the reader
+            reader.close();
+            return content;
+        } catch (IOException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        // Cut of the first newline;
-        content = content.substring(1);
-        // Close the reader
-        reader.close();
-        return content;
+        return null;
     }
     
     /**
@@ -115,16 +130,20 @@ public class Util {
      * @throws TransformerConfigurationException
      * @throws TransformerException 
      */
-    public static String docToString(Document doc) throws TransformerConfigurationException, 
-           TransformerException {
-        DOMSource domSource = new DOMSource(doc);
-        StringWriter writer = new StringWriter();
-        StreamResult result = new StreamResult(writer);
-        TransformerFactory tf = TransformerFactory.newInstance();
-        Transformer transformer = tf.newTransformer();
-        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-        transformer.transform(domSource, result);
-        return writer.toString();
+    public static String docToString(Document doc) {
+        try {
+            DOMSource domSource = new DOMSource(doc);
+            StringWriter writer = new StringWriter();
+            StreamResult result = new StreamResult(writer);
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer transformer = tf.newTransformer();
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+            transformer.transform(domSource, result);
+            return writer.toString();
+        } catch (TransformerException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     /**
@@ -135,10 +154,18 @@ public class Util {
      * @throws ParserConfigurationException
      * @throws IOException 
      */
-    public static Document stringToDoc(String xmlSource) throws SAXException,
-            ParserConfigurationException, IOException {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        return builder.parse(new InputSource(new StringReader(xmlSource)));
+    public static Document stringToDoc(String xmlSource) {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            return builder.parse(new InputSource(new StringReader(xmlSource)));
+        } catch (SAXException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }
