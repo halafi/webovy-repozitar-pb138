@@ -33,7 +33,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         logger.addHandler(new StreamHandler(fs, new SimpleFormatter()));
     }
     
-    public WSDLDocManagerImpl(DatabaseManager dm) throws IOException {
+    public WSDLDocManagerImpl(DatabaseManager dm) {
         this.dm = dm;
     }
     
