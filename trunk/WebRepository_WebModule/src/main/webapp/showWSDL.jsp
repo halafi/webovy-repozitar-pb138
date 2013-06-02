@@ -34,7 +34,8 @@
 
                     </tr>
                 </thead>
-                <c:forEach items="${WSDLs}" var="WSDLDoc">
+                <s:useActionBean beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WSDLActionBean" var="actionBean"/>
+                <c:forEach items="${actionBean.WSDLs}" var="WSDLDoc">
                     <tr>
                         <td><c:out value="${WSDLDoc.id}"/></td>
                         <td><c:out value="${WSDLDoc.name}"/></td>
