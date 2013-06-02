@@ -66,34 +66,32 @@ public class WSDLActionBean implements ActionBean {
     }
 
     
-    public Resolution wsdlUpload(){
-            /*
-            try {
-                    is = wsdlInput.getInputStream();
-                    File file = new File(wsdlInput.getFileName());
-                    os = new FileOutputStream(file); //set File Path  ! ! ! 
-                    int read = 0;
-                    byte[] bytes = new byte[1024];
+    public Resolution wsdlUpload() throws IOException{
+        /*try {
+                is = wsdlInput.getInputStream();
+                os = new FileOutputStream(new File(wsdlInput.getFileName())); //set File Path  ! ! ! 
+                int read = 0;
+                byte[] bytes = new byte[1024];
 
-                    while ((read = is.read(bytes)) != -1) {
-                        os.write(bytes, 0, read);
-                    }
+                while ((read = is.read(bytes)) != -1) {
+                    os.write(bytes, 0, read);
+                }
+            } catch (IOException e) {
+                  e.printStackTrace();
+            } finally {
+                try {
+                    is.close();
+                    os.close();
+                    wsdlInput.delete();
                 } catch (IOException e) {
-                      e.printStackTrace();
-                } finally {
-                    try {
-                        is.close();
-                        os.close();
-                        wsdlInput.delete();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }*/
-            
+                    e.printStackTrace();
+                }
+            }*/
         
         try {
             is = wsdlInput.getInputStream();
             File file = new File(wsdlInput.getFileName());
+            System.out.println(wsdlInput.getFileName());
             String content = Util.readFile(file);
             
             WSDLDoc wsdl = new WSDLDoc();
@@ -107,7 +105,7 @@ public class WSDLActionBean implements ActionBean {
             
             wsdlInput.delete();
         } catch (IOException ex) {
-            
+            throw new IOException(ex);
         }
         return new ForwardResolution("/showWSDL.jsp");
     }
