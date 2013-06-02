@@ -55,23 +55,6 @@ public class TestingClass {
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\webservice.wsdl");
         if(testWSDL.exists()) {
             String content = Util.readFile(testWSDL);
-            /*
-            WSDLDoc wsdl = new WSDLDoc();
-            wsdl.setId(new Long(0));
-            wsdl.setTimestamp(Util.getTimeStamp());
-            wsdl.setFileName(testWSDL.toString());
-            wsdl.setDocument(Util.stripXMLHeader(content));
-            wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
-            
-            
-            wsdlManager.createWSDL(wsdl);
-            wsdl.setId(new Long(1));
-            wsdlManager.createWSDL(wsdl);
-            wsdl.setId(new Long(5));
-            wsdlManager.createWSDL(wsdl);*/
-            wsdlManager.createWSDLCollection();
-
-            System.out.println(wsdlManager.getNewId());
             
             WSDLDoc wsdl = new WSDLDoc();
             wsdl.setId(wsdlManager.getNewId());
@@ -80,8 +63,16 @@ public class TestingClass {
             wsdl.setDocument(Util.stripXMLHeader(content));
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
             wsdlManager.createWSDL(wsdl);
-            
-            System.out.println(wsdlManager.getNewId());
+            /*
+            WSDLDoc wsdl = new WSDLDoc();
+            wsdl.setId(wsdlManager.getNewId());
+            wsdl.setTimestamp(Util.getTimeStamp());
+            wsdl.setFileName(testWSDL.toString());
+            wsdl.setDocument(Util.stripXMLHeader(content));
+            wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
+            wsdlManager.createWSDL(wsdl);
+            */
+            System.out.println(wsdlManager.getAllWSDLs());
         }
         
         /*

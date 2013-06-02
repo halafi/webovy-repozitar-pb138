@@ -73,14 +73,13 @@ public class WSDLActionBean implements ActionBean {
             String content = Util.readFile(toFile);
 
             WSDLDoc wsdl = new WSDLDoc();
-            wsdl.setId(new Long(3));
+            wsdl.setId(manager.getNewId());
             wsdl.setTimestamp(Util.getTimeStamp());
-            wsdl.setFileName(toFile.toString());
+            wsdl.setFileName(wsdlInput.getFileName());
             wsdl.setDocument(Util.stripXMLHeader(content));
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
-            manager.createWSDLCollection();
             manager.createWSDL(wsdl);
-
+            
             toFile.delete();
             wsdlInput.delete();
         } catch (IOException ex) {

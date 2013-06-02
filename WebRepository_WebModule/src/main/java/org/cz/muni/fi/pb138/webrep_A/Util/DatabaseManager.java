@@ -30,7 +30,7 @@ public class DatabaseManager {
         if((Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && !Filetype.WAR.equals(fileType))
                 ||(!Filetype.WSDL.equals(fileType) && Filetype.XSD.equals(fileType) && !Filetype.WAR.equals(fileType))
                 ||(!Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && Filetype.WAR.equals(fileType))) {
-            String path = DatabaseManager.class.getClassLoader().getResource(".").getPath()+"../../BaseXDB/";
+            String path = System.getProperty("user.home")+File.separator+"BaseXDB"+File.separator;
             File basexdbDir = new File(path);
             if(!basexdbDir.exists()) {
                 basexdbDir.mkdir();
