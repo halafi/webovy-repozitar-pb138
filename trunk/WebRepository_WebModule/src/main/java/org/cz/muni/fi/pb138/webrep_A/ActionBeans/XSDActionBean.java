@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
+import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.FileBean;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -25,11 +26,11 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 @UrlBinding("/")
 public class XSDActionBean implements ActionBean {
 
-    private ActionBeanContext context;
     private FileBean xsdInput;
-    private DatabaseManager xsdDBManager = new DatabaseManager(Filetype.XSD);
-    XSDManager manager = new XSDManagerImpl(xsdDBManager);
-    XSDParser xsdParser = new XSDParser();
+    private ActionBeanContext context;
+    private DatabaseManager dm = new DatabaseManager(Filetype.XSD);
+    private XSDManager manager = new XSDManagerImpl(dm);
+    private XSDParser xsdParser = new XSDParser();
     
     @Override
     public ActionBeanContext getContext() { return context; }
@@ -44,6 +45,11 @@ public class XSDActionBean implements ActionBean {
 
     public void setxsdInput(FileBean xsdInput) {
         this.xsdInput = xsdInput;
+    }
+    
+    @DefaultHandler
+    public Resolution all() {
+        return new ForwardResolution("/showPlayers.jsp");
     }
 
     public Resolution xsdUpload() {
@@ -63,7 +69,7 @@ public class XSDActionBean implements ActionBean {
             toFile.delete();
             xsdInput.delete();
         } catch (IOException ex) {
-            Logger.getLogger(WSDLActionBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(XSDActionBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new ForwardResolution("/showXSD.jsp");
     }

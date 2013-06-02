@@ -62,7 +62,7 @@ public class WARActionBean implements ActionBean {
             toFile.delete();
             warInput.delete();
         } catch (IOException ex) {
-            Logger.getLogger(WSDLActionBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WARActionBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new ForwardResolution("/showWeb.jsp");
     }
