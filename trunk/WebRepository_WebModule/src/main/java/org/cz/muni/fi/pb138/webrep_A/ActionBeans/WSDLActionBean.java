@@ -66,46 +66,25 @@ public class WSDLActionBean implements ActionBean {
     }
 
     
-    public Resolution wsdlUpload() throws IOException{
-        /*try {
-                is = wsdlInput.getInputStream();
-                os = new FileOutputStream(new File(wsdlInput.getFileName())); //set File Path  ! ! ! 
-                int read = 0;
-                byte[] bytes = new byte[1024];
-
-                while ((read = is.read(bytes)) != -1) {
-                    os.write(bytes, 0, read);
-                }
-            } catch (IOException e) {
-                  e.printStackTrace();
-            } finally {
-                try {
-                    is.close();
-                    os.close();
-                    wsdlInput.delete();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }*/
-        
+    public Resolution wsdlUpload() {
         try {
-            is = wsdlInput.getInputStream();
-            File file = new File(wsdlInput.getFileName());
-            System.out.println(wsdlInput.getFileName());
-            String content = Util.readFile(file);
-            
+            File toFile = new File(System.getProperty("user.home")+"/"+wsdlInput.getFileName());
+            wsdlInput.save(toFile);
+            String content = Util.readFile(toFile);
+
             WSDLDoc wsdl = new WSDLDoc();
             wsdl.setId(new Long(0));
             wsdl.setTimestamp(Util.getTimeStamp());
-            wsdl.setFileName(file.toString());
+            wsdl.setFileName(toFile.toString());
             wsdl.setDocument(Util.stripXMLHeader(content));
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
             manager.createWSDLCollection();
             manager.createWSDL(wsdl);
-            
+
+            toFile.delete();
             wsdlInput.delete();
         } catch (IOException ex) {
-            throw new IOException(ex);
+            Logger.getLogger(WSDLActionBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new ForwardResolution("/showWSDL.jsp");
     }
