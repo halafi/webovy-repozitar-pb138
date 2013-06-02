@@ -24,14 +24,14 @@ public interface WSDLDocManager {
      * @return WSDL file as String
      * @throws BaseXException 
      */
-    public WSDLDoc getWSDL(Long id) throws BaseXException;
+    public WSDLDoc getWSDL(Long id);
     
     /**
      * Gets all WSDLs from database.
      * @return all WSDLs from database as String
      * @throws BaseXException 
      */
-    public List<WSDLDoc> getAllWSDLs() throws BaseXException; 
+    public List<WSDLDoc> getAllWSDLs(); 
     
     /**
      * Finds WSDLs by meta data.
@@ -39,7 +39,7 @@ public interface WSDLDocManager {
      * @return All WSDLs satisfactory search.
      * @throws BaseXException 
      */
-    public List<WSDLDoc> findWSDLByData(String definitonsName) throws BaseXException;
+    public List<WSDLDoc> findWSDLByData(String definitonsName);
 
     public void createWSDLCollection();
     public void setLogger(FileOutputStream fs);

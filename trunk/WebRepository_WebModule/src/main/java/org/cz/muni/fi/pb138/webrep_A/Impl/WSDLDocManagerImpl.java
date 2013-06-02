@@ -53,7 +53,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
 
     
     @Override
-    public WSDLDoc getWSDL(Long id) throws BaseXException {
+    public WSDLDoc getWSDL(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
@@ -86,7 +86,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     }
 
    @Override
-    public List<WSDLDoc> getAllWSDLs() throws BaseXException {
+    public List<WSDLDoc> getAllWSDLs() {
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
         String c = this.dm.queryCollection("count(collection('wsdl')/wsdl)");
         for(int i=0;i<new Integer(c);i++) {
@@ -99,7 +99,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
      * Finds WSDL by metadata.
      */    
     @Override
-    public List<WSDLDoc> findWSDLByData(String definitonsName) throws BaseXException {
+    public List<WSDLDoc> findWSDLByData(String definitonsName){
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
         String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';" 
                 + " for $wsdl in collection('wsdl')/wsdl "
@@ -124,7 +124,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
      * @return List of WSDLDoc
      * @throws BaseXException 
      */
-    public List<WSDLDoc> findWSDLByMetaData(String metaData, String atributeName) throws BaseXException {
+    public List<WSDLDoc> findWSDLByMetaData(String metaData, String atributeName) {
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
         String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';" 
                 + " distinct-values(for $wsdl in collection('wsdl')/wsdl "

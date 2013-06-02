@@ -53,7 +53,7 @@ public class WarManagerImpl implements WarManager {
     }
     
     @Override
-    public WarArchive getWarArchive(Long id)throws BaseXException{
+    public WarArchive getWarArchive(Long id){
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
@@ -85,7 +85,7 @@ public class WarManagerImpl implements WarManager {
     }
     
     @Override
-    public List<WarArchive> getAllArchives() throws BaseXException {
+    public List<WarArchive> getAllArchives() {
         List<WarArchive> output = new ArrayList<WarArchive>();
         String c = this.dm.queryCollection("count(collection('war')/war)");
          for(int i=0;i<new Integer(c);i++) { 

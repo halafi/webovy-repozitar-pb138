@@ -51,7 +51,7 @@ public class XSDManagerImpl implements XSDManager {
     }
 
     @Override
-    public XSD getXSD(Long id) throws BaseXException {
+    public XSD getXSD(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("id is null");
         }
@@ -83,7 +83,7 @@ public class XSDManagerImpl implements XSDManager {
     }
 
     @Override
-    public List<XSD> getAllXSDs() throws BaseXException {
+    public List<XSD> getAllXSDs() {
         List<XSD> output = new ArrayList<XSD>();
         String c = this.dm.queryCollection("count(collection('xsd')/xsd)");
         for(int i=0;i<new Integer(c);i++) {
@@ -96,7 +96,7 @@ public class XSDManagerImpl implements XSDManager {
      * Finds XSD by data input.
      */
     @Override
-    public List<XSD> findXSDByData(String s) throws BaseXException{
+    public List<XSD> findXSDByData(String s) {
         List<XSD> output = new ArrayList<XSD>();
         String query =  this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + "distinct-values( for $xsd in collection('xsd')/xsd "

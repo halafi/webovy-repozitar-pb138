@@ -30,21 +30,14 @@ public interface XSDManager {
      * @return XML file as String
      * @throws BaseXException 
      */
-    public XSD getXSD(Long id) throws TransformerConfigurationException, 
-                                                             TransformerConfigurationException, 
-                                                             TransformerException, 
-                                                             SAXException, 
-                                                             ParserConfigurationException, 
-                                                             IOException,
-                                                             BaseXException,
-                                                            ParseException;
+    public XSD getXSD(Long id);
     
     /**
      * Gets all XSDs from database.
      * @return all XSDs from database as String
      * @throws BaseXException 
      */
-    public List<XSD> getAllXSDs() throws BaseXException; 
+    public List<XSD> getAllXSDs(); 
     
     /**
      * Finds XSD by meta data.
@@ -52,7 +45,7 @@ public interface XSDManager {
      * @return All XSDs satisfactory search.
      * @throws BaseXException 
      */
-    public List<XSD> findXSDByData(String s) throws BaseXException;
+    public List<XSD> findXSDByData(String s);
     
     public void createXSDCollection();
     
