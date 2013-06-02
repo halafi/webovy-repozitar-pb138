@@ -2,6 +2,7 @@ package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sourceforge.stripes.action.ActionBean;
@@ -11,6 +12,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
@@ -65,5 +67,9 @@ public class WARActionBean implements ActionBean {
             Logger.getLogger(WARActionBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new ForwardResolution("/showWeb.jsp");
+    }
+    
+    public List<WarArchive> getWARs(){
+        return manager.getAllArchives();
     }
 }

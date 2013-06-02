@@ -30,21 +30,20 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Version</th>
-                        
+
 
                     </tr>
                 </thead>
-                <c:forEach items="${customers}" var="customer">
+                <s:useActionBean beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.XSDActionBean" var="actionBean"/>
+                <c:forEach items="${actionBean.XSDs}" var="XSD">
                     <tr>
-                        <td><c:out value="${customer.name}"/></td>
-                        <td><c:out value="${customer.address}"/></td>
-                        <td><c:out value="${customer.email}"/></td>
-                        
+                        <td><c:out value="${XSD.id}"/></td>
+                        <td><c:out value="${XSD.fileName}"/></td>
+                        <td><c:out value="${XSD.timestamp}"/></td>
+
 
                         <td><form method="post" action="${pageContext.request.contextPath}/customers/delete?id=${customer.id}"
-                                  style="margin-bottom: 0;"><input type="submit" value="Smazat"></form></td>
-                        <td><form method="post" action="${pageContext.request.contextPath}/customers/show?id=${customer.id}"
-                                  style="margin-bottom: 0;"><input type="submit" value="Editovat"></form>
+                                  style="margin-bottom: 0;"><input type="submit" value="View"></form></td>
                         </td>
 
                     </tr>
