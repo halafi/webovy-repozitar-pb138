@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <title>WARInsert</title>
+        <title>Insert WAR</title>
     </head>
     <body>
         <h2>Extract web.xml</h2>
