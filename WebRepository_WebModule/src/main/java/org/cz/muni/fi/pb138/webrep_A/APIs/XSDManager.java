@@ -50,4 +50,6 @@ public interface XSDManager {
     public void createXSDCollection();
     
     public void setLogger(FileOutputStream fs);
+    
+    public Long getNewId();
 }

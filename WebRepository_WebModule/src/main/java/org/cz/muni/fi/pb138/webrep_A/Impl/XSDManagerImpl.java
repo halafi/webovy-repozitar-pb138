@@ -41,6 +41,17 @@ public class XSDManagerImpl implements XSDManager {
     public void createXSDCollection() {
         this.dm.createCollection("xsd");
     }
+    
+    @Override
+    public Long getNewId() {
+        String c = this.dm.queryCollection("count(collection('xsd')/xsd)");
+        if(c.equals("0")) {
+            return new Long(0);
+        }
+        else {
+            return new Long(c);
+        }
+    }
 
     @Override
     public void createXSD(XSD xsd) {

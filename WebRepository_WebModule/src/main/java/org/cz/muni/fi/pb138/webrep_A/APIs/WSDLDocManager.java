@@ -41,6 +41,7 @@ public interface WSDLDocManager {
      */
     public List<WSDLDoc> findWSDLByData(String definitonsName);
 
+    public Long getNewId();
     public void createWSDLCollection();
     public void setLogger(FileOutputStream fs);
 }

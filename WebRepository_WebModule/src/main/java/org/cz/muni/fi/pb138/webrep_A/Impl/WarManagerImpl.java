@@ -53,6 +53,17 @@ public class WarManagerImpl implements WarManager {
     }
     
     @Override
+    public Long getNewId() {
+        String c = this.dm.queryCollection("count(collection('war')/war)");
+        if(c.equals("0")) {
+            return new Long(0);
+        }
+        else {
+            return new Long(c);
+        }
+    }
+    
+    @Override
     public WarArchive getWarArchive(Long id){
         if (id == null) {
             throw new IllegalArgumentException("id is null");
