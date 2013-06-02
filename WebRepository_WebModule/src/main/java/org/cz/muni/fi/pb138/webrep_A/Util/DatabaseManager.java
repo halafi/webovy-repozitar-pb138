@@ -82,13 +82,18 @@ public class DatabaseManager {
     * @return String
     * @throws BaseXException on database error
     */
-    public String queryCollection(String query) throws BaseXException {
-        String toReturn;
-        Context context = new Context();
-        new Set("dbpath", this.DBPath).execute(context);
-        toReturn = new XQuery(query).execute(context).toString();
-        context.close();
-        return toReturn;
+    public String queryCollection(String query) {
+        try {
+            String toReturn;
+            Context context = new Context();
+            new Set("dbpath", this.DBPath).execute(context);
+            toReturn = new XQuery(query).execute(context).toString();
+            context.close();
+            return toReturn;
+        } catch (BaseXException ex) {
+            logger.log(Level.SEVERE, "DBError when collecting query");
+        }
+        return null;
     }
     
     /**

@@ -25,14 +25,14 @@ public interface WarManager {
      * @return Single web.XML file as String
      * @throws BaseXException 
      */
-    public WarArchive getWarArchive(Long id)throws BaseXException;  
+    public WarArchive getWarArchive(Long id);  
     
     /**
      * Gets all web.XMLs from database.
      * @return All web.XMLs from database as String
      * @throws BaseXException 
      */
-    public List<WarArchive> getAllArchives() throws BaseXException;
+    public List<WarArchive> getAllArchives();
     
     public void createWARCollection();
     
