@@ -34,16 +34,13 @@ public class WSDLActionBean implements ActionBean {
     private OutputStream os;
     private List<WSDLDoc> wsdls = new ArrayList<WSDLDoc>();
 
-    @Override
-    public void setContext(ActionBeanContext abc) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools o| Templates.
-    }
+    private ActionBeanContext context;
 
     @Override
-    public ActionBeanContext getContext() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return null;
-    }
+    public ActionBeanContext getContext() { return context; }
+    
+    @Override
+    public void setContext(ActionBeanContext context) { this.context = context; }
 
     public FileBean getwsdlInput() {
         return wsdlInput;
@@ -104,7 +101,7 @@ public class WSDLActionBean implements ActionBean {
                 e.printStackTrace();
             }
         }
-        return new ForwardResolution("/WEB-INF/showWSDL.jsp");
+        return new ForwardResolution("/showWSDL.jsp");
     }
 
 //    public ForwardResolution wsdlUpload() {
