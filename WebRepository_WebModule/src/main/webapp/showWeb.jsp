@@ -1,12 +1,8 @@
-<%-- 
-    Document   : showWeb
-    Created on : May 30, 2013, 8:55:23 PM
-    Author     : Andrej Makovicky
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<jsp:useBean id="actionBean" scope="page"
+             class="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WARActionBean"/>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -33,17 +29,11 @@
                     </tr>
                 </thead>
                 <s:useActionBean beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WARActionBean" var="actionBean"/>
-                <c:forEach items="${actionBean.WARs}" var="WAR">
+                <c:forEach items="${actionBean.getWARs()}" var="WAR">
                     <tr>
-                        <td><c:out value="${WAR.id}"/></td>
-                        <td><c:out value="${WAR.fileName}"/></td>
-                        <td><c:out value="${WAR.timestamp}"/></td>
-
-
-                        <td><form method="post" action="${pageContext.request.contextPath}/customers/delete?id=${customer.id}"
-                                  style="margin-bottom: 0;"><input type="submit" value="View"></form></td>
-                        </td>
-
+                        <td><c:out value="${WAR.getId()}"/></td>
+                        <td><c:out value="${WAR.getFileName()}"/></td>
+                        <td><c:out value="${WAR.getTimestamp()}"/></td>
                     </tr>
                 </c:forEach>
             </table>
