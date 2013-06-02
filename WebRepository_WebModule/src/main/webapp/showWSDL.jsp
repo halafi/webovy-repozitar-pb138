@@ -30,7 +30,7 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Version</th>
-                        <th>Link</th>
+
 
                     </tr>
                 </thead>
@@ -39,7 +39,7 @@
                         <td><c:out value="${wsdl.id}"/></td>
                         <td><c:out value="${wsdl.name}"/></td>
                         <td><c:out value="${wsdl.date}"/></td>
-                        <td><c:out value="${wsdl.wtf}"/></td>
+
 
                         <td><form method="post" action="${pageContext.request.contextPath}/customers/delete?id=${customer.id}"
                                   style="margin-bottom: 0;"><input type="submit" value="Smazat"></form></td>
