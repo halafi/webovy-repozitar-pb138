@@ -96,7 +96,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     }
 
     /*
-     * Finds WSDL by metadata.
+     * Finds WSDL by definitions name.
      */    
     @Override
     public List<WSDLDoc> findWSDLByData(String definitonsName){
