@@ -37,4 +37,6 @@ public interface WarManager {
     public void createWARCollection();
     
     public void setLogger(FileOutputStream fs);
+    
+    public Long getNewId();
 }

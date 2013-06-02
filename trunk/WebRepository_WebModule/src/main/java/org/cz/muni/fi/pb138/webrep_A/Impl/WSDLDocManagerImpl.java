@@ -50,6 +50,16 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         this.dm.addXML("wsdl", wsdl.getId().toString(),xml);
 
     }
+    @Override
+    public Long getNewId() {
+        String c = this.dm.queryCollection("count(collection('wsdl')/wsdl)");
+        if(c.equals("0")) {
+            return new Long(0);
+        }
+        else {
+            return new Long(c);
+        }
+    }
 
     
     @Override
