@@ -12,7 +12,7 @@
 
     <body>
         <h1>Archivator 3000+</h1>
-        <p>The. Best. App. Ever.</p> 
+        <p>Sere mě jak prase.</p> 
 
         <div id="topNav">
             <ul>
