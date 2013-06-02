@@ -9,6 +9,7 @@ import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.action.FileBean;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
+import net.sourceforge.stripes.action.UrlBinding;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
@@ -21,6 +22,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
  *
  * @author Andrej Makovicky
  */
+@UrlBinding("/")
 public class WARActionBean implements ActionBean {
 
     private FileBean warInput;
