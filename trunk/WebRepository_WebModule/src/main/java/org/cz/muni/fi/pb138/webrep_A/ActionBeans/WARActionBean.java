@@ -9,9 +9,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.action.FileBean;
+import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
+import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
+import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
+import org.cz.muni.fi.pb138.webrep_A.Util.Filetype;
 
 /**
  *
@@ -19,9 +27,14 @@ import net.sourceforge.stripes.action.FileBean;
  */
 public class WARActionBean implements ActionBean {
 
-     private FileBean warInput;
+    private FileBean warInput;
     private InputStream is;
     private OutputStream os;
+    private List<WSDLDoc> wsdls = new ArrayList<WSDLDoc>();
+    private ActionBeanContext context;
+    private WarArchive singleWAR;
+    private DatabaseManager dataMan = new DatabaseManager(Filetype.WAR);
+//    private WarManager manager = new WarManagerImpl(dataMan);
 
     @Override
     public void setContext(ActionBeanContext abc) {
@@ -53,7 +66,6 @@ public class WARActionBean implements ActionBean {
                 os.write(bytes, 0, read);
             }
         } catch (IOException e) {
-            
         } finally {
 
             try {
