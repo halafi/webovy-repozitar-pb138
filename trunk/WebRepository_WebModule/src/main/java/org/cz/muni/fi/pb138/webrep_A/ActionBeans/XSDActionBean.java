@@ -23,7 +23,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
  *
  * @author Andrej Makovicky
  */
-@UrlBinding("/")
+@UrlBinding("/xsd/{$event}")
 public class XSDActionBean implements ActionBean {
 
     private FileBean xsdInput;

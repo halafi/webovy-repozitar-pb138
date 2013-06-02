@@ -24,7 +24,7 @@
             </ul>
         </div> 
         
-        <s:form action="wsdlUpload" method="POST" >
+        <s:form action="wsdlUpload"  beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WSDLActionBean" method="POST" >
             <s:file name="wsdlInput"/>
             </br>
             <s:submit name="wsdlUpload">Submit</s:submit>

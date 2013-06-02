@@ -24,7 +24,7 @@
             </ul>
         </div> 
         
-        <s:form action="warUpload" method="POST" >
+        <s:form action="warUpload" method="POST " beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WARActionBean" >
             <s:file name="warInput"/>
             </br>
             <s:submit name="warUpload">Submit</s:submit>

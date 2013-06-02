@@ -22,7 +22,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
  *
  * @author Andrej Makovicky
  */
-@UrlBinding("/")
+@UrlBinding("/war/{$event}")
 public class WARActionBean implements ActionBean {
 
     private FileBean warInput;

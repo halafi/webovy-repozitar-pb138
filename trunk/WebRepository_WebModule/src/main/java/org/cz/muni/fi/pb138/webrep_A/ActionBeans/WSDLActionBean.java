@@ -24,7 +24,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
  *
  * @author Andrej Makovicky
  */
-@UrlBinding("/")
+@UrlBinding("/wsdl/{$event}")
 public class WSDLActionBean implements ActionBean {
 
     private FileBean wsdlInput;
