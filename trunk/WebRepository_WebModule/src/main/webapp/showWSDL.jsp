@@ -34,11 +34,11 @@
 
                     </tr>
                 </thead>
-                <c:forEach items="${wsdls}" var="wsdl">
+                <c:forEach items="${WSDLs}" var="WSDLDoc">
                     <tr>
-                        <td><c:out value="${wsdl.id}"/></td>
-                        <td><c:out value="${wsdl.name}"/></td>
-                        <td><c:out value="${wsdl.date}"/></td>
+                        <td><c:out value="${WSDLDoc.id}"/></td>
+                        <td><c:out value="${WSDLDoc.name}"/></td>
+                        <td><c:out value="${WSDLDoc.date}"/></td>
 
 
                         <td><form method="post" action="${pageContext.request.contextPath}/customers/delete?id=${customer.id}"

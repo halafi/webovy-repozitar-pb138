@@ -2,6 +2,7 @@ package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sourceforge.stripes.action.ActionBean;
@@ -78,10 +79,14 @@ public class WSDLActionBean implements ActionBean {
     public Resolution showSingle(){
         
         
-        // wsdl print doc
-        //wsdl print extract
+        
+        
         
        return new ForwardResolution("/showSingleWSDL.jsp");
+    }
+    
+    public List<WSDLDoc> getWSDLs(){
+        return manager.getAllWSDLs();
     }
     
     public Resolution showAll(){
