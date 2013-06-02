@@ -2,7 +2,6 @@ package org.cz.muni.fi.pb138.webrep_A.Util;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
