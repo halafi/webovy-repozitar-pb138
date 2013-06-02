@@ -41,8 +41,8 @@ public class WSDLActionBean implements ActionBean {
     private List<WSDLDoc> wsdls = new ArrayList<WSDLDoc>();
     private ActionBeanContext context;
     private WSDLDoc singleWSDL;
-    private DatabaseManager dataMan = new DatabaseManager(Filetype.WSDL);
-    private WSDLDocManager manager = new WSDLDocManagerImpl(dataMan);
+    private DatabaseManager dm = new DatabaseManager(Filetype.WSDL);
+    private WSDLDocManager manager = new WSDLDocManagerImpl(dm);
     private WSDLDocParser wsdlParser = new WSDLDocParser();
     
 
@@ -73,7 +73,7 @@ public class WSDLActionBean implements ActionBean {
             String content = Util.readFile(toFile);
 
             WSDLDoc wsdl = new WSDLDoc();
-            wsdl.setId(new Long(0));
+            wsdl.setId(new Long(3));
             wsdl.setTimestamp(Util.getTimeStamp());
             wsdl.setFileName(toFile.toString());
             wsdl.setDocument(Util.stripXMLHeader(content));

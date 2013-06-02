@@ -63,14 +63,14 @@ public class TestingClass {
             wsdl.setDocument(Util.stripXMLHeader(content));
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
             
-            wsdlManager.createWSDLCollection();
+            
             wsdlManager.createWSDL(wsdl);
             wsdl.setId(new Long(1));
             wsdlManager.createWSDL(wsdl);
-            wsdl.setId(new Long(2));
+            wsdl.setId(new Long(5));
             wsdlManager.createWSDL(wsdl);
 
-            System.out.println(wsdlManager.getWSDL(new Long(1)));
+            System.out.println(wsdlManager.getWSDL(new Long(4)));
         }
         
         /*
