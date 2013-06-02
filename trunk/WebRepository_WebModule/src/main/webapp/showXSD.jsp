@@ -6,7 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
+<jsp:useBean id="actionBean" scope="page"
+             class="org.cz.muni.fi.pb138.webrep_A.ActionBeans.XSDActionBean"/>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -33,13 +36,11 @@
                     </tr>
                 </thead>
                 <s:useActionBean beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.XSDActionBean" var="actionBean"/>
-                <c:forEach items="${actionBean.XSDs}" var="XSD">
+                <c:forEach items="${actionBean.getXSDs()}" var="XSD">
                     <tr>
-                        <td><c:out value="${XSD.id}"/></td>
-                        <td><c:out value="${XSD.fileName}"/></td>
-                        <td><c:out value="${XSD.timestamp}"/></td>
-                        <td><form method="post" action="${pageContext.request.contextPath}/customers/delete?id=${customer.id}"
-                                  style="margin-bottom: 0;"><input type="submit" value="View"></form></td>
+                        <td><c:out value="${XSD.getId()}"/></td>
+                        <td><c:out value="${XSD.getFileName()}"/></td>
+                        <td><c:out value="${XSD.getTimestamp()}"/></td>
                         </td>
                     </tr>
                 </c:forEach>
