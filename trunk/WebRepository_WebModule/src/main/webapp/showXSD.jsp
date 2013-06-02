@@ -1,9 +1,3 @@
-<%-- 
-    Document   : showXSD
-    Created on : May 30, 2013, 8:54:42 PM
-    Author     : Andrej Makovicky
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -17,7 +11,7 @@
         <title>Show XSDs</title>
     </head>
     <body>
-        <h2>XSD archiver </h2>
+        <h2>XSD archivation</h2>
         </br>
         <div id="topNav">
             <ul>
@@ -41,7 +35,6 @@
                         <td><c:out value="${XSD.getId()}"/></td>
                         <td><c:out value="${XSD.getFileName()}"/></td>
                         <td><c:out value="${XSD.getTimestamp()}"/></td>
-                        </td>
                     </tr>
                 </c:forEach>
             </table>

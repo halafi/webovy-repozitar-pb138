@@ -10,7 +10,7 @@
         <title>Show WAR archives</title>
     </head>
     <body>
-        <h2>WAR archiver </h2>
+        <h2>WAR archivation </h2>
         </br>
         <div id="topNav">
             <ul>

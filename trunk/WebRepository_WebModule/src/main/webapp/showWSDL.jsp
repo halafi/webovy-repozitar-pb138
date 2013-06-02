@@ -10,7 +10,7 @@
         <title>Show WSDLs </title>
     </head>
     <body>
-        <h2>WSDL archiver</h2>
+        <h2>WSDL archivation</h2>
         </br>
         <div id="topNav">
             <ul>
@@ -34,9 +34,18 @@
                         <td><c:out value="${WSDLDoc.getId()}"/></td>
                         <td><c:out value="${WSDLDoc.getFileName()}"/></td>
                         <td><c:out value="${WSDLDoc.getTimestamp()}"/></td>
+                        <td>
+                        <form action="<c:url value="${actionBean.setId(WSDLDoc.getId())}"/>" method="post">
+                                <input type="hidden" name="id" value="<c:out value="${WSDLDoc.getId()}"/>"/>
+                                <input type="Submit" value="View" name="submit"/>
+                        </form>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>
         </div>
+        <textarea contenteditable="no" cols="120" rows="30">
+            ${actionBean.getDoc().getDocument()}
+        </textarea>
     </body>
 </html>
