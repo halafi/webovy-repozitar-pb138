@@ -1,10 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
-
-
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,6 +7,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.action.DefaultHandler;
@@ -65,25 +61,28 @@ public class WSDLActionBean implements ActionBean {
     
     public Resolution wsdlUpload(){
         try {
-            is = wsdlInput.getInputStream();
-            os = new FileOutputStream(new File("D:\\Fail\bla.jpg")); //set File Path  ! ! ! 
-            int read = 0;
-            byte[] bytes = new byte[1024];
+                is = wsdlInput.getInputStream();
+                os = new FileOutputStream(new File("D:\\Fail\bla.jpg")); //set File Path  ! ! ! 
+                int read = 0;
+                byte[] bytes = new byte[1024];
 
-            while ((read = is.read(bytes)) != -1) {
-                os.write(bytes, 0, read);
-            }
-        } catch (IOException e) {
-            
-        } finally {
-
-            try {
-                is.close();
-                os.close();
+                while ((read = is.read(bytes)) != -1) {
+                    os.write(bytes, 0, read);
+                }
             } catch (IOException e) {
-                e.printStackTrace();
+                
+            } finally {
+
+                try {
+                    is.close();
+                    os.close();
+                    wsdlInput.delete();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        
+
         return new ForwardResolution("/showWSDL.jsp");
     }
     
