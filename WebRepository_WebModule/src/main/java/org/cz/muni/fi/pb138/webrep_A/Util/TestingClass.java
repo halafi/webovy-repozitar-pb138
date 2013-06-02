@@ -15,6 +15,7 @@ import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
+import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
@@ -55,14 +56,6 @@ public class TestingClass {
                 + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\webservice.wsdl");
         if(testWSDL.exists()) {
             String content = Util.readFile(testWSDL);
-            
-            WSDLDoc wsdl = new WSDLDoc();
-            wsdl.setId(wsdlManager.getNewId());
-            wsdl.setTimestamp(Util.getTimeStamp());
-            wsdl.setFileName(testWSDL.toString());
-            wsdl.setDocument(Util.stripXMLHeader(content));
-            wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
-            wsdlManager.createWSDL(wsdl);
             /*
             WSDLDoc wsdl = new WSDLDoc();
             wsdl.setId(wsdlManager.getNewId());
@@ -71,8 +64,16 @@ public class TestingClass {
             wsdl.setDocument(Util.stripXMLHeader(content));
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
             wsdlManager.createWSDL(wsdl);
-            */
-            System.out.println(wsdlManager.getAllWSDLs());
+            
+            WSDLDoc wsdl = new WSDLDoc();
+            wsdl.setId(wsdlManager.getNewId());
+            wsdl.setTimestamp(Util.getTimeStamp());
+            wsdl.setFileName(testWSDL.toString());
+            wsdl.setDocument(Util.stripXMLHeader(content));
+            wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
+            wsdlManager.createWSDL(wsdl);
+            
+            System.out.println(wsdlManager.getAllWSDLs());*/
         }
         
         /*
@@ -81,22 +82,22 @@ public class TestingClass {
          if(testXSD.exists()) {
             String content = Util.readFile(testXSD);
             XSD xsd = new XSD();
-            xsd.setId(new Long(0));
+            xsd.setId(xsdManager.getNewId());
             xsd.setTimestamp(Util.getTimeStamp());
             xsd.setFileName(testXSD.toString());
             xsd.setDocument(Util.stripXMLHeader(content));
             xsd.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(content))));
-            xsdManager.createXSDCollection();
+            //xsdManager.createXSDCollection();
+            System.out.println(xsd.getId());
             xsdManager.createXSD(xsd);
-            xsd.setId(new Long(1));
+            xsd.setId(xsdManager.getNewId());
             xsdManager.createXSD(xsd);
+            System.out.println(xsd.getId());
             //XSD xsd2 = xsdManager.getXSD(new Long(0));
-            System.out.println(xsdManager.findXSDByData("city"));
             //System.out.println(xsdManager.getAllXSDs());
             
         }
-        * 
-        * */
+        */
         
         /*
         File testWAR = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
