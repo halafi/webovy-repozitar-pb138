@@ -38,14 +38,12 @@
                 <c:forEach items="${actionBean.WSDLs}" var="WSDLDoc">
                     <tr>
                         <td><c:out value="${WSDLDoc.id}"/></td>
-                        <td><c:out value="${WSDLDoc.name}"/></td>
-                        <td><c:out value="${WSDLDoc.date}"/></td>
+                        <td><c:out value="${WSDLDoc.fileName}"/></td>
+                        <td><c:out value="${WSDLDoc.timestamp}"/></td>
 
 
                         <td><form method="post" action="${pageContext.request.contextPath}/customers/delete?id=${customer.id}"
-                                  style="margin-bottom: 0;"><input type="submit" value="Smazat"></form></td>
-                        <td><form method="post" action="${pageContext.request.contextPath}/customers/show?id=${customer.id}"
-                                  style="margin-bottom: 0;"><input type="submit" value="Editovat"></form>
+                                  style="margin-bottom: 0;"><input type="submit" value="Zobrazit"></form></td>
                         </td>
 
                     </tr>
