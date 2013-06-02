@@ -12,13 +12,13 @@
 
     <body>
         <h1>Archivator 3000+</h1>
-        <p>Sere mě jak prase.</p> 
+        <p>When in doubt - archive.</p> 
 
         <div id="topNav">
             <ul>
                 <li><a href ="showWSDL.jsp">WSDL archivation</a></li>
                 <li><a href ="showWeb.jsp">WAR archivation</a></li>
-                <li> <a href ="showXSD.jsp">XSD archivation</a></li>
+                <li><a href ="showXSD.jsp">XSD archivation</a></li>
             </ul>
         </div>
     </body>
