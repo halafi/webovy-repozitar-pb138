@@ -24,9 +24,12 @@
                 <li><a href="findWSDL.jsp">Find WSDL</a></li>
             </ul>
         </div> 
-        <div id="xml">
-            
-            
+        <div id="viewer">
+            <textarea contenteditable="no" cols="120" rows="30">
+                ${actionBean.getDoc().getId()}
+            </br>
+                ${actionBean.getDoc().getDocument()}
+            </textarea>
         </div>
     </body>
 </html>
