@@ -18,10 +18,12 @@
                 <li><a href="findWAR.jsp">Search WARs by web.xml</a></li>
             </ul>
         </div> 
-        <div id="xml">
+        <div id="viewer">
            <textarea contenteditable="no" cols="120" rows="30">
-                ${actionBean.getId()}
-            </br>
+                 ID = ${actionBean.getId()}
+            
+
+
                 ${actionBean.getDocument()}
             </textarea>
         </div>
