@@ -10,6 +10,8 @@ svn checkout http://webovy-repozitar-pb138.googlecode.com/svn/trunk/ webovy-repo
 
 3. Clean and Build Project
 
-4. Spustit?
+4. Spustit InitializeDTB.java pro inicializaci databáze (vytvoří se BaseXDB v user.home složce)
+
+5. Run Project
 
 Vytvořeno v NetBeans IDE 7.2.1.
