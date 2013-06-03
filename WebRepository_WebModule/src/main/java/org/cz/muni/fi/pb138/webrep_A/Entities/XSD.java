@@ -1,4 +1,5 @@
 package org.cz.muni.fi.pb138.webrep_A.Entities;
+
 /**
  *
  * @author xmakovic
@@ -18,7 +19,6 @@ public class XSD {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getDocument() {
         return document;
@@ -68,7 +68,7 @@ public class XSD {
 
     @Override
     public String toString() {
-        return "XSD{" + "id=" + id + ", timestamp=" + timestamp + ", document=" + document + ", fileName=" + fileName + ", extract=" + extract + '}';
+        return "Type: XSD\n" + "fileName=" + fileName + "\nid=" + id + "\nversion=" + timestamp + "\nDocument: \n\n" + document + "\n\n\nExtract: \n\n" + extract;
     }
 
     public String getTimestamp() {
@@ -78,6 +78,4 @@ public class XSD {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
-
-
 }

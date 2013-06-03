@@ -25,12 +25,9 @@
                 <li><a href="findXSD.jsp">Find XSD</a></li>
             </ul>
         </div> 
-        <div id="xml">
-            
-            <c:out value="${mainFile}" escapeXml="true"/><br/>
-            
-            <c:out value="${extract}" escapeXml="true"/><br/>
-            
+        <div id="viewer">
+            <textarea contenteditable="no" cols="120" rows="30">${actionBean.getDocument()}
+            </textarea> 
         </div>
     </body>
 </html>
