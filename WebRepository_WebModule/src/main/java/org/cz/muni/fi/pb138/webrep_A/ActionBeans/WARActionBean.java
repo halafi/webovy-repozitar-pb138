@@ -85,7 +85,11 @@ public class WARActionBean implements ActionBean {
     }
     
     public WarArchive getDocument() {
-        return manager.getWarArchive(result.getId());
+        WarArchive war;
+        war = manager.getWarArchive(result.getId());
+        war.setWebXml(Util.format(war.getWebXml()).replaceAll("<", "&lt;").replaceAll(">","&gt;"));
+        war.setExtract(Util.format(war.getExtract()).replaceAll("<", "&lt;").replaceAll(">","&gt;"));
+        return war;
     }
     
     public String getId(){

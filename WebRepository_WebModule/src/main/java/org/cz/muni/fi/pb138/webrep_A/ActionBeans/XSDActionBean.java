@@ -85,7 +85,11 @@ public class XSDActionBean implements ActionBean {
     }
     
     public XSD getDocument() {
-        return manager.getXSD(result.getId());
+        XSD xsd;
+        xsd = manager.getXSD(result.getId());
+        xsd.setDocument(Util.format(xsd.getDocument()).replaceAll("<", "&lt;").replaceAll(">","&gt;"));
+        xsd.setExtract(Util.format(xsd.getExtract()).replaceAll("<", "&lt;").replaceAll(">","&gt;"));
+        return xsd;
     }
     
     public String getId(){

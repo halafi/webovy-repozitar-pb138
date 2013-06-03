@@ -109,8 +109,8 @@ public class WSDLActionBean implements ActionBean {
     public WSDLDoc getDocument() {
         WSDLDoc wsdl;
         wsdl = manager.getWSDL(result.getId());
-        wsdl.setDocument(wsdl.getDocument().replaceAll("<", "&lt;").replaceAll(">","&gt; "));
-        wsdl.setExtract(wsdl.getExtract().replaceAll("<", "&lt;").replaceAll(">","&gt; "));
+        wsdl.setDocument(Util.format(wsdl.getDocument()).replaceAll("<", "&lt;").replaceAll(">","&gt;"));
+        wsdl.setExtract(Util.format(wsdl.getExtract()).replaceAll("<", "&lt;").replaceAll(">","&gt;"));
         return wsdl;
     }
 
