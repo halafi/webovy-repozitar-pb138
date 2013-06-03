@@ -2,6 +2,7 @@ package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +13,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
@@ -32,10 +34,15 @@ public class WARActionBean implements ActionBean {
     private WarManager manager = new WarManagerImpl(dm);
     private WebXMLParser webParser = new WebXMLParser();
     private WarArchive result = new WarArchive();
+    private List<WarArchive> resultList = new ArrayList<WarArchive>();
 
     @Override
     public ActionBeanContext getContext() {
         return context;
+    }
+
+    public List<WarArchive> getResultList() {
+        return resultList;
     }
 
     @Override
@@ -86,14 +93,14 @@ public class WARActionBean implements ActionBean {
     }
 
     public Resolution searchId() {
-
-//        String name = context.getRequest().getParameter("name");
-//        String surname = context.getRequest().getParameter("surname");
-
         Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
-
         result = manager.getWarArchive(searchId);
-
         return new ForwardResolution("/showSingleWAR.jsp");
+    }
+    
+    public Resolution searchData() {
+        String searchData = context.getRequest().getParameter("dataInput");
+        resultList = manager.findWarByData(searchData);
+        return new ForwardResolution("/showMultipleWAR.jsp");
     }
 }

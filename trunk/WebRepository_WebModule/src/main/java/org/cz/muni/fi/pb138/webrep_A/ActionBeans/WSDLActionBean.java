@@ -2,6 +2,7 @@ package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +34,7 @@ public class WSDLActionBean implements ActionBean {
     private WSDLDocManager manager = new WSDLDocManagerImpl(dm);
     private WSDLDocParser wsdlParser = new WSDLDocParser();
     private WSDLDoc result = new WSDLDoc();
+    private List<WSDLDoc> resultList = new ArrayList<WSDLDoc>();
     private Long id;
     
 
@@ -49,12 +51,12 @@ public class WSDLActionBean implements ActionBean {
     public void setwsdlInput(FileBean wsdlInput) {
         this.wsdlInput = wsdlInput;
     }
-    
+    /*
     @DefaultHandler
     public Resolution all() {
-        return new ForwardResolution("/showPlayers.jsp");
+        return new ForwardResolution("/index.jsp");
     }
-
+    */
     public void setId(String id) {
         this.id = new Long(id);
     }
@@ -62,6 +64,12 @@ public class WSDLActionBean implements ActionBean {
     public WSDLDoc getDoc() {
         return manager.getWSDL(this.id);
     }
+
+    public List<WSDLDoc> getResultList() {
+        return resultList;
+    }
+    
+    
     
     public Resolution wsdlUpload() {
         try {
@@ -102,16 +110,15 @@ public class WSDLActionBean implements ActionBean {
     }
     
     public Resolution searchId() {
-        
-//        String name = context.getRequest().getParameter("name");
-//        String surname = context.getRequest().getParameter("surname");
-        
         Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
-        
         result = manager.getWSDL(searchId);
-        
-        
         return new ForwardResolution("/showSingleWSDL.jsp");
+    }
+    
+    public Resolution searchData() {
+        String searchData = context.getRequest().getParameter("dataInput");
+        resultList = manager.findWSDLByData(searchData);
+        return new ForwardResolution("/showMultipleWSDL.jsp");
     }
     
     

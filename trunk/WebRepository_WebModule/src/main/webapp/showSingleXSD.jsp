@@ -1,9 +1,3 @@
-<%-- 
-    Document   : showSinlgeXSD
-    Created on : Jun 1, 2013, 3:14:25 PM
-    Author     : Andrej Makovicky
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
