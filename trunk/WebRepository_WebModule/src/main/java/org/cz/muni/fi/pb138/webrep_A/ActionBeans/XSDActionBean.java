@@ -76,6 +76,16 @@ public class XSDActionBean implements ActionBean {
         return new ForwardResolution("/showXSD.jsp");
     }
     
+    public Resolution search(){
+        
+        
+        return new ForwardResolution("/showSingleXSD.jsp");
+    }
+    
+    public Resolution show(){
+        return new ForwardResolution("/showSingleXSD.jsp");
+    }
+    
     public List<XSD> getXSDs(){
         return manager.getAllXSDs() ;
     }
