@@ -144,6 +144,10 @@ table.zakladni th, table.zakladni td {
     margin: 0px;
 }
 
+#viewer{
+    margin-left: 208px;
+}
+
 #topNav { 
     width: 200px;
     float: left;

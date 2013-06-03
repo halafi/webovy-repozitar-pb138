@@ -35,19 +35,21 @@
                         <td><c:out value="${WSDLDoc.getFileName()}"/></td>
                         <td><c:out value="${WSDLDoc.getTimestamp()}"/></td>
                         <td>
-                        <form action="${actionBean.setId(WSDLDoc.getId())}" method="post" onSubmit="history.go(0)">
+                            <form action="${actionBean.setId(WSDLDoc.getId())}" method="post" onSubmit="history.go(0)">
                                 <input type="hidden" name="id" value="<c:out value="${WSDLDoc.getId()}"/>"/>
                                 <input type="Submit" value="View" name="submit"/>
-                        </form>
+                            </form>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
         </div>
-        <textarea contenteditable="no" cols="120" rows="30">
-            ${actionBean.getDoc().getId()}
+        <div id="viewer">
+            <textarea contenteditable="no" cols="120" rows="30">
+                ${actionBean.getDoc().getId()}
             </br>
-            ${actionBean.getDoc().getDocument()}
-        </textarea>
+                ${actionBean.getDoc().getDocument()}
+            </textarea>
+        </div>
     </body>
 </html>

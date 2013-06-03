@@ -18,9 +18,19 @@
             </ul>
         </div> 
         
-        <%--<s:form action="stringToDoc" beanclass="Util">--%>
-            <%--<s:file name="XSD"/>--%> 
-        <%--</s:form>--%>
+        <p>Search by ID</p> </br>
+        
+        <s:form action="search" beanclass="WSDLActionBean">
+            <s:text name="textInput"/> 
+        </s:form> </br>
+        
+        <p>Search by data</p> </br>
+        
+        <s:form action="search" beanclass="WSDLActionBean">
+            <s:text name="textInput"/> 
+        </s:form>
+        
+        
         
 
 
