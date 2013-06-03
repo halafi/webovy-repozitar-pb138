@@ -98,10 +98,8 @@ public class WarManagerImpl implements WarManager {
         String query = this.dm.queryCollection(" declare namespace def = 'http://java.sun.com/xml/ns/javaee';" 
                 + " distinct-values(for $war in collection('war')/war "
                 + " for $nodes in $war//*"
-                + " let $attr1 := $nodes/def:listener-class"
                 + " let $attr1 := $nodes/def:filter-name"
-                + " let $ret := fn:concat($attr2,$attr1)"
-                + " where fn:contains($ret,'"+atributeName+"')"
+                + " where fn:contains($attr1,'"+atributeName+"')"
                 + " return distinct-values($war/@id))");
         String strarray[] = query.split(" ");
         int intarray[] = new int[strarray.length];
