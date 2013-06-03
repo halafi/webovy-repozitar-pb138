@@ -31,12 +31,17 @@ public class WARActionBean implements ActionBean {
     private DatabaseManager dm = new DatabaseManager(Filetype.WAR);
     private WarManager manager = new WarManagerImpl(dm);
     private WebXMLParser webParser = new WebXMLParser();
+    private WarArchive result = new WarArchive();
 
     @Override
-    public ActionBeanContext getContext() { return context; }
-    
+    public ActionBeanContext getContext() {
+        return context;
+    }
+
     @Override
-    public void setContext(ActionBeanContext context) { this.context = context; }
+    public void setContext(ActionBeanContext context) {
+        this.context = context;
+    }
 
     public FileBean getwarInput() {
         return warInput;
@@ -48,7 +53,7 @@ public class WARActionBean implements ActionBean {
 
     public Resolution warUpload() {
         try {
-            File toFile = new File(System.getProperty("user.home")+File.separator+warInput.getFileName());
+            File toFile = new File(System.getProperty("user.home") + File.separator + warInput.getFileName());
             warInput.save(toFile);
             String content = Util.docToString(Util.warExtract(toFile));;
 
@@ -59,7 +64,7 @@ public class WARActionBean implements ActionBean {
             war.setWebXml(Util.stripXMLHeader(content));
             war.setExtract(Util.docToString(webParser.webXMLExtract(Util.stringToDoc(content))));
             manager.createWarArchive(war);
-            
+
             toFile.delete();
             warInput.delete();
         } catch (IOException ex) {
@@ -67,8 +72,28 @@ public class WARActionBean implements ActionBean {
         }
         return new ForwardResolution("/showWAR.jsp");
     }
-    
-    public List<WarArchive> getWARs(){
+
+    public List<WarArchive> getWARs() {
         return manager.getAllArchives();
+    }
+    
+    public WarArchive getDocument() {
+        return manager.getWarArchive(result.getId());
+    }
+    
+    public String getId(){
+        return result.getId().toString();
+    }
+
+    public Resolution searchId() {
+
+//        String name = context.getRequest().getParameter("name");
+//        String surname = context.getRequest().getParameter("surname");
+
+        Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
+
+        result = manager.getWarArchive(searchId);
+
+        return new ForwardResolution("/showSingleWAR.jsp");
     }
 }
