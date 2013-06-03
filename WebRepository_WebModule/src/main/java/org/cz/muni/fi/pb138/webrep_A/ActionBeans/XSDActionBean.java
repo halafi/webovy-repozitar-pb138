@@ -65,6 +65,12 @@ public class XSDActionBean implements ActionBean {
     public Resolution xsdUpload() {
         try {
             File toFile = new File(System.getProperty("user.home")+File.separator+xsdInput.getFileName());
+            String extension = xsdInput.getFileName().substring(xsdInput.getFileName().lastIndexOf(".") + 1, xsdInput.getFileName().length());
+            if(!extension.equals("xsd")) {
+                toFile.delete();
+                xsdInput.delete();
+                return new ForwardResolution("/wrongFile.jsp");
+            }
             xsdInput.save(toFile);
             String content = Util.readFile(toFile);
 
@@ -108,7 +114,7 @@ public class XSDActionBean implements ActionBean {
     
     public Resolution searchData() {
         String searchData = context.getRequest().getParameter("dataInput");
-        resultList = manager.findXSDByData(searchData);
+        resultList = manager.findXSDByElementName(searchData);
         return new ForwardResolution("/showMultipleXSD.jsp");
     }
     

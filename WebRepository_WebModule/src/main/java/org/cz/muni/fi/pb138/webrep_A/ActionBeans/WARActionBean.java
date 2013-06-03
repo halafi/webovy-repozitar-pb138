@@ -61,6 +61,12 @@ public class WARActionBean implements ActionBean {
     public Resolution warUpload() {
         try {
             File toFile = new File(System.getProperty("user.home") + File.separator + warInput.getFileName());
+            String extension = warInput.getFileName().substring(warInput.getFileName().lastIndexOf(".") + 1, warInput.getFileName().length());
+            if(!extension.equals("war")) {
+                toFile.delete();
+                warInput.delete();
+                return new ForwardResolution("/wrongFile.jsp");
+            }
             warInput.save(toFile);
             String content = Util.docToString(Util.warExtract(toFile));;
 

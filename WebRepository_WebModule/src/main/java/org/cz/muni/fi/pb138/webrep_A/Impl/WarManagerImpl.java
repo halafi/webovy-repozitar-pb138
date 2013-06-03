@@ -2,7 +2,6 @@ package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
@@ -80,6 +79,7 @@ public class WarManagerImpl implements WarManager {
        
     
     
+    @Override
     public List<WarArchive> findWarByData(String filterName) {
         List<WarArchive> output = new ArrayList<WarArchive>();
         String query = this.dm.queryCollection(" declare namespace def = 'http://java.sun.com/xml/ns/javaee';" 
@@ -88,6 +88,9 @@ public class WarManagerImpl implements WarManager {
                 + " let $attr1 := $nodes/def:filter-name"
                 + " where fn:contains($attr1,'"+filterName+"')"
                 + " return distinct-values($war/@id))");
+        if(query.equals("")) {
+            return output;
+        }
         String strarray[] = query.split(" ");
         int intarray[] = new int[strarray.length];
         for (int i=0; i < intarray.length; i++) {
