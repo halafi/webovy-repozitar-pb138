@@ -13,9 +13,9 @@
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="showWAR.jsp">Show All WARs</a></li>
-                <li><a href="insertWAR.jsp">Insert WAR</a></li>
-                <li><a href="findWAR.jsp">Search WARs by web.xml</a></li>
+                <li><a href="showWAR.jsp">Show All</a></li>
+                <li><a href="insertWAR.jsp">Upload</a></li>
+                <li><a href="findWAR.jsp">Search</a></li>
             </ul>
         </div> 
         <div id="viewer">

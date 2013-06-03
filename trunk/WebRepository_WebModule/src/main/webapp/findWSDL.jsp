@@ -8,13 +8,13 @@
         <title>WSDL Search</title>
     </head>
     <body>
-        <h2>Search in WSDL</h2>
+        <h2>Search in WSDLs</h2>
         </br>
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="showWSDL.jsp">Show WSDLs</a></li>
-                <li><a href="insertWSDL.jsp">Insert WSDL</a></li>
+                <li><a href="showWSDL.jsp">Show all</a></li>
+                <li><a href="insertWSDL.jsp">Upload</a></li>
             </ul>
         </div> 
         <div>

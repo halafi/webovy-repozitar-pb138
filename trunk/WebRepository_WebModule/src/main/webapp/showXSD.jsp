@@ -16,8 +16,8 @@
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="insertXSD.jsp">Insert XSD</a></li>
-                <li><a href="findXSD.jsp">Find XSDs</a></li>
+                <li><a href="insertXSD.jsp">Upload</a></li>
+                <li><a href="findXSD.jsp">Search</a></li>
             </ul>
         </div> 
         <div id="tabulka">
