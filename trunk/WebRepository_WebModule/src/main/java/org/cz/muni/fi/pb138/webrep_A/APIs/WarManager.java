@@ -37,6 +37,13 @@ public interface WarManager {
     public void createWARCollection();
     
     /*
+     * Searches for document by data. 
+     * @param String attributeName
+     * @return List<WarArchive>
+     */
+    public List<WarArchive> findWarByData(String atributeName);
+    
+    /*
      * Setter for logger
      * @param FileOutputStream fs
      */
