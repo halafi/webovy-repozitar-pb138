@@ -34,9 +34,6 @@
                         <td><c:out value="${WSDLDoc.getId()}"/></td>
                         <td><c:out value="${WSDLDoc.getFileName()}"/></td>
                         <td><c:out value="${WSDLDoc.getTimestamp()}"/></td>
-                        <td>
-
-                        </td>
                     </tr>
                 </c:forEach>
             </table>

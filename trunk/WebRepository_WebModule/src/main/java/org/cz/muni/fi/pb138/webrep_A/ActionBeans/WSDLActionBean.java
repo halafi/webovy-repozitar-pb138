@@ -1,6 +1,8 @@
 package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -24,6 +26,7 @@ import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Filetype;
+import org.cz.muni.fi.pb138.webrep_A.Util.TestingClass;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 
 /**
@@ -32,7 +35,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
  */
 @UrlBinding("/wsdl/{$event}")
 public class WSDLActionBean implements ActionBean {
-
+    
     private FileBean wsdlInput;
     private ActionBeanContext context;
     private DatabaseManager dm = new DatabaseManager(Filetype.WSDL);
@@ -42,7 +45,7 @@ public class WSDLActionBean implements ActionBean {
     private List<WSDLDoc> resultList = new ArrayList<WSDLDoc>();
     private Long id;
     
-
+    
     @Override
     public ActionBeanContext getContext() { return context; }
     
@@ -114,7 +117,6 @@ public class WSDLActionBean implements ActionBean {
         return wsdl;
     }
 
-    
     public String getId(){
         return result.getId().toString();
     }
@@ -130,8 +132,4 @@ public class WSDLActionBean implements ActionBean {
         resultList = manager.findWSDLByData(searchData);
         return new ForwardResolution("/showMultipleWSDL.jsp");
     }
-    
-    
-
-    
 }

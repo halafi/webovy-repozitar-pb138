@@ -47,12 +47,6 @@ public interface XSDManager {
     public void createXSDCollection();
     
     /*
-     * Setter for Logger
-     * @param FileOutputStream fs
-     */
-    public void setLogger(FileOutputStream fs);
-    
-    /*
      * Simple ID generator.
      */
     public Long getNewId();

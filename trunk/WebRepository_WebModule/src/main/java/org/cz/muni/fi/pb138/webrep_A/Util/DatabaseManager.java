@@ -1,6 +1,7 @@
 package org.cz.muni.fi.pb138.webrep_A.Util;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,11 +22,15 @@ public class DatabaseManager {
     private String DBPath;
     public static final Logger logger = Logger.getLogger(DatabaseManager.class.getName());
   
-    public void setLogger(FileOutputStream fs) {
+     public DatabaseManager(Filetype fileType) {
+        FileOutputStream fs = null;
+        try {
+            fs = new FileOutputStream(System.getProperty("user.home")+File.separator+"webrep.log", true);
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
         logger.addHandler(new StreamHandler(fs, new SimpleFormatter()));
-    }
-
-    public DatabaseManager(Filetype fileType) {
+        
         if((Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && !Filetype.WAR.equals(fileType))
                 ||(!Filetype.WSDL.equals(fileType) && Filetype.XSD.equals(fileType) && !Filetype.WAR.equals(fileType))
                 ||(!Filetype.WSDL.equals(fileType) && !Filetype.XSD.equals(fileType) && Filetype.WAR.equals(fileType))) {
@@ -37,16 +42,17 @@ public class DatabaseManager {
             
             File yourFile = new File(path+fileType+"Database");
             if(yourFile.exists()) {
-                System.out.println("found:"+path+fileType+"Database");
+                
                 this.DBPath = path+fileType+"Database";
             }
             else {
-                System.out.println("mkdir:"+path+fileType+"Database");
+                logger.info("mkdir:"+path+fileType+"Database");
                 yourFile.mkdir();
                 this.DBPath = path+fileType+"Database";
             }
         }
         else {
+            logger.info(fileType + " is not used baseX database");
             throw new IllegalArgumentException(fileType + " is not used baseX database");
         }
     }

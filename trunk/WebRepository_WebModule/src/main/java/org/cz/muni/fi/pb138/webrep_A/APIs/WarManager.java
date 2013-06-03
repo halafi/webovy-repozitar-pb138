@@ -42,13 +42,7 @@ public interface WarManager {
      * @return List of WSDLDoc
      */
     public List<WarArchive> findWarByData(String atributeName);
-    
-    /*
-     * Setter for logger
-     * @param FileOutputStream fs
-     */
-    public void setLogger(FileOutputStream fs);
-    
+       
     /*
      * Simple ID generator.
      */

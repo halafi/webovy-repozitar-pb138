@@ -1,11 +1,8 @@
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
-import java.util.logging.StreamHandler;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
@@ -18,18 +15,12 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
  * @author xmakovic
  */
 public class XSDManagerImpl implements XSDManager {
-    public static final Logger logger = Logger.getLogger(XSDManagerImpl.class.getName());
     private DatabaseManager dm;
 
     public XSDManagerImpl(DatabaseManager dm) {
         this.dm = dm;
     }
     
-    @Override
-    public void setLogger(FileOutputStream fs) {
-        logger.addHandler(new StreamHandler(fs, new SimpleFormatter()));
-    }
-
     @Override
     public void createXSDCollection() {
         this.dm.createCollection("xsd");
