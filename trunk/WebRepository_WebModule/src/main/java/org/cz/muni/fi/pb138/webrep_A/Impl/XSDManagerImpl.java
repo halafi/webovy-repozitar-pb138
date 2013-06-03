@@ -11,6 +11,7 @@ import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
+import org.cz.muni.fi.pb138.webrep_A.Util.XmlFormatter;
 
 /**
  *
@@ -70,7 +71,7 @@ public class XSDManagerImpl implements XSDManager {
         schema.setFileName(this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
                 + " return data($xsd/@fileName)"));
-        schema.setExtract(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(schema.getDocument()))));
+        schema.setExtract(new XmlFormatter().format(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(schema.getDocument())))));
 
         return schema;
     }
