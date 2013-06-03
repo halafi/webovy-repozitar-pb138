@@ -36,10 +36,10 @@ public interface WarManager {
      */
     public void createWARCollection();
     
-    /*
-     * Searches for document by data. 
-     * @param String attributeName
-     * @return List<WarArchive>
+    /**
+     * Finds War archives by meta data
+     * @param filterName is name of filter
+     * @return List of WSDLDoc
      */
     public List<WarArchive> findWarByData(String atributeName);
     
