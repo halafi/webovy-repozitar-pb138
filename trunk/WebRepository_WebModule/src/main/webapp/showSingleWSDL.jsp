@@ -21,9 +21,9 @@
         <div id="viewer">
            <%-- <textarea contenteditable="no" cols="120" rows="30"></textarea>--%>
 
-           
+           <pre>
            ${actionBean.getDocument()}
-
+           </pre> 
         </div>
     </body>
 </html>
