@@ -14,7 +14,6 @@ public interface WSDLDocManager {
     /**
      * Saves WSDL into database
      * @param wsdl
-     * @throws BaseXException 
      */
     public void createWSDL(WSDLDoc wsdl);
     
@@ -41,7 +40,15 @@ public interface WSDLDocManager {
      */
     public List<WSDLDoc> findWSDLByData(String definitonsName);
 
+    /*
+     * Simple ID generator.
+     */
     public Long getNewId();
+    
+    /*
+     * Creates BaseX collection for storing WSDLs.
+     */
     public void createWSDLCollection();
+    
     public void setLogger(FileOutputStream fs);
 }

@@ -26,15 +26,27 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         logger.addHandler(new StreamHandler(fs, new SimpleFormatter()));
     }
     
+    /*
+     * Constructor. 
+     * @param DatabaseManager dm
+     */
     public WSDLDocManagerImpl(DatabaseManager dm) {
         this.dm = dm;
     }
     
+    /*
+     * Creates BaseX collection for storing WSDLs.
+     */
     @Override
     public void createWSDLCollection() {
         this.dm.createCollection("wsdl");
     }
     
+    
+    /**
+     * Saves WSDL into database
+     * @param wsdl
+     */
     @Override
     public void createWSDL(WSDLDoc wsdl) {
         //collection must be created!
@@ -43,6 +55,10 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         this.dm.addXML("wsdl", wsdl.getId().toString(),xml);
 
     }
+    
+    /*
+     * Simple ID generator.
+     */
     @Override
     public Long getNewId() {
         String c = this.dm.queryCollection("count(collection('wsdl')/wsdl)");
@@ -54,7 +70,11 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         }
     }
 
-    
+    /**
+     * Gets WSDL from database
+     * @param id
+     * @return WSDL file as String
+     */
     @Override
     public WSDLDoc getWSDL(Long id) {
         if (id == null) {
@@ -77,6 +97,10 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         return wsdl;
     }
 
+    /**
+     * Gets all WSDLs from database.
+     * @return all WSDLs from database.
+     */
     @Override
     public List<WSDLDoc> getAllWSDLs() {
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
@@ -88,9 +112,11 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     }
    
 
-    /*
-     * Finds WSDL by definitions name.
-     */    
+    /**
+     * Finds WSDLs by meta data.
+     * @param definitonsName
+     * @return All WSDLs which are search query compliant.
+     */   
     @Override
     public List<WSDLDoc> findWSDLByData(String definitonsName){
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
