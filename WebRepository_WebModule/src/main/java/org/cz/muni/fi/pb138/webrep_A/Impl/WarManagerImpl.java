@@ -89,14 +89,14 @@ public class WarManagerImpl implements WarManager {
         return output;
     }
        
-    //Maybe work
-//    /**
-//     * Find by meta data
-//     * @param metaData is name of meta data e.g. message
-//     * @param atributeName is name of meta Data
-//     * @return List of WSDLDoc
-//     * @throws BaseXException 
-//     */
+    
+    /**
+     * Find by meta data
+     * @param metaData is name of meta data e.g. message
+     * @param atributeName is name of meta Data
+     * @return List of WSDLDoc
+     * @throws BaseXException 
+     */
     public List<WarArchive> findWarByData(String atributeName) {
         List<WarArchive> output = new ArrayList<WarArchive>();
         String query = this.dm.queryCollection(" declare namespace def = 'http://java.sun.com/xml/ns/javaee';" 
