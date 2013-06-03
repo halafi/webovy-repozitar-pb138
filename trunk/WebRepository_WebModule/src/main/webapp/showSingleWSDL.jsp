@@ -5,10 +5,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
+        
         <title>Show single WSDL</title>
     </head>
     <body>
         <h2>WSDL archiver</h2>
+        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
         </br>
         <div id="topNav">
             <ul>
@@ -19,10 +21,17 @@
             </ul>
         </div> 
         <div id="viewer">
-           <%-- <textarea contenteditable="no" cols="120" rows="30"></textarea>--%>
-
-           <pre>
-           ${actionBean.getDocument()}
+           Id: ${actionBean.getDocument().getId()}
+           File: ${actionBean.getDocument().getFileName()}
+           Date: ${actionBean.getDocument().getTimestamp()}
+           </br></br>
+           Document: </br>
+           <pre class="prettyprint">
+           ${actionBean.getDocument().getDocument()}
+           </pre> 
+           Operations and messages:
+           <pre class="prettyprint">
+           ${actionBean.getDocument().getExtract()}
            </pre> 
         </div>
     </body>
