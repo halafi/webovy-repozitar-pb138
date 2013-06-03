@@ -3,6 +3,8 @@ package org.cz.muni.fi.pb138.webrep_A.Entities;
 /**
  *
  * @author xmakovic
+ *
+ * This class represents XSD Entity.
  */
 public class XSD {
 
@@ -12,28 +14,79 @@ public class XSD {
     private String fileName;
     private String extract;
 
+    /*
+     * Getter for Id.
+     */
     public Long getId() {
         return id;
     }
+    /*
+     * Setter for id.
+     * @param Long id
+     */
 
     public void setId(Long id) {
         this.id = id;
     }
 
+    /*
+     * Getter for XSD document.
+     */
     public String getDocument() {
         return document;
     }
 
+    /*
+     * Setter for XSD document.
+     * @param String document
+     */
     public void setDocument(String document) {
         this.document = document;
     }
 
+    /*
+     * Filename getter.
+     */
     public String getFileName() {
         return fileName;
     }
 
+    /*
+     * Filename setter.
+     * @param String filename.
+     */
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    /*
+     * Extract getter.
+     */
+    public String getExtract() {
+        return extract;
+    }
+
+    /*
+     * Setter for xsd extract.
+     * @param String extract.
+     */
+    public void setExtract(String extract) {
+        this.extract = extract;
+    }
+
+    /*
+     * Version getter.
+     */
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    /*
+     * Version setter.
+     * @param String timestamp.
+     */
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override
@@ -41,14 +94,6 @@ public class XSD {
         int hash = 7;
         hash = 37 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
-    }
-
-    public String getExtract() {
-        return extract;
-    }
-
-    public void setExtract(String extract) {
-        this.extract = extract;
     }
 
     @Override
@@ -69,13 +114,5 @@ public class XSD {
     @Override
     public String toString() {
         return "Type: XSD\n" + "FileName=" + fileName + "\nId=" + id + "\nVersion=" + timestamp + "\nDocument: \n\n" + document + "\n\n\nExtract: \n\n" + extract;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
     }
 }
