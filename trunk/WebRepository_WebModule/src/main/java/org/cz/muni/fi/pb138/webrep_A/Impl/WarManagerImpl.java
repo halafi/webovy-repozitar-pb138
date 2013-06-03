@@ -93,7 +93,7 @@ public class WarManagerImpl implements WarManager {
 //     * @return List of WSDLDoc
 //     * @throws BaseXException 
 //     */
-    public List<WarArchive> findWSDLByMetaData(String metaData, String atributeName) throws BaseXException {
+    public List<WarArchive> findWarByMetaData(String metaData, String atributeName) throws BaseXException {
         String input = null;
         if ("listener".equals(metaData))
             input = "listener-class";
