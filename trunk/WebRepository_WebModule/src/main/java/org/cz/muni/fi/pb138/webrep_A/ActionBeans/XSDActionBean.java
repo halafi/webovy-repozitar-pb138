@@ -33,6 +33,7 @@ public class XSDActionBean implements ActionBean {
     private DatabaseManager dm = new DatabaseManager(Filetype.XSD);
     private XSDManager manager = new XSDManagerImpl(dm);
     private XSDParser xsdParser = new XSDParser();
+    private XSD result = new XSD();
     
     @Override
     public ActionBeanContext getContext() { return context; }
@@ -76,13 +77,24 @@ public class XSDActionBean implements ActionBean {
         return new ForwardResolution("/showXSD.jsp");
     }
     
-    public Resolution search(){
-        
-        
-        return new ForwardResolution("/showSingleXSD.jsp");
+    public XSD getDocument() {
+        return manager.getXSD(result.getId());
     }
     
-    public Resolution show(){
+    public String getId(){
+        return result.getId().toString();
+    }
+    
+    public Resolution searchId() {
+        
+//        String name = context.getRequest().getParameter("name");
+//        String surname = context.getRequest().getParameter("surname");
+        
+        Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
+        
+        result = manager.getXSD(searchId);
+        
+        
         return new ForwardResolution("/showSingleXSD.jsp");
     }
     
