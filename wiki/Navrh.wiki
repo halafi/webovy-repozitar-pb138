@@ -1,4 +1,4 @@
-#labels Featured,Phase-Requirements
+#labels Phase-Requirements
 <wiki:toc />
 = WSDL =
 == Ukázka 1 - Hello Service ==
