@@ -41,9 +41,19 @@ public interface XSDManager {
      */
     public List<XSD> findXSDByData(String s);
     
+    /*
+     * Creates BaseX collection for storing XSD schemas.
+     */
     public void createXSDCollection();
     
+    /*
+     * Setter for Logger
+     * @param FileOutputStream fs
+     */
     public void setLogger(FileOutputStream fs);
     
+    /*
+     * Simple ID generator.
+     */
     public Long getNewId();
 }
