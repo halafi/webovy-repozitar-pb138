@@ -1,4 +1,4 @@
-#labels Phase-Deploy
+#labels Phase-Deploy,Featured
 = Instalace a spuštění =
 
 1. Stáhnout zdrojový kód https://sourceforge.net/projects/webrep/
