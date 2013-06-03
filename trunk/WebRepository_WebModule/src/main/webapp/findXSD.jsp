@@ -17,12 +17,31 @@
                 <li><a href="insertXSD.jsp">Insert XSD</a></li>
             </ul>
         </div> 
-        
-        <%--<s:form action="stringToDoc" beanclass="Util">--%>
-            <%--<s:file name="XSD"/>--%> 
-        <%--</s:form>--%>
-        
 
+        <div>        
+            <s:form beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.XSDActionBean" method="GET">
+                <fieldset>
+                    <table>
+                        <tr>
+                            <th> Id : </th>
+                            <th><s:text id="id" name="idInput"/></th> 
+                        </tr>
+                    </table>
+                    <s:submit name="searchId">Search by ID</s:submit>
+                    </fieldset>
+            </s:form>   
 
+            <s:form beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.XSDActionBean" method="GET">
+                <fieldset>
+                    <table>
+                        <tr>
+                            <th>Input data:</th>
+                            <th><s:text id="data" name="dataInput"/> </th>
+                        </tr>
+                    </table>
+                    <s:submit name="searchData">Search by data</s:submit>
+                    </fieldset>
+            </s:form>
+        </div>
     </body>
 </html>
