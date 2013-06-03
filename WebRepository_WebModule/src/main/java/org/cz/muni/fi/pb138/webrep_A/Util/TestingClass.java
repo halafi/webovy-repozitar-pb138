@@ -4,13 +4,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
@@ -65,6 +69,19 @@ public class TestingClass {
             wsdl.setFileName(testWSDL.toString());
             wsdl.setDocument(Util.stripXMLHeader(content));
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
+
+            StringReader reader = new StringReader(wsdl.getDocument());
+            StringWriter writer = new StringWriter();
+            TransformerFactory tFactory = TransformerFactory.newInstance();
+            Transformer transformer = tFactory.newTransformer(new javax.xml.transform.stream.StreamSource("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\WebRepository_WebModule\\src\\main\\java\\xmlTransform.xsl"));
+            transformer.transform(new javax.xml.transform.stream.StreamSource(reader), new javax.xml.transform.stream.StreamResult(writer));
+            wsdl.setDocument(writer.toString());
+            reader = new StringReader(wsdl.getExtract());
+            writer = new StringWriter();
+            transformer = tFactory.newTransformer(new javax.xml.transform.stream.StreamSource("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\WebRepository_WebModule\\src\\main\\java\\xmlTransform.xsl"));
+            transformer.transform(new javax.xml.transform.stream.StreamSource(reader), new javax.xml.transform.stream.StreamResult(writer));
+            wsdl.setExtract(writer.toString());
+
             wsdlManager.createWSDL(wsdl);
             
             System.out.println(wsdlManager.getAllWSDLs());

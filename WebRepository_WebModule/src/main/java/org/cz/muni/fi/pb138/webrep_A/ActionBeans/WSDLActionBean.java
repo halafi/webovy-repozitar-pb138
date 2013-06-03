@@ -2,13 +2,18 @@ package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
-import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.FileBean;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -104,10 +109,11 @@ public class WSDLActionBean implements ActionBean {
     public WSDLDoc getDocument() {
         WSDLDoc wsdl;
         wsdl = manager.getWSDL(result.getId());
-        //wsdl.setDocument(Util.stringToHTMLString(wsdl.getDocument()));
-        //wsdl.setExtract(Util.stringToHTMLString(wsdl.getExtract()));
+        wsdl.setDocument(wsdl.getDocument().replaceAll("<", "&lt;").replaceAll(">","&gt; "));
+        wsdl.setExtract(wsdl.getExtract().replaceAll("<", "&lt;").replaceAll(">","&gt; "));
         return wsdl;
     }
+
     
     public String getId(){
         return result.getId().toString();
