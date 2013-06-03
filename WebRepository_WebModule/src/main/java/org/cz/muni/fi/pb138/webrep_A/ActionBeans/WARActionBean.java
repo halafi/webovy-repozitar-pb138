@@ -12,7 +12,6 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
-import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
@@ -66,7 +65,7 @@ public class WARActionBean implements ActionBean {
         } catch (IOException ex) {
             Logger.getLogger(WARActionBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return new ForwardResolution("/showWeb.jsp");
+        return new ForwardResolution("/showWAR.jsp");
     }
     
     public List<WarArchive> getWARs(){
