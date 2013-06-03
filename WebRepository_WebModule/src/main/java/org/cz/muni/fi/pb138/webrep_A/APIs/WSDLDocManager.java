@@ -37,6 +37,7 @@ public interface WSDLDocManager {
 
     /*
      * Simple ID generator.
+     * @return new id
      */
     public Long getNewId();
     

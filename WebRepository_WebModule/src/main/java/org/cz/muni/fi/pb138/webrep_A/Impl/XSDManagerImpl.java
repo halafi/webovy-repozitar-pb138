@@ -75,7 +75,6 @@ public class XSDManagerImpl implements XSDManager {
         return output;
     }
 
-    
     @Override
     public List<XSD> findXSDByElementName(String s) {
         List<XSD> output = new ArrayList<XSD>();

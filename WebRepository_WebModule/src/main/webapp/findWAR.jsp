@@ -40,7 +40,7 @@
                             <th><s:text id="data" name="dataInput"/> </th>
                             <th><s:submit name="searchData">Search</s:submit> </th>
                         </tr>
-            </s:form>
+            </s:form>      
             </table>
         </fieldset>
         </div>

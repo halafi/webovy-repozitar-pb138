@@ -3,9 +3,9 @@ package org.cz.muni.fi.pb138.webrep_A.Impl;
 import java.util.ArrayList;
 import java.util.List;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
-import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
+import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 /**
  *
@@ -22,23 +22,18 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     public WSDLDocManagerImpl(DatabaseManager dm) {
         this.dm = dm;
     }
-    
-    
+   
     @Override
     public void createWSDLCollection() {
         this.dm.createCollection("wsdl");
     }
     
-    
-    
     @Override
     public void createWSDL(WSDLDoc wsdl) {
-        //collection must be created!
         String xml = "<wsdl id='"+wsdl.getId().toString()+"' date='"+wsdl.getTimestamp()
                 +"' fileName='"+wsdl.getFileName()+"'>"+wsdl.getDocument()+"</wsdl>";
         this.dm.addXML("wsdl", wsdl.getId().toString(),xml);
     }
-    
     
     @Override
     public Long getNewId() {
@@ -51,7 +46,6 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         }
     }
 
-    
     @Override
     public WSDLDoc getWSDL(Long id) {
         if (id == null) {
@@ -77,7 +71,6 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         return wsdl;
     }
 
-    
     @Override
     public List<WSDLDoc> getAllWSDLs() {
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
@@ -88,8 +81,6 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         return output;
     }
    
-
-    
     @Override
     public List<WSDLDoc> findWSDLByData(String definitonsName){
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
@@ -112,7 +103,6 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         return output;
     }
     
-
     /*
      * Not working for some reason.
      * 
