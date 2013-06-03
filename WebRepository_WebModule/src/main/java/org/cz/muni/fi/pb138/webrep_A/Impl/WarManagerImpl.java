@@ -93,18 +93,15 @@ public class WarManagerImpl implements WarManager {
 //     * @return List of WSDLDoc
 //     * @throws BaseXException 
 //     */
-    public List<WarArchive> findWarByMetaData(String metaData, String atributeName) throws BaseXException {
-        String input = null;
-        if ("listener".equals(metaData))
-            input = "listener-class";
-        else if ("filter".equals(metaData))
-            input  =  "filter-name";
+    public List<WarArchive> findWarByMetaData(String atributeName) throws BaseXException {
         List<WarArchive> output = new ArrayList<WarArchive>();
-        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';" 
+        String query = this.dm.queryCollection(" declare namespace def = '\"http://java.sun.com/xml/ns/javaee';" 
                 + " distinct-values(for $war in collection('war')/war "
                 + " for $nodes in $war//*"
-                + " for $attr in $nodes/def:"+input
-                + " where fn:contains($attr,'"+atributeName+"')"
+                + " let $attr1 := $nodes/def:listener-class"
+                + " let $attr1 := $nodes/def:filter-name"
+                + " let $ret := fn:concat($attr2,$attr1)"
+                + " where fn:contains($ret,'"+atributeName+"')"
                 + " return distinct-values($war/@id))");
         String strarray[] = query.split(" ");
         int intarray[] = new int[strarray.length];
