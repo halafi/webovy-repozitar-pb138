@@ -45,7 +45,7 @@
                             <th><s:text id="data" name="dataInput"/> </th>
                         </tr>
                     </table>
-                    <s:submit name="searchData">Search by data</s:submit>
+                    <s:submit name="searchData">Search by web.xml filter name</s:submit>
                     </fieldset>
             </s:form>
         </div>

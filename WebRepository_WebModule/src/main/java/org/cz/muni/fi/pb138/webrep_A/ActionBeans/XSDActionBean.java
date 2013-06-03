@@ -2,6 +2,7 @@ package org.cz.muni.fi.pb138.webrep_A.ActionBeans;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
@@ -34,6 +36,7 @@ public class XSDActionBean implements ActionBean {
     private XSDManager manager = new XSDManagerImpl(dm);
     private XSDParser xsdParser = new XSDParser();
     private XSD result = new XSD();
+    private List<XSD> resultList = new ArrayList<XSD>();
     
     @Override
     public ActionBeanContext getContext() { return context; }
@@ -49,12 +52,12 @@ public class XSDActionBean implements ActionBean {
     public void setxsdInput(FileBean xsdInput) {
         this.xsdInput = xsdInput;
     }
-    
+    /*
     @DefaultHandler
     public Resolution all() {
         return new ForwardResolution("/showPlayers.jsp");
     }
-
+    */
     public Resolution xsdUpload() {
         try {
             File toFile = new File(System.getProperty("user.home")+File.separator+xsdInput.getFileName());
@@ -86,20 +89,19 @@ public class XSDActionBean implements ActionBean {
     }
     
     public Resolution searchId() {
-        
-//        String name = context.getRequest().getParameter("name");
-//        String surname = context.getRequest().getParameter("surname");
-        
         Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
-        
         result = manager.getXSD(searchId);
-        
-        
         return new ForwardResolution("/showSingleXSD.jsp");
     }
     
     public List<XSD> getXSDs(){
         return manager.getAllXSDs() ;
+    }
+    
+    public Resolution searchData() {
+        String searchData = context.getRequest().getParameter("dataInput");
+        resultList = manager.findXSDByData(searchData);
+        return new ForwardResolution("/showMultipleXSD.jsp");
     }
     
 }
