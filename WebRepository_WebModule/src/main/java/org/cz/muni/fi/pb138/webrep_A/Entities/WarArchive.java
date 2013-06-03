@@ -77,7 +77,7 @@ public class WarArchive {
 
     @Override
     public String toString() {
-        return "Type: web.xml\n" + "fileName=" + fileName + "\nid=" + id + "\nversion=" + timestamp + "\nDocument: \n\n" + webXml + "\n\n\nExtract: \n\n" + extract;
+        return "Type: web.xml\n" + "FileName=" + fileName + "\nId=" + id + "\nVersion=" + timestamp + "\nDocument: \n\n" + webXml + "\n\n\nExtract: \n\n" + extract;
     }
 
 

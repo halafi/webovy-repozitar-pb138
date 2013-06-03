@@ -67,7 +67,7 @@ public class WSDLDoc {
 
     @Override
     public String toString() {
-        return "Type: WSDL\n" + "fileName=" + fileName + "\nid=" + id + "\nversion=" + timestamp + "\nDocument: \n\n" + document + "\n\n\nExtract: \n\n" + extract;
+        return "Type: WSDL\n" + "FileName=" + fileName + "\nId=" + id + "\nVersion=" + timestamp + "\nDocument: \n\n" + document + "\n\n\nExtract: \n\n" + extract;
     }
 
     public String getTimestamp() {
