@@ -93,9 +93,9 @@ public class WarManagerImpl implements WarManager {
 //     * @return List of WSDLDoc
 //     * @throws BaseXException 
 //     */
-    public List<WarArchive> findWarByMetaData(String atributeName) throws BaseXException {
+    public List<WarArchive> findWarByData(String atributeName) {
         List<WarArchive> output = new ArrayList<WarArchive>();
-        String query = this.dm.queryCollection(" declare namespace def = '\"http://java.sun.com/xml/ns/javaee';" 
+        String query = this.dm.queryCollection(" declare namespace def = 'http://java.sun.com/xml/ns/javaee';" 
                 + " distinct-values(for $war in collection('war')/war "
                 + " for $nodes in $war//*"
                 + " let $attr1 := $nodes/def:listener-class"

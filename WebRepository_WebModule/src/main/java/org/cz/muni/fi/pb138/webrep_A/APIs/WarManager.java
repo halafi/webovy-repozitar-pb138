@@ -39,4 +39,6 @@ public interface WarManager {
     public void setLogger(FileOutputStream fs);
     
     public Long getNewId();
+    
+    public List<WarArchive> findWarByData(String atributeName);
 }
