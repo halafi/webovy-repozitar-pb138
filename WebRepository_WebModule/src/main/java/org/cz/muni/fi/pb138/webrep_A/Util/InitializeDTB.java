@@ -15,7 +15,7 @@ import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
  *
  * @author Filip
  */
-public class InicializeDTB {
+public class InitializeDTB {
     public static void main(String[] args) {
         DatabaseManager wsdlDBManager = new DatabaseManager(Filetype.WSDL);
         DatabaseManager xsdDBManager = new DatabaseManager(Filetype.XSD);
