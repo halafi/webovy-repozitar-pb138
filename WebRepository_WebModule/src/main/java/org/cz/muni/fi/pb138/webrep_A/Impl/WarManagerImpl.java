@@ -90,20 +90,14 @@ public class WarManagerImpl implements WarManager {
     }
        
     
-    /**
-     * Find by meta data
-     * @param metaData is name of meta data e.g. message
-     * @param atributeName is name of meta Data
-     * @return List of WSDLDoc
-     * @throws BaseXException 
-     */
-    public List<WarArchive> findWarByData(String atributeName) {
+    
+    public List<WarArchive> findWarByData(String filterName) {
         List<WarArchive> output = new ArrayList<WarArchive>();
         String query = this.dm.queryCollection(" declare namespace def = 'http://java.sun.com/xml/ns/javaee';" 
                 + " distinct-values(for $war in collection('war')/war "
                 + " for $nodes in $war//*"
                 + " let $attr1 := $nodes/def:filter-name"
-                + " where fn:contains($attr1,'"+atributeName+"')"
+                + " where fn:contains($attr1,'"+filterName+"')"
                 + " return distinct-values($war/@id))");
         String strarray[] = query.split(" ");
         int intarray[] = new int[strarray.length];
