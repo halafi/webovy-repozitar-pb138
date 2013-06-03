@@ -1,13 +1,8 @@
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
-import java.io.FileOutputStream;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
-import java.util.logging.StreamHandler;
-import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
@@ -19,14 +14,8 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
  * @author xmakovic
  */
 public class WSDLDocManagerImpl implements WSDLDocManager {
-    public static final Logger logger = Logger.getLogger(WSDLDocManagerImpl.class.getName());
     private DatabaseManager dm;
 
-    @Override
-    public void setLogger(FileOutputStream fs) {
-        logger.addHandler(new StreamHandler(fs, new SimpleFormatter()));
-    }
-    
     /*
      * Constructor. 
      * @param DatabaseManager dm

@@ -1,12 +1,8 @@
 package org.cz.muni.fi.pb138.webrep_A.Impl;
 
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
-import java.util.logging.StreamHandler;
-import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
@@ -17,7 +13,6 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
  * @author xmakovic
  */
 public class WarManagerImpl implements WarManager {
-    public static final Logger logger = Logger.getLogger(WarManagerImpl.class.getName());
     private DatabaseManager dm;
 
     /*
@@ -27,11 +22,7 @@ public class WarManagerImpl implements WarManager {
     public WarManagerImpl(DatabaseManager dm) {
         this.dm = dm;
     }
-    
-    @Override
-    public void setLogger(FileOutputStream fs) {
-        logger.addHandler(new StreamHandler(fs, new SimpleFormatter()));
-    }
+
     
     @Override
     public void createWARCollection() {

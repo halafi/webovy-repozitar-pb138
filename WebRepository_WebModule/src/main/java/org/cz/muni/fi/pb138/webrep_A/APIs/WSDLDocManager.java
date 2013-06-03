@@ -46,6 +46,4 @@ public interface WSDLDocManager {
      * Creates BaseX collection for storing WSDLs.
      */
     public void createWSDLCollection();
-    
-    public void setLogger(FileOutputStream fs);
 }
