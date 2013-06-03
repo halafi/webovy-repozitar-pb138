@@ -11,19 +11,16 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class XSDParser {
-    
     /**
     * Create extract document from XSD 
     * @param doc original XSD as dom.Document
     * @return Extracted XSD as dom.Document
-    * @throws ParserConfigurationException 
     */
     public Document xsdExtract(Document doc) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             Document output;
             DocumentBuilder builder;
-            
             builder = factory.newDocumentBuilder();
             output = builder.newDocument(); 
             Element root = (Element) output.createElement("types"); 
@@ -66,7 +63,7 @@ public class XSDParser {
             for (int i = 0; i < simpleTypeList.getLength(); i++) {
                 if (simpleTypeList.item(i) instanceof Element) {
                     Element simpleElement = (Element) simpleTypeList.item(i);
-                    Node nodeToMove = output.importNode(simpleElement, true); 
+                    Node nodeToMove = output.importNode(simpleElement, false); 
                     root.appendChild(nodeToMove);
                 }
             }

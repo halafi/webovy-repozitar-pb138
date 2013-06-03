@@ -13,6 +13,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
+import org.cz.muni.fi.pb138.webrep_A.Util.XmlFormatter;
 /**
  *
  *
@@ -79,13 +80,13 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         wsdl.setTimestamp(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
                 +" for $ wsdl in collection('wsdl')/wsdl[@id='" + id.toString() + "']"
                 +" return data($wsdl/@date)"));
-        wsdl.setDocument(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
-                +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions"));
+        wsdl.setDocument(new XmlFormatter().format(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
+                +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions")));
         if(wsdl.getDocument().equals("")) {
-            wsdl.setDocument(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';"
-                +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions"));
+            wsdl.setDocument(new XmlFormatter().format(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';"
+                +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions")));
         }
-        wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(wsdl.getDocument()))));
+        wsdl.setExtract(new XmlFormatter().format(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(wsdl.getDocument())))));
 
         return wsdl;
     }

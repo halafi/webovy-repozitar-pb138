@@ -12,6 +12,7 @@ import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
+import org.cz.muni.fi.pb138.webrep_A.Util.XmlFormatter;
 /**
  *
  * @author xmakovic
@@ -72,10 +73,8 @@ public class WarManagerImpl implements WarManager {
         war.setFileName(this.dm.queryCollection(" "
                 + " for $war in collection('war')/war[@id='" + id.toString() + "']"
                 + " return data($war/@fileName)"));
-        war.setWebXml(this.dm.queryCollection("collection('war')/war[@id='"+id.toString()+"']/web.xml"));
-        war.setExtract(Util.docToString(webXmlParser.webXMLExtract(Util.stringToDoc(war.getWebXml()))));
-
-
+        war.setWebXml(new XmlFormatter().format(this.dm.queryCollection("collection('war')/war[@id='"+id.toString()+"']/web.xml")));
+        war.setExtract(new XmlFormatter().format(Util.docToString(webXmlParser.webXMLExtract(Util.stringToDoc(war.getWebXml())))));
         return war;
     }
     
