@@ -94,7 +94,7 @@ public class WSDLActionBean implements ActionBean {
     }
     
     
-    public Resolution searchByFullName() {
+    public Resolution searchId() {
         
 //        String name = context.getRequest().getParameter("name");
 //        String surname = context.getRequest().getParameter("surname");
