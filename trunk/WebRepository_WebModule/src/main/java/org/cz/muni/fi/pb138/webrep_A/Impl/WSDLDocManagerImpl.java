@@ -80,11 +80,11 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         wsdl.setTimestamp(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
                 +" for $ wsdl in collection('wsdl')/wsdl[@id='" + id.toString() + "']"
                 +" return data($wsdl/@date)"));
-        wsdl.setDocument(new XmlFormatter().format(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
-                +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions")));
+        wsdl.setDocument(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
+                +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions"));
         if(wsdl.getDocument().equals("")) {
-            wsdl.setDocument(new XmlFormatter().format(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';"
-                +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions")));
+            wsdl.setDocument(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';"
+                +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions"));
         }
         wsdl.setExtract(new XmlFormatter().format(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(wsdl.getDocument())))));
 
