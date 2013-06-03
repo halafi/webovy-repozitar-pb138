@@ -15,7 +15,6 @@ public interface WarManager {
      * Saves web.XML into database
      * @param war is war archive
      * @param id id in database
-     * @throws BaseXException 
      */
     public void createWarArchive(WarArchive war);
     
@@ -23,22 +22,28 @@ public interface WarManager {
      * Gets web.XML from database
      * @param id
      * @return Single web.XML file as String
-     * @throws BaseXException 
      */
     public WarArchive getWarArchive(Long id);  
     
     /**
      * Gets all web.XMLs from database.
      * @return All web.XMLs from database as String
-     * @throws BaseXException 
      */
     public List<WarArchive> getAllArchives();
     
+    /*
+     * Creates baseX collection for storing web.xmls and their extracts.
+     */
     public void createWARCollection();
     
+    /*
+     * Setter for logger
+     * @param FileOutputStream fs
+     */
     public void setLogger(FileOutputStream fs);
     
+    /*
+     * Simple ID generator.
+     */
     public Long getNewId();
-    
-    public List<WarArchive> findWarByData(String atributeName);
 }
