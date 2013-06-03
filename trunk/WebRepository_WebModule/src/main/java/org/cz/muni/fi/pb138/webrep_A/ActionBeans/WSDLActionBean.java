@@ -82,6 +82,12 @@ public class WSDLActionBean implements ActionBean {
     public Resolution wsdlUpload() {
         try {
             File toFile = new File(System.getProperty("user.home")+File.separator+wsdlInput.getFileName());
+            String extension = wsdlInput.getFileName().substring(wsdlInput.getFileName().lastIndexOf(".") + 1, wsdlInput.getFileName().length());
+            if(!extension.equals("wsdl")) {
+                toFile.delete();
+                wsdlInput.delete();
+                return new ForwardResolution("/wrongFile.jsp");
+            }
             wsdlInput.save(toFile);
             String content = Util.readFile(toFile);
 

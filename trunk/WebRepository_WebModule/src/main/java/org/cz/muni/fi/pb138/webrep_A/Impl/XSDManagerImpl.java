@@ -2,7 +2,6 @@ package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
@@ -76,11 +75,9 @@ public class XSDManagerImpl implements XSDManager {
         return output;
     }
 
-    /*
-     * Finds XSD by data input.
-     */
+    
     @Override
-    public List<XSD> findXSDByData(String s) {
+    public List<XSD> findXSDByElementName(String s) {
         List<XSD> output = new ArrayList<XSD>();
         String query =  this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + "distinct-values( for $xsd in collection('xsd')/xsd "
@@ -88,6 +85,9 @@ public class XSDManagerImpl implements XSDManager {
                 + " for $attr in $nodes/xsd:element/@name"
                 + " where fn:contains($attr,'"+s+"')"
                 + " return distinct-values($xsd/@id))");
+        if(query.equals("")) {
+            return output;
+        }
         String strarray[] = query.split(" ");
         int intarray[] = new int[strarray.length];
         for (int i=0; i < intarray.length; i++) {

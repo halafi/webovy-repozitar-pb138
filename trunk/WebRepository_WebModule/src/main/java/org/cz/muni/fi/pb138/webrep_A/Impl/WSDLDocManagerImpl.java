@@ -2,7 +2,6 @@ package org.cz.muni.fi.pb138.webrep_A.Impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
@@ -61,16 +60,16 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         WSDLDoc wsdl = new WSDLDoc();
         WSDLDocParser wsdlParser = new WSDLDocParser();
         wsdl.setId(id);
-        wsdl.setDocument(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
+        wsdl.setDocument(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';"
                 +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions"));
         if(wsdl.getDocument().equals("")) {
             wsdl.setDocument(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';"
                 +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions"));
         }
-        wsdl.setFileName(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
+        wsdl.setFileName(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';"
                 +" for $ wsdl in collection('wsdl')/wsdl[@id='" + id.toString() + "']"
                 +" return data($wsdl/@fileName)"));
-        wsdl.setTimestamp(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
+        wsdl.setTimestamp(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';"
                 +" for $ wsdl in collection('wsdl')/wsdl[@id='" + id.toString() + "']"
                 +" return data($wsdl/@date)"));
         wsdl.setExtract(Util.format(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(wsdl.getDocument())))));
@@ -94,17 +93,13 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     @Override
     public List<WSDLDoc> findWSDLByData(String definitonsName){
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
-        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';" 
+        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';" 
                 + " for $wsdl in collection('wsdl')/wsdl "
                 + " let $name := $wsdl/def:definitions/@name"
                 + " where $name='"+definitonsName+"'"
                 + " return distinct-values($wsdl/@id)");
-        if (query.equals("")) {
-            query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';" 
-                + " for $wsdl in collection('wsdl')/wsdl "
-                + " let $name := $wsdl/def:definitions/@name"
-                + " where $name='"+definitonsName+"'"
-                + " return distinct-values($wsdl/@id)");
+        if(query.equals("")) {
+            return output;
         }
         String strarray[] = query.split(" ");
         int intarray[] = new int[strarray.length];
@@ -116,4 +111,31 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         }
         return output;
     }
+    
+
+    /*
+     * Not working for some reason.
+     * 
+    @Override
+    public List<WSDLDoc> findWSDLByMetaData(String messageName) {
+        List<WSDLDoc> output = new ArrayList<WSDLDoc>();
+        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';" 
+                + " distinct-values(for $wsdl in collection('wsdl')/wsdl "
+                + " let $msg := $wsdl/def:definitions/def:message/@name"
+                + " where $msg='"+messageName+"')"
+                + " return distinct-values($wsdl/@id))");
+        if(query.equals("")) {
+            return output;
+        }
+        String strarray[] = query.split(" ");
+        int intarray[] = new int[strarray.length];
+        for (int i=0; i < intarray.length; i++) {
+            intarray[i] = Integer.parseInt(strarray[i]);
+        }
+        for (int x : intarray) {
+            output.add(this.getWSDL(new Long(x)));
+        }
+        return output;
+    }
+    * */
 }
