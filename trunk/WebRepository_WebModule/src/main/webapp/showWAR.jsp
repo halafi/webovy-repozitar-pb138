@@ -16,7 +16,7 @@
             <ul>
                 <li><a href="index.jsp">Home</a></li>
                 <li><a href="insertWAR.jsp">Insert WAR</a></li>
-                <li><a href="findWAR.jsp">Search WARs by web.xml</a></li>
+                <li><a href="findWAR.jsp">Search in web.xmls</a></li>
             </ul>
         </div> 
         <div id="tabulka">

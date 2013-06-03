@@ -14,20 +14,43 @@
         <title>WAR Search</title>
     </head>
     <body>
-        <h2>Search WARs by web.xml</h2>
+        <h2>Search in web.xmls</h2>
         </br>
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="showWAR.jsp">Show WAR and web.xml</a></li>
+                <li><a href="showWAR.jsp">Show web.xmls</a></li>
                 <li><a href="insertWAR.jsp">Insert WAR</a></li>
             </ul>
         </div> 
-        
-        <%--<s:form action="stringToDoc" beanclass="Util">--%>
-            <%--<s:file name="XSD"/>--%> 
-        <%--</s:form>--%>
-        
+
+        <div>        
+            <s:form beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WARActionBean" method="GET">
+                <fieldset>
+                    <table>
+                        <tr>
+                            <th> Id : </th>
+                            <th><s:text id="id" name="idInput"/></th> 
+                        </tr>
+                    </table>
+                    <s:submit name="searchId">Search by ID</s:submit>
+                    </fieldset>
+            </s:form>   
+
+            <s:form beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WARActionBean" method="GET">
+                <fieldset>
+                    <table>
+                        <tr>
+                            <th>Input data:</th>
+                            <th><s:text id="data" name="dataInput"/> </th>
+                        </tr>
+                    </table>
+                    <s:submit name="searchData">Search by data</s:submit>
+                    </fieldset>
+            </s:form>
+        </div>
+
+
 
 
     </body>
