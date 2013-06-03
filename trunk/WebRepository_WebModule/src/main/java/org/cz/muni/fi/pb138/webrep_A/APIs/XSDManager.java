@@ -13,7 +13,7 @@ public interface XSDManager {
     
     /**
      * Saves XSD into database
-     * @param xsd
+     * @param xsd XSD to be created
      */
     public void createXSD(XSD xsd);
     
@@ -26,13 +26,13 @@ public interface XSDManager {
     
     /**
      * Gets all XSDs from database.
-     * @return all XSDs from database as String
+     * @return all XSDs from database
      */
     public List<XSD> getAllXSDs(); 
     
     /**
-     * Finds XSD by meta data.
-     * @param definitonsName
+     * Finds XSD by element name.
+     * @param name of XSD element
      * @return All XSDs satisfactory search.
      */
     public List<XSD> findXSDByElementName(String s);
@@ -44,6 +44,7 @@ public interface XSDManager {
     
     /*
      * Simple ID generator.
+     * @return new id
      */
     public Long getNewId();
 }

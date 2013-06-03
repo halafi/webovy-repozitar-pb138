@@ -14,25 +14,24 @@ public interface WarManager {
     /**
      * Saves web.XML into database
      * @param war is war archive
-     * @param id id in database
      */
     public void createWarArchive(WarArchive war);
     
     /**
      * Gets web.XML from database
-     * @param id
-     * @return Single web.XML file as String
+     * @param id entity id
+     * @return single WarArchive
      */
     public WarArchive getWarArchive(Long id);  
     
     /**
-     * Gets all web.XMLs from database.
-     * @return All web.XMLs from database as String
+     * Gets all Wars from database.
+     * @return All Wars from database as String
      */
     public List<WarArchive> getAllArchives();
     
     /*
-     * Creates baseX collection for storing web.xmls and their extracts.
+     * Creates baseX collection for storing Wars.
      */
     public void createWARCollection();
     
@@ -41,10 +40,11 @@ public interface WarManager {
      * @param filterName is name of filter
      * @return List of WSDLDoc
      */
-    public List<WarArchive> findWarByData(String atributeName);
+    public List<WarArchive> findWarByData(String atrName);
        
     /*
      * Simple ID generator.
+     * @return new id
      */
     public Long getNewId();
 }

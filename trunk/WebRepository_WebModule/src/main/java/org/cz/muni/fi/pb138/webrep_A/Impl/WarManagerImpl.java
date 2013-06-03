@@ -13,7 +13,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Util;
  */
 public class WarManagerImpl implements WarManager {
     private DatabaseManager dm;
-
+    
     /*
      * Constructor.
      * @param DatabaseManager dm
@@ -21,7 +21,6 @@ public class WarManagerImpl implements WarManager {
     public WarManagerImpl(DatabaseManager dm) {
         this.dm = dm;
     }
-
     
     @Override
     public void createWARCollection() {
@@ -30,7 +29,6 @@ public class WarManagerImpl implements WarManager {
     
     @Override
     public void createWarArchive(WarArchive war) {
-        //collection must be created!
         String xml = "<war id='"+war.getId().toString()+"' date='"+war.getTimestamp()
                 +"' fileName='"+war.getFileName()+"'>"+"<web.xml>"+war.getWebXml()+"</web.xml></war>";
         this.dm.addXML("war", war.getId().toString(),xml);
@@ -76,17 +74,15 @@ public class WarManagerImpl implements WarManager {
          }
         return output;
     }
-       
-    
-    
+     
     @Override
-    public List<WarArchive> findWarByData(String filterName) {
+    public List<WarArchive> findWarByData(String atrName) {
         List<WarArchive> output = new ArrayList<WarArchive>();
         String query = this.dm.queryCollection(" declare namespace def = 'http://java.sun.com/xml/ns/javaee';" 
                 + " distinct-values(for $war in collection('war')/war "
                 + " for $nodes in $war//*"
                 + " let $attr1 := $nodes/def:filter-name"
-                + " where fn:contains($attr1,'"+filterName+"')"
+                + " where fn:contains($attr1,'"+atrName+"')"
                 + " return distinct-values($war/@id))");
         if(query.equals("")) {
             return output;
