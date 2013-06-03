@@ -13,8 +13,8 @@
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="showWSDL.jsp">Show WSDLs</a></li>
-                <li><a href="findWSDL.jsp">Find WSDL</a></li>
+                <li><a href="showWSDL.jsp">Show all</a></li>
+                <li><a href="findWSDL.jsp">Search</a></li>
             </ul>
         </div> 
         

@@ -13,8 +13,8 @@
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="showXSD.jsp">Show XSDs</a></li>
-                <li><a href="findXSD.jsp">Find XSD</a></li>
+                <li><a href="showXSD.jsp">Show all</a></li>
+                <li><a href="findXSD.jsp">Search</a></li>
             </ul>
         </div> 
 

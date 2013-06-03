@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <title>Show Single WSDL</title>
+        <title>Show single WSDL</title>
     </head>
     <body>
         <h2>WSDL archiver</h2>
@@ -13,9 +13,9 @@
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="showWSDL.jsp">Show All WSDLs</a></li>
-                <li><a href="insertWSDL.jsp">Insert WSDL</a></li>
-                <li><a href="findWSDL.jsp">Find WSDL</a></li>
+                <li><a href="showWSDL.jsp">Show All</a></li>
+                <li><a href="insertWSDL.jsp">Upload</a></li>
+                <li><a href="findWSDL.jsp">Search</a></li>
             </ul>
         </div> 
         <div id="viewer">

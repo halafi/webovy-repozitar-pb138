@@ -14,13 +14,13 @@
         <title>WAR Search</title>
     </head>
     <body>
-        <h2>Search in web.xmls</h2>
+        <h2>Search in WARs</h2>
         </br>
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="showWAR.jsp">Show web.xmls</a></li>
-                <li><a href="insertWAR.jsp">Insert WAR</a></li>
+                <li><a href="showWAR.jsp">Show all</a></li>
+                <li><a href="insertWAR.jsp">Upload</a></li>
             </ul>
         </div> 
 

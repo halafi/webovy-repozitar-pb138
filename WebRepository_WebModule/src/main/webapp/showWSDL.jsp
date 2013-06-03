@@ -15,8 +15,8 @@
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="insertWSDL.jsp">Insert WSDL</a></li>
-                <li><a href="findWSDL.jsp">Find WSDL</a></li>
+                <li><a href="insertWSDL.jsp">Upload</a></li>
+                <li><a href="findWSDL.jsp">Search</a></li>
             </ul>
         </div> 
         <div id="tabulka">

@@ -13,8 +13,8 @@
         <div id="topNav">
             <ul>
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="showWAR.jsp">Show all WARs</a></li>
-                <li><a href="findWAR.jsp">Search WARs by web.xml</a></li>
+                <li><a href="showWAR.jsp">Show all</a></li>
+                <li><a href="findWAR.jsp">Search</a></li>
             </ul>
         </div> 
         
