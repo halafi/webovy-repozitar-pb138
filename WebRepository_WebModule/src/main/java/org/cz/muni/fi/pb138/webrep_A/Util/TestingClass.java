@@ -15,6 +15,7 @@ import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.APIs.XSDManager;
+import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WSDLDocManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
@@ -53,8 +54,8 @@ public class TestingClass {
         WebXMLParser webParser = new WebXMLParser();
         
 
-        /*File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
-                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\webservice.wsdl");
+        File testWSDL = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
+                + "WebRepository_WebModule\\src\\main\\java\\org\\cz\\muni\\fi\\pb138\\webrep_A\\test_data\\wsdl\\IRSACatalogSearchServices.wsdl");
         if(testWSDL.exists()) {
             String content = Util.readFile(testWSDL);
             
@@ -66,16 +67,8 @@ public class TestingClass {
             wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
             wsdlManager.createWSDL(wsdl);
             
-            WSDLDoc wsdl = new WSDLDoc();
-            wsdl.setId(wsdlManager.getNewId());
-            wsdl.setTimestamp(Util.getTimeStamp());
-            wsdl.setFileName(testWSDL.toString());
-            wsdl.setDocument(Util.stripXMLHeader(content));
-            wsdl.setExtract(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(content))));
-            wsdlManager.createWSDL(wsdl);
-            
             System.out.println(wsdlManager.getAllWSDLs());
-        }*/
+        }
         
         /*
             File testXSD = new File("C:\\Users\\Filip\\Documents\\NetBeansProjects\\trunk\\"
