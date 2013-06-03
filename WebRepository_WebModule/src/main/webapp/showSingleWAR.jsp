@@ -19,8 +19,11 @@
             </ul>
         </div> 
         <div id="xml">
-            
-            
+           <textarea contenteditable="no" cols="120" rows="30">
+                ${actionBean.getId()}
+            </br>
+                ${actionBean.getDocument()}
+            </textarea>
         </div>
     </body>
 </html>
