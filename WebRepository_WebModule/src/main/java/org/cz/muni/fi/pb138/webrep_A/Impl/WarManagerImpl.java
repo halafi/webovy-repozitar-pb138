@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
+import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.APIs.WarManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
@@ -92,27 +93,27 @@ public class WarManagerImpl implements WarManager {
 //     * @return List of WSDLDoc
 //     * @throws BaseXException 
 //     */
-//    public List<WSDLDoc> findWSDLByMetaData(String metaData, String atributeName) throws BaseXException {
-//        String input;
-//        if (metaData == "listener")
-//            input = "listener-class";
-//        else if (metaData == "filter")
-//            input  =  "filter-name";
-//        List<WSDLDoc> output = new ArrayList<WSDLDoc>();
-//        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';" 
-//                + " distinct-values(for $war in collection('war')/war "
-//                + " for $nodes in $war//*"
-//                + " for $attr in $nodes/def:"+metaData
-//                + " where fn:contains($attr,'"+atributeName+"')"
-//                + " return distinct-values($wsdl/@id))");
-//        String strarray[] = query.split(" ");
-//        int intarray[] = new int[strarray.length];
-//        for (int i=0; i < intarray.length; i++) {
-//            intarray[i] = Integer.parseInt(strarray[i]);
-//        }
-//        for (int x : intarray) {
-//            output.add(this.getWarArchive(new Long(x)));
-//        }
-//        return output;
-//    }
+    public List<WarArchive> findWSDLByMetaData(String metaData, String atributeName) throws BaseXException {
+        String input = null;
+        if ("listener".equals(metaData))
+            input = "listener-class";
+        else if ("filter".equals(metaData))
+            input  =  "filter-name";
+        List<WarArchive> output = new ArrayList<WarArchive>();
+        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl';" 
+                + " distinct-values(for $war in collection('war')/war "
+                + " for $nodes in $war//*"
+                + " for $attr in $nodes/def:"+input
+                + " where fn:contains($attr,'"+atributeName+"')"
+                + " return distinct-values($war/@id))");
+        String strarray[] = query.split(" ");
+        int intarray[] = new int[strarray.length];
+        for (int i=0; i < intarray.length; i++) {
+            intarray[i] = Integer.parseInt(strarray[i]);
+        }
+        for (int x : intarray) {
+            output.add(this.getWarArchive(new Long(x)));
+        }
+        return output;
+    }
 }
