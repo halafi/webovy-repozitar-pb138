@@ -18,31 +18,24 @@
             </ul>
         </div> 
         <div>
-        
+        <fieldset>
+        <table>
         <s:form beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WSDLActionBean" method="GET">
-            <fieldset>
-                <table>
                     <tr>
-                        <th> Id : </th>
+                        <th>Id:</th>
                         <th><s:text id="id" name="idInput"/></th> 
+                        <th><s:submit name="searchId">Search</s:submit></th> 
                     </tr>
-                </table>
-                <s:submit name="searchId">Search by ID</s:submit>
-                </fieldset>
         </s:form>   
-
         <s:form beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WSDLActionBean" method="GET">
-            <fieldset>
-                <table>
                     <tr>
-                        <th>Input data:</th>
+                        <th>Definitions name:</th>
                         <th><s:text id="data" name="dataInput"/> </th>
+                        <th><s:submit name="searchData">Search</s:submit></th>
                     </tr>
-                </table>
-            <s:submit name="searchData">Search by definitions name</s:submit>
-            </fieldset>
         </s:form>
+        </table>    
+        </fieldset>
         </div>
-
     </body>
 </html>

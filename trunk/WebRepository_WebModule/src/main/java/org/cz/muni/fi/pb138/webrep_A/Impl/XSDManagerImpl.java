@@ -11,7 +11,6 @@ import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
-import org.cz.muni.fi.pb138.webrep_A.Util.XmlFormatter;
 
 /**
  *
@@ -63,15 +62,15 @@ public class XSDManagerImpl implements XSDManager {
         XSD schema = new XSD();
         XSDParser xsdParser = new XSDParser();
         schema.setId(id);
-        schema.setDocument(this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
-                + "collection('xsd')/xsd[@id='" + id.toString() + "']/xsd:schema"));
+        schema.setDocument(Util.format(this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
+                + "collection('xsd')/xsd[@id='" + id.toString() + "']/xsd:schema")));
         schema.setTimestamp(this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
                 + " return data($xsd/@date)"));
         schema.setFileName(this.dm.queryCollection("declare namespace xsd = 'http://www.w3.org/2001/XMLSchema';"
                 + " for $xsd in collection('xsd')/xsd[@id='" + id.toString() + "']"
                 + " return data($xsd/@fileName)"));
-        schema.setExtract(new XmlFormatter().format(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(schema.getDocument())))));
+        schema.setExtract(Util.format(Util.docToString(xsdParser.xsdExtract(Util.stringToDoc(schema.getDocument())))));
 
         return schema;
     }

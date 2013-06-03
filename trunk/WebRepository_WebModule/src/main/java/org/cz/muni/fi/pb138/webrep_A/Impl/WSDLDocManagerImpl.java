@@ -13,7 +13,6 @@ import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
-import org.cz.muni.fi.pb138.webrep_A.Util.XmlFormatter;
 /**
  *
  *
@@ -73,20 +72,19 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         WSDLDoc wsdl = new WSDLDoc();
         WSDLDocParser wsdlParser = new WSDLDocParser();
         wsdl.setId(id);
-        
-        wsdl.setFileName(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
-                +" for $ wsdl in collection('wsdl')/wsdl[@id='" + id.toString() + "']"
-                +" return data($wsdl/@fileName)"));
-        wsdl.setTimestamp(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
-                +" for $ wsdl in collection('wsdl')/wsdl[@id='" + id.toString() + "']"
-                +" return data($wsdl/@date)"));
         wsdl.setDocument(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
                 +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions"));
         if(wsdl.getDocument().equals("")) {
             wsdl.setDocument(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';"
                 +" collection('wsdl')/wsdl[@id='"+id.toString()+"']/def:definitions"));
         }
-        wsdl.setExtract(new XmlFormatter().format(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(wsdl.getDocument())))));
+        wsdl.setFileName(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
+                +" for $ wsdl in collection('wsdl')/wsdl[@id='" + id.toString() + "']"
+                +" return data($wsdl/@fileName)"));
+        wsdl.setTimestamp(this.dm.queryCollection("declare namespace def = 'http://schemas.xmlsoap.org/wsdl';"
+                +" for $ wsdl in collection('wsdl')/wsdl[@id='" + id.toString() + "']"
+                +" return data($wsdl/@date)"));
+        wsdl.setExtract(Util.format(Util.docToString(wsdlParser.wsdlExtract(Util.stringToDoc(wsdl.getDocument())))));
 
         return wsdl;
     }
