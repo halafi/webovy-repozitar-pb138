@@ -93,6 +93,13 @@ public class WSDLActionBean implements ActionBean {
         return manager.getAllWSDLs();
     }
     
+    public WSDLDoc getDocument() {
+        return manager.getWSDL(result.getId());
+    }
+    
+    public String getId(){
+        return result.getId().toString();
+    }
     
     public Resolution searchId() {
         
@@ -104,7 +111,7 @@ public class WSDLActionBean implements ActionBean {
         result = manager.getWSDL(searchId);
         
         
-        return new ForwardResolution("/showSingleWSDL");
+        return new ForwardResolution("/showSingleWSDL.jsp");
     }
     
     

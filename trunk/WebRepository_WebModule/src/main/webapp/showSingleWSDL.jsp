@@ -25,10 +25,7 @@
             </ul>
         </div> 
         <div id="viewer">
-            <textarea contenteditable="no" cols="120" rows="30">
-                ${actionBean.getDoc().getId()}
-            </br>
-                ${actionBean.getDoc().getDocument()}
+           <textarea contenteditable="no" cols="120" rows="30">${actionBean.getDocument()}
             </textarea>
         </div>
     </body>
