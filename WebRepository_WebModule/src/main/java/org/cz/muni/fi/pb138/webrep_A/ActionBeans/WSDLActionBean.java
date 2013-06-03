@@ -85,13 +85,13 @@ public class WSDLActionBean implements ActionBean {
         return new ForwardResolution("/showWSDL.jsp");
     }
     
-//    public Resolution showSingle(){
-//       return new ForwardResolution("/showSingleWSDL.jsp");
-//    }
-//    
-//    public List<WSDLDoc> getWSDLs(){
-//        return manager.getAllWSDLs();
-//    }
+    public Resolution showSingle(){
+       return new ForwardResolution("/showSingleWSDL.jsp");
+    }
+    
+    public List<WSDLDoc> getWSDLs(){
+        return manager.getAllWSDLs();
+    }
     
     
     public Resolution searchByFullName() {
