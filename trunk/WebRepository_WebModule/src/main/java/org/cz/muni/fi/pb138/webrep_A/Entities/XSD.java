@@ -68,7 +68,7 @@ public class XSD {
 
     @Override
     public String toString() {
-        return "Type: XSD\n" + "fileName=" + fileName + "\nid=" + id + "\nversion=" + timestamp + "\nDocument: \n\n" + document + "\n\n\nExtract: \n\n" + extract;
+        return "Type: XSD\n" + "FileName=" + fileName + "\nId=" + id + "\nVersion=" + timestamp + "\nDocument: \n\n" + document + "\n\n\nExtract: \n\n" + extract;
     }
 
     public String getTimestamp() {
