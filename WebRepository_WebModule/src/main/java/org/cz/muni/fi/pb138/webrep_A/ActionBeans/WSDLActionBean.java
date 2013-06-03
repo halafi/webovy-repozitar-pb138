@@ -32,6 +32,7 @@ public class WSDLActionBean implements ActionBean {
     private DatabaseManager dm = new DatabaseManager(Filetype.WSDL);
     private WSDLDocManager manager = new WSDLDocManagerImpl(dm);
     private WSDLDocParser wsdlParser = new WSDLDocParser();
+    private WSDLDoc result = new WSDLDoc();
     private Long id;
     
 
@@ -84,30 +85,26 @@ public class WSDLActionBean implements ActionBean {
         return new ForwardResolution("/showWSDL.jsp");
     }
     
-    public Resolution showSingle(){
-       return new ForwardResolution("/showSingleWSDL.jsp");
-    }
+//    public Resolution showSingle(){
+//       return new ForwardResolution("/showSingleWSDL.jsp");
+//    }
+//    
+//    public List<WSDLDoc> getWSDLs(){
+//        return manager.getAllWSDLs();
+//    }
     
-    public List<WSDLDoc> getWSDLs(){
-        return manager.getAllWSDLs();
-    }
     
-    public Resolution showAll(){
+    public Resolution searchByFullName() {
+        
+//        String name = context.getRequest().getParameter("name");
+//        String surname = context.getRequest().getParameter("surname");
+        
+        Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
+        
+        result = manager.getWSDL(searchId);
         
         
-        // wsdl iterate through wsdls, print into table.
-        
-       return new ForwardResolution("/showWSDL.jsp");
-    }
-    
-    public Resolution find(){
-        String def = "TBD";
-        
-        //wsdls = manager.findWSDLByData(def);
-        // wsdl print doc
-        //wsdl print extract
-        
-       return new ForwardResolution("/showSingleWSDL.jsp");
+        return new ForwardResolution("/showSingleWSDL");
     }
     
     
