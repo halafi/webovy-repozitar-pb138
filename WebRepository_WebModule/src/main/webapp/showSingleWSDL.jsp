@@ -19,8 +19,11 @@
             </ul>
         </div> 
         <div id="viewer">
-           <textarea contenteditable="no" cols="120" rows="30">${actionBean.getDocument()}
-            </textarea>
+           <%-- <textarea contenteditable="no" cols="120" rows="30"></textarea>--%>
+
+           
+           ${actionBean.getDocument()}
+
         </div>
     </body>
 </html>

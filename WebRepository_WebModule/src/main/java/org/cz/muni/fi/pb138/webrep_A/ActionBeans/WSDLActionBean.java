@@ -102,7 +102,11 @@ public class WSDLActionBean implements ActionBean {
     }
     
     public WSDLDoc getDocument() {
-        return manager.getWSDL(result.getId());
+        WSDLDoc wsdl;
+        wsdl = manager.getWSDL(result.getId());
+        //wsdl.setDocument(Util.stringToHTMLString(wsdl.getDocument()));
+        //wsdl.setExtract(Util.stringToHTMLString(wsdl.getExtract()));
+        return wsdl;
     }
     
     public String getId(){
