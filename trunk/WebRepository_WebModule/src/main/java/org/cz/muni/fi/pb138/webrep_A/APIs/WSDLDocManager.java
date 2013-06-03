@@ -21,14 +21,12 @@ public interface WSDLDocManager {
      * Gets WSDL from database
      * @param id
      * @return WSDL file as String
-     * @throws BaseXException 
      */
     public WSDLDoc getWSDL(Long id);
     
     /**
      * Gets all WSDLs from database.
      * @return all WSDLs from database as String
-     * @throws BaseXException 
      */
     public List<WSDLDoc> getAllWSDLs(); 
     
@@ -36,7 +34,6 @@ public interface WSDLDocManager {
      * Finds WSDLs by meta data.
      * @param definitonsName
      * @return All WSDLs satisfactory search.
-     * @throws BaseXException 
      */
     public List<WSDLDoc> findWSDLByData(String definitonsName);
 

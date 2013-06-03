@@ -88,6 +88,9 @@ public class WSDLDoc {
         this.timestamp = timestamp;
     }
 
+    /*
+     * returns hash of this object
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -95,6 +98,11 @@ public class WSDLDoc {
         return hash;
     }
 
+    /*
+     * compares two objects of this types
+     * @return true if they are the same
+     * @return false otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -110,6 +118,9 @@ public class WSDLDoc {
         return true;
     }
 
+    /*
+     * returns text description of this object
+     */
     @Override
     public String toString() {
         return "Type: WSDL\n" + "FileName=" + fileName + "\nId=" + id + "\nVersion=" + timestamp + "\nDocument: \n\n" + document + "\n\n\nExtract: \n\n" + extract;

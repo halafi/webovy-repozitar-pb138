@@ -84,6 +84,9 @@ public class WarArchive {
         this.timestamp = timestamp;
     }
     
+    /*
+     * returns hash of this object
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -91,6 +94,11 @@ public class WarArchive {
         return hash;
     }
 
+    /*
+     * compares two objects of this types
+     * @return true if they are the same
+     * @return false otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -106,6 +114,9 @@ public class WarArchive {
         return true;
     }
 
+    /*
+     * returns text description of this object
+     */
     @Override
     public String toString() {
         return "Type: web.xml\n" + "FileName=" + fileName + "\nId=" + id + "\nVersion=" + timestamp + "\nDocument: \n\n" + webXml + "\n\n\nExtract: \n\n" + extract;
