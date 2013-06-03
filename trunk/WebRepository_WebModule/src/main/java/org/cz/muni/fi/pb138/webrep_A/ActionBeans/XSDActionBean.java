@@ -49,6 +49,10 @@ public class XSDActionBean implements ActionBean {
         return xsdInput;
     }
 
+    public List<XSD> getResultList() {
+        return resultList;
+    }
+
     public void setxsdInput(FileBean xsdInput) {
         this.xsdInput = xsdInput;
     }
