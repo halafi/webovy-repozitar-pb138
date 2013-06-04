@@ -103,9 +103,16 @@ public class XSDActionBean implements ActionBean {
     }
     
     public Resolution searchId() {
+        try{
         Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
-        result = manager.getXSD(searchId);
-        return new ForwardResolution("/showSingleXSD.jsp");
+        if(searchId >= 0 && searchId < manager.getNewId()) {
+            result = manager.getXSD(searchId);
+            return new ForwardResolution("/showSingleXSD.jsp");
+        }
+        return new ForwardResolution("/wrongSearch.jsp");
+        } catch (NumberFormatException ex) {
+            return new ForwardResolution("/wrongSearch.jsp");
+        }
     }
     
     public List<XSD> getXSDs(){

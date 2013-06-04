@@ -128,9 +128,17 @@ public class WSDLActionBean implements ActionBean {
     }
     
     public Resolution searchId() {
-        Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
-        result = manager.getWSDL(searchId);
-        return new ForwardResolution("/showSingleWSDL.jsp");
+        try{
+            Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
+            if(searchId >= 0 && searchId < manager.getNewId()) {
+            result = manager.getWSDL(searchId);
+            return new ForwardResolution("/showSingleWSDL.jsp");
+        }
+        return new ForwardResolution("/wrongSearch.jsp");
+        } catch (NumberFormatException ex) {
+            return new ForwardResolution("/wrongSearch.jsp");
+        }
+        
     }
     
     public Resolution searchData() {
