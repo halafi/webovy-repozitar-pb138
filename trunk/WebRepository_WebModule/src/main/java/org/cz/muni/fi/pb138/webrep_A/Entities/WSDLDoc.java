@@ -15,14 +15,15 @@ public class WSDLDoc {
     private String extract;
     private String fileName;
 
-    /*
+    /**
      * Method getFileName returns name of the file.
+     * @return File name
      */
     public String getFileName() {
         return fileName;
     }
 
-    /*
+    /**
      * Method sets FileName to specified string.
      * @param String fileName
      */
@@ -30,14 +31,15 @@ public class WSDLDoc {
         this.fileName = fileName;
     }
 
-    /*
-     * Returns entity Id.
+    /**
+     * Get id
+     * @return entity Id.
      */
     public Long getId() {
         return id;
     }
 
-    /*
+    /**
      * Sets id to specified value.
      * @param Long id
      */
@@ -45,14 +47,15 @@ public class WSDLDoc {
         this.id = id;
     }
 
-    /*
-     * Returns whole xml document.
+    /**
+     * Returns XML as dom.Document
+     * @return whole XML document.
      */
     public String getDocument() {
         return document;
     }
 
-    /*
+    /**
      * Sets document in entity
      * @param String document
      */
@@ -60,14 +63,15 @@ public class WSDLDoc {
         this.document = document;
     }
 
-    /* 
-     * Returns extracted data.
+    /** 
+     * Extract data from XML
+     * @return extracted data.
      */
     public String getExtract() {
         return extract;
     }
 
-    /*
+    /**
      * Sets extracted data into attribute.
      * @param String extract
      */
@@ -75,21 +79,24 @@ public class WSDLDoc {
         this.extract = extract;
     }
     
-    /*
-     * Returns timestamp representing version.
+    /**
+     * @return timestamp representing version.
      */
     public String getTimestamp() {
         return timestamp;
     }
-    /*
+    
+    /**
      * Sets version of document.
+     * @param timestamp timestamp
      */
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
-    /*
-     * returns hash of this object
+    /**
+     * Get hash code
+     * @return hash of this object
      */
     @Override
     public int hashCode() {
@@ -98,7 +105,7 @@ public class WSDLDoc {
         return hash;
     }
 
-    /*
+    /**
      * compares two objects of this types
      * @return true if they are the same
      * @return false otherwise
@@ -118,8 +125,9 @@ public class WSDLDoc {
         return true;
     }
 
-    /*
-     * returns text description of this object
+    /**
+     * Return string from XML
+     * @return text description of this object
      */
     @Override
     public String toString() {
