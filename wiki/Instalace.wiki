@@ -16,4 +16,4 @@ nebo *.war* archiv na https://sourceforge.net/projects/webrep/ (nemusí být akt
 
 5. *Run Project*
 
-Vytvořeno červen 2013 v *NetBeans IDE 7.2.1* pod *Windows*.
+Vytvořeno v *NetBeans IDE 7.2.1* pod *Windows*.
