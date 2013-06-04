@@ -10,7 +10,7 @@
 
 *Filip Halas*, učo 374137 - programátor-backend, parsery, wiki
 
-*Andrej Makovický*, učo 374351 - programátor-frontend, teamleader
+*Andrej Makovický*, učo 374351 - programátor-frontend, teamleader, návrh
 
 = Oficiální zadání =
 
