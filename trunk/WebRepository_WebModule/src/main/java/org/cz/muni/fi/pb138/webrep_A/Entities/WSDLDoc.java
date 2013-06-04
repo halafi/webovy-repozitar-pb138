@@ -107,6 +107,7 @@ public class WSDLDoc {
 
     /**
      * compares two objects of this types
+     * @param obj to compare
      * @return true if they are the same
      * @return false otherwise
      */
