@@ -6,4 +6,4 @@
   * [Zpravy Závěrečné zprávy]
   * [Prezentace Prezentace]
   * [Instalace Instalace a spuštění]
-    * [Testovaci Testovací data ke stažení]
+  * [Testovaci Testovací data ke stažení]
