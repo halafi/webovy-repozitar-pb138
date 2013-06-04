@@ -87,7 +87,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';" 
                 + " for $wsdl in collection('wsdl')//* "
                 + " let $name := $wsdl/def:definitions/@name"
-                + "where fn:contains($attr,'"+definitonsName+"')"
+                + " where fn:contains($attr,'"+definitonsName+"')"
                 + " return distinct-values($wsdl/@id)");
         if(query.equals("")) {
             return output;
