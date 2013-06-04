@@ -1,17 +1,19 @@
 #labels Phase-Deploy,Featured
 = Instalace a spuštění =
 
-1. Stáhnout zdrojový kód https://sourceforge.net/projects/webrep/
-nebo read-only checkout aktuální verze:
+1. Stáhnout *zdrojový kód* - read-only checkout *aktuální verze*:
 {{{
 svn checkout http://webovy-repozitar-pb138.googlecode.com/svn/trunk/ webovy-repozitar-pb138-read-only
 }}}
-2. Potřeba mít stažený server Apache Tomcat, ke stažení zde: http://tomcat.apache.org/download-70.cgi
 
-3. Clean and Build Project
+nebo *.war* archiv na https://sourceforge.net/projects/webrep/ (nemusí být aktuální)
 
-4. Spustit InitializeDTB.java pro inicializaci databáze (vytvoří se BaseXDB v user.home složce)
+2. Potřeba mít stažený server *Apache Tomcat*, ke stažení zde: http://tomcat.apache.org/download-70.cgi
 
-5. Run Project
+3. *Clean and Build* Project
 
-Vytvořeno v NetBeans IDE 7.2.1 pod Windows.
+4. Spustit *InitializeDTB.java* pro inicializaci databáze (vytvoří se BaseXDB v user.home složce)
+
+5. *Run Project*
+
+Vytvořeno červen 2013 v *NetBeans IDE 7.2.1* pod *Windows*.
