@@ -215,4 +215,9 @@ thead th {
     margin-left: 215px;
 }
 
+#error {
+    margin-left: 2px;
+    background-color: salmon;
+    border: solid firebrick 1px;
+}
 
