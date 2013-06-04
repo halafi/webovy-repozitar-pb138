@@ -34,7 +34,7 @@ import org.xml.sax.SAXException;
 
 /**
  * 
- *
+ * Utility class
  * @author xmakovic
  */
 public class Util {

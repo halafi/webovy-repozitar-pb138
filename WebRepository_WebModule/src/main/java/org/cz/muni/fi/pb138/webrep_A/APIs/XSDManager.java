@@ -6,7 +6,7 @@ import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.Entities.XSD;
 
 /**
- *
+ * Interface with work with XSDs
  * @author xmakovic
  */
 public interface XSDManager {

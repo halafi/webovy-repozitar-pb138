@@ -30,7 +30,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.TestingClass;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 
 /**
- *
+ * Action Bean for WSDL
  * @author Andrej Makovicky
  */
 @UrlBinding("/wsdl/{$event}")

@@ -22,7 +22,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Filetype;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 
 /**
- *
+ * Action Bean for WAR
  * @author Andrej Makovicky
  */
 @UrlBinding("/war/{$event}")

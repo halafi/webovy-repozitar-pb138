@@ -9,7 +9,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 
 /**
- *
+ * Implementation of XSDManager
  * 
  * @author xmakovic
  */

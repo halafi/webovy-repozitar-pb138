@@ -6,7 +6,7 @@ import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 
 /**
- *
+ * Interface with work with WAR archives
  * @author xmakovic
  */
 public interface WarManager {

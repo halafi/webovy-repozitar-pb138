@@ -8,7 +8,7 @@ import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 /**
- *
+ * Implementation of WarManager
  * @author xmakovic
  */
 public class WarManagerImpl implements WarManager {
