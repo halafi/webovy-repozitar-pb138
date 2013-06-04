@@ -74,12 +74,6 @@ public class WSDLActionBean implements ActionBean {
     public void setwsdlInput(FileBean wsdlInput) {
         this.wsdlInput = wsdlInput;
     }
-    /*
-    @DefaultHandler
-    public Resolution all() {
-        return new ForwardResolution("/index.jsp");
-    }
-    */
     
     /**
      * Set ID
