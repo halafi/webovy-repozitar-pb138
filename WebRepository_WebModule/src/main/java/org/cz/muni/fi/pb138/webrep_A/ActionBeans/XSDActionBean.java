@@ -38,30 +38,49 @@ public class XSDActionBean implements ActionBean {
     private XSD result = new XSD();
     private List<XSD> resultList = new ArrayList<XSD>();
     
+    /**
+     * Get ActionBeanContext
+     * @return ActionBeanContext
+     */
     @Override
     public ActionBeanContext getContext() { return context; }
     
+    /**
+     * Set context
+     * @param context ActionBeanContext
+     */
     @Override
     public void setContext(ActionBeanContext context) { this.context = context; }
 
 
+    /**
+     * Get FileBean from XSD input
+     * @return FileBean
+     */
     public FileBean getxsdInput() {
         return xsdInput;
     }
 
+    /**
+     * Return XSD List
+     * @return list of XSDs
+     */
     public List<XSD> getResultList() {
         return resultList;
     }
 
+    /**
+     * Set XSD Input
+     * @param xsdInput FileBean
+     */
     public void setxsdInput(FileBean xsdInput) {
         this.xsdInput = xsdInput;
     }
-    /*
-    @DefaultHandler
-    public Resolution all() {
-        return new ForwardResolution("/showPlayers.jsp");
-    }
-    */
+    
+    /**
+     * XSD upload
+     * @return resolution
+     */
     public Resolution xsdUpload() {
         try {
             File toFile = new File(System.getProperty("user.home")+File.separator+xsdInput.getFileName());
@@ -90,6 +109,10 @@ public class XSDActionBean implements ActionBean {
         return new ForwardResolution("/showXSD.jsp");
     }
     
+    /**
+     * Get XSD document
+     * @return XSD Document
+     */
     public XSD getDocument() {
         XSD xsd;
         xsd = manager.getXSD(result.getId());
@@ -98,10 +121,18 @@ public class XSDActionBean implements ActionBean {
         return xsd;
     }
     
+    /**
+     * Get id 
+     * @returnid as String 
+     */
     public String getId(){
         return result.getId().toString();
     }
     
+    /**
+     * Search by id
+     * @return resolution
+     */
     public Resolution searchId() {
         try{
         Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
@@ -115,10 +146,18 @@ public class XSDActionBean implements ActionBean {
         }
     }
     
+    /**
+     * Get XSDs
+     * @return list of XSDs
+     */
     public List<XSD> getXSDs(){
         return manager.getAllXSDs() ;
     }
     
+    /**
+     * Search data
+     * @return resolution
+     */
     public Resolution searchData() {
         String searchData = context.getRequest().getParameter("dataInput");
         resultList = manager.findXSDByElementName(searchData);
