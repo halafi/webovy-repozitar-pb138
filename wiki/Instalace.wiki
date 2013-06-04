@@ -14,4 +14,4 @@ svn checkout http://webovy-repozitar-pb138.googlecode.com/svn/trunk/ webovy-repo
 
 5. Run Project
 
-Vytvořeno v NetBeans IDE 7.2.1.
+Vytvořeno v NetBeans IDE 7.2.1 pod Windows.
