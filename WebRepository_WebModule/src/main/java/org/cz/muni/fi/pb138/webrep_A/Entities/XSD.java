@@ -14,29 +14,31 @@ public class XSD {
     private String fileName;
     private String extract;
 
-    /*
+    /**
      * Getter for Id.
+     * @return id
      */
     public Long getId() {
         return id;
     }
-    /*
+    /**
      * Setter for id.
-     * @param Long id
+     * @param Long id for set
      */
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    /*
+    /**
      * Getter for XSD document.
+     * @return XML as String
      */
     public String getDocument() {
         return document;
     }
 
-    /*
+    /**
      * Setter for XSD document.
      * @param String document
      */
@@ -44,14 +46,15 @@ public class XSD {
         this.document = document;
     }
 
-    /*
+    /**
      * Filename getter.
+     * @return file name
      */
     public String getFileName() {
         return fileName;
     }
 
-    /*
+    /**
      * Filename setter.
      * @param String filename.
      */
@@ -59,14 +62,15 @@ public class XSD {
         this.fileName = fileName;
     }
 
-    /*
+    /**
      * Extract getter.
+     * @return extract
      */
     public String getExtract() {
         return extract;
     }
 
-    /*
+    /**
      * Setter for xsd extract.
      * @param String extract.
      */
@@ -74,14 +78,15 @@ public class XSD {
         this.extract = extract;
     }
 
-    /*
+    /**
      * Version getter.
+     * @return timestamp
      */
     public String getTimestamp() {
         return timestamp;
     }
 
-    /*
+    /**
      * Version setter.
      * @param String timestamp.
      */
@@ -89,8 +94,9 @@ public class XSD {
         this.timestamp = timestamp;
     }
 
-    /*
-     * returns hash of this object
+    /**
+     * Get hash code
+     * @return hash of this object
      */
     @Override
     public int hashCode() {
@@ -99,8 +105,9 @@ public class XSD {
         return hash;
     }
 
-    /*
+    /**
      * compares two objects of this types
+     * @param obj to compare
      * @return true if they are the same
      * @return false otherwise
      */
@@ -119,8 +126,9 @@ public class XSD {
         return true;
     }
 
-    /*
-     * returns text description of this object
+    /**
+     * XML to String
+     * @return text description of this object
      */
     @Override
     public String toString() {
