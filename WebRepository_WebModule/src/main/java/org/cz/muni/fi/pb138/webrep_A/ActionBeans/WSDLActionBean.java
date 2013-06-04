@@ -45,17 +45,32 @@ public class WSDLActionBean implements ActionBean {
     private List<WSDLDoc> resultList = new ArrayList<WSDLDoc>();
     private Long id;
     
-    
+    /**
+     * Get Context
+     * @return ActionBeanContext
+     */
     @Override
     public ActionBeanContext getContext() { return context; }
     
+    /**
+     * Set context
+     * @param context  ActionBeanContext 
+     */
     @Override
     public void setContext(ActionBeanContext context) { this.context = context; }
 
+    /**
+     * Get WSDL
+     * @return File Bean
+     */
     public FileBean getwsdlInput() {
         return wsdlInput;
     }
 
+    /**
+     * Set WSDL
+     * @param wsdlInput FileBean WSDL
+     */
     public void setwsdlInput(FileBean wsdlInput) {
         this.wsdlInput = wsdlInput;
     }
@@ -65,20 +80,35 @@ public class WSDLActionBean implements ActionBean {
         return new ForwardResolution("/index.jsp");
     }
     */
+    
+    /**
+     * Set ID
+     * @param id as String
+     */
     public void setId(String id) {
         this.id = new Long(id);
     }
     
+    /**
+     * Get WSDLDoc
+     * @return WSDLDoc
+     */
     public WSDLDoc getDoc() {
         return manager.getWSDL(this.id);
     }
 
+    /**
+     * Get List WSDLs doc
+     * @return List of WSDLs Doc
+     */
     public List<WSDLDoc> getResultList() {
         return resultList;
     }
     
-    
-    
+    /**
+     * WSDL upload
+     * @return resolution
+     */    
     public Resolution wsdlUpload() {
         try {
             File toFile = new File(System.getProperty("user.home")+File.separator+wsdlInput.getFileName());
@@ -107,14 +137,26 @@ public class WSDLActionBean implements ActionBean {
         return new ForwardResolution("/showWSDL.jsp");
     }
     
+    /**
+     * Show single WSDL
+     * @return resolution
+     */
     public Resolution showSingle(){
        return new ForwardResolution("/showSingleWSDL.jsp");
     }
     
+    /**
+     * Get list WSDLDoc
+     * @return list of WSDL doc
+     */
     public List<WSDLDoc> getWSDLs(){
         return manager.getAllWSDLs();
     }
     
+    /**
+     * Get Document
+     * @return WSDLDoc
+     */
     public WSDLDoc getDocument() {
         WSDLDoc wsdl;
         wsdl = manager.getWSDL(result.getId());
@@ -123,10 +165,18 @@ public class WSDLActionBean implements ActionBean {
         return wsdl;
     }
 
+    /**
+     * Getter ID
+     * @return id as String
+     */
     public String getId(){
         return result.getId().toString();
     }
     
+    /**
+     * Search id
+     * @return resolution
+     */
     public Resolution searchId() {
         try{
             Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
@@ -141,6 +191,10 @@ public class WSDLActionBean implements ActionBean {
         
     }
     
+    /**
+     * Search data
+     * @return resolution
+     */
     public Resolution searchData() {
         String searchData = context.getRequest().getParameter("dataInput");
         resultList = manager.findWSDLByData(searchData);
