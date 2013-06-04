@@ -67,6 +67,11 @@ fieldset {
 
 }
 
+thead th {
+    padding-bottom: 2em;
+}
+
+
 table {
     text-align: left;
 }
@@ -77,6 +82,10 @@ table.zakladni {
     margin: 5px;
 }
 
+/*table.zakladni thead tr {
+    background: #69bbfa;
+}*/
+
 table.zakladni tr:nth-child(odd) {
     background-color: #DEEDF9;
 }
@@ -85,13 +94,23 @@ table.zakladni tr:nth-child(even) {
     background-color: white;
 }
 
-table.zakladni tr:first-child {
+/*table.zakladni tr:first-child {
     background-color: #69bbfa;
-}
+}*/
+
+
 
 table.zakladni th, table.zakladni td {  
     border: solid 1px #69bbfa;
     padding: 3px;
+}
+
+thead th {
+    padding-bottom: 2em;
+}
+
+#tabulka {
+    margin-left: 210px;
 }
 
 #navigace {

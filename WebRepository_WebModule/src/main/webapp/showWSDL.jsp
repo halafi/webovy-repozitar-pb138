@@ -20,24 +20,26 @@
             </ul>
         </div> 
         <div id="tabulka">
-            <table class="zakladni" border="1">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Version</th>
-                    </tr>
-                </thead>
-                <s:useActionBean beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WSDLActionBean" var="actionBean"/>
-                <c:forEach items="${actionBean.getWSDLs()}" var="WSDLDoc">
-                    <tr>
-                        <td><c:out value="${WSDLDoc.getId()}"/></td>
-                        <td><c:out value="${WSDLDoc.getFileName()}"/></td>
-                        <td><c:out value="${WSDLDoc.getTimestamp()}"/></td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </div>
+        <table class="zakladni" border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Version</th>
+                </tr>
+            </thead>
+            <tbody>
+            <s:useActionBean beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WSDLActionBean" var="actionBean"/>
+            <c:forEach items="${actionBean.getWSDLs()}" var="WSDLDoc">
+                <tr>
+                    <td><c:out value="${WSDLDoc.getId()}"/></td>
+                    <td><c:out value="${WSDLDoc.getFileName()}"/></td>
+                    <td><c:out value="${WSDLDoc.getTimestamp()}"/></td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+    </div>
 
-    </body>
+</body>
 </html>
