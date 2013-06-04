@@ -1,11 +1,8 @@
 package org.cz.muni.fi.pb138.webrep_A.Entities;
 
 /**
- *
  * @author xmakovic
- *
- * This class represents WSDL document entity.
- *
+ * This class represents WSDL document entity
  */
 public class WSDLDoc {
 

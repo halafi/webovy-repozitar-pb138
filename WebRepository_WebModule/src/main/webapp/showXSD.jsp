@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <jsp:useBean id="actionBean" scope="page"
              class="org.cz.muni.fi.pb138.webrep_A.ActionBeans.XSDActionBean"/>

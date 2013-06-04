@@ -187,10 +187,4 @@ public class WSDLActionBean implements ActionBean {
         resultList = manager.findWSDLByData(searchData);
         return new ForwardResolution("/showMultipleWSDL.jsp");
     }
-    /*
-    public Resolution searchData2() {
-        String searchData = context.getRequest().getParameter("dataInput2");
-        resultList = manager.findWSDLByMetaData(searchData);
-        return new ForwardResolution("/showMultipleWSDL.jsp");
-    }*/
 }

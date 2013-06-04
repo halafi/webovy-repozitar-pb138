@@ -9,7 +9,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 /**
  * Implementation of WarManager
- * @author xmakovic
+ * @author Filip
  */
 public class WarManagerImpl implements WarManager {
     private DatabaseManager dm;
@@ -97,27 +97,4 @@ public class WarManagerImpl implements WarManager {
         }
         return output;
     }
-    
-//    @Override
-//    public List<WarArchive> findWarByListenerData(String atrName) {
-//        List<WarArchive> output = new ArrayList<WarArchive>();
-//        String query = this.dm.queryCollection(" declare namespace def = 'http://java.sun.com/xml/ns/javaee';" 
-//                + " distinct-values(for $war in collection('war')/war "
-//                + " for $nodes in $war//*"
-//                + " let $attr1 := $nodes/def:listener-class"
-//                + " where fn:contains($attr1,'"+atrName+"')"
-//                + " return distinct-values($war/@id))");
-//        if(query.equals("")) {
-//            return output;
-//        }
-//        String strarray[] = query.split(" ");
-//        int intarray[] = new int[strarray.length];
-//        for (int i=0; i < intarray.length; i++) {
-//            intarray[i] = Integer.parseInt(strarray[i]);
-//        }
-//        for (int x : intarray) {
-//            output.add(this.getWarArchive(new Long(x)));
-//        }
-//        return output;
-//    }
 }

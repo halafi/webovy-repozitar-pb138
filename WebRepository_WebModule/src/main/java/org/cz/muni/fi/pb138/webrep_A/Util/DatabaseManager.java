@@ -15,8 +15,8 @@ import org.basex.core.cmd.Open;
 import org.basex.core.cmd.Set;
 import org.basex.core.cmd.XQuery;
 /**
- * Class for DB manage
- * @author xmakovic
+ * Class for working with BaseX DB
+ * @author Filip
  */
 public class DatabaseManager {
     private String DBPath;

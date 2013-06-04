@@ -1,9 +1,3 @@
-<%-- 
-    Document   : findWeb
-    Created on : May 30, 2013, 10:25:23 PM
-    Author     : Andrej Makovicky
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <!DOCTYPE html>
@@ -44,9 +38,5 @@
             </table>
         </fieldset>
         </div>
-
-
-
-
     </body>
 </html>

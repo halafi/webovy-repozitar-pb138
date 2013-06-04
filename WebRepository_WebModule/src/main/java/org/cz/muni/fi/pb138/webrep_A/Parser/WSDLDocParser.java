@@ -12,7 +12,7 @@ import org.w3c.dom.NodeList;
 
 /**
  * Class for parsing WSDL
- * @author stealthz
+ * @author Filip
  */
 public class WSDLDocParser {    
     
