@@ -45,4 +45,8 @@ public interface WSDLDocManager {
      * Creates BaseX collection for storing WSDLs.
      */
     public void createWSDLCollection();
+    
+    
+    public List<WSDLDoc> findWSDLByMetaData(String messageName);
+    
 }
