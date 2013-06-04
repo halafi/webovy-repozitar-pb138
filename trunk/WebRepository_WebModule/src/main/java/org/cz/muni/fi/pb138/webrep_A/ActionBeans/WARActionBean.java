@@ -36,28 +36,52 @@ public class WARActionBean implements ActionBean {
     private WarArchive result = new WarArchive();
     private List<WarArchive> resultList = new ArrayList<WarArchive>();
 
+    /**
+     * Getter for context
+     * @return Context
+     */
     @Override
     public ActionBeanContext getContext() {
         return context;
     }
 
+    /**
+     * Get WAR archive list
+     * @return war archive List
+     */
     public List<WarArchive> getResultList() {
         return resultList;
     }
 
+    /**
+     * Setter for context
+     * @param context 
+     */
     @Override
     public void setContext(ActionBeanContext context) {
         this.context = context;
     }
 
+    /**
+     * Getter for WAR input
+     * @return war input
+     */
     public FileBean getwarInput() {
         return warInput;
     }
 
+    /**
+     * Setter for WAR input
+     * @param warInput war input
+     */
     public void setwarInput(FileBean warInput) {
         this.warInput = warInput;
     }
 
+    /**
+     * Upload WAR file
+     * @return resolution
+     */
     public Resolution warUpload() {
         try {
             File toFile = new File(System.getProperty("user.home") + File.separator + warInput.getFileName());
@@ -86,10 +110,18 @@ public class WARActionBean implements ActionBean {
         return new ForwardResolution("/showWAR.jsp");
     }
 
+    /**
+     * Get all WARs
+     * @return list of WARs
+     */
     public List<WarArchive> getWARs() {
         return manager.getAllArchives();
     }
     
+    /**
+     * Get Document from WARs archives
+     * @return WarArchive
+     */
     public WarArchive getDocument() {
         WarArchive war;
         war = manager.getWarArchive(result.getId());
@@ -98,10 +130,18 @@ public class WARActionBean implements ActionBean {
         return war;
     }
     
+    /**
+     * Getter for ID
+     * @return id as String
+     */
     public String getId(){
         return result.getId().toString();
     }
 
+    /**
+     * Resolution search id
+     * @return resolution
+     */
     public Resolution searchId() {
         try{
             Long searchId = Long.parseLong(context.getRequest().getParameter("idInput"));
@@ -115,6 +155,10 @@ public class WARActionBean implements ActionBean {
         }
     }
     
+    /**
+     * Resolution for search data
+     * @return resolution
+     */
     public Resolution searchData() {
         String searchData = context.getRequest().getParameter("dataInput");
         resultList = manager.findWarByData(searchData);
