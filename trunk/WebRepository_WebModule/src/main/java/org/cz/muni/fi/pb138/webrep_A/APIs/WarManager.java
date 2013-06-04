@@ -1,8 +1,6 @@
 package org.cz.muni.fi.pb138.webrep_A.APIs;
 
-import java.io.FileOutputStream;
 import java.util.List;
-import org.basex.core.BaseXException;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WarArchive;
 
 /**
