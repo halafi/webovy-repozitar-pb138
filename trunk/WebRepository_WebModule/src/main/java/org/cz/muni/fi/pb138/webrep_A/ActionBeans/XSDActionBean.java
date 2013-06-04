@@ -117,5 +117,5 @@ public class XSDActionBean implements ActionBean {
         resultList = manager.findXSDByElementName(searchData);
         return new ForwardResolution("/showMultipleXSD.jsp");
     }
-    
+
 }
