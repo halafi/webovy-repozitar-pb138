@@ -79,8 +79,9 @@ public class WarManagerImpl implements WarManager {
     public List<WarArchive> findWarByData(String atrName) {
         List<WarArchive> output = new ArrayList<WarArchive>();
         String query = this.dm.queryCollection(" declare namespace def = 'http://java.sun.com/xml/ns/javaee';" 
-                + " distinct-values(for $war in collection('war')//* "
-                + " let $attr1 := $war/def:filter-name"
+                + " distinct-values(for $war in collection('war')/war "
+                + " for $nodes in $war//*"
+                + " let $attr1 := $nodes/def:filter-name"
                 + " where fn:contains($attr1,'"+atrName+"')"
                 + " return distinct-values($war/@id))");
         if(query.equals("")) {
