@@ -2,7 +2,7 @@
 = Instalace a spuštění =
 
 1. Stáhnout zdrojový kód https://sourceforge.net/projects/webrep/
-nebo read-only checkout:
+nebo read-only checkout aktuální verze:
 {{{
 svn checkout http://webovy-repozitar-pb138.googlecode.com/svn/trunk/ webovy-repozitar-pb138-read-only
 }}}
