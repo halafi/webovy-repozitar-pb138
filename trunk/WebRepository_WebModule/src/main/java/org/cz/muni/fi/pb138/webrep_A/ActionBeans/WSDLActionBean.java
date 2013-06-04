@@ -118,6 +118,8 @@ public class WSDLActionBean implements ActionBean {
             wsdlInput.delete();
         } catch (IOException ex) {
             Logger.getLogger(WSDLActionBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException ex) {
+            return new ForwardResolution("/wrongFile.jsp");
         }
         return new ForwardResolution("/showWSDL.jsp");
     }

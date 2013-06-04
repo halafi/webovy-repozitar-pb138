@@ -105,6 +105,8 @@ public class WARActionBean implements ActionBean {
             warInput.delete();
         } catch (IOException ex) {
             Logger.getLogger(WARActionBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException ex) {
+            return new ForwardResolution("/wrongFile.jsp");
         }
         return new ForwardResolution("/showWAR.jsp");
     }

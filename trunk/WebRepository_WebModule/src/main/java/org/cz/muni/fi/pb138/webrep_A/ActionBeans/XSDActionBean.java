@@ -102,6 +102,8 @@ public class XSDActionBean implements ActionBean {
             xsdInput.delete();
         } catch (IOException ex) {
             Logger.getLogger(XSDActionBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException ex) {
+            return new ForwardResolution("/wrongFile.jsp");
         }
         return new ForwardResolution("/showXSD.jsp");
     }
