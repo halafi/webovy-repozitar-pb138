@@ -12,7 +12,7 @@
 
     <body>
         <h1>Archivator 3000+</h1>
-        <div id="input.error">WRONG FILE FORMAT</div>
+        <div id="error">WRONG FILE FORMAT</div>
         <div id="topNav">
             <ul>
                 <li><a href ="showWSDL.jsp">WSDL archivation</a></li>
