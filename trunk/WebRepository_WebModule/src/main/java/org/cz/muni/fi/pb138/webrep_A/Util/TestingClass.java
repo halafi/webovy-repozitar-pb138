@@ -21,7 +21,7 @@ import org.cz.muni.fi.pb138.webrep_A.Parser.WebXMLParser;
 import org.cz.muni.fi.pb138.webrep_A.Parser.XSDParser;
 import org.xml.sax.SAXException;
 /**
- *
+ * For testing
  * @author Filip
  */
 public class TestingClass {

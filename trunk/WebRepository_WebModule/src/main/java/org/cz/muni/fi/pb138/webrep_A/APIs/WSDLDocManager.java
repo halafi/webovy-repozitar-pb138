@@ -4,7 +4,7 @@ import java.util.List;
 import org.cz.muni.fi.pb138.webrep_A.Entities.WSDLDoc;
 
 /**
- *
+ * Interface with work with WSDLs
  * @author xmakovic
  */
 public interface WSDLDocManager {

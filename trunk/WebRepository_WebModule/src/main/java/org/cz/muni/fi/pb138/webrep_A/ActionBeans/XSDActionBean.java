@@ -24,7 +24,7 @@ import org.cz.muni.fi.pb138.webrep_A.Util.Filetype;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 
 /**
- *
+ * Action Bean for XSD
  * @author Andrej Makovicky
  */
 @UrlBinding("/xsd/{$event}")

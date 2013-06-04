@@ -15,13 +15,17 @@ import org.basex.core.cmd.Open;
 import org.basex.core.cmd.Set;
 import org.basex.core.cmd.XQuery;
 /**
- *
+ * Class for DB manage
  * @author xmakovic
  */
 public class DatabaseManager {
     private String DBPath;
     public static final Logger logger = Logger.getLogger(DatabaseManager.class.getName());
   
+    /**
+     * Database manager
+     * @param fileType fileType
+     */
      public DatabaseManager(Filetype fileType) {
         FileOutputStream fs = null;
         try {
@@ -57,16 +61,19 @@ public class DatabaseManager {
         }
     }
     
+     /**
+      * Set db path
+      * @param path 
+      */
     public void setDBPath(String path) {
         this.DBPath = path;
     }
     
-    /**
-    public DatabaseManager(String file)
+   /**
     * Adds a xml file to a collection
     * 
     * @param collection collection name
-    * @param name name of the xml file (without extension)
+    * @param name name of the XML file (without extension)
     * @param xml well-formed XML string
     */
     public void addXML(String collection, String name, String xml) {

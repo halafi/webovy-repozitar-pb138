@@ -8,7 +8,7 @@ import org.cz.muni.fi.pb138.webrep_A.Parser.WSDLDocParser;
 import org.cz.muni.fi.pb138.webrep_A.Util.DatabaseManager;
 import org.cz.muni.fi.pb138.webrep_A.Util.Util;
 /**
- *
+ * Implementation of WSDLDoc Manager
  *
  * @author xmakovic
  */

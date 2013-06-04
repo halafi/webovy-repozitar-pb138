@@ -12,7 +12,7 @@ import org.cz.muni.fi.pb138.webrep_A.Impl.WarManagerImpl;
 import org.cz.muni.fi.pb138.webrep_A.Impl.XSDManagerImpl;
 
 /**
- *
+ * Initialize All DB
  * @author Filip
  */
 public class InitializeDTB {
