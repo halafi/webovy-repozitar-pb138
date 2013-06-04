@@ -172,9 +172,10 @@ public class Util {
         return null;
     }
     
-    /*
-     * Formats xml String.
-     * @return formatted xml String
+    /**
+     * Formats XML String.
+     * @param unformattedXml unformated XML as String
+     * @return formatted XML String
      */
     public static String format(String unformattedXml) {
         try {
@@ -194,6 +195,11 @@ public class Util {
         }
     }
     
+    /**
+     * String to HTML String
+     * @param string input to convert to HTML
+     * @return String converted for HTML
+     */
     public static String stringToHTMLString(String string) {
     StringBuffer sb = new StringBuffer(string.length());
     // true if last char was blank
