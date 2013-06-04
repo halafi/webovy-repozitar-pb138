@@ -112,10 +112,10 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
 //    public List<WSDLDoc> findWSDLByMetaData(String messageName) {
 //        List<WSDLDoc> output = new ArrayList<WSDLDoc>();
 //        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';" 
-//                + " distinct-values(for $wsdl in collection('wsdl')//* "
+//                + " for $wsdl in collection('wsdl')//* "
 //                + " let $msg := $wsdl/def:message/@name"
 //                + " where fn:contains($msg,'"+messageName+"')"
-//                + " return distinct-values($wsdl/@id))");
+//                + " return distinct-values($wsdl/@id)");
 //        if(query.equals("")) {
 //            return output;
 //        }
