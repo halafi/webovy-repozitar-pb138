@@ -85,10 +85,11 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     public List<WSDLDoc> findWSDLByData(String definitonsName){
         List<WSDLDoc> output = new ArrayList<WSDLDoc>();
         String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';" 
-                + " for $wsdl in collection('wsdl')//* "
+                + " distinct-values( for $wsdl in collection('wsdl')/wsdl "
+                + " for $nodes in $wsdl//*"
                 + " let $name := $wsdl/def:definitions/@name"
                 + " where fn:contains($name,'"+definitonsName+"')"
-                + " return distinct-values($wsdl/@id)");
+                + " return distinct-values($wsdl/@id))");
         if(query.equals("")) {
             return output;
         }
