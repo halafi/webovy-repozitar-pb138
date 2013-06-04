@@ -87,7 +87,7 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
         String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';" 
                 + " for $wsdl in collection('wsdl')//* "
                 + " let $name := $wsdl/def:definitions/@name"
-                + " where fn:contains($attr,'"+definitonsName+"')"
+                + " where fn:contains($name,'"+definitonsName+"')"
                 + " return distinct-values($wsdl/@id)");
         if(query.equals("")) {
             return output;
@@ -106,26 +106,28 @@ public class WSDLDocManagerImpl implements WSDLDocManager {
     /*
      * Not working for some reason.
      * 
-    @Override
-    public List<WSDLDoc> findWSDLByMetaData(String messageName) {
-        List<WSDLDoc> output = new ArrayList<WSDLDoc>();
-        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';" 
-                + " distinct-values(for $wsdl in collection('wsdl')/wsdl "
-                + " let $msg := $wsdl/def:definitions/def:message/@name"
-                + " where $msg='"+messageName+"')"
-                + " return distinct-values($wsdl/@id))");
-        if(query.equals("")) {
-            return output;
-        }
-        String strarray[] = query.split(" ");
-        int intarray[] = new int[strarray.length];
-        for (int i=0; i < intarray.length; i++) {
-            intarray[i] = Integer.parseInt(strarray[i]);
-        }
-        for (int x : intarray) {
-            output.add(this.getWSDL(new Long(x)));
-        }
-        return output;
-    }
-    * */
+     */
+     
+//    @Override
+//    public List<WSDLDoc> findWSDLByMetaData(String messageName) {
+//        List<WSDLDoc> output = new ArrayList<WSDLDoc>();
+//        String query = this.dm.queryCollection(" declare namespace def = 'http://schemas.xmlsoap.org/wsdl/';" 
+//                + " distinct-values(for $wsdl in collection('wsdl')//* "
+//                + " let $msg := $wsdl/def:message/@name"
+//                + " where fn:contains($msg,'"+messageName+"')"
+//                + " return distinct-values($wsdl/@id))");
+//        if(query.equals("")) {
+//            return output;
+//        }
+//        String strarray[] = query.split(" ");
+//        int intarray[] = new int[strarray.length];
+//        for (int i=0; i < intarray.length; i++) {
+//            intarray[i] = Integer.parseInt(strarray[i]);
+//        }
+//        for (int x : intarray) {
+//            output.add(this.getWSDL(new Long(x)));
+//        }
+//        return output;
+//    }
+    
 }
