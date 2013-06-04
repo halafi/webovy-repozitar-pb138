@@ -30,7 +30,7 @@ public interface WarManager {
      */
     public List<WarArchive> getAllArchives();
     
-    /*
+    /**
      * Creates baseX collection for storing Wars.
      */
     public void createWARCollection();
@@ -42,9 +42,9 @@ public interface WarManager {
      */
     public List<WarArchive> findWarByData(String atrName);
        
-    /*
+    /**
      * Simple ID generator.
-     * @return new id
+     * @return new unique id
      */
     public Long getNewId();
 }
