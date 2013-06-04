@@ -17,7 +17,7 @@ public interface WSDLDocManager {
     
     /**
      * Gets WSDL from database
-     * @param id
+     * @param id is id in DB
      * @return WSDL file as String
      */
     public WSDLDoc getWSDL(Long id);
@@ -35,13 +35,13 @@ public interface WSDLDocManager {
      */
     public List<WSDLDoc> findWSDLByData(String definitonsName);
 
-    /*
+    /** 
      * Simple ID generator.
-     * @return new id
+     * @return new new unique id
      */
     public Long getNewId();
     
-    /*
+    /**
      * Creates BaseX collection for storing WSDLs.
      */
     public void createWSDLCollection();

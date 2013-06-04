@@ -37,14 +37,14 @@ public interface XSDManager {
      */
     public List<XSD> findXSDByElementName(String s);
     
-    /*
+    /**
      * Creates BaseX collection for storing XSD schemas.
      */
     public void createXSDCollection();
     
-    /*
+    /**
      * Simple ID generator.
-     * @return new id
+     * @return new unique id
      */
     public Long getNewId();
 }
