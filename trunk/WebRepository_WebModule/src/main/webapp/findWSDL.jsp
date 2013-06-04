@@ -34,15 +34,6 @@
                         <th><s:submit name="searchData">Search</s:submit></th>
                     </tr>
         </s:form>
-        <%--             
-        <s:form beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WSDLActionBean" method="GET">
-                    <tr>
-                        <th>Message name:</th>
-                        <th><s:text id="data" name="dataInput2"/> </th>
-                        <th><s:submit name="searchData2">Search</s:submit></th>
-                    </tr>
-        </s:form>      
-        --%>
         </table>    
         </fieldset>
         </div>

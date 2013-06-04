@@ -16,8 +16,7 @@
                 <li><a href="showWAR.jsp">Show all</a></li>
                 <li><a href="findWAR.jsp">Search</a></li>
             </ul>
-        </div> 
-        
+        </div>      
         <s:form action="warUpload" method="POST" beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WARActionBean" >
             <s:file name="warInput"/>
             </br>

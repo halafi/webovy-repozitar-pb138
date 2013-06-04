@@ -12,7 +12,7 @@ import org.w3c.dom.NodeList;
 
 /**
  * Class for parsing web.XML from WAR archives
- * @author stealthz
+ * @author Filip
  */
 public class WebXMLParser {
     /**

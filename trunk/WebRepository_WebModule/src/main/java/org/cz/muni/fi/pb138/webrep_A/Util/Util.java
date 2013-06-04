@@ -32,9 +32,8 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
- * 
  * Utility class
- * @author xmakovic
+ * @author Filip, few methods from various Internet users
  */
 public class Util {
 
@@ -253,5 +252,5 @@ public class Util {
             }
         }
     return sb.toString();
-}
+    }
 }

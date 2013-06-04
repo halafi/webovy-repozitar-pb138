@@ -16,8 +16,7 @@
                 <li><a href="showWSDL.jsp">Show all</a></li>
                 <li><a href="findWSDL.jsp">Search</a></li>
             </ul>
-        </div> 
-        
+        </div>       
         <s:form action="wsdlUpload"  beanclass="org.cz.muni.fi.pb138.webrep_A.ActionBeans.WSDLActionBean" method="POST" >
             <s:file name="wsdlInput"/>
             </br>

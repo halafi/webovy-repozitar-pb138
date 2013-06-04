@@ -25,7 +25,6 @@ public class XSD {
      * Setter for id.
      * @param Long id for set
      */
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -71,7 +70,7 @@ public class XSD {
     }
 
     /**
-     * Setter for xsd extract.
+     * Setter for XSD extract.
      * @param String extract.
      */
     public void setExtract(String extract) {

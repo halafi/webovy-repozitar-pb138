@@ -12,7 +12,7 @@ import org.w3c.dom.NodeList;
 
 /**
  * Class for parsing XSD
- * @author stealthz
+ * @author Filip
  */
 public class XSDParser {
     /**
@@ -29,7 +29,6 @@ public class XSDParser {
             output = builder.newDocument(); 
             Element root = (Element) output.createElement("types"); 
             output.appendChild(root);
-            
             
             String namespace;
             if(doc.getDocumentElement().getNodeName().contains("xsd")) {

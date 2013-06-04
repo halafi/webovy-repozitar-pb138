@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.cz.muni.fi.pb138.webrep_A.Util;
 
 import org.cz.muni.fi.pb138.webrep_A.APIs.WSDLDocManager;
@@ -27,6 +23,5 @@ public class InitializeDTB {
         wsdlManager.createWSDLCollection();
         xsdManager.createXSDCollection();
         warManager.createWARCollection();
-        
     }
 }
