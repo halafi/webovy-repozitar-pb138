@@ -13,7 +13,7 @@ Po konzultácii s Mgr. Filipom Nguyenom sme vybrali technológie použíté v na
 ===Vývoj prezentačnej vrstvy===
 Vývoj prezentačnej vrstvy sa skladal z viacerých častí:
 
-1. Určnie základnej funkcionality
+1. Určenie základnej funkcionality
 
 Po návrhu a určení rozhraní som si znovu prešiel základné požiadavky a pripravil si na papier základný návrh. Tento návrh sa po čase pravdaže viackrát zmenil a nakoniec bol implementovaný úplne inak.
 
