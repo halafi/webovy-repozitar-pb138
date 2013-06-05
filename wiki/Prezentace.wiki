@@ -2,4 +2,8 @@
 
 = Prezentace =
 
-Add your content here.
+Ke stažení zde: 
+
+pdf: https://sourceforge.net/projects/webrep/files/slides.pdf/download
+
+pptx: https://sourceforge.net/projects/webrep/files/prezentace.pptx/download
