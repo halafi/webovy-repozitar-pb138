@@ -1,50 +1,7 @@
 = Závěrečné zprávy =
 
-Každý řešitel samostatně vypracuje závěrečnou zprávu o svém podílu na řešení projektu v rozsahu cca jedné stránky.
-
-Závěrečné zprávy k projektu musí být primárně ve formátu DocBook, z něhož se potom generuje např. HTML nebo PDF. Vhodným umístěním je opět sekce Downloads vašeho projektu.
-
-pdf output:
-{{{
-xsltproc /usr/share/xml/docbook/stylesheet/docbook-xsl-ns/fo/docbook.xsl book.xml > book.fo
-fop -fo book.fo -pdf book.pdf
-}}}
-
-.xml example, generate html or pdf:
-{{{
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<article>
-  <title>Závěrečná zpráva - Jaroslav Dufek</title>
-
-  <section>
-    <title>Parser pro Moname</title>
-
-    <para>Na stránce Moname je vždy menu jen pro aktuální den. Nadpisi sekcí jako
-	"polévka:", "hlavní jídla:" a "dezert:" aji názvy jednotlivých jídel jsou
-	ale všechny v nerozlišených elemementech &lt;p&gt;. Takže jsem zvolil možnost 
-	vyříznutí názvů jídel z konkrétních čísel elementů &lt;p&gt; v pořadí.
-	Problém nastává jen o víkendu, kdy je jen jedno hlavní jídlo, čili parser
-	si na začátku zjistí jestli je víkend nebo všední den a podle toho se zařídí.
-	Kromě toho byl ještě problém v tom, že na stránkách Moname se místo znaků s
-	diakritikou používájí character entities, takže jsem si na Internetu našel
-	třídu jménem StringHelper, která má implementovanou funkci na přeložení všech
-	character entities do prostého textu. Takže než se html kód pošle do mého parseru
-	projde, ještě touto funkcí.
-    </para>
-  </section>
-
-  <section>
-    <title>Vzhled e-mailu</title>
-
-    <para>Dále jsem měl za úkol vytvořit vzhled e-mailu, ve kterém se posílají menu
-	restaurací. Šířka e-mailu je 875px. Do záhlaví e-mailu jsem dal pěkný obrázek
-	jídla na talíři o výšce 250px, vedle kterého je text "Denní menu". Názvy restaurací jsou
-	odděléne bannery o výšce 100px s barvou pozadí typickou pro jednotlivé restaurace, společně
-	s logem restaurace zarovnanému k pravému kraji. Pod názvy jednotlivých jídel je
-	nerušivé béžové pozadí.
-    </para>
-  </section>
-</article>
-}}}
+== Filip Halas ==
+=== Realizace projektu ===
+Po vytvoreni navrhu jsme zvolili databazi BaseX pro ukladani XML souboru, coz bylo hlavnim cilem projektu. Mym ukolem bylo udelat kompletni backend v Jave - entity, managery, parsery, Util tridu a rozhrani pro praci s BaseX DB. S parsery problem nebyl, spise se seznamenim, jak lze v jave pracovat s BaseX databazi, kterou jsme mozna nezvolili uplne nejlepe. Zaseknuti jsme byly na problemu s namespace pri prohledavani databaze, kdy nam pomohl vedouci. Dale na propojeni backendu s prezentacni vrstvou(file upload), coz jsme nakonec vyresili. Bohuzel jsme projekt delali jen 3, z toho jen 2 se znalosti javy a mnohokrat to vypadalo, ze jej vubec nedokoncime, vysledek proto neni takovy, jaky mohl byt (vyhledavani zadavanim id, malo funkci pro vyhledavani podle ruznych metadat, etc.).
+=== Zaver ===
+Za nejvetsi prinos povazuji seznameni s vyvojarskym prostredim Google Code, Subversion a zkusenost s realizaci vicecleneho projektu. Procvicil jsem si JDom, XQuery, XPath pri tvorbe realne aplikace na platforme Java, za coz jsem rad. Poznal jsem nove lidi, coz je taky fajn.
