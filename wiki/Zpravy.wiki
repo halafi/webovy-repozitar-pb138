@@ -44,6 +44,11 @@ Práca na projekte do predmetu PB138 bola pre mňa prínosná hlavne preto, že 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
     
 
+== Peter Fašianok ==
+=== Realizace projektu ===
+Po vytvoreni zakladnej funkcionality a vyrieseni problemov s posielanim xQuery dotazov bolo mojou ulohou vytvorit xQuery dotazy na vratenie  validnych dokumentov z databazy. Nakoniec som mal za ulohu  vytvorit dokumentaciu. Nakoniec som mal za ulohu aplikaciu pretestovat.
+=== Zaver ===
+Do projektu som prispel minimom hlavne vdaka mojej neznalosti jazyka Java. Ale aj napriek tomu som sa snazil prispiet hlavne aplikovanim znalosti nazbieranych v predmete za cely semester. Naucil som sa v praxi aplikovat xQuery a xPath. Zaroven bolo prinosne pre mna vyskusanie si baseX databazy a prace s nou.
 
     
     
