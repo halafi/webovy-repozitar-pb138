@@ -25,12 +25,10 @@
            Date: ${actionBean.getDocument().getTimestamp()}
            </br></br>
            Web.xml: </br>
-           <pre class="prettyprint">
-           ${actionBean.getDocument().getWebXml()}
+           <pre class="prettyprint">${actionBean.getDocument().getWebXml()}
            </pre> 
            Filters and listeners:
-           <pre class="prettyprint">
-           ${actionBean.getDocument().getExtract()}
+           <pre class="prettyprint">${actionBean.getDocument().getExtract()}
            </pre> 
         </div>
     </body>
