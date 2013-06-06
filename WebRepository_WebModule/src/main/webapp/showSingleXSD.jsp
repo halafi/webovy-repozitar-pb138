@@ -26,12 +26,10 @@
            Date: ${actionBean.getDocument().getTimestamp()}
            </br></br>
            Document: </br>
-           <pre class="prettyprint">
-           ${actionBean.getDocument().getDocument()}
+           <pre class="prettyprint">${actionBean.getDocument().getDocument()}
            </pre> 
            Types, elements and attributes:
-           <pre class="prettyprint">
-           ${actionBean.getDocument().getExtract()}
+           <pre class="prettyprint">${actionBean.getDocument().getExtract()}
            </pre> 
         </div>
     </body>
