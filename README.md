@@ -26,3 +26,11 @@ Webové rozhraní nadále umožní:
 * Bude možné vyhledávat jednotlivé artefakty podle metadat.
 
 *Imported from https://code.google.com/p/webovy-repozitar-pb138/, RIP Google Code*
+
+## Instalace a spuštění
+
+1. Stáhnout **zdrojový kód** - read-only checkout **aktuální verze**
+2. Potřeba mít stažený server **Apache Tomcat**, ke stažení zde: http://tomcat.apache.org/download-70.cgi
+3. **Clean and Build** Project
+4. Spustit **InitializeDTB.java** pro inicializaci databáze (vytvoří se BaseXDB v user.home složce)
+5. **Run Project**
