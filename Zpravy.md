@@ -1,0 +1,58 @@
+# Závěrečné zprávy #
+## Docbook ##
+Filip Halas: https://sourceforge.net/projects/webrep/files/zprava_halas.xml/download
+
+Andrej Makovický: https://sourceforge.net/projects/webrep/files/zaverecna_sprava_Andrej_Makovicky.xml/download
+
+Peter Fašianok:
+https://sourceforge.net/projects/webrep/files/zprava_fasianok.xml/download
+
+## Filip Halas ##
+### Realizace projektu ###
+Po vytvoreni navrhu jsme zvolili databazi BaseX pro ukladani XML souboru, coz bylo hlavnim cilem projektu. Mym ukolem bylo udelat kompletni backend v Jave - entity, managery, parsery, Util tridu a rozhrani pro praci s BaseX DB. S parsery problem nebyl, spise se seznamenim, jak lze v jave pracovat s BaseX databazi, kterou jsme mozna nezvolili uplne nejlepe. Zaseknuti jsme byly na problemu s namespace pri prohledavani databaze, kdy nam pomohl vedouci Mgr. Filip Nguyen. Dale na propojeni backendu s prezentacni vrstvou(file upload), coz jsme nakonec vyresili. Bohuzel jsme projekt delali jen tri, z toho jen dva se znalosti javy a mnohokrat to vypadalo, ze jej vubec nedokoncime, vysledek proto neni takovy, jaky mohl byt (vyhledavani rucnim zadavanim id, malo funkci pro vyhledavani podle ruznych metadat, etc.).
+### Zaver ###
+Celkove vyvoj projektu trval zhruba tyden intezivniho programovani. Za nejvetsi prinos povazuji seznameni s vyvojarskym prostredim Google Code, tvorbou wiki stranek, seznameni s funkcni Subversion a zkusenost s realizaci vicecleneho projektu. Procvicil jsem si JDom, XQuery, XPath pri tvorbe realne aplikace na platforme Java, za coz jsem rad. Seznamil jsem se s Maven projektem a se stripes ActionBeans. Poznal jsem nove lidi, coz je taky fajn.
+
+
+---
+
+## Andrej Makovický ##
+### Návrh aplikácie ###
+Po konzultácii s Mgr. Filipom Nguyenom sme vybrali technológie použíté v našej aplikácii.Okrem platformy Java používame Maven, Framework Stripes a XML databázu BaseX. Databáza bola vybraná pre jednoduchosť (dodržiavanie princípu KISS) a pre jej dostupnosť v repozitári mavenu bez nutnosti manuálneho pridávania(narozdiel od databázy eXist a jej XML:DB api).    Testovací framework nebol nutnosťou, nevyhnutné testy sme si napísali aj bez neho. Proces návrhu ďalej zahŕňal usecase diagram, stanovenie cieľov a pôvodnú deľbu práce. V procese návrhu som zároveň aj definoval rozhrania, ktoré určovali nevuhnutné metódy, potrebné pre podporu základnej funkcionality.
+
+### Vývoj prezentačnej vrstvy ###
+Vývoj prezentačnej vrstvy sa skladal z viacerých častí:
+
+1. Určenie základnej funkcionality
+
+Po návrhu a určení rozhraní som si znovu prešiel základné požiadavky a pripravil si na papier základný návrh. Tento návrh sa po čase pravdaže viackrát zmenil a nakoniec bol implementovaný úplne inak.
+
+2. Tvorba JSP stránok
+
+JSP stránky som sa snažil robiť čo najjednoduchšie a a najprehľadnejšie. Na skrášlenie je používaný externý CSS style sheet. Stránky ďalej používajú technológie JSTL a Stripes. Stripes je používaný na generovanie niektorých HTML elementov a podporu niektorých funkcionalít (ako nepríklad file upload).
+
+3.Action Beans
+
+Action Bean je vždy jeden pre každú entitu (súbor, ktorý sa nahráva) a poskytuje náväznosť na business logiku aplikácie. Tieto triedy volajú preddefinované metódy manažérov a týmto spôsobom využívajú ich služby.
+
+### Team Leading ###
+
+Organizácia tímu sa pravdaže nevyhla niekoľkým zádrhelom, spojeným s klasickými problémami tímových projektov na našej fakulte. Zo štvorčlenného tímu hneď pri začiatku developmentu vypadol Martin Váňa, ktorý na prácu nemal čas kvôli iným povinnostiam a svoje skúsenosti s vývojom na platforme Java považoval za nedostatočné. Inak prebiehal vývoj celkom pohodovo, organizácia stretnutí, definícia cieľov ani ich implementácia neboli až tak problematické.
+
+### Zhodnotenie a prínos projektu ###
+
+Práca na projekte do predmetu PB138 bola pre mňa prínosná hlavne preto, že som viac zdokonalil svoje programátorské schopnosti. Pri definíciách prvotných xQuery dopytov som sa bližšie zoznámil s ich formátom a použitím. Vďaka teoretickým znalostiam z tohto predmetu bolo pre mňa jednoduchšie pracovať s konfiguráciou komponent, s ktorými som mal predtým problémy(v PA165 napríklad, deployment descriptor web.xsl, spring-context, prípadne textová reprezentácia Persistence Unit - persistence.xml). Projekt bol pre mňa prínosný aj z menežérskeho hľadiska, kde som sa naučil viac organizovať a viesť ľudí, motivovať ich a použiť pozitívny prístup k dostiahnutiu cieľov. Je škoda, že v prípade, že nemáte skupinu ľudí, ktorých poznáte, pretože zo skúsenosti to znamená, že najmenej jeden člen tímu prestane pracovať. Prínosom teda pre mňa je aj vedomosť, že treba lepšie dbať na výber ľudí do projektu a všeobecne rátať s tým, že niekto odpadne prípadne pripraviť niečo ako busines continuity plan v prípade výpadku človeka, alebo zapríčinenia nejakej inej katastrofickej situácie.
+
+
+---
+
+
+
+## Peter Fašianok ##
+### Realizace projektu ###
+Po vytvoreni zakladnej funkcionality a vyrieseni problemov s posielanim xQuery dotazov bolo mojou ulohou vytvorit xQuery dotazy na vratenie  validnych dokumentov z databazy. Nakoniec som mal za ulohu  vytvorit dokumentaciu. Nakoniec som mal za ulohu aplikaciu pretestovat.
+### Zaver ###
+Do projektu som prispel minimom hlavne vdaka mojej neznalosti jazyka Java. Ale aj napriek tomu som sa snazil prispiet hlavne aplikovanim znalosti nazbieranych v predmete za cely semester. Naucil som sa v praxi aplikovat xQuery a xPath. Zaroven bolo prinosne pre mna vyskusanie si baseX databazy a prace s nou.
+
+
+

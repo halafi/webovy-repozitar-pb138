@@ -1,0 +1,18 @@
+# Instalace a spuštění #
+
+1. Stáhnout **zdrojový kód** - read-only checkout **aktuální verze**:
+```
+svn checkout http://webovy-repozitar-pb138.googlecode.com/svn/trunk/ webovy-repozitar-pb138-read-only
+```
+
+nebo **.war** archiv na https://sourceforge.net/projects/webrep/ (nemusí být aktuální)
+
+2. Potřeba mít stažený server **Apache Tomcat**, ke stažení zde: http://tomcat.apache.org/download-70.cgi
+
+3. **Clean and Build** Project
+
+4. Spustit **InitializeDTB.java** pro inicializaci databáze (vytvoří se BaseXDB v user.home složce)
+
+5. **Run Project**
+
+Vytvořeno v **NetBeans IDE 7.2.1** pod **Windows**.

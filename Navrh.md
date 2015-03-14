@@ -1,0 +1,313 @@
+
+# WSDL #
+## Ukázka 1 - Hello Service ##
+```
+<definitions name="HelloService"
+   targetNamespace="http://www.examples.com/wsdl/HelloService.wsdl"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:tns="http://www.examples.com/wsdl/HelloService.wsdl"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ 
+   <message name="SayHelloRequest">
+      <part name="firstName" type="xsd:string"/>
+   </message>
+   <message name="SayHelloResponse">
+      <part name="greeting" type="xsd:string"/>
+   </message>
+
+   <portType name="Hello_PortType">
+      <operation name="sayHello">
+         <input message="tns:SayHelloRequest"/>
+         <output message="tns:SayHelloResponse"/>
+      </operation>
+   </portType>
+
+   <binding name="Hello_Binding" type="tns:Hello_PortType">
+   <soap:binding style="rpc"
+      transport="http://schemas.xmlsoap.org/soap/http"/>
+   <operation name="sayHello">
+      <soap:operation soapAction="sayHello"/>
+      <input>
+         <soap:body
+            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+            namespace="urn:examples:helloservice"
+            use="encoded"/>
+      </input>
+      <output>
+         <soap:body
+            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+            namespace="urn:examples:helloservice"
+            use="encoded"/>
+      </output>
+   </operation>
+   </binding>
+
+   <service name="Hello_Service">
+      <documentation>WSDL File for HelloService</documentation>
+      <port binding="tns:Hello_Binding" name="Hello_Port">
+         <soap:address
+            location="http://www.examples.com/SayHello/">
+      </port>
+   </service>
+</definitions>
+```
+Pro WSDL dokumenty se vyextrahuje **seznam operací spolu s informací o requestu a response zprávách**.
+```
+<operations_and_messages>
+    <operation name="sayHello">
+        ...
+    </operation>
+    <!-- sayHello% messages -->
+    <message name="sayHelloRequest">
+        ...
+    </message>
+    <message name="sayHelloResponse">
+        ...
+    </message>
+</operations_and_messages>
+```
+Zdroj: http://www.tutorialspoint.com/wsdl/wsdl_example.htm
+## Ukázka 2 - SOAP 1.1 Request/Response via HTTP ##
+```
+<?xml version="1.0"?>
+<definitions name="StockQuote"
+targetNamespace="http://example.com/stockquote.wsdl"
+          xmlns:tns="http://example.com/stockquote.wsdl"
+          xmlns:xsd1="http://example.com/stockquote.xsd"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <types>
+       <schema targetNamespace="http://example.com/stockquote.xsd"
+              xmlns="http://www.w3.org/2000/10/XMLSchema">
+           <element name="TradePriceRequest">
+              <complexType>
+                  <all>
+                      <element name="tickerSymbol" type="string"/>
+                  </all>
+              </complexType>
+           </element>
+           <element name="TradePrice">
+              <complexType>
+                  <all>
+                      <element name="price" type="float"/>
+                  </all>
+              </complexType>
+           </element>
+       </schema>
+    </types>
+
+    <message name="GetLastTradePriceInput">
+        <part name="body" element="xsd1:TradePriceRequest"/>
+    </message>
+    <message name="GetLastTradePriceOutput">
+        <part name="body" element="xsd1:TradePrice"/>
+    </message>
+
+    <portType name="StockQuotePortType">
+        <operation name="GetLastTradePrice">
+           <input message="tns:GetLastTradePriceInput"/>
+           <output message="tns:GetLastTradePriceOutput"/>
+        </operation>
+    </portType>
+
+    <binding name="StockQuoteSoapBinding" type="tns:StockQuotePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetLastTradePrice">
+           <soap:operation soapAction="http://example.com/GetLastTradePrice"/>
+           <input>
+               <soap:body use="literal"/>
+           </input>
+           <output>
+               <soap:body use="literal"/>
+           </output>
+        </operation>
+    </binding>
+
+    <service name="StockQuoteService">
+        <documentation>My first service</documentation>
+        <port name="StockQuotePort" binding="tns:StockQuoteBinding">
+           <soap:address location="http://example.com/stockquote"/>
+        </port>
+    </service>
+
+</definitions>
+```
+
+Pro WSDL dokumenty se vyextrahuje **seznam operací spolu s informací o requestu a response zprávách**.
+```
+<operations_and_messages>
+    <operation name="GetLastTradePrice">
+        ...
+    </operation>
+    <!-- GetLastTradePrice% messages -->
+    <message name="GetLastTradePriceInput">
+        ...
+    </message>
+    <message name="GetLastTradePriceOutput">
+        ...
+    </message>
+</operations_and_messages>
+```
+Zdroj: http://www.w3.org/TR/wsdl#_wsdl
+# XSD #
+## Ukázka 1 - Ship Order ##
+```
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="shiporder">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="orderperson" type="xs:string"/>
+      <xs:element name="shipto">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="address" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="item" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="note" type="xs:string" minOccurs="0"/>
+            <xs:element name="quantity" type="xs:positiveInteger"/>
+            <xs:element name="price" type="xs:decimal"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="orderid" type="xs:string" use="required"/>
+  </xs:complexType>
+</xs:element>
+</xs:schema>
+```
+Pro XSD schémata se vyextrahuje **seznam typů (simple a complex)** a **seznam elementů a atributů**.
+```
+<types>
+    <xs:complexType>
+        <xs:element name="orderperson" type="xs:string"/>
+        <xs:element name="shipto">
+        <xs:element name="item" maxOccurs="unbounded">
+    </xs:complexType>
+    <xs:complexType>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="address" type="xs:string"/>
+        <xs:element name="city" type="xs:string"/>
+        <xs:element name="country" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType>
+        <xs:element name="title" type="xs:string"/>
+        <xs:element name="note" type="xs:string" minOccurs="0"/>
+        <xs:element name="quantity" type="xs:positiveInteger"/>
+        <xs:element name="price" type="xs:decimal"/>
+    </xs:complexType>
+</types>
+```
+Zdroj: http://www.w3schools.com/schema/schema_example.asp
+# WAR #
+## WAR struktura ##
+![http://docstore.mik.ua/orelly/xml/jxslt/figs/jxt_0602.gif](http://docstore.mik.ua/orelly/xml/jxslt/figs/jxt_0602.gif)
+
+Pro WAR archivy se vytáhne **web.xml** a bude k náhledu.
+
+## Ukázka souboru web.xml ##
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+ 
+ <context-param>
+   <param-name>debug</param-name>
+   <param-value>false</param-value>
+ </context-param>
+ 
+ <session-config>  <!--  10 minutes -->
+   <session-timeout>10</session-timeout>
+ </session-config>
+ 
+ <servlet>
+   <display-name>Servlet1</display-name>
+   <servlet-name>Servlet1</servlet-name>
+   <servlet-class>test.Servlet1</servlet-class>
+   <init-param>
+     <param-name>sleep-time-in-seconds</param-name>
+     <param-value>10</param-value>
+   </init-param>
+   <load-on-startup>1</load-on-startup>
+ </servlet>
+ 
+ <servlet-mapping>
+   <servlet-name>Servlet1</servlet-name>
+   <url-pattern>/Servlet1</url-pattern>
+ </servlet-mapping>
+ 
+ <env-entry>
+   <description>admin email</description>
+   <env-entry-name>adminEmail</env-entry-name>
+   <env-entry-value>admin@example.x</env-entry-value>
+ </env-entry>
+ 
+ <resource-ref>
+   <res-ref-name>HRDS</res-ref-name>
+   <res-type>javax.sql.DataSource</res-type>
+   <mapped-name>jdbc/__default</mapped-name>
+ </resource-ref>
+ 
+ <filter>
+   <display-name>Filter1</display-name>
+   <filter-name>Filter1</filter-name>
+   <filter-class>Filter1</filter-class>
+ </filter>
+ 
+ <filter-mapping>
+   <filter-name>Filter1</filter-name>
+   <url-pattern>/Filter1</url-pattern>
+ </filter-mapping>
+ 
+ <filter-mapping>
+   <filter-name>Filter1</filter-name>
+   <servlet-name>Servlet1</servlet-name>
+   <dispatcher>REQUEST</dispatcher>
+   <dispatcher>FORWARD</dispatcher>
+   <dispatcher>INCLUDE</dispatcher>
+   <dispatcher>ERROR</dispatcher>
+ </filter-mapping>
+ 
+ <listener>
+   <listener-class>Listener1</listener-class>
+ </listener>
+ 
+ <welcome-file-list>
+   <welcome-file>index.html</welcome-file>
+   <welcome-file>index.htm</welcome-file>
+   <welcome-file>index.jsp</welcome-file>
+   <welcome-file>default.html</welcome-file>
+   <welcome-file>default.htm</welcome-file>
+   <welcome-file>default.jsp</welcome-file>
+ </welcome-file-list>
+ 
+</web-app>
+```
+Dále se vyextrahuje **seznam listenerů a filtrů**.
+```
+<filters_and_listeners>
+   <filter>
+      <display-name>Filter1</display-name>
+      <filter-name>Filter1</filter-name>
+      <filter-class>Filter1</filter-class>
+   </filter>
+   <listener>
+      <listener-class>Listener1</listener-class>
+   </listener>
+</filters_and_listeners>
+```
+Zdroj: http://javahowto.blogspot.cz/2009/10/sample-webxml-servlet-25.html
+
+# Use Case Diagram #
+![http://webovy-repozitar-pb138.googlecode.com/svn/wiki/UseCase.png](http://webovy-repozitar-pb138.googlecode.com/svn/wiki/UseCase.png)
